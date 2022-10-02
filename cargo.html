@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main_style.css">
     <title>Cargo Services</title>
 </head>
 <body>
@@ -21,62 +22,140 @@
       </div>
 
            
-    <style>.centered {
+
+
+ <!-- <div class="container">
+   <img src="cargo1.jpg" width="100%" height="400" alt="cargo" body style="line-height: 100px; z-index: 0;">
+   <div class="centered"> <h1>Cargo Services</h1></div>
+ </div>  -->
+
+ <div class="container1">
+    <img src="cargopics/cargo1.jpg" width="100%" alt="cargo" style="height: 400px;">
+
+ </div>
+
+
+
+<center><h1>Our Cargo Services include:</h1></center>
+
+
+    <style>
+    
+    .centered {
         position:absolute;
        top: 29%;
        left: 50%;
        color:whitesmoke;
        font-family: sans-serif;
-       font-size:40px;
+       font-size:100%;
        transform: translate(-50%, -50%);
        display: block; 
+       object-fit: cover;
+       object-position: 10%;
    }
    body
    {
-    overflow-x: hidden;
+    background-color: rgb(196, 206, 55);
+    overflow-x: ;
    }
-   </style>
-
-<div class="container">
-   <img src="cargo1.jpg" width="1522" height="400" alt="cargo" body style="margin:-10px;";>
-   <div class="centered"> <h1>Cargo Services</h1></div>
-   <!-- <div class="bottom-left"></div>
-   <div class="top-left"></div>
-   <div class="top-right"></div>
-   <div class="bottom-right"></div> -->
- </div>
-
-  <!-- <div class="container"> 
-    <figure>
-    <img src="cargo3.jpg" style="width: 300px; height: 6cm;"> 
-    <figcaption><center>Pets and Animals</center></figcaption>
-    <img src="cargo4.jpg" style="width: 300px; height: 6cm;"> 
-    <figcaption><center>Dangerous Goods</center></figcaption>
-
-    <img src="cargo5.jpg" style="width: 300px; height: 6cm;"> 
-    <figcaption><center>Pharma</center></figcaption>
-    <img src="cargo6.png" style="width: 300px; height: 6cm;"> 
-    <figcaption><center>Temperature Controled Goods</center></figcaption>
-</figure>
-</div>  -->
+      container1 {
+          /* The image used */
+        background-image: url("cargopics/cargo1.jpg");
+      
+        /* Full height */
+        height: 100px;
+      
+        /* Center and scale the image nicely */
+        background-position:center;
+        background-repeat: no-repeat;
+        background-size:cover;
+      }
 
 
-<center><h1>Our Cargo Services include:</h1></center>
-<table border="15" width="100%" style="background-color:gray;">
-    <tr>
-    <th style="width:0%; white-space: nowrap;"><img src="cargo3.jpg" name="pets" width="300px" height="200cm"/></th>
-    <th style="width:0%; white-space: nowrap;"><img src="cargo4.jpg" name="dangerousgoods" width="300px" height="200cm"/></th>
-    <th style="width:0%; white-space: nowrap;"><img src="cargo5.jpg" name="pharma" width="300px" height="200cm"/></th>
-    <th style="width:0%; white-space: nowrap;"><img src="cargo6.png" name="tempcontrolled" width="300px" height="200cm"/></th>
-    </tr>
+        .container
+        {
+          display: flex;
+          max-width: 100%;
+          max-height: 100%;
+        }
+  
+        .container div{
+          border: 5px #ccc solid;
+          padding: px;
+          font-size: 100%;
+          height: 350px;
+        }
+  
+        .image1
+        {
+          flex:1;
+          width: 100%;
+          height: 10%;
+          max-height: 10%;
+        }
+  
+        .image2
+        {
+          flex:1;
+          height: 10%;
+          max-height: 10%;
+          height: 350px;
+        }
+        .image3
+        {
+          flex:1;
+          height: 10%;
+          height: 350px;
+        }
+        .image4
+        {
+          flex:1;
+          height: 10%;
+          height: 350px;
+        }
+        img
+        {
+          max-width: 100%;
+          display: block;
+          height: 100%;
+        }
+  
+  
+  
+  
+        .centered.image1 {
+          position: relative;
+         top: 10%;
+         left: 10%;
+         color:whitesmoke;
+         font-family: sans-serif;
+         font-size:100%;
+         transform: translate(-50%, -50%);
+         display: block; 
+         object-fit: cover;
+         object-position: 10%;
+     }
+  
+  </style>
+  
+  
+  <div class="container">
+  
+      <div class="image1">
+      <img src="cargopics/cargo3.jpg" width="100%">
 
-    <tr>
-        <td><center>Pets and Animals</center></td>
-        <td><center>Dangerous Goods</center></td>
-        <td><center>Pharma</center></td>
-        <td><center>Temperature Controled Goods</center></td>
-    </tr>
-    </table>
+  </div>
+  <div class="image2">
+      <img src="cargopics/cargo4.jpg " width="100%">
+  </div>
+  <div class="image3">
+      <img src="cargopics/cargo5.jpg" width="100%">
+  </div>
+  <div class="image4">
+    <img src="cargopics/cargo6.png" width="100%">
+</div>
+  
+    </div>
 
 
 

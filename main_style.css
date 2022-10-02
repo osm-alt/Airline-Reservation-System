@@ -9,6 +9,7 @@ h1 {
 .topnav {
     background-color: darkgreen;
     overflow: hidden;
+    z-index: 1;
 }
 
 /* Style the links inside the navigation bar */

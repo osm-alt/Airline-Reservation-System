@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>ROA Airlines</h1>
+    <!-- <h1 style="z-index: 1;">ROA Airlines</h1> -->
     <div class="topnav">
         <a class="active" href="main_page.html">Home Page</a>
         <a href="book_a_trip.html">Book a trip</a>
@@ -16,10 +16,113 @@
         <a href="checkin.html">Check-in</a>
         <a href="CovidRestrictions.html">Covid Restrictions</a>
         <a href="cargo.html">Cargo</a>
-
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
       </div>
+
+
+      <style>
+      body {
+          /* The image used */
+        background-image: url("mainpics/main.jpg");
+      
+        /* Full height */
+        height: 650px;
+        max-height: 100%;
+        max-width: 100%;
+        
+      
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+
+      .container
+        {
+          display: flex;
+          max-width: 100%;
+          max-height: 100%;
+          color: red;
+        }
+        
+        .container a{
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+
+        .container div{
+          border: px #ccc solid;
+          font-size: 100%;
+          height: 45px;
+          margin: 120px;
+        }
+        
+        .box1
+        {
+          flex:1;
+          width: 100%;
+          height: 10%;
+          max-height: 10%;
+        }
+        
+        .box2
+        {
+          flex:1;
+          height: 10%;
+          max-height: 10%;
+        }
+        .box3
+        {
+          flex:1;
+          height: 10%;
+          
+        }        
+</style>
+
+<br>
+<center><h1>Welcome To ROA Airlines!</h1></center>
+  
+<div class="container">
+  <div class="box1">
+    <a href="book_a_trip.html"><h1>Book a Trip</h1>
+  <center><p>Search Flights & Book</p></center></a>
+</div>
+
+<div class="box2">
+  <a href="checkin.html"><h1>Check in</h1>
+  <center><p>Check in Before Flight</p></center></a>
+</div>
+
+<div class="box3">
+  <a href="flight_schedule_search.html"><h1>Flight Status</h1>
+  <center>Check Flight Schedule</center></a>
+</div>
+
+</div>
+
+
+<!-- <div>
+<img src="covid19airplane.png" width="50%" style="vertical-align: top;">
+<span style="margin-left: 250px; font-size:50px;"><Strong>this is a text</Strong></span>
+
+
+</div> -->
+
 </body>
+
+<footer>
+
+</footer>
+
+
+
+
 
 </html>
