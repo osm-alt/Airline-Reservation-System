@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
     <title>Manage Booking</title>
+    <link rel="stylesheet" href="main_style.css">
 </head>
 
 <body>
-    <center>
-        <h1>Manage Booking</h1>
-        <p>View your reservations and make changes to your flight details</p>
-    </center>
+    <h1>ROA Airlines</h1>
+    <div class="topnav">
+        <a href="main_page.html">Home Page</a>
+        <a href="book_a_trip.html">Book a trip</a>
+        <a href="flight_schedule_search.html">Flight Schedule Search</a>
+        <a class="active" href="manage_booking.html">Manage Booking</a>
+        <a href="#about">About</a>
+    </div>
+    <h1>Manage Booking</h1>
+    <p style="text-align:center;">View your reservations and make changes to your flight details</p>
+
     <form method="post" action="">
         <fieldset>
             <legend>View Reservation</legend>
-        <p>
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" id="last_name" required>
-        </p>
-        <p>
-            <label for="booking_reference">Booking Reference Number</label>
-            <input type="text" name="booking_reference" id="booking_reference" required>
-        </p>   
-        <input type = "submit" value = "View Reservation">
+            <p>
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" id="last_name" required>
+            </p>
+            <p>
+                <label for="booking_reference">Booking Reference Number</label>
+                <input type="text" name="booking_reference" id="booking_reference" required>
+            </p>
+            <input type="submit" value="View Reservation">
         </fieldset>
     </form>
 </body>
+
 </html>
