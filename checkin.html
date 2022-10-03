@@ -23,26 +23,43 @@
 
        
     <style>.centered {
-         position:absolute;
+        align-content: center;
+
+        background-color:white;
+        border-radius: 5%;
+        display: flex;
+        border-bottom-left-radius: 10%;
+        border-top-left-radius: 40%;
+        border-bottom-right-radius: 40%;
+        border-top-right-radius: 10%;
+
+        width: 20%;
+        max-width: 100%;
+        max-width: 100%;
+
+        position:absolute;
         top: 29%;
         left: 50%;
-        color:black;
+        color:red;
         font-family: sans-serif;
-        font-size:40px;
+        font-size:100%;
         transform: translate(-50%, -50%);
         display: block; 
         z-index: 2;
+        text-decoration: double;
     }
     .container
     {
         display: flex;
-        flex-wrap:wrap-reverse;
-        padding: px;
+    }
+    body
+    {
+        background-color: yellowgreen;
     }
     </style>
 
 <div class="container">
-    <img src="checkinpics/checkin.jpg" width="100%" height="400" alt="checkin";>
+    <img src="checkinpics/checkin.jpg" width="100%" height="400" alt="checkin">
     <div class="centered"> <h1>Check in</h1></div>
 
   </div>

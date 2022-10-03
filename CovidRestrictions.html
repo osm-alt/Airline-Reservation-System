@@ -20,24 +20,43 @@
         <a href="checkin.html">Check-in</a>
         <a href="CovidRestrictions.html">Covid Restrictions</a>
         <a href="cargo.html">Cargo</a>
-
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
       </div>
     
     <style>.centered {
+        background-color:white;
+        border-radius: 5%;
+        display: flex;
+        border-bottom-left-radius: 10%;
+        border-top-left-radius: 40%;
+        border-bottom-right-radius: 40%;
+        border-top-right-radius: 10%;
+
+        width: 20%;
+        max-width: 100%;
+        max-width: 100%;
+
         position:absolute;
         top: 29%;
         left: 50%;
-        color:floralwhite;
-        font-family: 'Times New Roman', Times, serif;
-        font-size:larger;
+        color:red;
+        font-family: sans-serif;
+        font-size:100%;
         transform: translate(-50%, -50%);
+        display: block; 
+        z-index: 2;
+        text-decoration: double;
+    }
+    body
+    {
+        background-color: yellowgreen;
+
     }
     </style>
 
 <div class="container">
-    <img src="covid19pics/covidimage.jpg" alt="airplaine" width="1520" height="400" alt="Covid19Picture" body style="margin:-10px;";>
+    <img src="covid19pics/covidimage.jpg" width="100%" height="400" alt="Covid19Picture";>
     <div class="centered"> <h1>Your safesty is our priority!</h1></div>
     <!-- <div class="bottom-left"></div>
     <div class="top-left"></div>
@@ -50,7 +69,7 @@
 </center>
 
 
-<table border="50" width="100%">
+<table border="50" width="100%" style="border-color: red;">
     <tr>
     <th><img src="covid19pics/facemask.svg" name="mask" width=""/><br>Face Mask</th>
     <th><img src="covid19pics/disinfection.svg" name="disenfectant" width=""/><br>Disenfectant</th>
