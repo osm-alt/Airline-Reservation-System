@@ -14,10 +14,27 @@
   .a{
     color: black;
   }
+
+  h1
+  {
+      /* color: white; */
+      font-weight:bold;
+      font-size: 3rem;
+  }
+
+  p
+  {
+      /* color: white; */
+      font-weight:350;
+      font-size: 2rem;
+  }
   
 
   .text {
     text-align: justify;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight:250;
+    font-size: 2rem;
+
 
   }

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="topnav" style="z-index: 1;">
-  <a class="active" href="main_page.html">Home Page</a>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,17 +7,40 @@
     <link rel="stylesheet" href="baggage.css">
     <link rel="stylesheet" href="main_style.css">
     <title>Document</title>
-</head>
-  <a href="book_a_trip.html">Book a trip</a>
-  <a href="flight_schedule_search.html">Flight Schedule Search</a>
-  <a href="checkin.html">Check-in</a>
-  <a href="CovidRestrictions.html">Covid Restrictions</a>
-  <a href="cargo.html">Cargo</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
-<h1>Baggage Info</h1>
-<body class="super-center">
+  </head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logoicon">
+        <h1>ROA</h1>
+        <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+      </div>
+      <ul>
+        <li><a class="active" href="main_page.html">Home Page</a></li>
+        <li><a href="book_a_trip.html">Book a trip</a></li>
+        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+        <li><a href="checkin.html">Check-in</a></li>
+        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+        <li><a href="cargo.html">Cargo</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a>
+      </ul>
+      <menu><ul>
+        <li><a class="active" href="main_page.html">Home Page</a></li>
+        <li><a href="book_a_trip.html">Book a trip</a></li>
+        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+        <li><a href="checkin.html">Check-in</a></li>
+        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+        <li><a href="cargo.html">Cargo</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul></menu>
+    </nav>
+  </header>
+
+<center><h1>Baggage Info</h1></center>
+<div class="super-center">
     <form id="baggage-calc">
       <h1>Baggage Calculator</h1>
       <datalist id="airports">
