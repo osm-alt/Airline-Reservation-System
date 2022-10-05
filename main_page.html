@@ -8,139 +8,262 @@
 </head>
 
 <body>
-      <div class="topnav">
-        <a class="active" href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="checkin.html">Check-in</a>
-        <a href="CovidRestrictions.html">Covid Restrictions</a>
-        <a href="cargo.html">Cargo</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+  <main>
+  <header>
+    <nav>
+      <div class="logoicon">
+        <h1>ROA</h1>
+        <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
       </div>
+      <ul>
+        <li><a class="active" href="main_page.html">Home Page</a></li>
+        <li><a href="book_a_trip.html">Book a trip</a></li>
+        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+        <li><a href="checkin.html">Check-in</a></li>
+        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+        <li><a href="cargo.html">Cargo</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a>
+      </ul>
+      <menu><ul>
+        <li><a class="active" href="main_page.html">Home Page</a></li>
+        <li><a href="book_a_trip.html">Book a trip</a></li>
+        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+        <li><a href="checkin.html">Check-in</a></li>
+        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+        <li><a href="cargo.html">Cargo</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul></menu>
+    </nav>
+  </header>
 
-      
+      <!-- <center><h1>Welcome To ROA Airlines!</h1></center> -->
 
-      <style>
-        body {
-            /* The image used */
-          background-image: url("mainpics/main.jpg");
-        
-          /* Full height */
+      <div class="container">
+        <div class="box1">
+          <center><a href="book_a_trip.html"><h1>Book a Trip</h1></center>
+            <center><p>Search Flights & Book</p></center></a>
+          </div>
+        <div class="box2">
+          <center><a href="checkin.html"><h1>Check in</h1></center>
+            <center><p>Check in Before Flight</p></center></a>
+        </div>
+        <div class="box3">
+          <center><a href="flight_schedule_search.html"><h1>Flight Status</h1></center>
+            <center><p>Check Flight Schedule</center></p></a>
+        </div>
+      </div>
+    </main>
 
-          max-height: 100%;
-          max-width: 100%;
-          width: 100%;
-          min-width: 100vh;
+
+    <section>
+      <div class="container1">
+        <img src="mainpics/covid19airplane.png" alt="covid19 airplane" style="vertical-align: bottom;">
+        <div class="box4">
+        <h1>Covid19 Measures and Guidelines</h1>
+        <p>We take our passenger's safety as a top priority, please visit our
+          Guidelines page to learn more about our measures while travelling.
+          <a href="CovidRestrictions.html"><button id="button1">Read More</button></a>
+        </p>
+      </div>
+    </section>
+
+
           
-        
-          /* Center and scale the image nicely */
-          background-position: center;
-          background-attachment: fixed;
-          background-repeat: no-repeat;
-          background-size: cover;
-          overflow-x: hidden;
+<style>
 
-        }
-
-        
-        
-    .box1 {
-    display: grid;
-    place-items: center;
-
-    display: flex;
-    flex-flow: column;
-    
-    border: 2px #ccc solid;
-    border-radius:  0.5em;
-    background-color: hsl(0 0% 0% / 0.2);
-    
-    text-align: center;
-    transition:all 0.3s ease;
-    
+  main
+  {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), url('mainpics/sky.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
   }
 
-  .box2 {
-    place-items: center;
-    
-    display: flex;
-    flex-flow: column;
-    
-    border: 2px #ccc solid;
-    border-radius:  0.5em;
-    background-color: hsl(0 0% 0% / 0.2);
-    
-    transition:all 0.3s ease;
-    
+
+  section {
+    padding: 15rem 0 5rem 0;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
   }
   
+  
+  p
+  {
+    font-weight:350;
+    font-size: 2rem;
+  }
+  
+  
+  img {
+    width: 50%;
+    height: auto;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin: auto;
+    padding-top: 10rem;
+    
+  }
+
+  .container div{
+    justify-content: center;
+    border: 1px #ccc solid;
+    font-size: 100%;
+    height: 15rem;
+    margin: 10rem;
+    max-width: 100vh;
+  }
+  
+  .box1,
+  .box2,
   .box3 {
-    place-items: center;
-    
-    display: flex;
-    flex-flow: column;
-    
-    border: 2px #ccc solid;
-    border-radius:  0.5em;
-    background-color: hsl(0 0% 0% / 0.2);
-    
-    
-  }
+  flex-grow: 1;
+  flex-basis: 70%;
+  border: 0.1rem solid;
+  border-radius:  0.5em;
+  flex-flow: column;    
+  transition:all 0.3s ease;
+}
+
+.container1 {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  margin-top: -20rem;
+  padding-top: 10rem;
+}
+
+.box4 h1
+{
+  color: white;
+  padding-left: 15rem; white-space: nowrap;
+  font-weight:bolder;
+  font-family: Arial, Helvetica, sans-serif;
   
+  
+}
+
+.box4 p{
+  margin-left: 1em;
+  text-align-last:left ;
+  font-size: 3rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight:lighter;
+  padding-top: 1rem;
+  text-shadow: -4px 4px 6px dimgray;
+  color: black;
+}
+
+#button1
+{
+  white-space: nowrap;
+  margin: auto;
+  cursor:pointer;
+  border:none;
+  padding:1rem;
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%); */
+  /* color:white; */
+  font-family:cursive;
+  box-sizing:border-box;
+  padding: 0.4em 0.7em;
+  font-size: clamp(1rem, 1.5vw + 3px, 2rem);
+}
+
+.about2 {
+    background-color: #222;
+    color: whitesmoke;
+}
+
+.about2-left {
+    flex-basis: 50%;
+}
+
+.about2-right {
+    flex-basis: 30%;
+}
+
+
+
+@media (max-width:1200px) 
+{
   .container
-    {
-      display: flex;
-      max-width: 100%;
-      max-height: 100%;
-      justify-content: center;
-    
-    }
+  {
+  display: flex;
+  flex-direction: column;
+}
+
+.container div{
+  width: 50%;
+  justify-content: center;
+  border: px #ccc solid;
+  font-size: 100%;
+  height: 50rem;
+  margin-top: -7rem;
+}
+
+.box4 h1
+{
+  padding-left: clamp(2rem, 1.5vw + 3px, 2rem);;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+  .box4 p
+  {
+  margin-left: 1em;
+  text-align-last:left ;
+  font-size: 3rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight:lighter;
+  padding-top: 1rem;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  }
+}
+
+
+ @media (max-height:500px)
+{
+
+.container div{
+
+  height: 15rem;
+  margin: 1rem;
+}
+} 
+
+
+@media (max-height:500px) and (max-width:1200px)
+{
+
+
+  .container
+  {
+  display: flex;
+  flex-direction: row;
+  height: 15vh;
+  min-height: 80vh;
+}
+
+.container div{
+  width: 50%;
+  justify-content: center;
+  border: px #ccc solid;
+  font-size: 100%;
+  margin-top: -7rem;
+  min-height: 80vh;
+  max-height: 30vh;
+}
+
+} 
+
+
+  </style>
   
-
-    .container div{
-      justify-content: center;
-      border: px #ccc solid;
-      font-size: 100%;
-      height: 180px;
-      margin: 120px;
-    }
-
-    .container a:hover
-    {
-    color: red;
-    scale: 4,05;
-
-    }
-    
-          
-  
-  
-</style>
-
-<br>
-
-<center><h1>Welcome To ROA Airlines!</h1></center>
-
-<div class="container">
-  <div class="box1">
-    <a href="book_a_trip.html"><h1>Book a Trip</h1>
-      <center><p>Search Flights & Book</p></center></a>
-</div>
-
-<div class="box2">
-  <a href="checkin.html"><h1>Check in</h1>
-  <center><p>Check in Before Flight</p></center></a>
-</div>
-
-<div class="box3">
-  <a href="flight_schedule_search.html"><h1>Flight Status</h1>
-  <center>Check Flight Schedule</center></a>
-</div>
-
-</div>
-
-
 
 
 

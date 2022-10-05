@@ -8,34 +8,48 @@
     <title>Check in</title>
 </head>
 <body>
-
-    <div class="topnav" style="z-index: 1;">
-        <a class="active" href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="checkin.html">Check-in</a>
-        <a href="CovidRestrictions.html">Covid Restrictions</a>
-        <a href="cargo.html">Cargo</a>
-
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-      </div>
-
+        <header>
+          <nav>
+            <div class="logoicon">
+              <h1>ROA</h1>
+            </div>
+            <ul>
+              <li><a class="active" href="main_page.html">Home Page</a></li>
+              <li><a href="book_a_trip.html">Book a trip</a></li>
+              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+              <li><a href="checkin.html">Check-in</a></li>
+              <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+              <li><a href="cargo.html">Cargo</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About</a>
+            </ul>
+            <!-- <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon> -->
+            <menu><ul>
+              <li><a class="active" href="main_page.html">Home Page</a></li>
+              <li><a href="book_a_trip.html">Book a trip</a></li>
+              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+              <li><a href="checkin.html">Check-in</a></li>
+              <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+              <li><a href="cargo.html">Cargo</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About</a></li>
+            </ul></menu>
+          </nav>
+        </header>
+      
        
     <style>.centered {
         align-content: center;
 
-        background-color:white;
+        background-color:black;
         border-radius: 5%;
-        display: flex;
         border-bottom-left-radius: 10%;
         border-top-left-radius: 40%;
         border-bottom-right-radius: 40%;
         border-top-right-radius: 10%;
 
         width: 20%;
-        max-width: 100%;
-        max-width: 100%;
+
 
         position:absolute;
         top: 29%;
@@ -48,13 +62,47 @@
         z-index: 2;
         text-decoration: double;
     }
+
+    
+    h1
+    {
+        color: white;
+
+    }
+
+    h2
+    {
+        color: white;
+
+    }
+    p
+    {
+        color: white;
+    }
+
+
+    @media (max-width:1200px)
+    {
+    h1
+    {
+        padding-left: clamp(2rem, 1.5vw + 3px, rem);;
+        font-size: clamp(rem, 2.5vw, 1rem);
+    }
+    }
+
+
+
+
     .container
     {
         display: flex;
+        align-content: center;
+        justify-content: space-between;
     }
     body
     {
-        background-color: yellowgreen;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
+
     }
     </style>
 
@@ -74,9 +122,9 @@
 
 <form post="method" autocomplete="on" >
     <fieldset><legend style="color: blue;">Check-In</legend>
-    <p><label><input name = "Lname" type="text" size = "21" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;" placeholder="Last Name"></p>
-    <p><label><input name = "BRN" type="text" size = "21" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;" placeholder="Booking Reference Number"></p>
-    <p><input type = "submit" value = "Check In" style="border-radius: 5px;color: blue; height: 30px; background-color: grey; margin-left: 10px; box-sizing:border-box; font-size: larger;"></p>
+    <p><label><input name = "Lname" type="text" size = "21" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large; height: 3rem; margin-top: 1em;" placeholder="Last Name"></p>
+    <p><label><input name = "BRN" type="text" size = "21" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;height: 3rem; margin-top: 1em;" placeholder="Booking Reference Number"></p>
+    <p><input type = "submit" value = "Check In" style="border-radius: 5px;color: blue; height: 30px; background-color: grey; margin-left: 10px; box-sizing:border-box; font-size: larger;height: 3rem; margin-top: 1em;"></p>
     </fieldset>
     </form>
 

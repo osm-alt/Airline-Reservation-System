@@ -9,18 +9,35 @@
 </head>
 <body>
 
-    <div class="topnav">
-        <a class="active" href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="checkin.html">Check-in</a>
-        <a href="CovidRestrictions.html">Covid Restrictions</a>
-        <a href="cargo.html">Cargo</a>
-
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-      </div>
-
+        <header>
+          <nav>
+            <div class="logoicon">
+              <h1>ROA</h1>
+            </div>
+            <ul>
+              <li><a class="active" href="main_page.html">Home Page</a></li>
+              <li><a href="book_a_trip.html">Book a trip</a></li>
+              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+              <li><a href="checkin.html">Check-in</a></li>
+              <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+              <li><a href="cargo.html">Cargo</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About</a>
+            </ul>
+            <!-- <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon> -->
+            <menu><ul>
+              <li><a class="active" href="main_page.html">Home Page</a></li>
+              <li><a href="book_a_trip.html">Book a trip</a></li>
+              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+              <li><a href="checkin.html">Check-in</a></li>
+              <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+              <li><a href="cargo.html">Cargo</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">About</a></li>
+            </ul></menu>
+          </nav>
+        </header>
+      
            
 
 
@@ -29,7 +46,7 @@
    <div class="centered"> <h1>Cargo Services</h1></div>
  </div>  -->
 
- <div class="container1">
+ <div class="container">
   <img src="cargopics/cargo0.jpg" alt="cargo" width="100%" height="400";>
   <div class="centered"> <h1>Your safesty is our priority!</h1></div>
   <!-- <div class="bottom-left"></div>
@@ -46,25 +63,40 @@
 
 <style>
 
-  .container1
+
+h1
+    {
+        color: white;
+
+    }
+
+    h2
+    {
+        color: white;
+
+    }
+    p
+    {
+        color: white;
+    }
+
+  .container
   {
     display: flex;
   }
 
-.centered {
-        align-content: center;
-
-        background-color:white;
+  .centered {
+        background-color:black;
         border-radius: 5%;
-        display: flex;
+        display: flex;  
         border-bottom-left-radius: 10%;
-        border-top-left-radius: 40%;
+        border-top-left-radius: 10%;
         border-bottom-right-radius: 40%;
-        border-top-right-radius: 10%;
+        border-top-right-radius: 40%;
 
         width: 20%;
         max-width: 100%;
-        max-width: 100%;
+
 
         position:absolute;
         top: 29%;
@@ -77,40 +109,37 @@
         z-index: 2;
         text-decoration: double;
     }
-    .container
+    .container1
     {
         display: flex;
     }
+
+    @media (max-width:1200px)
+    {
+    h1
+    {
+        padding-left: clamp(2rem, 1.5vw + 3px, rem);;
+        font-size: clamp(rem, 2.5vw, 1rem);
+    }
+  }
+
 
     
    body
    {
     /* background-color: rgb(196, 206, 55); */
-    overflow-x: hidden;
-    background-color: yellowgreen;
-
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
    }
-      container1 {
-          /* The image used */
-        background-image: url("cargopics/cargo1.jpg");
-      
-        /* Full height */
-        height: 100px;
-      
-        /* Center and scale the image nicely */
-        background-position:center;
-        background-repeat: no-repeat;
-        background-size:cover;
-      }
+
       
       
   
-      .container div{
+      .container1 div{
         border: 5px #ccc solid;
           padding: px;
           font-size: 100%;
           height: 350px;
-          border-color: red;
+          border-color: grey;
         }
         
         .image1
@@ -146,24 +175,12 @@
           display: block;
           height: 100%;
         }
-  
-        .centered.image1 {
-          position: relative;
-         top: 10%;
-         left: 10%;
-         color:whitesmoke;
-         font-family: sans-serif;
-         font-size:100%;
-         transform: translate(-50%, -50%);
-         display: block; 
-         object-fit: cover;
-         object-position: 10%;
-     }
+
   
   </style>
   
   
-  <div class="container">
+  <div class="container1">
   
       <div class="image1">
       <img src="cargopics/cargo3.jpg" width="100%">
@@ -187,7 +204,7 @@
     <form post="method" autocomplete="on" >
         <fieldset><legend style="color: blue;">Flight Search</legend>
         <p>
-            <label><input name = "origin" type="text" size = "21" list="originlist" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;" placeholder="Origin" required></label>
+            <label><input name = "origin" type="text" size = "21" list="originlist" style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large; height: 3rem;margin-top: 1em;" placeholder="Origin" required></label>
         
             <datalist id="originlist">
                 <option value="Abidjan	Cote d'Ivoire	ABJ">
@@ -225,7 +242,7 @@
         
         
         </p>
-        <p><label><input name = "destination" type="text" list="destination" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;" placeholder="Destination"></label>
+        <p><label><input name = "destination" type="text" list="destination" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large; height: 3rem;margin-top: 1em;" placeholder="Destination"></label>
             <datalist id="destination">
                 <option value="Abidjan	Cote d'Ivoire	ABJ">
                 <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
@@ -262,12 +279,12 @@
         </p>
 
         
-           <p> <label>Shipping Date<input type = "date" name = "date" type="date" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;"/>
+           <p> <label>Shipping Date<input type = "date" name = "date" type="date" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large; height: 3rem;margin-top: 1em;"/>
                    
              </label></p>   
         <p>
 
-            <p> <label>Arrival Date<input type = "date" name = "date" type="date" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large;"/>
+            <p> <label>Arrival Date<input type = "date" name = "date" type="date" size = "21"  style="margin-left: 10px; border-radius: 5px; background-color: lightblue; border: 3px solid #555; height: 25px; font-size: large; height: 3rem;margin-top: 1em;"/>
                    
             </label></p>   
        <p>
@@ -275,11 +292,6 @@
             <input type = "submit" value = "Check In" style="border-radius: 5px;color: blue; height: 30px; background-color: grey; margin-left: 10px; box-sizing:border-box; font-size: larger;"></p>
         </fieldset>
         </form>
-
-
-
-        
-        
 
 
 

@@ -13,29 +13,76 @@
 <body>
 
 
-    <div class="topnav" style="z-index: 1;">
-        <a class="active" href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="checkin.html">Check-in</a>
-        <a href="CovidRestrictions.html">Covid Restrictions</a>
-        <a href="cargo.html">Cargo</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-      </div>
+    <header>
+        <nav>
+          <div class="logoicon">
+            <h1>ROA</h1>
+            <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+          </div>
+          <ul>
+            <li><a class="active" href="main_page.html">Home Page</a></li>
+            <li><a href="book_a_trip.html">Book a trip</a></li>
+            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+            <li><a href="checkin.html">Check-in</a></li>
+            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+            <li><a href="cargo.html">Cargo</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a>
+          </ul>
+          <menu><ul>
+            <li><a class="active" href="main_page.html">Home Page</a></li>
+            <li><a href="book_a_trip.html">Book a trip</a></li>
+            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+            <li><a href="checkin.html">Check-in</a></li>
+            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+            <li><a href="cargo.html">Cargo</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+          </ul></menu>
+        </nav>
+      </header>
     
-    <style>.centered {
-        background-color:white;
+    <style>
+    body
+    {
+      background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
+    }
+
+    h1
+    {
+        color: white;
+
+    }
+
+    h2
+    {
+        color: white;
+
+    }
+    p
+    {
+        color: white;
+    }
+
+    h3
+    {
+    color: white;
+    font-weight:700;
+    font-size: 1rem;
+    }
+
+    .centered {
+        background-color:black;
         border-radius: 5%;
-        display: flex;
+        display: flex;  
         border-bottom-left-radius: 10%;
-        border-top-left-radius: 40%;
+        border-top-left-radius: 10%;
         border-bottom-right-radius: 40%;
-        border-top-right-radius: 10%;
+        border-top-right-radius: 40%;
 
         width: 20%;
         max-width: 100%;
-        max-width: 100%;
+
 
         position:absolute;
         top: 29%;
@@ -48,11 +95,27 @@
         z-index: 2;
         text-decoration: double;
     }
-    body
-    {
-        background-color: yellowgreen;
 
+    @media (max-width:1200px)
+    {
+    h1
+    {
+        padding-left: clamp(2rem, 1.5vw + 3px, rem);;
+        font-size: clamp(rem, 2.5vw, 1rem);
     }
+    }
+
+
+
+    @media (max-height:800px)
+    {
+    h1
+    {
+        padding-left: clamp(2rem, 1.5vw + 3px, 2rem);;
+        font-size: clamp(1rem, 2.5vw, 2rem);
+    }
+}
+
     </style>
 
 <div class="container">
@@ -69,19 +132,19 @@
 </center>
 
 
-<table border="50" width="100%" style="border-color: red;">
+<table border="50" width="100%" style="border-color: grey;">
     <tr>
-    <th><img src="covid19pics/facemask.svg" name="mask" width=""/><br>Face Mask</th>
-    <th><img src="covid19pics/disinfection.svg" name="disenfectant" width=""/><br>Disenfectant</th>
-    <th><img src="covid19pics/handluggage.svg" name="luggage" width=""/><br>Handluggage</th>
-    <th><img src="covid19pics/physicaldistance.svg" name="distancing" width=""/><br>Distancing</th>
+    <th><img src="covid19pics/facemask.svg" name="mask" width=""/><br></th>
+    <th><img src="covid19pics/disinfection.svg" name="disenfectant" width=""/><br></th>
+    <th><img src="covid19pics/handluggage.svg" name="luggage" width=""/><br></th>
+    <th><img src="covid19pics/physicaldistance.svg" name="distancing" width=""/><br></th>
     </tr>
 
     <tr>
-        <td><center>It is important to keep your face mask on!</center></td>
-        <td><center>Frequently disenfect your hands using your hand sanitizer</center></td>
-        <td><center>Travel as light as possible</center></td>
-        <td><center>Physical distance at the airport</center></td>
+        <td><center><h3>It is important to keep your face mask on!</h3></center></td>
+        <td><center><h3>Frequently disenfect your hands using your hand sanitizer</h3></center></td>
+        <td><center><h3>Travel as light as possible</h3></center></td>
+        <td><center><h3>Physical distance at the airport</h3></center></td>
     </tr>
     </table>
 
