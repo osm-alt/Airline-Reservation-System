@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="topnav" style="z-index: 1;">
+  <a class="active" href="main_page.html">Home Page</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="baggage.css">
+    <link rel="stylesheet" href="main_style.css">
+    <title>Document</title>
+</head>
+  <a href="book_a_trip.html">Book a trip</a>
+  <a href="flight_schedule_search.html">Flight Schedule Search</a>
+  <a href="checkin.html">Check-in</a>
+  <a href="CovidRestrictions.html">Covid Restrictions</a>
+  <a href="cargo.html">Cargo</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
+<h1>Baggage Info</h1>
+<body class="super-center">
+    <form id="baggage-calc">
+      <h1>Baggage Calculator</h1>
+      <datalist id="airports">
+        <option value="ABJ">Abidjan Cote Ad'Ivoire - (ABJ)</option>
+        <option value="AUH">Abu Dhabi - Abu Dhabi International United Arab Emirates (AUH)</option>
+        <option value="ACC">Accra - Kotoka International Airport Ghana (ACC)</option>
+        <option value="AMS">Amsterdam - Amsterdam Airport Schiphol Netherlands (AMS)</option>
+        <option value="ATH">Athens - Elefthérios Venizélos International Airport Greece (ATH)</option>
+        <option value="BSR">Basra, Basrah Iraq (BSR)</option>
+        <option value="BEY">Beirut - Beirut Rafic Hariri International Airport Lebanon (BEY)</option>
+        <option value="BRU">Brussels - Brussels Airport Belgium (BRU)</option>
+        <option value="CAI">Cairo - Cairo International Airport Egypt (CAI)</option>
+        <option value="CPH">Copenhagen - Copenhagen Airport Denmark (CPH)</option>
+        <option value="DMM">Dammam, King Fahad International Saudi Arabien (DMM)</option>
+        <option value="DLP">Disneyland Paris France (DLP)</option>
+        <option value="DOH">Doha - Doha International Airport Qatar (DOH)</option>
+        <option value="DXB">Dubai - Dubai International Airport United Arab Emirates (DXB)</option>
+        <option value="ELS">East London South Africa (ELS)</option>
+        <option value="EVN">Eriwan (Yerevan, Jerevan) Armenia (EVN)</option>
+        <option value="FRA">Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen) Germany (FRA)</option>
+        <option value="GVA">Geneva - Geneva-Cointrin International Airport Switzerland (GVA)</option>
+        <option value="IST">Istanbul - Istanbul Atatürk Airport Turkey (IST)</option>
+        <option value="JED">Jeddah - King Abdulaziz International Saudi Arabia (JED)</option>
+        <option value="KWI">Kuwait - Kuwait International Kuwait (KWI)</option>
+        <option value="LOS">Lagos - Murtala Muhammed Airport Nigeria (LOS)</option>
+        <option value="LCA">Larnaca Cyprus (LCA)</option>
+        <option value="LON">London Metropolitan Area United Kingdom (LON)</option>
+        <option value="MED">Madinah (Medina) - Mohammad Bin Abdulaziz Saudi Arabia (MED)</option>
+        <option value="MAD">Madrid - Barajas Airport Spain (MAD)</option>
+        <option value="MIL">Milan Italy (MIL)</option>
+        <option value="NCE">Nice - Cote D'Azur Airport France (NCE)</option>
+        <option value="PAR">Paris France (PAR)</option>
+        <option value="RUH">Riyadh - King Khaled International Saudi Arabia (RUH)</option>
+        <option value="ROM">Rome Italy (ROM)</option>
+      </datalist>
+      <div class="input-group">
+        <label for="input-from">From</label>
+        <input id="input-from" name="from" list="airports" required>
+      </div>
+      <div class="input-group">
+        <label for="input-to">To</label>
+        <input id="input-to" name="to" list="airports" required>
+      </div>
+      <div class="input-group">
+        <label for="sel-class">Cabin Class</label>
+        <select id="sel-class" name="class" required>
+          <option disabled selected></option>
+          <option value="1">Economy</option>
+          <option value="2">Economy Plus</option>
+          <option value="3">Business</option>
+          <option value="4">First</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="sel-tier">Giga Chad Tier</label>
+        <select id="sel-tier" name="tier" required>
+          <option disabled selected></option>
+          <option value="0">None</option>
+        </select>
+      </div>
+  </body>

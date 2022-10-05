@@ -1,0 +1,17 @@
+WEB Project
+1-Home page
+2-Book a trip
+3-Manage Booking
+4-Flight schedule (general)
+5-Check in Informations
+6-Baggage info/calculator
+7-Passenger services (special)
+8-covid restrictions
+9-Flight Status (specific)
+10-Cargo online
+11-on board experience
+12-login -> my account
+13-miles
+14-use miles
+15-contact us
+16-admin page

@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  
+  body.super-center {
+    min-height: 100vh;
+  }
+  
+  .super-center {
+    display: grid;
+    place-items: center;
+  }
+  
+  #baggage-calc {
+    --gap: 1em;
+    
+    display: grid;
+    gap: var(--gap);
+    
+    padding: 2em;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.4em 0.1em #0004;
+  }
+  
+  #baggage-calc h1 {
+    text-align: center;
+  }
+  
+  @media(min-width: 40rem){
+    #baggage-calc {
+        grid-template-columns: repeat(2, min(calc(50% - var(--gap)), 20em));
+    }
+    
+    #baggage-calc h1 {
+      grid-column: span 2;
+    }
+  }
+  
+  #baggage-calc .input-group {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5em;
+  }
+  
+  #baggage-calc label {
+    color: hsl(333, 6%, 28%);
+  }
+  
+  #baggage-calc :is(input, select){
+    padding: 0.5em;
+    font-size: 1.2rem;
+  }
