@@ -14,16 +14,13 @@ body {
   
 }
 
-body.super-center {
+div.super-center {
   min-height: 100vh;
-  /* font-size: 100%;  */
 }
 
 .super-center {
-  /* margin-top: 10rem; */
-
-  font-size: 100%;
-
+  margin-top: -15rem;
+  font-size: 600%;
   display: grid;
   place-items: center;
 }
