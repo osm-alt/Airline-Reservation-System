@@ -27,7 +27,7 @@
         <li><a href="cargo.html">Cargo</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a>
-      </ul>
+        </ul>
       <!-- <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon> -->
       <menu>
         <ul>
@@ -43,31 +43,39 @@
       </menu>
     </nav>
   </header>
-
-
+  
+  
   <style>
     
-    *
-    {
-      margin: 0;
-      padding: 0;
-    }
-
-
+    
+        h1 {
+          text-align: center;
+          font-weight: bold;
+          font-size: 2rem;
+        }
+    
+        h2 {
+          font-weight: bold;
+          font-size: 0.5rem;
+        }
+    
+        p {
+          font-weight: 35;
+          font-size: 1rem;
+        }
+    
     body {
-      /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%); */
-
       background: rgb(34, 193, 195);
       background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
     }
-
-
-
+    
+    
+    
     section {
       padding: 15rem 0 5rem 0;
       /* background: rgb(34, 193, 195); */
       /* background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); */
-
+      
     }
 
     .centered {
@@ -96,22 +104,6 @@
     }
 
 
-    h1 {
-      text-align: center;
-      font-weight: bold;
-      font-size: 3rem;
-    }
-
-    h2 {
-      font-weight: bold;
-      font-size: 2rem;
-    }
-
-    p {
-      font-weight: 350;
-      font-size: 2rem;
-    }
-
     .container {
       display: flex;
       align-content: center;
@@ -120,11 +112,11 @@
 
 
     legend {
-      font-size: 2.5rem;
+      font-size: 1.5rem;
     }
 
     label {
-      font-size: larger;
+      font-size: large;
     }
 
     @media (max-width:1200px) {
@@ -157,13 +149,13 @@
       <fieldset>
         <legend>Check-In</legend>
         <p><label>Last Name<input name="Lname" type="text" size="21"
-              style="margin-left: 10px;  border: 3px solid #555; height: 25px; font-size: large; height: 3rem; margin-top: 1em;"
+              style="margin-left: 10px;  border: 3px solid #555; height: 25px; height: 3rem; margin-top: 1em;"
               placeholder="Last Name"></p>
         <p><label>BRN<input name="BRN" type="text" size="21"
-              style="margin-left: 10px;  border: 3px solid #555; height: 25px; font-size: large;height: 3rem; margin-top: 1em;"
+              style="margin-left: 10px;  border: 3px solid #555; height: 25px;height: 3rem; margin-top: 1em;"
               placeholder="Booking Reference Number"></p>
         <p><input type="submit" value="Check In"
-            style="color: white; height: 3rem; background-color: grey; margin-left: 10rem; font-size: larger; margin: 1rem;">
+            style="color: white; height: 3rem; background-color: grey; font-size: larger; margin-left: 10rem;  margin: 1rem;">
         </p>
       </fieldset>
     </form>
