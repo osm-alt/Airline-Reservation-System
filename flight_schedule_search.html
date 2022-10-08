@@ -5,103 +5,174 @@
 <head>
     <title>Flight Schedule Search</title>
     <link rel="stylesheet" href="main_style.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            margin: 1em;
+        }
+
+        form p {
+            margin-right: 1em;
+        }
+
+        form {
+            padding-top: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: .3em;
+            margin: 1em; 
+            border-style: solid;
+            border-width: 0.05em; 
+            border-radius: 0.5em; 
+        }
+
+        div.form-elts {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        input,
+        button,
+        select {
+            box-sizing: border-box;
+            padding: .5em;
+            margin: 1em;
+        }
+
+        input[type=submit] {
+            font-size:1.2em;
+            background-color: rgb(84, 201, 247);
+            color:white;
+            border-radius: .5em;
+            margin-left: 5em;
+            position: relative;
+            bottom: .5em;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="logoicon">
+                <ion-icon name="airplane-outline"></ion-icon>
+                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+            </div>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <menu>
+                <ul>
+                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="book_a_trip.html">Book a trip</a></li>
+                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                    <li><a href="cargo.html">Cargo</a></li>
+                    <li><a href="#ContactUs">ContactUs</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
     <h1>ROA Airlines</h1>
-    <div class="topnav">
-        <a href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a class="active" href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="manage_booking.html">Manage Booking</a>
-        <a href="#about">About</a>  
-    </div>
     <h1>Search Flight Schedule</h1>
-    <p style="text-align:center;">Search for specific flights scheduled by our airline</p>
+    <p style="text-align:center; margin-bottom: 2em;">Search for specific flights scheduled by our airline</p>
     <form method="post" action="">
-        <p>
-            <label for="departure_from">From</label>
-            <input type="text" id="departure_from" name="deparure_from" list="iata_list" required>
-            <datalist id="iata_list">
-                <option value="Abidjan	Cote d'Ivoire	ABJ">
-                <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                <option value="Basra, Basrah	Iraq	BSR">
-                <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                <option value="Brussels - Brussels Airport	Belgium	BRU">
-                <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                <option value="Disneyland Paris	France	DLP">
-                <option value="Doha - Doha International Airport	Qatar	DOH">
-                <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                <option value="East London	South Africa	ELS">
-                <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                <option value="Larnaca	Cyprus	LCA">
-                <option value="London Metropolitan Area	United Kingdom	LON">
-                <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                <option value="Madrid - Barajas Airport	Spain	MAD">
-                <option value="Milan	Italy	MIL">
-                <option value="Nice - Cote D'Azur Airport	France	NCE">
-                <option value="Paris	France	PAR">
-                <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                <option value="Rome	Italy	ROM">
-            </datalist>
-        </p>
-        <p>
-            <label for="arrival_to">To</label>
-            <input type="text" id="arrival_to" name="arrival_to" list="iata_list_to" required>
-            <datalist id="iata_list_to">
-                <option value="Abidjan	Cote d'Ivoire	ABJ">
-                <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                <option value="Basra, Basrah	Iraq	BSR">
-                <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                <option value="Brussels - Brussels Airport	Belgium	BRU">
-                <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                <option value="Disneyland Paris	France	DLP">
-                <option value="Doha - Doha International Airport	Qatar	DOH">
-                <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                <option value="East London	South Africa	ELS">
-                <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                <option value="Larnaca	Cyprus	LCA">
-                <option value="London Metropolitan Area	United Kingdom	LON">
-                <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                <option value="Madrid - Barajas Airport	Spain	MAD">
-                <option value="Milan	Italy	MIL">
-                <option value="Nice - Cote D'Azur Airport	France	NCE">
-                <option value="Paris	France	PAR">
-                <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                <option value="Rome	Italy	ROM">
-            </datalist>
-        </p>
-        <p>
-            <label for="depart_on">Depart On</label>
-            <input type="date" id="depart_on" name="depart_on" required>
-        </p>
-        <p>
-            <label for="return_on">Return On</label>
-            <input type="date" id="return_on" name="return_on" required>
-        </p>
-        <input type="submit" value="Search">
+        <div class="form-elts">
+            <p>
+                <label for="departure_from">From</label>
+                <input type="text" id="departure_from" name="deparure_from" list="iata_list" required>
+                <datalist id="iata_list">
+                    <option value="Abidjan	Cote d'Ivoire	ABJ">
+                    <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                    <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                    <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                    <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                    <option value="Basra, Basrah	Iraq	BSR">
+                    <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                    <option value="Brussels - Brussels Airport	Belgium	BRU">
+                    <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                    <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                    <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                    <option value="Disneyland Paris	France	DLP">
+                    <option value="Doha - Doha International Airport	Qatar	DOH">
+                    <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                    <option value="East London	South Africa	ELS">
+                    <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                    <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                    <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                    <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                    <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                    <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                    <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                    <option value="Larnaca	Cyprus	LCA">
+                    <option value="London Metropolitan Area	United Kingdom	LON">
+                    <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                    <option value="Madrid - Barajas Airport	Spain	MAD">
+                    <option value="Milan	Italy	MIL">
+                    <option value="Nice - Cote D'Azur Airport	France	NCE">
+                    <option value="Paris	France	PAR">
+                    <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                    <option value="Rome	Italy	ROM">
+                </datalist>
+            </p>
+            <p>
+                <label for="arrival_to">To</label>
+                <input type="text" id="arrival_to" name="arrival_to" list="iata_list_to" required>
+                <datalist id="iata_list_to">
+                    <option value="Abidjan	Cote d'Ivoire	ABJ">
+                    <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                    <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                    <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                    <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                    <option value="Basra, Basrah	Iraq	BSR">
+                    <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                    <option value="Brussels - Brussels Airport	Belgium	BRU">
+                    <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                    <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                    <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                    <option value="Disneyland Paris	France	DLP">
+                    <option value="Doha - Doha International Airport	Qatar	DOH">
+                    <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                    <option value="East London	South Africa	ELS">
+                    <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                    <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                    <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                    <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                    <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                    <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                    <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                    <option value="Larnaca	Cyprus	LCA">
+                    <option value="London Metropolitan Area	United Kingdom	LON">
+                    <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                    <option value="Madrid - Barajas Airport	Spain	MAD">
+                    <option value="Milan	Italy	MIL">
+                    <option value="Nice - Cote D'Azur Airport	France	NCE">
+                    <option value="Paris	France	PAR">
+                    <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                    <option value="Rome	Italy	ROM">
+                </datalist>
+            </p>
+            <p>
+                <label for="depart_on">Depart On</label>
+                <input type="date" id="depart_on" name="depart_on" required>
+            </p>
+            <p>
+                <label for="return_on">Return On</label>
+                <input type="date" id="return_on" name="return_on" required>
+            </p>
+
+            <input type="submit" value="Search">
+        </div>
     </form>
 </body>
 
