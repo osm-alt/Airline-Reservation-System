@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,156 +16,178 @@
 
     <header>
         <nav>
-          <div class="logoicon">
-            <h1>ROA</h1>
-            <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
-          </div>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <li><a href="book_a_trip.html">Book a trip</a></li>
-            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-            <li><a href="checkin.html">Check-in</a></li>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="cargo.html">Cargo</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a>
-          </ul>
-          <menu><ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <li><a href="book_a_trip.html">Book a trip</a></li>
-            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-            <li><a href="checkin.html">Check-in</a></li>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="cargo.html">Cargo</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-          </ul></menu>
+            <div class="logoicon">
+                <h1>ROA</h1>
+                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+            </div>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <menu>
+                <ul>
+                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="book_a_trip.html">Book a trip</a></li>
+                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                    <li><a href="cargo.html">Cargo</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </menu>
         </nav>
-      </header>
-    
+    </header>
+
     <style>
-    body
-    {
-      background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
-    }
-    h1
-{
-    /* color: white; */
-    font-weight:bold;
-    font-size: 3rem;
-}
+        * {
+            
+            font-size: 60%;
+        }
 
-h2
-{
-    /* color: white; */
-    font-weight:bold;
-    font-size: 2rem;
-}
-
-p
-{
-    /* color: white; */
-    font-weight:350;
-    font-size: 2rem;
-}
-
-    h3
-    {
-    color: white;
-    font-weight:700;
-    font-size: 1rem;
-    }
-
-    .centered {
-        background-color:black;
-        border-radius: 5%;
-        display: flex;  
-        border-bottom-left-radius: 10%;
-        border-top-left-radius: 10%;
-        border-bottom-right-radius: 40%;
-        border-top-right-radius: 40%;
-
-        width: 20%;
-        max-width: 100%;
-
-
-        position:absolute;
-        top: 29%;
-        left: 50%;
-        color:red;
-        font-family: sans-serif;
-        font-size:100%;
-        transform: translate(-50%, -50%);
-        display: block; 
-        z-index: 2;
-        text-decoration: double;
-    }
-
-    @media (max-width:1200px)
-    {
-    h1
-    {
-        padding-left: clamp(2rem, 1.5vw + 3px, rem);;
-        font-size: clamp(rem, 2.5vw, 1rem);
-    }
-    }
+        body {
+            /* background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%); */
+            background: rgb(34, 193, 195);
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+        }
 
 
 
-    @media (max-height:800px)
-    {
-    h1
-    {
-        padding-left: clamp(2rem, 1.5vw + 3px, 2rem);;
-        font-size: clamp(1rem, 2.5vw, 2rem);
-    }
-}
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+        }
 
+        h2 {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        p {
+            font-weight: 350;
+            font-size: 2rem;
+        }
+
+        h3 {
+            color: black;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .centered {
+            background-color: white;
+            border-radius: 5%;
+            display: flex;
+            border-bottom-left-radius: 10%;
+            border-top-left-radius: 10%;
+            border-bottom-right-radius: 40%;
+            border-top-right-radius: 40%;
+
+            width: 20%;
+            max-width: 100%;
+
+
+            position: absolute;
+            top: 29%;
+            left: 50%;
+            color: black;
+            font-family: sans-serif;
+            font-size: 100%;
+            transform: translate(-50%, -50%);
+            display: block;
+            z-index: 2;
+            text-decoration: double;
+        }
+
+        @media (max-width:1200px) {
+            h1 {
+                padding-left: clamp(2rem, 1.5vw + 3px, rem);
+                ;
+                font-size: clamp(rem, 2.5vw, 1rem);
+            }
+        }
+
+
+
+        @media (max-height:800px) {
+            h1 {
+                padding-left: clamp(2rem, 1.5vw + 3px, 2rem);
+                ;
+                font-size: clamp(1rem, 2.5vw, 2rem);
+            }
+        }
     </style>
 
-<div class="container">
-    <img src="covid19pics/covidimage.jpg" width="100%" height="400" alt="Covid19Picture";>
-    <div class="centered"> <h1>Your safesty is our priority!</h1></div>
-    <!-- <div class="bottom-left"></div>
+    <div class="container">
+        <img src="covid19pics/covidimage.jpg" width="100%" height="400" alt="Covid19Picture" ;>
+        <div class="centered">
+            <h1>Your safety is our priority!</h1>
+        </div>
+        <!-- <div class="bottom-left"></div>
     <div class="top-left"></div>
     <div class="top-right"></div>
     <div class="bottom-right"></div> -->
-  </div>
+    </div>
 
-<center>
-    <h2>Here are some important steps to follow in order to minimize the risk of catching and spreading Covid-19:</h2>
-</center>
+    <center>
+        <h2>Here are some important steps to follow in order to minimize the risk of catching and spreading Covid-19:
+        </h2>
+    </center>
 
 
-<table border="50" width="100%" style="border-color: grey;">
-    <tr>
-    <th><img src="covid19pics/facemask.svg" name="mask" width=""/><br></th>
-    <th><img src="covid19pics/disinfection.svg" name="disenfectant" width=""/><br></th>
-    <th><img src="covid19pics/handluggage.svg" name="luggage" width=""/><br></th>
-    <th><img src="covid19pics/physicaldistance.svg" name="distancing" width=""/><br></th>
-    </tr>
+    <table border="50" width="100%" style="border-color: grey; background-color: white;">
+        <tr>
+            <th><img src="covid19pics/facemask.svg" name="mask" width="" /><br></th>
+            <th><img src="covid19pics/disinfection.svg" name="disenfectant" width="" /><br></th>
+            <th><img src="covid19pics/handluggage.svg" name="luggage" width="" /><br></th>
+            <th><img src="covid19pics/physicaldistance.svg" name="distancing" width="" /><br></th>
+        </tr>
 
-    <tr>
-        <td><center><h3>It is important to keep your face mask on!</h3></center></td>
-        <td><center><h3>Frequently disenfect your hands using your hand sanitizer</h3></center></td>
-        <td><center><h3>Travel as light as possible</h3></center></td>
-        <td><center><h3>Physical distance at the airport</h3></center></td>
-    </tr>
+        <tr>
+            <td>
+                <center>
+                    <h3>It is important to keep your face mask on!</h3>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <h3>Frequently disenfect your hands using your hand sanitizer</h3>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <h3>Travel as light as possible</h3>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <h3>Physical distance at the airport</h3>
+                </center>
+            </td>
+        </tr>
     </table>
 
     <div>
-            <h2 style="margin-left: 300px;">WHO Covid-19 Information</h2>
-            <iframe style="margin-left: 100px;" src="https://covid19.who.int/" height="500" width="700" title="HTML Tutorial Page">
-               Sorry, your browser does not support iFrames
-            </iframe>
-        
-     <iframe style="float: right; margin-right: 100px ;"; src="https://www.youtube.com/embed/KsppEjaCyPU"
-      title="Covid-19 precautions" width="500" height="500" frameborder="0" allow="accelerometer;
-       autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-       Sorry, your browser does not support iFrames</iframe>
-</div>
+        <h2 style="margin-left: 300px;">WHO Covid-19 Information</h2>
+        <iframe style="margin-left: 100px;" src="https://covid19.who.int/" height="500" width="700"
+            title="HTML Tutorial Page">
+            Sorry, your browser does not support iFrames
+        </iframe>
 
-    
+        <iframe style="float: right; margin-right: 100px ;" ; src="https://www.youtube.com/embed/KsppEjaCyPU"
+            title="Covid-19 precautions" width="500" height="500" frameborder="0" allow="accelerometer;
+       autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            Sorry, your browser does not support iFrames</iframe>
+    </div>
+
+
 </body>
 
 

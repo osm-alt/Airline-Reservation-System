@@ -1,294 +1,454 @@
 <!DOCTYPE html>
- <html lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="main_style.css">
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="main_style.css">
+
+  <style>
+
+    *
+    {
+      font-size: 62%;
+    }
+
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      /* background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(122,124,224,1) 0%, rgba(17,225,160,1) 100%);    } */
+      /* background: rgb(34, 193, 195);
+      background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+     */
+
+    }
+
+
+    h1 {
+      /* color: white; */
+
+      font-weight: bold;
+      font-size: 3rem;
+    }
+
+    h2 {
+      /* color: white; */
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    p {
+      /* color: white; */
+      font-weight: 350;
+      font-size: 2rem;
+    }
+
+
+
+
+    main {
+      height: 100vh;
+      /* linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0 */
+      background: url('mainpics/sky.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+
+    section {
+      padding: 15rem 0 5rem 0;
+      /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
+      background: rgb(34, 193, 195);
+      background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+
+    }
+
+
+    p {
+      font-weight: 350;
+      font-size: 2rem;
+    }
+
+
+    img {
+      width: 50%;
+      height: auto;
+      border: 0.5rem solid gray;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      align-items: center;
+      margin: auto;
+      padding-top: 10rem;
+
+    }
+
+    .container div {
+      border: 1px #ccc solid;
+      font-size: 100%;
+      height: 12rem;
+      margin: 10rem;
+      max-width: 100vh;
+    }
+
+    .box1,
+    .box2,
+    .box3 {
+      flex-basis: 70%;
+      border-radius: 0.5em;
+      flex-flow: column;
+      transition: all 0.3s ease;
+    }
+
+    .container a {
+      text-decoration: none;
+      color: white;
+      margin: 0.25rem;
+      transition: color .1s ease-in-out;
+    }
+
+    .container a:hover {
+      color: red;
+      text-decoration: underline;
+      font-size: 1.1rem;
+      transition: all 1s ease;
+
+    }
+
+
+
+
+    /* Covid19 section */
+    .container1 {
+      display: flex;
+      justify-content: left;
+      width: 100%;
+      margin-top: -20rem;
+      padding-top: 10rem;
+    }
+
+    .box4 h1 {
+      color: white;
+      padding-left: 15rem;
+      white-space: nowrap;
+      font-weight: bolder;
+      font-family: Arial, Helvetica, sans-serif;
+
+
+    }
+
+    .box4 p {
+      margin-left: 1em;
+      text-align-last: left;
+      font-size: 3rem;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: lighter;
+      padding-top: 1rem;
+      text-shadow: -4px 4px 6px dimgray;
+      color: black;
+    }
+
+    #button1 {
+      white-space: nowrap;
+      margin: auto;
+      cursor: pointer;
+      border: none;
+      padding: 1rem;
+      /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%); */
+      /* color:white; */
+      font-family: cursive;
+      box-sizing: border-box;
+      padding: 0.4em 0.7em;
+      font-size: clamp(1rem, 1.5vw + 3px, 2rem);
+    }
+
+
+
+
+    /* Contact Us Section*/
+
+    .ContactUs .box5 h1 {
+      text-align: center;
+      color: white;
+      font-size: xx-large;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .ContactUs input {
+      width: 30%;
+      font-size: 2rem;
+      padding: 1rem;
+      margin: 1.1rem;
+      display: block;
+      border: 1px solid #ccc;
+    }
+
+    .ContactUs input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .ContactUs input::placeholder {
+      font-size: 1.5rem;
+    }
+
+
+    .ContactUs form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ContactUs textarea {
+      width: 30%;
+      height: 18rem;
+      padding-top: 1rem;
+      padding-left: 1rem;
+      border: 1px solid #ccc;
+      font-size: 1.5rem;
+      margin: 1.1rem;
+      font-family: sans-serif;
+    }
+
+
+    /* Footer part */
+    footer {
+      padding-bottom: 9rem;
+      height: 1rem;
+      background-color: black;
+      line-height: 80px;
+      text-align: center;
+    }
+
+    .Mediaicons {
+      text-decoration: none;
+      padding: 20px;
+      margin: 0.1rem;
+      font-size: 3rem;
+      background-color: white;
+    }
+
+    .Mediaicons-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .Mediaicons-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .Mediaicons-instagram {
+      background: #125688;
+      color: white;
+    }
+
+    .Mediaicons-youtube {
+      background: #bb0000;
+      color: white;
+    }
+
+    .Mediaicons-google {
+      background: #dd4b39;
+      color: white;
+    }
+
+
+    .Mediaicons:hover {
+      opacity: 0.9;
+    }
+
+
+    /* --------------------------------------------------------- */
+    /* MEDIA QUERIES */
+    @media (max-width:1200px) {
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20rem;
+        width: 100%;
+      }
+
+      .container div {
+        width: 80%;
+        justify-content: center;
+        border: px #ccc solid;
+        font-size: 100%;
+        margin-top: -7rem;
+      }
+
+
+      .box4 h1 {
+        padding-left: clamp(2rem, 1.5vw + 3px, 2rem);
+        font-size: clamp(1rem, 2.5vw, 2rem);
+      }
+
+      .box4 p {
+        margin-left: 1em;
+        text-align-last: left;
+        font-size: 3rem;
+
+        padding-top: 1rem;
+        font-size: clamp(1rem, 2.5vw, 2rem);
+      }
+    }
+
+
+    @media (max-height:500px) {
+
+      .container div {
+
+        height: 10rem;
+        margin: 1rem;
+      }
+    }
+
+
+    @media (max-height:500px) and (max-width:1200px) {
+      .container {
+        display: flex;
+        flex-direction: row;
+        height: 10rem;
+        /* min-height: 80vh; */
+      }
+
+      .container div {
+        margin-top: -7rem;
+        height: 15rem;
+
+        /* min-height: 80vh; */
+        /* max-height: 30vh; */
+      }
+
+    }
+  </style>
+
 </head>
 
 <body>
   <main>
-  <header>
-    <nav>
-      <div class="logoicon">
-        <h1>ROA</h1>
-        <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
-      </div>
-      <ul>
-        <li><a class="active" href="main_page.html">Home Page</a></li>
-        <li><a href="book_a_trip.html">Book a trip</a></li>
-        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-        <li><a href="checkin.html">Check-in</a></li>
-        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-        <li><a href="cargo.html">Cargo</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a>
-      </ul>
-      <menu><ul>
-        <li><a class="active" href="main_page.html">Home Page</a></li>
-        <li><a href="book_a_trip.html">Book a trip</a></li>
-        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-        <li><a href="checkin.html">Check-in</a></li>
-        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-        <li><a href="cargo.html">Cargo</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-      </ul></menu>
-    </nav>
-  </header>
-
-      <!-- <center><h1>Welcome To ROA Airlines!</h1></center> -->
-
-      <div class="container">
-        <div class="box1">
-          <center><a href="book_a_trip.html"><h1>Book a Trip</h1></center>
-            <center><p>Search Flights & Book</p></center></a>
-          </div>
-        <div class="box2">
-          <center><a href="checkin.html"><h1>Check in</h1></center>
-            <center><p>Check in Before Flight</p></center></a>
+    <header>
+      <nav>
+        <div class="logoicon">
+          <ion-icon name="airplane-outline"></ion-icon>
+          <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
         </div>
-        <div class="box3">
-          <center><a href="flight_schedule_search.html"><h1>Flight Status</h1></center>
-            <center><p>Check Flight Schedule</center></p></a>
-        </div>
+        <ul>
+          <li><a class="active" href="main_page.html">Home Page</a></li>
+          <li><a href="book_a_trip.html">Book a trip</a></li>
+          <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+          <li><a href="checkin.html">Check-in</a></li>
+          <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+          <li><a href="cargo.html">Cargo</a></li>
+          <li><a href="#Contact">Contact</a></li>
+          <li><a href="#about">About</a>
+        </ul>
+        <menu>
+          <ul>
+            <li><a class="active" href="main_page.html">Home Page</a></li>
+            <li><a href="book_a_trip.html">Book a trip</a></li>
+            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+            <li><a href="checkin.html">Check-in</a></li>
+            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+            <li><a href="cargo.html">Cargo</a></li>
+            <li><a href="#ContactUs">ContactUs</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </menu>
+      </nav>
+    </header>
+
+    <!-- <center><h1>Welcome To ROA Airlines!</h1></center> -->
+
+    <div class="container">
+      <div class="box1">
+        <center><a href="book_a_trip.html">
+            <h1>Book a Trip</h1>
+        </center>
+        <center>
+          <p>Search Flights & Book</p>
+        </center></a>
       </div>
-    </main>
+      <div class="box2">
+        <center><a href="checkin.html">
+            <h1>Check in</h1>
+        </center>
+        <center>
+          <p>Check in Before Flight</p>
+        </center></a>
+      </div>
+      <div class="box3">
+        <center><a href="flight_schedule_search.html">
+            <h1>Flight Status</h1>
+        </center>
+        <center>
+          <p>Check Flight Schedule
+        </center>
+        </p></a>
+      </div>
+    </div>
+  </main>
 
 
-    <section>
-      <div class="container1">
-        <img src="mainpics/covid19airplane.png" alt="covid19 airplane" style="vertical-align: bottom;">
-        <div class="box4">
+
+  <!-- Covid19 section -->
+  <section>
+    <div class="container1">
+      <img src="mainpics/covid19airplane.png" alt="covid19 airplane" style="vertical-align: bottom;">
+      <div class="box4">
         <h1>Covid19 Measures and Guidelines</h1>
         <p>We take our passenger's safety as a top priority, please visit our
           Guidelines page to learn more about our measures while travelling.
           <a href="CovidRestrictions.html"><button id="button1">Read More</button></a>
         </p>
       </div>
-    </section>
-
-
-          
-<style>
-body {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
-
-h1
-{
-    /* color: white; */
-    font-weight:bold;
-    font-size: 3rem;
-}
-
-h2
-{
-    /* color: white; */
-    font-weight:bold;
-    font-size: 2rem;
-}
-
-p
-{
-    /* color: white; */
-    font-weight:350;
-    font-size: 2rem;
-}
-
-  main
-  {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)), url('mainpics/sky.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
-  }
-
-
-  section {
-    padding: 15rem 0 5rem 0;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%);
-  }
-  
-  
-  p
-  {
-    font-weight:350;
-    font-size: 2rem;
-  }
-  
-  
-  img {
-    width: 50%;
-    height: auto;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    margin: auto;
-    padding-top: 10rem;
-    
-  }
-
-  .container div{
-    justify-content: center;
-    border: 1px #ccc solid;
-    font-size: 100%;
-    height: 15rem;
-    margin: 10rem;
-    max-width: 100vh;
-  }
-  
-  .box1,
-  .box2,
-  .box3 {
-  flex-grow: 1;
-  flex-basis: 70%;
-  border: 0.1rem solid;
-  border-radius:  0.5em;
-  flex-flow: column;    
-  transition:all 0.3s ease;
-}
-
-.container1 {
-  display: flex;
-  justify-content: left;
-  width: 100%;
-  margin-top: -20rem;
-  padding-top: 10rem;
-}
-
-.box4 h1
-{
-  color: white;
-  padding-left: 15rem; white-space: nowrap;
-  font-weight:bolder;
-  font-family: Arial, Helvetica, sans-serif;
-  
-  
-}
-
-.box4 p{
-  margin-left: 1em;
-  text-align-last:left ;
-  font-size: 3rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight:lighter;
-  padding-top: 1rem;
-  text-shadow: -4px 4px 6px dimgray;
-  color: black;
-}
-
-#button1
-{
-  white-space: nowrap;
-  margin: auto;
-  cursor:pointer;
-  border:none;
-  padding:1rem;
-  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,43,121,1) 44%, rgba(0,212,255,1) 100%); */
-  /* color:white; */
-  font-family:cursive;
-  box-sizing:border-box;
-  padding: 0.4em 0.7em;
-  font-size: clamp(1rem, 1.5vw + 3px, 2rem);
-}
-
-.about2 {
-    background-color: #222;
-    color: whitesmoke;
-}
-
-.about2-left {
-    flex-basis: 50%;
-}
-
-.about2-right {
-    flex-basis: 30%;
-}
+    </div>
+  </section>
 
 
 
-@media (max-width:1200px) 
-{
-  .container
-  {
-  display: flex;
-  flex-direction: column;
-}
 
-.container div{
-  width: 50%;
-  justify-content: center;
-  border: px #ccc solid;
-  font-size: 100%;
-  height: 50rem;
-  margin-top: -7rem;
-}
-
-.box4 h1
-{
-  padding-left: clamp(2rem, 1.5vw + 3px, 2rem);;
-  font-size: clamp(1rem, 2.5vw, 2rem);
-}
-
-  .box4 p
-  {
-  margin-left: 1em;
-  text-align-last:left ;
-  font-size: 3rem;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight:lighter;
-  padding-top: 1rem;
-  font-size: clamp(1rem, 2.5vw, 2rem);
-  }
-}
+  <!-- Contact Us section -->
+  <section class="ContactUs">
+    <div class="box5">
+      <h1>Contact Us</h1>
+    </div>
+    <div class="box5">
+      <form>
+        <input type="text" name="FullName" placeholder="First and Last Name" required>
+        <input type="text" name="Email" placeholder="Enter your email" required>
+        <textarea placeholder="Enter your message"></textarea>
+        <input type="submit" value="Send Message">
+      </form>
+    </div>
+  </section>
 
 
- @media (max-height:500px)
-{
 
-.container div{
-
-  height: 15rem;
-  margin: 1rem;
-}
-} 
-
-
-@media (max-height:500px) and (max-width:1200px)
-{
-
-
-  .container
-  {
-  display: flex;
-  flex-direction: row;
-  height: 15vh;
-  min-height: 80vh;
-}
-
-.container div{
-  width: 50%;
-  justify-content: center;
-  border: px #ccc solid;
-  font-size: 100%;
-  margin-top: -7rem;
-  min-height: 80vh;
-  max-height: 30vh;
-}
-
-} 
-
-
-  </style>
-  
-
+  <!-- Footer -->
+  <footer>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <a href="#" class="Mediaicons Mediaicons-faceook">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </a>
+    <a href="#" class="Mediaicons Mediaicons-twitter">
+      <ion-icon name="logo-twitter"></ion-icon>
+    </a>
+    <a href="#" class="Mediaicons Mediaicons-instagram">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </a>
+    <a href="#" class="Mediaicons Mediaicons-youtube">
+      <ion-icon name="logo-youtube"></ion-icon>
+    </a>
+    <a href="#" class="Mediaicons Mediaicons-google">
+      <ion-icon name="logo-google"></ion-icon>
+    </a>
+  </footer>
 
 
 </body>
@@ -297,4 +457,4 @@ p
 
 
 
-</html> 
+</html>
