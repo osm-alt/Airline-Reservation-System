@@ -5,17 +5,53 @@
 <head>
     <title>Book a trip</title>
     <link rel="stylesheet" href="main_style.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <style>
+        form {
+            background-color: rgb(227, 225, 225);
+            
+        }
+        input,
+        select {
+            box-sizing: border-box;
+            padding: .5em;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
     <h1>ROA Airlines</h1>
-    <div class="topnav">
-        <a href="main_page.html">Home Page</a>
-        <a class="active" href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a href="manage_booking.html">Manage Booking</a>
-        <a href="#about">About</a>
-    </div>
+    <header>
+        <nav>
+            <div class="logoicon">
+                <ion-icon name="airplane-outline"></ion-icon>
+                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+            </div>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <menu>
+                <ul>
+                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="book_a_trip.html">Book a trip</a></li>
+                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                    <li><a href="cargo.html">Cargo</a></li>
+                    <li><a href="#ContactUs">ContactUs</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
     <h1>Book a Trip</h1>
     <form method="post" action="">
         <p>
