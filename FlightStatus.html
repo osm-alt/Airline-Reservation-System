@@ -1,31 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main_style.css">
-    <title>Document</title>
-</head>
-<div class="topnav" style="z-index: 1;">
-    <a class="active" href="main_page.html">Home Page</a>
-    <a href="book_a_trip.html">Book a trip</a>
-    <a href="flight_schedule_search.html">Flight Schedule Search</a>
-    <a href="checkin.html">Check-in</a>
-    <a href="CovidRestrictions.html">Covid Restrictions</a>
-    <a href="cargo.html">Cargo</a>
+    <title>BaggageInfo</title>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <style>
+        section {
+  padding: 15rem 0 5rem 0;
+  /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
 
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-  </div>
+}
+    </style>
+</head>
 <body>
-    <center>
-        <h1>Flight Status</h1>
-        <br>
-        <br>
-        <br>
-    </center>
-     Check in below the flight schedule of flights operated by ---.<br>
-Fill in below the Departure and arrival country and date of your flight in order to search for it.
-</body>
+    <header>
+        <nav>
+            <div class="logoicon">
+                <ion-icon name="airplane-outline"></ion-icon>
+                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+            </div>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <!-- <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon> -->
+            <menu>
+                <ul>
+                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="book_a_trip.html">Book a trip</a></li>
+                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                    <li><a href="cargo.html">Cargo</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
+
+    <body>
+        <center>
+            <h1>Flight Status</h1>
+            <br>
+            <br>
+            <br>
+        </center>
+        Check in below the flight schedule of flights operated by ---.<br>
+        Fill in below the Departure and arrival country and date of your flight in order to search for it.
+    </body>
+
 </html>
