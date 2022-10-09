@@ -52,9 +52,9 @@
                 document.getElementById("return").style.display = "block";
                 document.getElementById("second-city").style.display = "none";
                 document.getElementById("return_on").required = true;
-                document.getElementById("departure_from_second").required = true;
-                document.getElementById("arrival_to_second").required = true;
-                document.getElementById("depart_on_second").required = true;
+                document.getElementById("departure_from_second").required = false;
+                document.getElementById("arrival_to_second").required = false;
+                document.getElementById("depart_on_second").required = false;
             }
             else if (document.getElementById("trip_type").value == "One-way"){
                 document.getElementById("return").style.display = "none";
