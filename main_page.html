@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>Home Page</title>
-  <link rel="stylesheet" href="main_style.css">
-  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="main_style.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
@@ -82,18 +82,19 @@
       align-items: center;
       margin: auto;
       padding-top: 10rem;
-
+      
     }
-
+    
     .container div {
+      
       border: 2px #ccc solid;
       font-size: 100%;
       height: 12rem;
       margin: 10rem;
       max-width: 100vh;
-      background-color:darkgray;
+      background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(41,14,68,0.6225840678068102) 0%, rgba(4,98,152,1) 100%, rgba(17,225,160,1) 100%);      z-index:2;
     }
-
+    
     .box1,
     .box2,
     .box3 {
@@ -102,7 +103,7 @@
       flex-flow: column;
       transition: all 0.3s ease;
     }
-
+    
     .container a {
       text-decoration: none;
       color: white;
@@ -136,7 +137,6 @@
       white-space: nowrap;
       font-weight: bolder;
       font-family: Arial, Helvetica, sans-serif;
-
 
     }
 
@@ -344,7 +344,7 @@
     }
 
 
-    @media (max-height:800px) and (max-width:1200px) {
+    @media (max-height:800px) and (max-width:1300px) {
       .container {
         display: flex;
         flex-direction: row;
@@ -385,7 +385,7 @@
       .container {
 
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         height: 18rem;
         /* min-height: 80vh; */
       }
@@ -411,10 +411,6 @@
   <main>
     <header>
       <nav>
-        <div class="logoicon">
-          <ion-icon name="airplane-outline"></ion-icon>
-          <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
-        </div>
         <ul>
           <li><a class="active" href="main_page.html">Home Page</a></li>
           <li><a href="book_a_trip.html">Book a trip</a></li>
@@ -424,19 +420,17 @@
           <li><a href="cargo.html">Cargo</a></li>
           <li><a href="#Contact">Contact</a></li>
           <li><a href="#about">About</a>
-        </ul>
-        <menu>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <li><a href="book_a_trip.html">Book a trip</a></li>
-            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-            <li><a href="checkin.html">Check-in</a></li>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="cargo.html">Cargo</a></li>
-            <li><a href="#ContactUs">ContactUs</a></li>
-            <li><a href="#about">About</a></li>
           </ul>
-        </menu>
+          <!-- hamburger menu, only essentiel links -->
+          <div class="topnav">
+            <a href="#home" class="active"><ion-icon name="airplane-outline"></ion-icon>            </a>
+            <div id="myLinks">
+              <a href="book_a_trip.html">Book a trip</a>
+              <a href="flight_schedule_search.html">Login</a>
+            </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
       </nav>
     </header>
 
@@ -525,7 +519,6 @@
       <ion-icon name="logo-google"></ion-icon>
     </a>
   </footer>
-
 
 </body>
 

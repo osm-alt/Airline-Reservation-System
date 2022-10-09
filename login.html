@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main_style.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+
+    <style>
+        h1 {
+            text-align: center;
+            margin: 1em;
+        }
+
+        form p {
+            margin-right: 1em;
+        }
+
+        form {
+            padding-top: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: .3em;
+            margin: 1em;
+            border-style: solid;
+            border-width: 0.05em;
+            border-radius: 0.5em;
+        }
+
+        div.form-elts {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        input,
+        button,
+        select {
+            box-sizing: border-box;
+            padding: .5em;
+            margin: 1em;
+        }
+
+        input[type=submit] {
+            font-size: 1.2em;
+            background-color: rgb(84, 201, 247);
+            color: white;
+            border-radius: .5em;
+            margin-left: 5em;
+            position: relative;
+            bottom: .5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="#home" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="flight_schedule_search.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+    </header>
+
+
+
+    <fieldset style="margin: 1em;">
+        <legend style="margin-left: 2em;">Login</legend>
+        <form method="post" action="">
+
+
+            <p><label>Email Address<input name="email" type="text" required></p>
+
+            <p><label>Password<input name="password" type="password" required></p>
+        
+                <input type="submit" value="Login">
+                <input type="reset" value="Clear">
+            </p>
+        </form>
+    </fieldset>
+
+</body>
+
+</html>
