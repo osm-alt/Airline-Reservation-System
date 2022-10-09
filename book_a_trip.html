@@ -6,6 +6,8 @@
     <title>Book a trip</title>
     <link rel="stylesheet" href="main_style.css">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         h1 {
             text-align: center;
@@ -56,7 +58,7 @@
                 document.getElementById("arrival_to_second").required = false;
                 document.getElementById("depart_on_second").required = false;
             }
-            else if (document.getElementById("trip_type").value == "One-way"){
+            else if (document.getElementById("trip_type").value == "One-way") {
                 document.getElementById("return").style.display = "none";
                 document.getElementById("second-city").style.display = "none";
                 document.getElementById("return_on").required = false;
@@ -64,7 +66,7 @@
                 document.getElementById("arrival_to_second").required = false;
                 document.getElementById("depart_on_second").required = false;
             }
-            else if (document.getElementById("trip_type").value == "Multi-city"){
+            else if (document.getElementById("trip_type").value == "Multi-city") {
                 document.getElementById("return").style.display = "none";
                 document.getElementById("second-city").style.display = "flex";
                 document.getElementById("return_on").required = false;
@@ -79,34 +81,28 @@
 <body>
     <header>
         <nav>
-            <div class="logoicon">
-                <ion-icon name="airplane-outline"></ion-icon>
-                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
-            </div>
-            <ul>
-                <li><a href="main_page.html">Home Page</a></li>
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-                <li><a href="cargo.html">Cargo</a></li>
-                <li><a href="#Contact">Contact</a></li>
-                <li><a href="#about">About</a>
+          <ul>
+            <li><a class="active" href="main_page.html">Home Page</a></li>
+            <li><a href="book_a_trip.html">Book a trip</a></li>
+            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+            <li><a href="checkin.html">Check-in</a></li>
+            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+            <li><a href="cargo.html">Cargo</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#about">About</a>
             </ul>
-            <menu>
-                <ul>
-                    <li><a href="main_page.html">Home Page</a></li>
-                    <li><a href="book_a_trip.html">Book a trip</a></li>
-                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                    <li><a href="checkin.html">Check-in</a></li>
-                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-                    <li><a href="cargo.html">Cargo</a></li>
-                    <li><a href="#ContactUs">ContactUs</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-            </menu>
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+              <a href="#home" class="active"><ion-icon name="airplane-outline"></ion-icon>            </a>
+              <div id="myLinks">
+                <a href="book_a_trip.html">Book a trip</a>
+                <a href="flight_schedule_search.html">Login</a>
+              </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
         </nav>
-    </header>
+      </header>
     <h1>ROA Airlines</h1>
     <h1>Book a Trip</h1>
     <div style="text-align:center;">
