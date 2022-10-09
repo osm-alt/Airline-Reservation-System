@@ -51,12 +51,10 @@ nav ul li {
 
 
 
-
-/* .logoicon h1
+.active
 {
-    font-size: 3rem;
-    color: whitesmoke;
-} */
+    background-color: darkgrey;
+}
 
 menu {
     display: none;
@@ -64,13 +62,6 @@ menu {
 }
 
 
-/* a:hover {
-    color:red;
-    padding: 0.875rem 1rem;
-    text-decoration: none;
-    font-size: 2.1rem;
-    transition: all 1s ease;
-} */
 
 @media (max-width:100px) {}
 

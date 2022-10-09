@@ -8,36 +8,34 @@
   <link rel="stylesheet" href="main_style.css">
   <title>Cargo Services</title>
   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
+  h1 {
+    /* color: white; */
+    font-weight: bold;
+    font-size: 2rem;
+  }
 
-*
-    {
-      margin: 0;
-      padding: 0;
-    }
+  h2 {
+    /* color: white; */
+    font-weight: bold;
+    font-size: 0.5rem;
+  }
 
-    h1 {
-      /* color: white; */
-      font-weight: bold;
-      font-size: 2rem;
-    }
+  p {
+    /* color: white; */
+    font-weight: 35;
+    font-size: 1rem;
+  }
 
-    h2 {
-      /* color: white; */
-      font-weight: bold;
-      font-size: 0.5rem;
-    }
-
-    p {
-      /* color: white; */
-      font-weight: 35;
-      font-size: 1rem;
-    }
-  
   body {
     background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
@@ -45,45 +43,21 @@
 
   section {
     padding: 15rem 0 5rem 0;
-    background: rgb(34, 193, 195);
+    /* background: rgb(34, 193, 195);
     background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
-
+     */
   }
-  
+
   /* image and text */
   .container {
     display: flex;
   }
-  
-  .centered {
-    background-color: white;
-    border-radius: 5%;
-    display: flex;
-    border-bottom-left-radius: 10%;
-    border-top-left-radius: 10%;
-    border-bottom-right-radius: 40%;
-    border-top-right-radius: 40%;
-    
-    width: 20%;
-    max-width: 100%;
-    
-    
-    position: absolute;
-    top: 29%;
-    left: 50%;
-    color: black;
-    font-family: sans-serif;
-    font-size: 100%;
-    transform: translate(-50%, -50%);
-    display: block;
-    z-index: 2;
-    text-decoration: double;
-  }
-  
+
+
   .container1 {
     display: flex;
   }
-  
+
   .container1 div {
     border: 5px #ccc solid;
     padding: px;
@@ -120,114 +94,140 @@
 
   img {
     max-width: 100%;
-    display: block;
-    height: 100%;
-  }
-  
-
-  legend {
-    font-size: 1rem;
   }
 
-  label
-  {
-    font-size: large;
+  table {
+    margin-top: 2em;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-collapse: collapse;
   }
-  
+
+  th {
+    font-size: 1.2em;
+    padding: .5em;
+    background-color: rgb(84, 201, 247);
+    color: white;
+    border-style: solid;
+    border-color: black;
+  }
+
+  td {
+    padding: 1em;
+    border-style: solid;
+  }
+
+
+
+
+  form p {
+    margin-right: 1em;
+  }
+
+  form {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: .3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 10em;
+    margin-right: 10em;
+    border-style: solid;
+    border-width: 0.05em;
+    border-radius: 0.5em;
+  }
+
+
+
+  input,
+  button,
+  select {
+    box-sizing: border-box;
+    padding: .5em;
+    margin: 1em;
+  }
+
+  input[type=submit] {
+    font-size: 1.2em;
+    background-color: rgb(84, 201, 247);
+    color: white;
+    border-radius: .5em;
+    margin-left: 5em;
+    position: relative;
+    bottom: .5em;
+  }
 
   @media (max-width:1200px) {
     h1 {
       padding-left: clamp(2rem, 1.5vw + 3px, rem);
       font-size: clamp(rem, 2.5vw, 1rem);
     }
-    
-    .centered {
-      font-size: clamp(1rem, 2.5vw, 1rem);
-    }
   }
-  
-  
-  
-  
-  
-
-
 </style>
 
 <body>
 
   <header>
     <nav>
-      <div class="logoicon">
-        <ion-icon name="airplane-outline"></ion-icon>
-        <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
-      </div>
       <ul>
-        <li><a class="active" href="main_page.html">Home Page</a></li>
+        <li><a href="main_page.html">Home Page</a></li>
         <li><a href="book_a_trip.html">Book a trip</a></li>
         <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
         <li><a href="checkin.html">Check-in</a></li>
         <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-        <li><a href="cargo.html">Cargo</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a class="active" href="cargo.html">Cargo</a></li>
+        <li><a href="#Contact">Contact</a></li>
         <li><a href="#about">About</a>
       </ul>
-      <!-- <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon> -->
-      <menu>
-        <ul>
-          <li><a class="active" href="main_page.html">Home Page</a></li>
-          <li><a href="book_a_trip.html">Book a trip</a></li>
-          <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-          <li><a href="checkin.html">Check-in</a></li>
-          <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-          <li><a href="cargo.html">Cargo</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </menu>
+      <!-- hamburger menu, only essentiel links -->
+      <div class="topnav">
+        <a href="#home" class="active">
+          <ion-icon name="airplane-outline"></ion-icon>
+        </a>
+        <div id="myLinks">
+          <a href="book_a_trip.html">Book a trip</a>
+          <a href="flight_schedule_search.html">Login</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
     </nav>
   </header>
 
-
-
-
-
   <div class="container">
     <img src="cargopics/cargo0.jpg" alt="cargo" width="100%" height="400" ;>
-    <div class="centered">
-      <h1>Your safesty is our priority!</h1>
-    </div>
-
   </div>
 
 
 
+  <h1 style="text-align: center;">Our Cargo Services include:</h1>
 
+  <table style="margin-top:-1px;">
+    <tr>
+      <th><img src="cargopics/pets.png" alt="pets"><br></th>
+      <th><img src="cargopics/medicine.png" alt="medicine"><br></th>
+      <th><img src="cargopics/delivery-box.png" alt="boxes"><br></th>
+      <th><img src="cargopics/box.png" alt="packages"><br></th>
+    </tr>
 
-  <center>
-    <h1>Our Cargo Services include:</h1>
-  </center>
-
-
-
-  <div class="container1">
-
-    <div class="image1">
-      <img src="cargopics/cargo3.jpg" width="100%">
-
-    </div>
-    <div class="image2">
-      <img src="cargopics/cargo4.jpg " width="100%">
-    </div>
-    <div class="image3">
-      <img src="cargopics/cargo5.jpg" width="100%">
-    </div>
-    <div class="image4">
-      <img src="cargopics/cargo6.png" width="100%">
-    </div>
-
-  </div>
-
+    <tr>
+      <td>
+        <h3>Pets and Animals</h3>
+      </td>
+      <td>
+        <h3>Medicine stored in a specified temperate</h3>
+      </td>
+      <td>
+        <h3>Different special packages</h3>
+      </td>
+      <td>
+        <h3>Any type of goods</h3>
+      </td>
+    </tr>
+  </table>
 
 
   <section>
@@ -235,9 +235,8 @@
       <fieldset>
         <legend style="color: black; ;">Flight Search</legend>
         <p>
-          <label>Origin<input name="origin" type="text" size="21" list="originlist"
-              style="margin-left: 10px; border: 3px solid #555; font-size: large; height: 3rem; margin-top: 1em;"
-              placeholder="Origin" required></label>
+          <label>Origin<input name="origin" type="text"list="originlist"
+              required></label>
 
           <datalist id="originlist">
             <option value="Abidjan	Cote d'Ivoire	ABJ">
@@ -275,9 +274,7 @@
 
 
         </p>
-        <p><label> Destination<input name="destination" type="text" list="destination" size="21"
-              style="margin-left: 10px; border: 3px solid #555; height: 25px; font-size: large; height: 3rem;margin-top: 1em;"
-              placeholder="Destination"></label>
+        <p><label> Destination<input name="destination" type="text" list="destination"></label>
           <datalist id="destination">
             <option value="Abidjan	Cote d'Ivoire	ABJ">
             <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
@@ -314,19 +311,16 @@
         </p>
 
 
-        <p> <label>Shipping Date<input type="date" name="date"  size="21"
-              style="margin-left: 10px; border: 3px solid #555; height: 25px; height: 3rem ;margin-top: 1em;" />
+        <p> <label>Shipping Date<input type="date" name="date"/>
 
           </label></p>
         <p>
 
-        <p> <label>Arrival Date<input type="date" name="date" size="21"
-              style="margin-left: 10px; border: 3px solid #555; height: 25px; height: 3rem; margin-top: 1em;" />
+        <p> <label>Arrival Date<input type="date" name="date"/>
           </label></p>
         <p>
 
-          <input type="submit" value="Search"
-            style="color: white; height: 3rem; background-color: grey; margin-left: 10rem; font-size: larger; margin: 1rem;">
+          <input type="submit" value="Search">
         </p>
       </fieldset>
     </form>
