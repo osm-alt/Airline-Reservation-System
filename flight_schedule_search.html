@@ -21,13 +21,17 @@
             padding-left: 1em;
             padding-right: 1em;
             padding-bottom: .3em;
-            margin: 1em; 
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-left: 10em;
+            margin-right: 10em; 
             border-style: solid;
             border-width: 0.05em; 
             border-radius: 0.5em; 
         }
 
         div.form-elts {
+            justify-content: center;
             display: flex;
             flex-wrap: wrap;
         }
@@ -49,6 +53,30 @@
             position: relative;
             bottom: .5em;
         }
+        
+        table {
+            margin-top: 2em;
+            text-align: center;
+            width:80%;
+            margin-left:10%;
+            margin-right: 10%;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-size:1.2em;
+            padding: .5em;
+            background-color: rgb(84, 201, 247);
+            color:white;
+            border-style: solid;
+            border-color: black;
+        }
+
+        td {
+            padding: 1em;
+            border-style: solid;
+        }
+
     </style>
 </head>
 
@@ -60,7 +88,7 @@
                 <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
             </div>
             <ul>
-                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="main_page.html">Home Page</a></li>
                 <li><a href="book_a_trip.html">Book a trip</a></li>
                 <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
                 <li><a href="checkin.html">Check-in</a></li>
@@ -71,7 +99,7 @@
             </ul>
             <menu>
                 <ul>
-                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="main_page.html">Home Page</a></li>
                     <li><a href="book_a_trip.html">Book a trip</a></li>
                     <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
                     <li><a href="checkin.html">Check-in</a></li>
@@ -166,14 +194,39 @@
                 <label for="depart_on">Depart On</label>
                 <input type="date" id="depart_on" name="depart_on" required>
             </p>
-            <p>
+            <!-- <p>
                 <label for="return_on">Return On</label>
                 <input type="date" id="return_on" name="return_on" required>
-            </p>
+            </p> -->
 
             <input type="submit" value="Search">
         </div>
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Depart from</th>
+                <th>Arrive to</th>
+                <th>Departure date</th>
+                <th>Departure time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY</td>
+                <td>Disneyland Paris	France	DLP</td>
+                <td>12/20/2022</td>
+                <td>11:20 AM</td>
+            </tr>
+            <tr>
+                <td>Cairo - Cairo International Airport	Egypt	CAI</td>
+                <td>Dubai - Dubai International Airport	United Arab Emirates	DXB</td>
+                <td>10/30/2022</td>
+                <td>8:35 PM</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>

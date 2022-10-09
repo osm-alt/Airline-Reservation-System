@@ -15,17 +15,17 @@
         form {
             padding: 1em;
             margin-top: 1em;
-            
         }
 
         button {
             background-color: skyblue;
         }
 
-        input[type=submit], input[type=reset] {
-            font-size:1.2em;
+        input[type=submit],
+        input[type=reset] {
+            font-size: 1.2em;
             background-color: rgb(84, 201, 247);
-            color:white;
+            color: white;
             border-radius: .5em;
         }
 
@@ -46,6 +46,34 @@
             margin: 1em;
         }
     </style>
+    <script>
+        function check_trip_type() {
+            if (document.getElementById("trip_type").value == "Round-trip") {
+                document.getElementById("return").style.display = "block";
+                document.getElementById("second-city").style.display = "none";
+                document.getElementById("return_on").required = true;
+                document.getElementById("departure_from_second").required = false;
+                document.getElementById("arrival_to_second").required = false;
+                document.getElementById("depart_on_second").required = false;
+            }
+            else if (document.getElementById("trip_type").value == "One-way"){
+                document.getElementById("return").style.display = "none";
+                document.getElementById("second-city").style.display = "none";
+                document.getElementById("return_on").required = false;
+                document.getElementById("departure_from_second").required = false;
+                document.getElementById("arrival_to_second").required = false;
+                document.getElementById("depart_on_second").required = false;
+            }
+            else if (document.getElementById("trip_type").value == "Multi-city"){
+                document.getElementById("return").style.display = "none";
+                document.getElementById("second-city").style.display = "flex";
+                document.getElementById("return_on").required = false;
+                document.getElementById("departure_from_second").required = true;
+                document.getElementById("arrival_to_second").required = true;
+                document.getElementById("depart_on_second").required = true;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -56,7 +84,7 @@
                 <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
             </div>
             <ul>
-                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="main_page.html">Home Page</a></li>
                 <li><a href="book_a_trip.html">Book a trip</a></li>
                 <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
                 <li><a href="checkin.html">Check-in</a></li>
@@ -67,7 +95,7 @@
             </ul>
             <menu>
                 <ul>
-                    <li><a class="active" href="main_page.html">Home Page</a></li>
+                    <li><a href="main_page.html">Home Page</a></li>
                     <li><a href="book_a_trip.html">Book a trip</a></li>
                     <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
                     <li><a href="checkin.html">Check-in</a></li>
@@ -89,7 +117,7 @@
         <form method="post" action="">
             <p>
                 <label for="trip_type">Type of trip</label>
-                <select id="trip_type" name="trip_type">
+                <select onchange="check_trip_type()" id="trip_type" name="trip_type">
                     <option selected>Round-trip</option>
                     <option>One-way</option>
                     <option>Multi-city</option>
@@ -174,9 +202,90 @@
                     <label for="depart_on">Depart On</label>
                     <input type="date" id="depart_on" name="depart_on" required>
                 </p>
-                <p>
+                <p id="return">
                     <label for="return_on">Return On</label>
                     <input type="date" id="return_on" name="return_on" required>
+                </p>
+            </div>
+
+            <div class="form-elts" id="second-city" style="display:none">
+                <p>
+                    <label for="departure_from_second">From</label>
+                    <input type="text" id="departure_from_second" name="deparure_from_second" list="iata_list">
+                    <datalist id="iata_list">
+                        <option value="Abidjan	Cote d'Ivoire	ABJ">
+                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                        <option value="Basra, Basrah	Iraq	BSR">
+                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                        <option value="Brussels - Brussels Airport	Belgium	BRU">
+                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                        <option value="Disneyland Paris	France	DLP">
+                        <option value="Doha - Doha International Airport	Qatar	DOH">
+                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                        <option value="East London	South Africa	ELS">
+                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                        <option value="Larnaca	Cyprus	LCA">
+                        <option value="London Metropolitan Area	United Kingdom	LON">
+                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                        <option value="Madrid - Barajas Airport	Spain	MAD">
+                        <option value="Milan	Italy	MIL">
+                        <option value="Nice - Cote D'Azur Airport	France	NCE">
+                        <option value="Paris	France	PAR">
+                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                        <option value="Rome	Italy	ROM">
+                    </datalist>
+                </p>
+                <p>
+                    <label for="arrival_to_second">To</label>
+                    <input type="text" id="arrival_to_second" name="arrival_to_second" list="iata_list_to">
+                    <datalist id="iata_list_to">
+                        <option value="Abidjan	Cote d'Ivoire	ABJ">
+                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                        <option value="Basra, Basrah	Iraq	BSR">
+                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                        <option value="Brussels - Brussels Airport	Belgium	BRU">
+                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                        <option value="Disneyland Paris	France	DLP">
+                        <option value="Doha - Doha International Airport	Qatar	DOH">
+                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                        <option value="East London	South Africa	ELS">
+                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                        <option value="Larnaca	Cyprus	LCA">
+                        <option value="London Metropolitan Area	United Kingdom	LON">
+                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                        <option value="Madrid - Barajas Airport	Spain	MAD">
+                        <option value="Milan	Italy	MIL">
+                        <option value="Nice - Cote D'Azur Airport	France	NCE">
+                        <option value="Paris	France	PAR">
+                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                        <option value="Rome	Italy	ROM">
+                    </datalist>
+                </p>
+                <p>
+                    <label for="depart_on_second">Depart On</label>
+                    <input type="date" id="depart_on_second" name="depart_on_second">
                 </p>
             </div>
 
@@ -263,7 +372,9 @@
     </fieldset>
     <p style="margin: 1em; text-align:center;">
         <label for="reserve_hotel">Want to make a hotel reservation?</label>
-        <a href="https://www.trivago.com/" target="_blank"><button id="reserve_hotel" style="background-color: rgb(84, 201, 247); color:white; border-radius: .5em;">Check Trivago</button></a>
+        <a href="https://www.trivago.com/" target="_blank"><button id="reserve_hotel"
+                style="background-color: rgb(84, 201, 247); color:white; border-radius: .5em;">Check
+                Trivago</button></a>
     </p>
 </body>
 

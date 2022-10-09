@@ -5,23 +5,110 @@
 <head>
     <title>Manage Booking</title>
     <link rel="stylesheet" href="main_style.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            margin: 1em;
+        }
+
+        form {
+            padding: 1em;
+            margin-top: 1em;
+        }
+
+        form.view-booking {
+            padding-top: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: .3em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            margin-left: 10em;
+            margin-right: 10em; 
+            border-style: solid;
+            border-width: 0.05em; 
+            border-radius: 0.5em; 
+        }
+
+        input[type=submit] {
+            font-size: 1.2em;
+            background-color: rgb(84, 201, 247);
+            color: white;
+            border-radius: .5em;
+        }
+
+        form p {
+            margin-right: 1em;
+        }
+
+        div.form-elts-search {
+            padding-left: 2em;
+            padding-top: 1em;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        div.form-elts {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        input[type=submit].view {
+            margin-left: 5em;
+            position: relative;
+            bottom: .5em;
+        }
+
+        input, select {
+            box-sizing: border-box;
+            padding: .5em;
+            margin: 1em;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="logoicon">
+                <ion-icon name="airplane-outline"></ion-icon>
+                <box-icon name='menu' color="whitesmoke" size="lg" id="menu"></box-icon>
+            </div>
+            <ul>
+                <li><a href="main_page.html">Home Page</a></li>
+                <li><a href="book_a_trip.html">Book a trip</a></li>
+                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="checkin.html">Check-in</a></li>
+                <li><a href="manage_booking.html">Manage Booking</a></li>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="cargo.html">Cargo</a></li>
+                <li><a href="#Contact">Contact</a></li>
+                <li><a href="#about">About</a>
+            </ul>
+            <menu>
+                <ul>
+                    <li><a href="main_page.html">Home Page</a></li>
+                    <li><a href="book_a_trip.html">Book a trip</a></li>
+                    <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="manage_booking.html">Manage Booking</a></li>
+                    <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                    <li><a href="cargo.html">Cargo</a></li>
+                    <li><a href="#ContactUs">ContactUs</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
     <h1>ROA Airlines</h1>
-    <div class="topnav">
-        <a href="main_page.html">Home Page</a>
-        <a href="book_a_trip.html">Book a trip</a>
-        <a href="flight_schedule_search.html">Flight Schedule Search</a>
-        <a class="active" href="manage_booking.html">Manage Booking</a>
-        <a href="#about">About</a>
-    </div>
     <h1>Manage Booking</h1>
     <p style="text-align:center;">View your reservations and make changes to your flight details</p>
 
-    <form method="post" action="">
-        <fieldset>
-            <legend>View Reservation</legend>
+    
+
+    <form method="post" action="" class="view-booking">
+        <div class="form-elts-search">
             <p>
                 <label for="last_name">Last Name</label>
                 <input type="text" name="last_name" id="last_name" required>
@@ -30,9 +117,121 @@
                 <label for="booking_reference">Booking Reference Number</label>
                 <input type="text" name="booking_reference" id="booking_reference" required>
             </p>
-            <input type="submit" value="View Reservation">
-        </fieldset>
+            <input type="submit" value="View Reservation" class="view">
+        </div>
     </form>
+
+    <div style="text-align:center; margin-top: 1em; float: right; margin-left: 1em; margin-right: 1em;">
+        <img src="bookingPics/istockphoto-950695812-612x612.jpg" alt="Book a flight">
+    </div>
+
+    <fieldset style="margin: 1em;">
+        <legend style="margin-left: 2em;">Reservation</legend>
+        <form method="post" action="">
+            <p>
+                Type of Trip: Round-trip
+            </p>
+            <div class="form-elts" style="margin-top:1em;">
+                <p style="margin-right: 2em;">
+                    From: Abidjan	Cote d'Ivoire	ABJ
+                </p>
+                <p>
+                    To: Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY
+                </p>
+            </div>
+            <div class="form-elts" style="margin-top:1em; margin-bottom: 1em;">
+                <p style="margin-right: 2em;">
+                    Depart On: 12/30/2022
+                </p>
+                <p style="margin-right: 2em;">
+                    Return On: 1/10/2023
+                </p>
+                <p>
+                    Departure Time: 11:20 AM
+                </p>
+            </div>
+
+            <div class="form-elts">
+                <p>
+                    <label for="cabin">Cabin class</label>
+                    <select id="cabin" name="cabin">
+                        <option selected>Economy class</option>
+                        <option>Business class</option>
+                        <option>First class</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="seat_selection">Seat location</label>
+                    <select id="seat_selection" name="seat_selection">
+                        <option selected>Aisle seat</option>
+                        <option>Window seat</option>
+                    </select>
+                </p>
+            </div>
+
+            <div class="form-elts">
+                <p>
+                    <label for="special_meals">Special meals</label>
+                    <select id="special_meals" name="special_meals">
+                        <option selected>None</option>
+                        <option>Turkey sandwich</option>
+                        <option>Chicken with rice</option>
+                        <option>Ceasar Salad</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="drinks">Drinks</label>
+                    <select id="drinks" name="drinks">
+                        <option selected>Water</option>
+                        <option>Orange juice</option>
+                        <option>Apple juice</option>
+                        <option>Coke</option>
+                        <option>Sprite</option>
+                        <option>Mirinda</option>
+                        <option>Ayran</option>
+                    </select>
+                </p>
+            </div>
+
+            <p>
+                <label>Airport pick-up: </label>
+                <label>Yes</label>
+                <input type="radio" name="airport_pickup" value="yes">
+                <label>No</label>
+                <input type="radio" name="airport_pickup" value="no" checked>
+            </p>
+            <p>
+                <label for="pet">Accompanying pet</label>
+                <select id="pet" name="pet">
+                    <option selected>None</option>
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Bird</option>
+                </select>
+            </p>
+
+            <h3 style="margin-top: 1em;">Passengers</h3>
+            <div class="form-elts">
+                <p>
+                    <label for="adults">Adults (12+ years)</label>
+                    <input type="number" id="adults" name="adults" min="1" max="9" value="1">
+                </p>
+                <p>
+                    <label for="children">Children (2-12 years)</label>
+                    <input type="number" id="children" name="children" min="0" max="9" value="0">
+                </p>
+                <p>
+                    <label for="infants">Infants (0-23 months)</label>
+                    <input type="number" id="infants" name="infants" min="0" max="9" value="0">
+                </p>
+            </div>
+
+            <p>
+                <input type="submit" value="Submit Changes">
+                <input type="submit" value="Cancel Booking" style="background-color: red;">
+            </p>
+        </form>
+    </fieldset>
 </body>
 
 </html>
