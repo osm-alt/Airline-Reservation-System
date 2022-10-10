@@ -343,12 +343,15 @@
                     <option>Bird</option>
                 </select>
             </p>
-
+            <p>
+                <label for="special_treatment">Please specify a special treatment if needed:</label>
+                <input type="text" id="special_treatment" name="special_treatment">
+            </p>
             <h3 style="margin-top: 1em;">Passengers</h3>
             <div class="form-elts">
                 <p>
                     <label for="adults">Adults (12+ years)</label>
-                    <input type="number" id="adults" name="adults" min="1" max="9" value="1">
+                    <input type="number" id="adults" name="adults" min="0" max="9" value="0">
                 </p>
                 <p>
                     <label for="children">Children (2-12 years)</label>
