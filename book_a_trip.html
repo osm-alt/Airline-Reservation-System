@@ -75,6 +75,16 @@
                 document.getElementById("depart_on_second").required = true;
             }
         }
+        function check_passengers() {
+            if((document.getElementById("adults").value == "0" && document.getElementById("children").value == "0") || (parseInt(document.getElementById("infants").value) > 0 && document.getElementById("adults").value == "0"))
+            {
+                document.getElementById("submit").style.display = "none";
+            }
+            else
+            {
+                document.getElementById("submit").style.display = "inline";
+            }
+        }
     </script>
 </head>
 
@@ -351,20 +361,19 @@
             <div class="form-elts">
                 <p>
                     <label for="adults">Adults (12+ years)</label>
-                    <input type="number" id="adults" name="adults" min="0" max="9" value="0">
+                    <input type="number" id="adults" name="adults" min="0" max="9" value="0" required onchange="check_passengers()">
                 </p>
                 <p>
                     <label for="children">Children (2-12 years)</label>
-                    <input type="number" id="children" name="children" min="0" max="9" value="0">
+                    <input type="number" id="children" name="children" min="0" max="9" value="0" required onchange="check_passengers()">
                 </p>
                 <p>
                     <label for="infants">Infants (0-23 months)</label>
-                    <input type="number" id="infants" name="infants" min="0" max="9" value="0">
+                    <input type="number" id="infants" name="infants" min="0" max="9" value="0" required onchange="check_passengers()">
                 </p>
-            </div>
-
+            </div> 
             <p>
-                <input type="submit" value="Submit">
+                <input type="submit" id="submit" value="Submit" style="display:none">
                 <input type="reset" value="Clear">
             </p>
         </form>
