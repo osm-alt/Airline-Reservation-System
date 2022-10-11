@@ -9,15 +9,48 @@
     <title>BaggageInfo</title>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <style>
-        section {
-  padding: 15rem 0 5rem 0;
-  /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
-  background: rgb(34, 193, 195);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+        body {
+            background-color: rgb(34, 193, 195);
+        }
 
-}
+        .center {
+            text-align: center;
+        }
+
+        .inbox {
+            position: relative;
+            left: 400px;
+            top: 150px;
+        }
+        .inbox2 {
+            position: relative;
+            left: 700px;
+            top: 105px;
+        }
+
+        input {
+            display: block;
+            border: 1px solid lightblue;
+            background: #fff;
+            padding: 10px 10px 10px 20px;
+            width: 195px;
+            text-indent: 25px;
+            font-size: larger;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .ROA {
+            position: absolute;
+            display: block;
+            left: 5px;
+            top: 15px;
+            font-family:Arial, Helvetica, sans-serif;
+            z-index: 9;
+            
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -58,8 +91,15 @@
             <br>
             <br>
         </center>
-        Check in below the flight schedule of flights operated by ---.<br>
-        Fill in below the Departure and arrival country and date of your flight in order to search for it.
+        <div class="center">Check in below the flight schedule of flights operated by ROA Airlines.<br>
+            Fill in below the Departure and arrival country and date of your flight in order to search for it.</div>
+        <div class="inbox">
+            <input value="" autofocus="autofocus" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+            <span class="ROA">ROA</span>
+        </div>
+       <div class="inbox2">
+<input type="date">
+</div> 
     </body>
 
 </html>
