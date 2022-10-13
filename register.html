@@ -12,9 +12,25 @@
     <title>Register</title>
 
     <style>
+        body {
+            background-image: url("mainpics/login.jpg");
+        }
+
         h1 {
             text-align: center;
             margin: 1em;
+        }
+
+        h2 {
+            /* color: white; */
+            font-weight: bold;
+            font-size: 0.5rem;
+        }
+
+        p {
+            /* color: white; */
+            font-weight: 35;
+            font-size: 1rem;
         }
 
         form p {
@@ -32,6 +48,16 @@
             border-radius: 0.5em;
         }
 
+        fieldset {
+            background: whitesmoke;
+            width: 25em;
+            height: 30rem;
+        }
+
+        label {
+            margin-left: 1rem;
+        }
+
         div.form-elts {
             display: flex;
             flex-wrap: wrap;
@@ -40,19 +66,48 @@
         input,
         button,
         select {
+            display: block;
+            width: 15rem;
             box-sizing: border-box;
             padding: .5em;
             margin: 1em;
         }
 
         input[type=submit] {
-            font-size: 1.2em;
+            width: 15rem;
+            font-size: .9em;
             background-color: rgb(84, 201, 247);
             color: white;
             border-radius: .5em;
-            margin-left: 5em;
-            position: relative;
-            bottom: .5em;
+            margin-left: 1em;
+            /* margin: 1em; */
+            /* position: relative; */
+            /* bottom: .5em; */
+        }
+
+        input[type=submit]:hover {
+            cursor: pointer;
+            color: black;
+        }
+
+        .forgotPassword {
+
+            text-decoration: none;
+            margin-left: 1em;
+            /* font-size: 15px; */
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .register {
+            font-size: small;
+            margin-top: .5em;
+            white-space: nowrap;
+            text-decoration: none;
+            margin-left: 1.1em;
+            color: red;
         }
     </style>
 
@@ -87,25 +142,25 @@
         </nav>
     </header>
 
-
+    <!-- <h1 class="title">Welcome to ROA Airlines!</h1> -->
 
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Register</legend>
         <form method="post" action="">
 
-            <p><label>First Name<input name="Fname" type="text" required></p>
-                
-            <p><label>Last Name<input name="Lname" type="text" required></p>
+            <p><label>First Name<input name="Fname" type="text" placeholder="First Name" required></p>
 
-            <p><label>Email Address<input name="Email" type="text" required></p>
+            <p><label>Last Name<input name="Lname" type="text" placeholder="Last Name" required></p>
 
-            <p><label>Password<input name="password" type="password" required></p>
+            <p><label>Email Address<input name="Email" type="text" placeholder="Email Address" required></p>
+
+            <p><label>Password<input name="password" type="password" placeholder="Password" required></p>
 
             <input type="submit" value="Register">
             <input type="reset" value="Clear">
-            </p>
         </form>
     </fieldset>
+
 
 </body>
 

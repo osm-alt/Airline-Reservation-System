@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="main_style.css">
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="main_style.css">
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     * {
@@ -82,28 +82,31 @@
       align-items: center;
       margin: auto;
       padding-top: 10rem;
-      
+
     }
-    
+
     .container div {
-      
+      /* white-space: nowrap; */
+      text-align: center;
       border: 2px #ccc solid;
       font-size: 100%;
       height: 12rem;
       margin: 10rem;
       max-width: 100vh;
-      background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(41,14,68,0.6225840678068102) 0%, rgba(4,98,152,1) 100%, rgba(17,225,160,1) 100%);      z-index:2;
+      background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+      z-index: 2;
     }
-    
+
     .box1,
     .box2,
     .box3 {
+
       flex-basis: 70%;
       border-radius: 0.5em;
       flex-flow: column;
       transition: all 0.3s ease;
     }
-    
+
     .container a {
       text-decoration: none;
       color: white;
@@ -113,7 +116,7 @@
 
     .container a:hover {
       color: red;
-      text-decoration: underline;
+      text-decoration: none;
       font-size: 1.1rem;
       transition: all 1s ease;
 
@@ -143,7 +146,7 @@
     .box4 p {
       margin-left: 1em;
       text-align-last: left;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-family: Georgia, 'Times New Roman', Times, serif;
       font-weight: lighter;
       padding-top: 1rem;
@@ -162,7 +165,7 @@
       font-family: cursive;
       box-sizing: border-box;
       padding: 0.4em 0.7em;
-      font-size: clamp(1rem, 1.5vw + 3px, 2rem);
+      font-size: clamp(.5rem, 1.5vw + 3px, 2rem);
     }
 
 
@@ -264,7 +267,7 @@
 
     /* --------------------------------------------------------- */
     /* MEDIA QUERIES */
-    @media (max-width:1200px) {
+    @media (max-width:1340px) {
 
       .container {
         display: flex;
@@ -297,23 +300,23 @@
       }
     }
 
-     @media (max-width:600px) {
+    @media (max-width:600px) {
 
- .box4 h1 {
-  font-size: small;
-  padding-left: clamp(2rem, 1.5vw + 3px, 2rem);
-}
+      .box4 h1 {
+        font-size: small;
+        padding-left: clamp(2rem, 1.5vw + 3px, 2rem);
+      }
 
-.box4 p {
-  width: 50%;
-  margin-left: 1em;
-  text-align-last: left;
-  font-size: 3rem;
+      .box4 p {
+        width: 50%;
+        margin-left: 1em;
+        text-align-last: left;
+        font-size: 3rem;
 
-  padding-top: 1rem;
-  font-size: clamp(1rem, 2.5vw, 2rem);
-}
-}
+        padding-top: 1rem;
+        font-size: clamp(1rem, 2.5vw, 2rem);
+      }
+    }
 
 
 
@@ -373,7 +376,7 @@
       .container div {
         margin-top: 4rem;
         width: 80%;
-        height:15rem;
+        height: 15rem;
 
         /* min-height: 80vh; */
         /* max-height: 30vh; */
@@ -389,7 +392,7 @@
         height: 18rem;
         /* min-height: 80vh; */
       }
-      
+
       .container div {
         font-size: small;
         width: 50%;
@@ -400,9 +403,6 @@
       }
 
     }
-
-
-
   </style>
 
 </head>
@@ -419,15 +419,18 @@
           <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
           <li><a href="cargo.html">Cargo</a></li>
           <li><a href="#Contact">Contact</a></li>
-          <li><a href="#about">About</a>
-          </ul>
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="#home" class="active"><ion-icon name="airplane-outline"></ion-icon>            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="flight_schedule_search.html">Login</a>
-            </div>
+          <li><a href="login.html">Login/Register</a>
+        </ul>
+        <!-- hamburger menu, only essentiel links -->
+        <div class="topnav">
+          <a href="main_page.html" class="active">
+            <ion-icon name="airplane-outline"></ion-icon>
+          </a>
+          <div id="myLinks">
+            <a href="book_a_trip.html">Book a trip</a>
+            <a href="checkin.html">Check-in</a>
+            <a href="login.html">Login</a>
+          </div>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
           </a>
@@ -438,29 +441,24 @@
 
     <div class="container">
       <div class="box1">
-        <center><a href="book_a_trip.html">
-            <h1>Book a Trip</h1>
-        </center>
-        <center>
+        <a href="book_a_trip.html">
+          <h1>Book a Trip</h1>
           <p>Search Flights & Book</p>
-        </center></a>
+        </a>
       </div>
       <div class="box2">
-        <center><a href="checkin.html">
-            <h1>Check in</h1>
-        </center>
-        <center>
+        <a href="checkin.html">
+          <h1>Check in</h1>
           <p>Check in Before Flight</p>
-        </center></a>
+        </a>
       </div>
       <div class="box3">
-        <center><a href="flight_schedule_search.html">
-            <h1>Flight Status</h1>
-        </center>
-        <center>
+        <a href="flight_schedule_search.html">
+          <h1>Flight Status</h1>
+
           <p>Check Flight Schedule
-        </center>
-        </p></a>
+          </p>
+        </a>
       </div>
     </div>
   </main>
