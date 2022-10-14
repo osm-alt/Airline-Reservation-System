@@ -115,9 +115,8 @@
     }
 
     .container a:hover {
-      color: red;
-      text-decoration: none;
-      font-size: 1.1rem;
+      box-shadow: inset 200px 0 0 0 #54b3d6;
+      color: black;
       transition: all 1s ease;
 
     }
@@ -413,14 +412,30 @@
       <nav>
         <ul>
           <li><a class="active" href="main_page.html">Home Page</a></li>
-          <li><a href="book_a_trip.html">Book a trip</a></li>
-          <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-          <li><a href="checkin.html">Check-in</a></li>
+          <!-- Sub navigation menu -->
+          <div class="subnav">
+            <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+            <div class="subnav-content">
+              <li><a href="book_a_trip.html">Book a trip</a></li>
+              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+              <li><a href="manage_booking.html">Manage Booking</a></li>
+              <li><a href="FlightStatus.html">Flight Status</a></li>
+            </div>
+          </div>
+          <div class="subnav">
+            <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+            <div class="subnav-content">
+              <li><a href="PassengerServices.html">Passenger Services</a></li>
+              <li><a href="cargo.html">Cargo Services</a></li>
+              <li><a href="BaggageInfo.html">Baggage Info</a></li>
+              <li><a href="checkin.html">Check-in</a></li>
+            </div>
+          </div>
           <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-          <li><a href="cargo.html">Cargo</a></li>
-          <li><a href="#Contact">Contact</a></li>
+          <li><a href="#FAQ">FAQ</a>
           <li><a href="login.html">Login/Register</a>
         </ul>
+
         <!-- hamburger menu, only essentiel links -->
         <div class="topnav">
           <a href="main_page.html" class="active">
@@ -437,8 +452,9 @@
       </nav>
     </header>
 
-    <!-- <center><h1>Welcome To ROA Airlines!</h1></center> -->
 
+
+    <!-- <center><h1>Welcome To ROA Airlines!</h1></center> -->
     <div class="container">
       <div class="box1">
         <a href="book_a_trip.html">

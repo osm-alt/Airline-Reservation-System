@@ -117,34 +117,52 @@
 
     <header>
         <nav>
-            <ul>
-                <li><a class="active" href="main_page.html">Home Page</a></li>
+          <ul>
+            <li><a class="active" href="main_page.html">Home Page</a></li>
+            <!-- Sub navigation menu -->
+            <div class="subnav">
+              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+              <div class="subnav-content">
                 <li><a href="book_a_trip.html">Book a trip</a></li>
                 <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                <li><a href="manage_booking.html">Manage Booking</a></li>
+                <li><a href="FlightStatus.html">Flight Status</a></li>
+              </div>
+            </div>
+            <div class="subnav">
+              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+              <div class="subnav-content">
+                <li><a href="PassengerServices.html">Passenger Services</a></li>
+                <li><a href="cargo.html">Cargo Services</a></li>
+                <li><a href="BaggageInfo.html">Baggage Info</a></li>
                 <li><a href="checkin.html">Check-in</a></li>
-                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-                <li><a href="cargo.html">Cargo</a></li>
-                <li><a href="#Contact">Contact</a></li>
-                <li><a href="#about">About</a>
-            </ul>
-            <!-- hamburger menu, only essentiel links -->
-            <div class="topnav">
-                <a href="#home" class="active">
-                    <ion-icon name="airplane-outline"></ion-icon>
-                </a>
-                <div id="myLinks">
-                    <a href="book_a_trip.html">Book a trip</a>
-                    <a href="flight_schedule_search.html">Login</a>
-                </div>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
+              </div>
+            </div>
+            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+            <li><a href="#FAQ">FAQ</a>
+            <li><a href="login.html">Login/Register</a>
+          </ul>
+  
+          <!-- hamburger menu, only essentiel links -->
+          <div class="topnav">
+            <a href="main_page.html" class="active">
+              <ion-icon name="airplane-outline"></ion-icon>
+            </a>
+            <div id="myLinks">
+              <a href="book_a_trip.html">Book a trip</a>
+              <a href="checkin.html">Check-in</a>
+              <a href="login.html">Login</a>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
         </nav>
-    </header>
+      </header>
+  
 
     <!-- <h1 class="title">Welcome to ROA Airlines!</h1> -->
 
-    <fieldset style="margin: 1em;">
+    <fieldset style="margin: 1em; margin-top: 5em;">
         <legend style="margin-left: 2em;">Login</legend>
         <form method="post" action="">
 
