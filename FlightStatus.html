@@ -9,7 +9,7 @@
     <title>BaggageInfo</title>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <style>
         body {
             background-color: rgb(34, 193, 195);
@@ -24,6 +24,7 @@
             left: 400px;
             top: 150px;
         }
+
         .inbox2 {
             position: relative;
             left: 700px;
@@ -38,7 +39,7 @@
             width: 195px;
             text-indent: 25px;
             font-size: larger;
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .ROA {
@@ -46,9 +47,22 @@
             display: block;
             left: 5px;
             top: 15px;
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             z-index: 9;
-            
+
+        }
+
+        .subm {
+            border: none;
+            color: white;
+            text-align: center;
+            margin-top: 120px;
+            left:0px;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -56,47 +70,47 @@
 <body>
     <header>
         <nav>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <!-- Sub navigation menu -->
-            <div class="subnav">
-              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-              <div class="subnav-content">
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="manage_booking.html">Manage Booking</a></li>
-                <li><a href="FlightStatus.html">Flight Status</a></li>
-              </div>
-            </div>
-            <div class="subnav">
-              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-              <div class="subnav-content">
-                <li><a href="PassengerServices.html">Passenger Services</a></li>
-                <li><a href="cargo.html">Cargo Services</a></li>
-                <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-              </div>
-            </div>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="#FAQ">FAQ</a>
-            <li><a href="login.html">Login/Register</a>
-          </ul>
-  
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="main_page.html" class="active">
-              <ion-icon name="airplane-outline"></ion-icon>
-            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="checkin.html">Check-in</a>
-              <a href="login.html">Login</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="#FAQ">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
         </nav>
-      </header>
+    </header>
 
     <body>
         <center>
@@ -108,12 +122,16 @@
         <div class="center">Check in below the flight schedule of flights operated by ROA Airlines.<br>
             Fill in below the Departure and arrival country and date of your flight in order to search for it.</div>
         <div class="inbox">
-            <input value="" autofocus="autofocus" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
-            <span class="ROA">ROA</span>
+            <form>
+                <input value="" autofocus="autofocus"
+                    oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
+                <span class="ROA">ROA</span>
         </div>
-       <div class="inbox2">
-<input type="date">
-</div> 
+        <div class="inbox2">
+            <input type="date">
+        </div>
+       <div class="subm"> <center><input type="submit" value="Submit"></center></div>
+        </form>
     </body>
 
 </html>
