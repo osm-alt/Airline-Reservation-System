@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main_style.css">
+    <title>FAQ</title>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        body {
+            /* background: rgb(34, 193, 195); */
+            /* background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); */
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 0.5rem;
+        }
+
+        p {
+            font-weight: 35;
+            font-size: 1rem;
+        }
+
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+
+
+
+
+        .container {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .horizontalLine {
+            width: 60%;
+            margin: auto;
+        }
+
+        .FAQheader {
+            color: black;
+            cursor: pointer;
+            padding-top: 1.875rem;
+            padding-bottom: 1.875rem;
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+            width: 58%;
+            margin: auto;
+        }
+
+        .Active {
+            background-color: rgb(56, 146, 199);
+        }
+
+
+        .FAQbody {
+            margin: auto;
+            width: 56%;
+            padding: 1.875rem 1.25rem;
+            display: none;
+        }
+
+        .FAQheader:after {
+            content: '\02795';
+            /* this is the Unicode character for + */
+            font-size: 1rem;
+            float: right;
+            /* margin-left: 5px; */
+        }
+
+        .Active:after {
+            content: "\2796";
+            /* this is the Unicode character for - */
+        }
+
+
+        .textcenter img {
+            width: 100%;
+        }
+
+
+        .textcenter {
+            position: relative;
+        }
+
+        .textcenter .text-centered {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bolder;
+            color: white;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a class="active" href="Faq.html">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+    </header>
+
+    <figure class="textcenter">
+        <img src="FAQpics/faqimage1.png" width="100%" height="400" alt="AirlinePicture">
+        <h1 class="text-centered">FAQ</h1>
+    </figure>
+
+
+    <main>
+        <section class="container">
+            <h1 class="FAQheader">Can I reserve a ticket or several tickets for a flight?</h1>
+            <div class="FAQbody">
+                <p>Yes, you may reserve a ticket or several tickets until a week before your flight.</p>
+            </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <h1 class="FAQheader">Is there a fee for a reservation?</h1>
+            <div class="FAQbody">
+                <p>Yes, there is a small fee when reserving.</p>
+            </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <h1 class="FAQheader">Can i cancel my reservation?</h1>
+            <div class="FAQbody">
+                <p>Our reservation policy: if a customer cancels his reservation, only the reservation fee will be
+                    charged. If the customer bought a ticket and canceled his reservation before the deadline, 50% of
+                    the fee will be refunded. If the deadline passes, no fee will be refunded.</p>
+            </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <div class="FAQfour">
+                <h1 class="FAQheader">What services do you offer?</h1>
+                <div class="FAQbody">
+                    <p>Our airlines offers many services, please check our Cargo and Passenger services pages.</p>
+                </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <div class="FAQfive">
+                <h1 class="FAQheader">Are there any Covid-19 Guidelines?</h1>
+                <div class="FAQbody">
+                    <p>Yes, you may check our Covid-19 Restrictions page.</p>
+                </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <h1 class="FAQheader">Can i Check-in online?</h1>
+            <div class="FAQbody">
+                <p>Yes, you may check-in at our Check in page.</p>
+            </div>
+            </div>
+
+            <hr class="horizontalLine">
+            <h1 class="FAQheader">Is our information safely stored?</h1>
+            <div class="FAQbody">
+                <p>We take your privacy very seriously, all personal information and credentials are stored in a secure
+                    manner.</p>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        var k;
+        var faq = document.getElementsByClassName("FAQheader");
+        for (k = 0; k < faq.length; k++) {
+            faq[k].addEventListener("click", function () {
+                this.classList.toggle("Active");
+                /* this will show/hide Active panel */
+                var body = this.nextElementSibling;
+                if (body.style.display === "block")
+                    body.style.display = "none";
+                else
+                    body.style.display = "block";
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
