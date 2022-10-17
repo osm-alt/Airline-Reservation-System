@@ -60,8 +60,8 @@
   </header>
 <section>
   <div class="super-center">
-    <center><h1>Baggage Info</h1></center>
-    Please fill in the boxes below to calculate the price of your baggages depending on your location.
+    <center><h1>Baggage Information</h1></center>
+   <div class="anc"> Please fill in the boxes below to calculate the price of your baggages depending on your location.</div>
     <form id="baggage-calc">
       <h1>Baggage Calculator</h1>
       <datalist id="airports">
@@ -106,8 +106,8 @@
         <input id="input-to" name="to" list="airports" required>
       </div>
       <div class="input-group">
-        <label for="sel-class">Cabin Class</label>
-        <select id="sel-class" name="class" required>
+        <label for="select-class">Cabin Class</label>
+        <select id="select-class" name="class" required>
           <option disabled selected></option>
           <option value="1">Economy</option>
           <option value="2">Economy Plus</option>
@@ -116,11 +116,16 @@
         </select>
       </div>
       <div class="input-group">
-        <label for="sel-tier">Giga Chad Tier</label>
-        <select id="sel-tier" name="tier" required>
+        <label for="select-tier">ROA Tier</label>
+        <select id="select-tier" name="tier" required>
           <option disabled selected></option>
           <option value="0">None</option>
+          <option value="1">Silver</option>
+          <option value="2">Gold</option>
+          <option value="3">Platinum</option>
         </select>
       </div>
+      
+     <div class="submit1"><input type="submit" value="Submit"></div> 
     </section>
   </body>

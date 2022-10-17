@@ -10,6 +10,13 @@ body {
   
   
 }
+.submit1{
+  margin-left: 250px;
+  }
+  .anc{
+    font-size: larger;
+    font-style: oblique;
+  }
 section {
   padding: 15rem 0 5rem 0;
   /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
