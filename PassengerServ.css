@@ -11,6 +11,10 @@
     height: 260px;
     padding: 0 10px 0 0;
   }
+  .services:hover .overlay {
+    background:url('PassengerServicesPics/childalone.jpg') no-repeat;
+    display: inline;
+  }
   .a{
     color: black;
   }
@@ -40,4 +44,23 @@
     font-size: 2rem;
 
 
+  }
+  .text:hover{
+    animation: shaketxt 1.4s;
+    color: white;
+  }
+  @keyframes shaketxt{
+    0%{
+      transform: translateY(0)
+    }
+    25%{
+      transform: translateY(10px);
+    }
+      
+    50%{
+      transform: translateY(10px);
+    }
+    100%{
+      transform: translateY(0px);
+    }
   }
