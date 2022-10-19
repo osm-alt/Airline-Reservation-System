@@ -1,99 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main_style.css">
-    <link rel="stylesheet" href="PassengerServ.css">
+    <!-- <link rel="stylesheet" href="PassengerServ.css"> -->
     <title>Document</title>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: rgb(34, 193, 195);
+        }
+
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        p {
+            font-weight: 50;
+            font-size: 2rem;
+        }
+
+        .textcenter img {
+            width: 100%;
+        }
+
+
+        .textcenter {
+            position: relative;
+        }
+
+        .textcenter .text-centered {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 4rem;
+            font-weight: bolder;
+            color: lightskyblue;
+            font-weight: 500;
+        }
+
+
+        .services {
+            border: 2px solid white;
+        }
+
+        .services img {
+            border: 20px solid black;
+            width: 300px;
+            height: 260px;
+            margin-left: 2rem;
+            float: left;
+            margin: 10px 15px 10px 30px;
+        }
+
+
+        .text {
+            /* border: 2px solid white; */
+            /* text-align: center ; */
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-weight: 250;
+            font-size: 2rem;
+            margin-top: 1rem;
+
+            display: inline-block;
+        }
+
+        p:hover {
+            animation: shaketxt 1.4s;
+            color: white;
+        }
+
+        @keyframes shaketxt {
+            0% {
+                transform: translateY(0)
+            }
+
+            25% {
+                transform: translateY(10px);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+
+
+        @media (max-width: 700px) {
+
+            .textcenter img {
+                height: 300px;
+            }
+
+
+            .textcenter .text-centered {
+                font-size: 2rem;
+            }
+
+            .textcenter {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            .services img {
+                width: 40%;
+                height: 40%;
+            }
+
+            .text {
+                font-size: 1rem;
+                /* color: wheat; */
+            }
+
+            p 
+            {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
 </head>
+
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a class="active" href="main_page.html">Home Page</a></li>
-        <!-- Sub navigation menu -->
-        <div class="subnav">
-          <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-          <div class="subnav-content">
-            <li><a href="book_a_trip.html">Book a trip</a></li>
-            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-            <li><a href="manage_booking.html">Manage Booking</a></li>
-            <li><a href="FlightStatus.html">Flight Status</a></li>
-          </div>
-        </div>
-        <div class="subnav">
-          <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-          <div class="subnav-content">
-            <li><a href="PassengerServices.html">Passenger Services</a></li>
-            <li><a href="cargo.html">Cargo Services</a></li>
-            <li><a href="BaggageInfo.html">Baggage Info</a></li>
-            <li><a href="checkin.html">Check-in</a></li>
-          </div>
-        </div>
-        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-        <li><a href="#FAQ">FAQ</a>
-        <li><a href="login.html">Login/Register</a>
-      </ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a class="active" href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="Faq.html">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
 
-      <!-- hamburger menu, only essentiel links -->
-      <div class="topnav">
-        <a href="main_page.html" class="active">
-          <ion-icon name="airplane-outline"></ion-icon>
-        </a>
-        <div id="myLinks">
-          <a href="book_a_trip.html">Book a trip</a>
-          <a href="checkin.html">Check-in</a>
-          <a href="login.html">Login</a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-    </nav>
-  </header>
-      
-      <center>
-        <h1>Passenger Services</h1>
-        <p>Are you worried about travelling alone? travelling while pregnant? or even travelling with special needs? No need to worry much! You can find anything you need in here !</p>
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+        </nav>
+    </header>
+
+
+    <figure class="textcenter">
+        <img src="PassengerServicesPics/servicespic1.jpg" width="100%" height="450" alt="Passenger Services">
+        <h1 class="text-centered">Passenger Services</h1>
+    </figure>
+
+    <center>
+        <h2>Are you worried about travelling alone? travelling while pregnant? or even travelling with special needs? No
+            need to worry much! You can find anything you need in here !</h2>
     </center>
-    <div class="services">
-      <a href="#"><img src="PassengerServicesPics/Pet_Travel.jpg" /></a>
-        <span class="overlay"></span>
-            <div class="text">    
-            travelling with a pet? Do not worry! you can now travel with your pet at ROA airlines.
-            please check the requirements and restrictions regarding pet travel.
-            <br><br>
 
+
+
+    <!-- <div class="container"> -->
+    <div class="services">
+        <span class="overlay"></span>
+        <div class="text">
+            <a href="#"><img src="PassengerServicesPics/Pet_Travel.jpg" /></a>
+            <p>
+                travelling with a pet? Do not worry! you can now travel with your pet at ROA airlines.
+                please check the requirements and restrictions regarding pet travel.</p>
         </div>
     </div>
     <br>
-    
+
     <div class="services">
-        <img src="PassengerServicesPics/childalone.jpg" alt="">
-        <div class="text">    
-        Child travelling alone? Do not worry! ROA airlines provides free care for children travelling alone!
-        make sure to declare it when purchasing a ticket. 
+        <div class="text">
+            <img src="PassengerServicesPics/childalone.jpg" alt=" ">
+            <p>
+                Child travelling alone? Do not worry! ROA airlines provides free care for children travelling alone!
+                make sure to declare it when purchasing a ticket.</p>
+        </div>
     </div>
-</div>
-<br>
-<div class="services">
-    <img src="PassengerServicesPics/wheelchair.jpg" alt="">
-    <div class="text">    
-    Travelling with special treatment needed? ROA airline is here to make sure you travel safely and comfortably.
-    make sure to specify everything needed while purchasing a ticket.
-</div>
-</div>
-<br>
-<div class="services">
-    <img src="PassengerServicesPics/pregnant.jpg" alt="">
-    <div class="text">    
-    Travelling while pregnant? Worry less because at ROA airlines your safety and your baby's safety are our top priority.
-</div>
-</div>
+    <br>
+    <div class="services">
+        <div class="text">
+            <img src="PassengerServicesPics/wheelchair.jpg" alt=" ">
+            <p>
+                Travelling with special treatment needed? ROA airline is here to make sure you travel safely and
+                comfortably.
+                make sure to specify everything needed while purchasing a ticket.</p>
+        </div>
+    </div>
+    <br>
+    <div class="services">
+        <div class="text">
+            <img src="PassengerServicesPics/pregnant.jpg" alt=" ">
+            <p>
+            Travelling while pregnant? Worry less because at ROA airlines your safety and your baby's safety are our
+            top
+            priority.</p>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+
 
 </body>
-</html>
+
+</html> 

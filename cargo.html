@@ -53,6 +53,7 @@
   }
 
   .textcenter .text-centered {
+    animation: shaketxt 3s infinite;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     position: absolute;
     top: 20%;
@@ -160,6 +161,24 @@
     bottom: .5em;
   }
 
+  @keyframes shaketxt {
+            0% {
+                transform: translateY(0)
+            }
+
+            25% {
+                transform: translateY(10px);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
   @media (max-width:1200px) {
     h1 {
       padding-left: clamp(2rem, 1.5vw + 3px, rem);
@@ -217,7 +236,7 @@
 
   <figure class="textcenter">
     <img src="cargopics/cargo0.jpg" alt="cargo" width="100%" height="400" ;>
-    <h1 class="text-centered">Check-In</h1>
+    <h1 class="text-centered">Cargo Services</h1>
   </figure>
 
 
