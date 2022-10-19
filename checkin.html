@@ -101,6 +101,7 @@
     }
 
     .textcenter .text-centered {
+      animation: shaketxt 3s infinite;
       font-family:Verdana, Geneva, Tahoma, sans-serif;
       position: absolute;
       top: 20%;
@@ -113,6 +114,24 @@
       color: white;
       font-weight: 500;
     }
+
+    @keyframes shaketxt {
+            0% {
+                transform: translateY(0)
+            }
+
+            25% {
+                transform: translateY(10px);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
     
 
     form p {
