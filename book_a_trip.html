@@ -75,15 +75,274 @@
                 document.getElementById("depart_on_second").required = true;
             }
         }
+
         function check_passengers() {
-            if((document.getElementById("adults").value == "0" && document.getElementById("children").value == "0") || (parseInt(document.getElementById("infants").value) > 0 && document.getElementById("adults").value == "0"))
-            {
+            if ((document.getElementById("adults").value == "0" && document.getElementById("children").value == "0") || (parseInt(document.getElementById("infants").value) > 0 && document.getElementById("adults").value == "0")) {
                 document.getElementById("submit").style.display = "none";
             }
-            else
-            {
+            else {
                 document.getElementById("submit").style.display = "inline";
             }
+        }
+
+        window.addEventListener("load", start);
+
+        var trip_type;
+        var cabin_class;
+        var seat_location;
+        var meals;
+        var drinks;
+        var airport_pickup;
+        var pet;
+        var special_treatment;
+        var adults;
+        var children;
+        var infants;
+        var currency;
+        var adults_meals_and_drinks;
+        var children_meals_and_drinks;
+
+        function start() {
+            trip_type = document.getElementById("trip_type");
+            cabin_class = document.getElementById("cabin");
+            seat_location = document.getElementById("seat_selection");
+            meals = document.getElementById("special_meals");
+            drinks = document.getElementById("drinks");
+            airport_pickup = document.getElementById("airport_pickup");
+            pet = document.getElementById("pet");
+            special_treatment = document.getElementById("special_treatment");
+            adults = document.getElementById("adults");
+            children = document.getElementById("children");
+            infants = document.getElementById("infants");
+            currency = document.getElementById("currency");
+            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
+            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
+            adults.addEventListener("change", account_for_adult_passengers);
+            children.addEventListener("change", account_for_child_passengers);
+            computePrice();
+        }
+
+        //change number displayed meals and drinks inputs for adult passengers
+        function account_for_adult_passengers() {
+            if (adults_meals_and_drinks.childElementCount > parseInt(adults.value)) {
+                adults_meals_and_drinks.removeChild(adults_meals_and_drinks.children[adults_meals_and_drinks.childElementCount - 1]);
+            }
+            else {
+                var x = adults_meals_and_drinks.childElementCount + 1;
+                if (x == parseInt(adults.value)) {
+                    meals_and_drinks_div = document.createElement("div");
+                    meals_and_drinks_div.setAttribute("class", "form-elts");
+                    new_meal = document.createElement("p");
+                    label_for_meal = document.createElement("label");
+                    label_for_meal.for = "special_meals_for_adult" + x;
+                    label_for_meal.innerText = "Special meal for adult " + x;
+                    new_meal.appendChild(label_for_meal);
+
+                    meal_list = document.createElement("select");
+                    meal_list.id = "special_meals_for_adult" + x;
+                    meal_list.name = "special_meals_for_adult" + x;
+
+                    meal_list.innerHTML = "<option selected>None</option>" +
+                        "<option>Turkey sandwich</option>" +
+                        "<option>Chicken with rice</option>" +
+                        "<option>Ceasar Salad</option>";
+
+                    new_meal.appendChild(meal_list);
+
+                    meals_and_drinks_div.appendChild(new_meal);
+
+                    new_drink = document.createElement("p");
+                    label_for_drink = document.createElement("label");
+                    label_for_drink.for = "drink_for_adult" + x;
+                    label_for_drink.innerText = "Drink for adult " + x;
+                    new_drink.appendChild(label_for_drink);
+
+                    drink_list = document.createElement("select");
+                    drink_list.id = "drink_for_adult" + x;
+                    drink_list.name = "drink_for_adult" + x;
+
+                    drink_list.innerHTML = "<option selected>Water</option>" +
+                        "<option>Orange juice</option>" +
+                        "<option>Apple juice</option>" +
+                        "<option>Coke</option>" +
+                        "<option>Sprite</option>" +
+                    "<option>Mirinda</option>" +
+                        "<option>Ayran</option>";
+
+                    new_drink.appendChild(drink_list);
+
+                    meals_and_drinks_div.appendChild(new_drink);
+
+                    adults_meals_and_drinks.appendChild(meals_and_drinks_div);
+                }
+            }
+
+        }
+
+        //change number displayed meals and drinks inputs for child passengers
+        function account_for_child_passengers() {
+            if (children_meals_and_drinks.childElementCount > parseInt(children.value)) {
+                children_meals_and_drinks.removeChild(children_meals_and_drinks.children[children_meals_and_drinks.childElementCount - 1]);
+            }
+            else {
+                var x = children_meals_and_drinks.childElementCount + 1;
+                if (x == parseInt(children.value)) {
+                    meals_and_drinks_div = document.createElement("div");
+                    meals_and_drinks_div.setAttribute("class", "form-elts");
+                    new_meal = document.createElement("p");
+                    label_for_meal = document.createElement("label");
+                    label_for_meal.for = "special_meals_for_child" + x;
+                    label_for_meal.innerText = "Special meal for child " + x;
+                    new_meal.appendChild(label_for_meal);
+
+                    meal_list = document.createElement("select");
+                    meal_list.id = "special_meals_for_child" + x;
+                    meal_list.name = "special_meals_for_child" + x;
+
+                    meal_list.innerHTML = "<option selected>None</option>" +
+                        "<option>Turkey sandwich</option>" +
+                        "<option>Chicken with rice</option>" +
+                        "<option>Ceasar Salad</option>";
+
+                    new_meal.appendChild(meal_list);
+
+                    meals_and_drinks_div.appendChild(new_meal);
+
+                    new_drink = document.createElement("p");
+                    label_for_drink = document.createElement("label");
+                    label_for_drink.for = "drink_for_child" + x;
+                    label_for_drink.innerText = "Drink for child " + x;
+                    new_drink.appendChild(label_for_drink);
+
+                    drink_list = document.createElement("select");
+                    drink_list.id = "drink_for_child" + x;
+                    drink_list.name = "drink_for_child" + x;
+
+                    drink_list.innerHTML = "<option selected>Water</option>" +
+                        "<option>Orange juice</option>" +
+                        "<option>Apple juice</option>" +
+                        "<option>Coke</option>" +
+                        "<option>Sprite</option>" +
+                    "<option>Mirinda</option>" +
+                        "<option>Ayran</option>";
+
+                    new_drink.appendChild(drink_list);
+
+                    meals_and_drinks_div.appendChild(new_drink);
+
+                    children_meals_and_drinks.appendChild(meals_and_drinks_div);
+                }
+            }
+
+        }
+
+        var price;
+
+        function computePrice() {
+            displayed_price = document.getElementById("price");
+            price = 0;
+            if (trip_type.value == "Round-trip") {
+                price += 90;
+            }
+            else if (trip_type.value == "One-way") {
+                price += 60;
+            }
+            else {
+                price += 105;
+            }
+
+            if (cabin_class.value == "Business class") {
+                price = Math.round(price * 1.4);
+            }
+            else if (cabin_class.value == "First class") {
+                price = Math.round(price * 1.75);
+            }
+
+            if (seat_location.value == "Window seat") {
+                price += 5;
+            }
+
+            if (airport_pickup.checked) {
+                price += 10;
+            }
+
+            if (pet.value != "None") {
+                price += 5;
+            }
+
+            if (special_treatment.value != "") {
+                price += 10;
+            }
+
+            initial_price = price;
+
+            if (adults.value != "0") {
+                price *= parseInt(adults.value);
+            }
+
+            if (children.value != "0") {
+                if (adults.value != "0") //price changed due to adult passengers
+                {
+                    price += Math.round(initial_price * parseInt(children.value) * 0.75);
+                }
+                else {
+                    price = Math.round(initial_price * parseInt(children.value) * 0.75);
+                }
+            }
+
+            if (infants.value != "0") {
+                if (adults.value != "0" || children.value != "0") //price changed due to non-infant passengers
+                {
+                    price += Math.round(initial_price * parseInt(infants.value) * 0.5);
+                }
+                else {
+                    price = Math.round(initial_price * parseInt(infants.value) * 0.5);
+                }
+            }
+            
+            for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
+                var adult_meal = document.getElementById("special_meals_for_adult" + x);
+                if (adult_meal.value != "None") {
+                    price += 10;
+                }
+
+                var adult_drink = document.getElementById("drink_for_adult" + x);
+                if (adult_drink.value == "Orange juice" || adult_drink.value == "Apple juice" || adult_drink.value == "Ayran") {
+                    price += 2;
+                }
+                else if (adult_drink.value == "Coke" || adult_drink.value == "Sprite" || adult_drink.value == "Mirinda") {
+                    price += 3;
+                }
+            }
+
+            for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
+                var child_meal = document.getElementById("special_meals_for_child" + x);
+                if (child_meal.value != "None") {
+                    price += 10;
+                }
+
+                var child_drink = document.getElementById("drink_for_child" + x);
+                if (child_drink.value == "Orange juice" || child_drink.value == "Apple juice" || child_drink.value == "Ayran") {
+                    price += 2;
+                }
+                else if (child_drink.value == "Coke" || child_drink.value == "Sprite" || child_drink.value == "Mirinda") {
+                    price += 3;
+                }
+            }
+
+            if (currency.value == "€") {
+                price *= 1.03;
+            }
+            else if (currency.value == "£") {
+                price *= 0.9;
+            }
+            else if (currency.value == "L.L") {
+                price *= 40000;
+            }
+
+            price = price.toFixed(2);
+
+            displayed_price.innerText = price;
         }
     </script>
 </head>
@@ -91,48 +350,48 @@
 <body>
     <header>
         <nav>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <!-- Sub navigation menu -->
-            <div class="subnav">
-              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-              <div class="subnav-content">
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="manage_booking.html">Manage Booking</a></li>
-                <li><a href="FlightStatus.html">Flight Status</a></li>
-              </div>
-            </div>
-            <div class="subnav">
-              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-              <div class="subnav-content">
-                <li><a href="PassengerServices.html">Passenger Services</a></li>
-                <li><a href="cargo.html">Cargo Services</a></li>
-                <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-              </div>
-            </div>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="#FAQ">FAQ</a>
-            <li><a href="login.html">Login/Register</a>
-          </ul>
-  
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="main_page.html" class="active">
-              <ion-icon name="airplane-outline"></ion-icon>
-            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="checkin.html">Check-in</a>
-              <a href="login.html">Login</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="#FAQ">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
         </nav>
-      </header>
-  
+    </header>
+
     <h1>ROA Airlines</h1>
     <h1>Book a Trip</h1>
     <div style="text-align:center;">
@@ -140,7 +399,7 @@
     </div>
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Booking</legend>
-        <form method="post" action="">
+        <form method="post" action="" onchange="computePrice()">
             <p>
                 <label for="trip_type">Type of trip</label>
                 <select onchange="check_trip_type()" id="trip_type" name="trip_type">
@@ -333,8 +592,51 @@
                 </p>
             </div>
 
+            <p>
+                <label>Airport pick-up: </label>
+                <label>Yes</label>
+                <input type="radio" id="airport_pickup" name="airport_pickup" value="yes">
+                <label>No</label>
+                <input type="radio" name="airport_pickup" value="no">
+            </p>
+            <p>
+                <label for="pet">Accompanying pet</label>
+                <select id="pet" name="pet">
+                    <option selected>None</option>
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Bird</option>
+                </select>
+            </p>
+            <p>
+                <label for="special_treatment">Please specify a special treatment if needed:</label>
+                <input type="text" id="special_treatment" name="special_treatment">
+            </p>
+
+            <h3 style="margin-top: 1em;">Passengers</h3>
             <div class="form-elts">
                 <p>
+                    <label for="adults">Adults (12+ years)</label>
+                    <input type="number" id="adults" name="adults" min="0" max="9" value="0" required
+                        onchange="check_passengers()">
+                </p>
+                <p>
+                    <label for="children">Children (2-12 years)</label>
+                    <input type="number" id="children" name="children" min="0" max="9" value="0" required
+                        onchange="check_passengers()">
+                </p>
+                <p>
+                    <label for="infants">Infants (0-23 months)</label>
+                    <input type="number" id="infants" name="infants" min="0" max="9" value="0" required
+                        onchange="check_passengers()">
+                </p>
+            </div>
+
+            <h3 style="margin-top: 1em;">Meals and Drinks</h3>
+            <div id="meals_and_drinks">
+                <div id="adults_meals_and_drinks"></div>
+                <div id="children_meals_and_drinks"></div>
+                <!-- <p>
                     <label for="special_meals">Special meals</label>
                     <select id="special_meals" name="special_meals">
                         <option selected>None</option>
@@ -354,44 +656,21 @@
                         <option>Mirinda</option>
                         <option>Ayran</option>
                     </select>
-                </p>
+                </p> -->
             </div>
+            <hr style="margin-top: 1em;">
+            <div style="font-size: 1.2em; margin-top: 1em;">
+                <strong>Total price: <span id="price"></span></strong>
 
-            <p>
-                <label>Airport pick-up: </label>
-                <label>Yes</label>
-                <input type="radio" name="airport_pickup" value="yes">
-                <label>No</label>
-                <input type="radio" name="airport_pickup" value="no">
-            </p>
-            <p>
-                <label for="pet">Accompanying pet</label>
-                <select id="pet" name="pet">
-                    <option selected>None</option>
-                    <option>Dog</option>
-                    <option>Cat</option>
-                    <option>Bird</option>
+                <select id="currency" name="currency"
+                    style="font-size:0.75em; margin-left: .3em; border-color: silver;">
+                    <option selected>$</option>
+                    <option>&euro;</option>
+                    <option>&#163;</option>
+                    <!--pound-->
+                    <option>L.L</option>
                 </select>
-            </p>
-            <p>
-                <label for="special_treatment">Please specify a special treatment if needed:</label>
-                <input type="text" id="special_treatment" name="special_treatment">
-            </p>
-            <h3 style="margin-top: 1em;">Passengers</h3>
-            <div class="form-elts">
-                <p>
-                    <label for="adults">Adults (12+ years)</label>
-                    <input type="number" id="adults" name="adults" min="0" max="9" value="0" required onchange="check_passengers()">
-                </p>
-                <p>
-                    <label for="children">Children (2-12 years)</label>
-                    <input type="number" id="children" name="children" min="0" max="9" value="0" required onchange="check_passengers()">
-                </p>
-                <p>
-                    <label for="infants">Infants (0-23 months)</label>
-                    <input type="number" id="infants" name="infants" min="0" max="9" value="0" required onchange="check_passengers()">
-                </p>
-            </div> 
+            </div>
             <p>
                 <input type="submit" id="submit" value="Submit" style="display:none">
                 <input type="reset" value="Clear">
