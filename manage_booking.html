@@ -27,10 +27,10 @@
             margin-top: 2em;
             margin-bottom: 1em;
             margin-left: 10em;
-            margin-right: 10em; 
+            margin-right: 10em;
             border-style: solid;
-            border-width: 0.05em; 
-            border-radius: 0.5em; 
+            border-width: 0.05em;
+            border-radius: 0.5em;
         }
 
         input[type=submit] {
@@ -62,63 +62,485 @@
             bottom: .5em;
         }
 
-        input, select {
+        input,
+        select {
             box-sizing: border-box;
             padding: .5em;
             margin: 1em;
         }
     </style>
+    <script>
+        window.addEventListener("load", start);
+
+        var trip_type;
+        var cabin_class;
+        var seat_location;
+        var meals;
+        var drinks;
+        var airport_pickup;
+        var pet;
+        var special_treatment;
+        var adults;
+        var children;
+        var infants;
+        var currency;
+        var adults_meals_and_drinks;
+        var children_meals_and_drinks;
+
+        //initial values
+        var initial_adults;
+        var initial_children;
+        var initial_infants;
+        var initial_class;
+        var initial_seat;
+        var initial_airport_pickup;
+        var initial_pet;
+        var initial_special_treatment;
+        var initial_adult_meals;
+        var initial_adult_drinks;
+        var initial_children_meals;
+        var initial_children_drinks;
+
+        function start() {
+            trip_type = document.getElementById("trip_type");
+            cabin_class = document.getElementById("cabin");
+            seat_location = document.getElementById("seat_selection");
+            //meals = document.getElementById("special_meals");
+            //drinks = document.getElementById("drinks");
+            airport_pickup = document.getElementById("airport_pickup");
+            pet = document.getElementById("pet");
+            special_treatment = document.getElementById("special_treatment");
+            adults = document.getElementById("adults");
+            children = document.getElementById("children");
+            infants = document.getElementById("infants");
+            currency = document.getElementById("currency");
+            modification_currency = document.getElementById("modification_currency");
+            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
+            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
+            account_for_adult_passengers();
+            account_for_child_passengers();
+
+            initial_adults = adults.innerText;
+            initial_children = children.innerText;
+            initial_infants = infants.innerText;
+            initial_class = cabin_class.value;
+            initial_seat = seat_location.value;
+            initial_airport_pickup = airport_pickup.checked; //to see if customer booked for airport pickup initially
+            initial_pet = pet.value;
+            initial_special_treatment = special_treatment.value;
+
+            initial_adult_meals = [];
+            
+            for (var x = 0; x < parseInt(adults.innerText); x++) {
+                initial_adult_meals.push(document.getElementById("special_meals_for_adult" + (x + 1)).value);
+            }
+
+            initial_adult_drinks = [];
+            
+            for (var x = 0; x < parseInt(adults.innerText); x++) {
+                initial_adult_drinks.push(document.getElementById("drink_for_adult" + (x + 1)).value);
+            }
+            
+            initial_children_meals = [];
+            
+            for (var x = 0; x < parseInt(children.innerText); x++) {
+                initial_children_meals.push(document.getElementById("special_meals_for_child" + (x + 1)).value);
+            }
+
+            initial_children_drinks = [];
+            
+            for (var x = 0; x < parseInt(children.innerText); x++) {
+                initial_children_drinks.push(document.getElementById("drink_for_child" + (x + 1)).value);
+            }
+            
+            computePrice();
+        }
+
+        //change number displayed meals and drinks inputs for adult passengers
+        function account_for_adult_passengers() {
+            if (adults_meals_and_drinks.childElementCount > parseInt(adults.innerText)) {
+                adults_meals_and_drinks.removeChild(adults_meals_and_drinks.children[adults_meals_and_drinks.childElementCount - 1]);
+            }
+            else {
+                for (var x = adults_meals_and_drinks.childElementCount + 1; x <= parseInt(adults.innerText); x++) {
+                    meals_and_drinks_div = document.createElement("div");
+                    meals_and_drinks_div.setAttribute("class", "form-elts");
+                    new_meal = document.createElement("p");
+                    label_for_meal = document.createElement("label");
+                    label_for_meal.for = "special_meals_for_adult" + x;
+                    label_for_meal.innerText = "Special meal for adult " + x;
+                    new_meal.appendChild(label_for_meal);
+
+                    meal_list = document.createElement("select");
+                    meal_list.id = "special_meals_for_adult" + x;
+                    meal_list.name = "special_meals_for_adult" + x;
+
+                    meal_list.innerHTML = "<option selected>None</option>" +
+                        "<option>Turkey sandwich</option>" +
+                        "<option>Chicken with rice</option>" +
+                        "<option>Ceasar Salad</option>";
+
+                    new_meal.appendChild(meal_list);
+
+                    meals_and_drinks_div.appendChild(new_meal);
+
+                    new_drink = document.createElement("p");
+                    label_for_drink = document.createElement("label");
+                    label_for_drink.for = "drink_for_adult" + x;
+                    label_for_drink.innerText = "Drink for adult " + x;
+                    new_drink.appendChild(label_for_drink);
+
+                    drink_list = document.createElement("select");
+                    drink_list.id = "drink_for_adult" + x;
+                    drink_list.name = "drink_for_adult" + x;
+
+                    drink_list.innerHTML = "<option selected>Water</option>" +
+                        "<option>Orange juice</option>" +
+                        "<option>Apple juice</option>" +
+                        "<option>Coke</option>" +
+                        "<option>Sprite</option>" +
+                        "<option>Mirinda</option>" +
+                        "<option>Ayran</option>";
+
+                    new_drink.appendChild(drink_list);
+
+                    meals_and_drinks_div.appendChild(new_drink);
+
+                    adults_meals_and_drinks.appendChild(meals_and_drinks_div);
+                }
+            }
+
+        }
+
+        //change number displayed meals and drinks inputs for child passengers
+        function account_for_child_passengers() {
+            if (children_meals_and_drinks.childElementCount > parseInt(children.innerText)) {
+                children_meals_and_drinks.removeChild(children_meals_and_drinks.children[children_meals_and_drinks.childElementCount - 1]);
+            }
+            else {
+                for (var x = children_meals_and_drinks.childElementCount + 1; x <= parseInt(children.innerText); x++) {
+                    meals_and_drinks_div = document.createElement("div");
+                    meals_and_drinks_div.setAttribute("class", "form-elts");
+                    new_meal = document.createElement("p");
+                    label_for_meal = document.createElement("label");
+                    label_for_meal.for = "special_meals_for_child" + x;
+                    label_for_meal.innerText = "Special meal for child " + x;
+                    new_meal.appendChild(label_for_meal);
+
+                    meal_list = document.createElement("select");
+                    meal_list.id = "special_meals_for_child" + x;
+                    meal_list.name = "special_meals_for_child" + x;
+
+                    meal_list.innerHTML = "<option selected>None</option>" +
+                        "<option>Turkey sandwich</option>" +
+                        "<option>Chicken with rice</option>" +
+                        "<option>Ceasar Salad</option>";
+
+                    new_meal.appendChild(meal_list);
+
+                    meals_and_drinks_div.appendChild(new_meal);
+
+                    new_drink = document.createElement("p");
+                    label_for_drink = document.createElement("label");
+                    label_for_drink.for = "drink_for_child" + x;
+                    label_for_drink.innerText = "Drink for child " + x;
+                    new_drink.appendChild(label_for_drink);
+
+                    drink_list = document.createElement("select");
+                    drink_list.id = "drink_for_child" + x;
+                    drink_list.name = "drink_for_child" + x;
+
+                    drink_list.innerHTML = "<option selected>Water</option>" +
+                        "<option>Orange juice</option>" +
+                        "<option>Apple juice</option>" +
+                        "<option>Coke</option>" +
+                        "<option>Sprite</option>" +
+                        "<option>Mirinda</option>" +
+                        "<option>Ayran</option>";
+
+                    new_drink.appendChild(drink_list);
+
+                    meals_and_drinks_div.appendChild(new_drink);
+
+                    children_meals_and_drinks.appendChild(meals_and_drinks_div);
+                }
+            }
+
+        }
+
+        var price;
+
+        function computePrice() {
+            displayed_price = document.getElementById("price");
+            price = 0;
+            if (trip_type.innerText == "Round-trip") {
+                price += 90;
+            }
+            else if (trip_type.innerText == "One-way") {
+                price += 60;
+            }
+            else {
+                price += 105;
+            }
+
+            if (cabin_class.value == "Business class") {
+                price = Math.round(price * 1.4);
+            }
+            else if (cabin_class.value == "First class") {
+                price = Math.round(price * 1.75);
+            }
+
+            if (seat_location.value == "Window seat") {
+                price += 5;
+            }
+
+            if (airport_pickup.checked) {
+                price += 10;
+            }
+
+            if (pet.value != "None") {
+                price += 5;
+            }
+
+            if (special_treatment.value != "") {
+                price += 10;
+            }
+
+            initial_price = price;
+
+            if (adults.innerText != "0") {
+                price *= parseInt(adults.innerText);
+            }
+
+            if (children.innerText != "0") {
+                if (adults.innerText != "0") //price changed due to adult passengers
+                {
+                    price += Math.round(initial_price * parseInt(children.innerText) * 0.75);
+                }
+                else {
+                    price = Math.round(initial_price * parseInt(children.innerText) * 0.75);
+                }
+            }
+
+            if (infants.innerText != "0") {
+                if (adults.innerText != "0" || children.innerText != "0") //price changed due to non-infant passengers
+                {
+                    price += Math.round(initial_price * parseInt(infants.innerText) * 0.5);
+                }
+                else {
+                    price = Math.round(initial_price * parseInt(infants.innerText) * 0.5);
+                }
+            }
+
+            for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
+                var adult_meal = document.getElementById("special_meals_for_adult" + x);
+                if (adult_meal.value != "None") {
+                    price += 10;
+                }
+
+                var adult_drink = document.getElementById("drink_for_adult" + x);
+                if (adult_drink.value == "Orange juice" || adult_drink.value == "Apple juice" || adult_drink.value == "Ayran") {
+                    price += 2;
+                }
+                else if (adult_drink.value == "Coke" || adult_drink.value == "Sprite" || adult_drink.value == "Mirinda") {
+                    price += 3;
+                }
+            }
+
+            for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
+                var child_meal = document.getElementById("special_meals_for_child" + x);
+                if (child_meal.value != "None") {
+                    price += 10;
+                }
+
+                var child_drink = document.getElementById("drink_for_child" + x);
+                if (child_drink.value == "Orange juice" || child_drink.value == "Apple juice" || child_drink.value == "Ayran") {
+                    price += 2;
+                }
+                else if (child_drink.value == "Coke" || child_drink.value == "Sprite" || child_drink.value == "Mirinda") {
+                    price += 3;
+                }
+            }
+
+            if (currency.value == "€") {
+                price *= 1.03;
+            }
+            else if (currency.value == "£") {
+                price *= 0.9;
+            }
+            else if (currency.value == "L.L") {
+                price *= 40000;
+            }
+
+            price = price.toFixed(2);
+
+            displayed_price.innerText = price;
+        }
+
+        var modification_fees;
+
+        function compute_modification_price() {
+            displayed_price = document.getElementById("modification_fees");
+            modification_fees = 0;
+            if (cabin_class.value != initial_class) {
+                if (initial_class == "Economy class") {
+                    if (cabin_class.value == "Business class") {
+                        modification_fees = Math.round(price * 1.4) - price;
+                        modification_fees += 5; //additional modification fee
+                    }
+                    else if (cabin_class.value == "First class") {
+                        modification_fees = Math.round(price * 1.75) - price;
+                        modification_fees += 5; //additional modification fee
+                    }
+                }
+                else if (initial_class == "Business class") {
+                    if (cabin_class.value == "Economy class") {
+                        modification_fees += 5; //charge for downgrading
+                    }
+                    else if (cabin_class.value == "First class") {
+                        modification_fees = Math.round(price * (1.75 / 1.4)) - price;
+                        modification_fees += 5; //additional modification fee
+                    }
+                }
+                else //it was first class
+                {
+                    modification_fees += 10; //charge for downgrading
+                }
+
+            }
+
+            if (seat_location.value != initial_seat) {
+                modification_fees += 5;
+            }
+
+            if (airport_pickup.checked != initial_airport_pickup) {
+                modification_fees += 10;
+            }
+
+            if (pet.value != initial_pet) {
+                modification_fees += 5;
+            }
+
+            if (special_treatment.value != initial_special_treatment) {
+                modification_fees += 7;
+            }
+
+            initial_fees = modification_fees;
+
+            for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
+                var adult_meal = document.getElementById("special_meals_for_adult" + x);
+                if (adult_meal.value != initial_adult_meals[x - 1]) {
+                    modification_fees += 5;
+                }
+
+                var adult_drink = document.getElementById("drink_for_adult" + x);
+                if (adult_drink.value != initial_adult_drinks[x - 1]) {
+                    modification_fees += 2;
+                }
+            }
+
+            for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
+                var child_meal = document.getElementById("special_meals_for_child" + x);
+                if (child_meal.value !=  initial_children_meals[x - 1]) {
+                    modification_fees += 5;
+                }
+
+                var child_drink = document.getElementById("drink_for_child" + x);
+                if (child_drink.value != initial_children_drinks[x - 1]) {
+                    modification_fees += 2;
+                }
+            }
+
+            if (modification_currency.value == "€") {
+                modification_fees *= 1.03;
+            }
+            else if (modification_currency.value == "£") {
+                modification_fees *= 0.9;
+            }
+            else if (modification_currency.value == "L.L") {
+                modification_fees *= 40000;
+            }
+
+            modification_fees = modification_fees.toFixed(2);
+
+            displayed_price.innerText = modification_fees;
+        }
+
+        var initial_price = price; //in dollars
+
+        function change_currency_initial_price() {
+            displayed_price = document.getElementById("price");
+
+            if (currency.value == "€") {
+                price *= 1.03;
+            }
+            else if (currency.value == "£") {
+                price *= 0.9;
+            }
+            else if (currency.value == "L.L") {
+                price *= 40000;
+            }
+            else {
+                price = initial_price; //in dollars
+            }
+
+            price = price.toFixed(2);
+
+            displayed_price.innerText = price;
+        }
+
+    </script>
 </head>
 
 <body>
     <header>
         <nav>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <!-- Sub navigation menu -->
-            <div class="subnav">
-              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-              <div class="subnav-content">
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="manage_booking.html">Manage Booking</a></li>
-                <li><a href="FlightStatus.html">Flight Status</a></li>
-              </div>
-            </div>
-            <div class="subnav">
-              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-              <div class="subnav-content">
-                <li><a href="PassengerServices.html">Passenger Services</a></li>
-                <li><a href="cargo.html">Cargo Services</a></li>
-                <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-              </div>
-            </div>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="#FAQ">FAQ</a>
-            <li><a href="login.html">Login/Register</a>
-          </ul>
-  
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="main_page.html" class="active">
-              <ion-icon name="airplane-outline"></ion-icon>
-            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="checkin.html">Check-in</a>
-              <a href="login.html">Login</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="#FAQ">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
         </nav>
-      </header>
+    </header>
     <h1>ROA Airlines</h1>
     <h1>Manage Booking</h1>
     <p style="text-align:center;">View your reservations and make changes to your flight details</p>
 
-    
+
 
     <form method="post" action="" class="view-booking">
         <div class="form-elts-search">
@@ -140,16 +562,16 @@
 
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Reservation</legend>
-        <form method="post" action="">
+        <form method="post" action="" onchange="compute_modification_price()">
             <p>
-                Type of Trip: Round-trip
+                Type of Trip: <span id="trip_type">Round-trip</span>
             </p>
             <div class="form-elts" style="margin-top:1em;">
                 <p style="margin-right: 2em;">
-                    From: Abidjan	Cote d'Ivoire	ABJ
+                    From: Abidjan Cote d'Ivoire ABJ
                 </p>
                 <p>
-                    To: Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY
+                    To: Beirut - Beirut Rafic Hariri International Airport Lebanon BEY
                 </p>
             </div>
             <div class="form-elts" style="margin-top:1em; margin-bottom: 1em;">
@@ -182,7 +604,7 @@
                 </p>
             </div>
 
-            <div class="form-elts">
+            <!-- <div class="form-elts">
                 <p>
                     <label for="special_meals">Special meals</label>
                     <select id="special_meals" name="special_meals">
@@ -204,12 +626,12 @@
                         <option>Ayran</option>
                     </select>
                 </p>
-            </div>
+            </div> -->
 
             <p>
                 <label>Airport pick-up: </label>
                 <label>Yes</label>
-                <input type="radio" name="airport_pickup" value="yes">
+                <input type="radio" id="airport_pickup" name="airport_pickup" value="yes">
                 <label>No</label>
                 <input type="radio" name="airport_pickup" value="no" checked>
             </p>
@@ -223,20 +645,58 @@
                 </select>
             </p>
 
+            <p>
+                <label for="special_treatment">Please specify a special treatment if needed:</label>
+                <input type="text" id="special_treatment" name="special_treatment">
+            </p>
+
             <h3 style="margin-top: 1em;">Passengers</h3>
-            <div class="form-elts">
+            <div class="form-elts" style="margin-top: 1em;">
                 <p>
-                    <label for="adults">Adults (12+ years)</label>
-                    <input type="number" id="adults" name="adults" min="1" max="9" value="1">
+                    <label for="adults">Adults (12+ years):</label>
+                    <span id="adults">2</span>
                 </p>
                 <p>
-                    <label for="children">Children (2-12 years)</label>
-                    <input type="number" id="children" name="children" min="0" max="9" value="0">
+                    <label for="children">Children (2-12 years):</label>
+                    <span id="children">2</span>
                 </p>
                 <p>
-                    <label for="infants">Infants (0-23 months)</label>
-                    <input type="number" id="infants" name="infants" min="0" max="9" value="0">
+                    <label for="infants">Infants (0-23 months):</label>
+                    <span id="infants">0</span>
                 </p>
+            </div>
+
+            <h3 style="margin-top: 1em;">Meals and Drinks</h3>
+            <div id="meals_and_drinks">
+                <div id="adults_meals_and_drinks"></div>
+                <div id="children_meals_and_drinks"></div>
+
+            </div>
+
+            <hr style="margin-top: 1em;">
+            <div style="font-size: 1.2em; margin-top: 1em;">
+                <strong>Initial price: <span id="price"></span></strong>
+
+                <select id="currency" name="currency" style="font-size:0.75em; margin-left: .3em; border-color: silver;"
+                    onchange="change_currency_initial_price()">
+                    <option selected>$</option>
+                    <option>&euro;</option>
+                    <option>&#163;</option>
+                    <!--pound-->
+                    <option>L.L</option>
+                </select>
+            </div>
+            <div style="font-size: 1.2em; margin-top: 1em;">
+                <strong>Modification fees: <span id="modification_fees">0.00</span></strong>
+
+                <select id="modification_currency" name="modification_currency"
+                    style="font-size:0.75em; margin-left: .3em; border-color: silver;">
+                    <option selected>$</option>
+                    <option>&euro;</option>
+                    <option>&#163;</option>
+                    <!--pound-->
+                    <option>L.L</option>
+                </select>
             </div>
 
             <p>
