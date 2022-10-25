@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='main_style.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1 {
+            color: rgb(52, 51, 51);
+        }
+
+        h2 {
+            color: rgb(52, 51, 51);
+        }
+
+        h3 {
+            color: rgb(52, 51, 51);
+        }
+
+        .btn {
+            background-color: rgb(84, 201, 247);
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            box-shadow: inset 200px 0 0 0 #54b3d6;
+            color: black;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-right: 8px;
+            padding-left: 8px;
+            border: 1px solid;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 15px 10px;
+            border-bottom: 2px solid #999;
+        }
+
+        
+        .side-topnav {
+            position: fixed;
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+            width: 15vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .side-topnav .menu {
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .side-topnav li {
+            font-size: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 40px;
+            padding-left: 40px;
+            color: white;
+            display: flex;
+            margin-left: -30px;
+        }
+        
+        .side-topnav li:hover {
+            background: white;
+            box-shadow: inset 400px 0 0 0 #54b3d6;
+            color: black;
+            transition: all 1s ease;
+            cursor: pointer;
+        }
+        
+        .container {
+            position: absolute;
+            right: 0;
+            width: 85vw;
+            height: 100vh;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 85vw;
+            height: 10vh;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* z-index: 1; */
+        }
+        
+        .topnav {
+            width: 100%;
+            display: flex;
+        }
+        
+        .search {
+            flex: 4;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search input[type=text] {
+            padding: 10px;
+            width: 60%;
+            font-size: 1em;
+            border-radius: .5em;
+        }
+        
+        .btn {
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+        }
+        
+        button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        
+        button img {
+            width: 30px;
+            height: 30px;
+            
+        }
+        
+        .user {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .user a {
+            background-color: rgb(84, 201, 247);
+        }
+        
+        .img-case img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .content {
+            position: relative;
+            margin-top: 10vh;
+            min-height: 85vh;
+            background: #f1f1f1;
+        }
+        
+        /* statistics */
+        .container1 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 15px;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: white;
+            width: 245px;
+            height: 150px;
+            box-shadow: 2px 5px 10px 2px rgba(17, 16, 16, 0.2);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        
+        table {
+            padding: 10px;
+        }
+
+        th {
+            text-align: left;
+            padding: 8px;
+        }
+
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+
+        /* flight control */
+        .container2 {
+            display: flex;
+            align-items: flex-start;
+            min-height: 59vh;
+        }
+        
+        .flight-control {
+            display: flex;
+            min-height: 51vh;
+            flex: 4;
+            background: white;
+            margin: 0 25px 25px 25px;
+            box-shadow: 2px 5px 10px 2px rgba(17, 16, 16, 0.2);
+            flex-direction: column;
+        }
+
+
+        /* new custumers */
+        .container3 {
+            flex: 2;
+            background: white;
+            min-height: 50vh;
+            margin: 0 25px;
+            box-shadow: 2px 5px 10px 2px rgba(17, 16, 16, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container3 table td:nth-child(1) img {
+            height: 40px;
+            width: 40px;
+        }
+
+
+        /* media queries */
+        @media screen and (max-width: 1040px) {
+            .side-topnav li {
+                font-size: 17px;
+            }
+        }
+
+        @media screen and (max-width: 930px) {
+            .side-topnav {
+                align-items: center;
+            }
+
+            .side-topnav li span {
+                display: none;
+            }
+
+            .side-topnav li img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .side-topnav li:hover {
+                padding: 9px 40px;
+            }
+        }
+
+        @media screen and (max-width:536px) {
+
+            .container .content .container1 {
+                justify-content: center;
+            }
+
+            .menu h1 {
+                font-size: 16px;
+            }
+
+            .side-topnav li img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .flight-control table th:nth-child(2),
+            .flight-control table td:nth-child(2) {
+                display: none;
+            }
+        }
+    </style>
+
+    <title>ADMIN</title>
+</head>
+
+
+<body>
+    <div class="side-topnav">
+        <div class="menu">
+        </div>
+        <ul>
+            <li><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Dashboard</span> </li>
+            <li><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Home</span> </li>
+            <li><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Login</span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="topnav">
+                <div class="search">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit"><img src="admin.pics/search.svg" alt="Search Bar"></button>
+                </div>
+                <div class="user">
+                    <a href="#" class="btn">New Flight</a>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container1">
+                <div class="box">
+                    <div>
+                        <h1>23451</h1>
+                        <h3>Customers</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="admin.pics/person-fill.svg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <h1>354</h1>
+                        <h3>Flights</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="mainpics/airplanelogo.svg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <h1>49</h1>
+                        <h3>Airplanes</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="mainpics/airplanelogo.svg" alt="">
+                    </div>
+                </div>
+                <div class="box">
+                    <div>
+                        <h1>2310981</h1>
+                        <h3>Income</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="admin.pics/currency-dollar.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="container2">
+                <div class="flight-control">
+                    <div class="title">
+                        <h2>Recent Flights</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Flight Number</th>
+                            <th>departure</th>
+                            <th>Price</th>
+                            <th>Option</th>
+                        </tr>
+                        <tr>
+                            <td>110</td>
+                            <td>CVG</td>
+                            <td>$120</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>111</td>
+                            <td>BSR</td>
+                            <td>$220</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>112</td>
+                            <td>BEY</td>
+                            <td>$320</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>113</td>
+                            <td>BRU</td>
+                            <td>$320</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>114</td>
+                            <td>BEY</td>
+                            <td>$120</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>115</td>
+                            <td>BEY</td>
+                            <td>$220</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="container3">
+                    <div class="title">
+                        <h2>New Customers </h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Name</th>
+                            <th>option</th>
+                        </tr>
+                        <tr>
+                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
+                            <td>Marc Snow</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
+                            <td>Andrew Chemaly</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
+                            <td>Omar Majzoub</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                        <tr>
+                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
+                            <td>Robert Naame</td>
+                            <td><a href="#" class="btn">View</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
