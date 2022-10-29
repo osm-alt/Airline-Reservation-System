@@ -75,3 +75,13 @@ div.super-center {
   padding: 0.5em;
   font-size: 1.2rem;
 }
+.p3{
+  font-size: 22px;
+  background-color: rgba(13, 191, 158, 1);
+  text-align: center;
+  color: white;
+ }
+ .p3:hover{
+   color: white;
+   font-size: 40px;
+ }

@@ -12,6 +12,108 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
   </style>
+  <script>
+    var cabin;
+    var tier;
+    window.addEventListener("load", start, false);
+    function start(){
+      var subm = document.getElementById("subm");
+      subm.addEventListener("click", calculateP);
+    }
+    var price50;
+    var price20;
+    var price30;
+    var appd;
+    function calculateP(cabin, tier){
+      cabin = document.getElementById("select-class");
+      tier = document.getElementById("select-tier");
+      appd = document.getElementById("pp3");
+      if((cabin.value =="1")&&(tier.value=="0")){
+        price20=25;
+        price30=40;
+        price50=60;
+      }
+    else if((cabin.value =="1")&&(tier.value=="1")){
+        price20=22.5;
+        price30=37;
+        price50=57;
+      }
+    else if((cabin.value =="1")&&(tier.value=="2")){
+        price20=20;
+        price30=35;
+        price50=55;
+      }   
+    else if((cabin.value =="1")&&(tier.value=="3")){
+        price20=18;
+        price30=32;
+        price50=50;
+      }
+    else if((cabin.value =="2")&&(tier.value=="0")){
+        price20=22;
+        price30=40;
+        price50=60;
+      }
+    else if((cabin.value =="2")&&(tier.value=="1")){
+        price20=20;
+        price30=35;
+        price50=55;
+      }
+    else if((cabin.value =="2")&&(tier.value=="2")){
+        price20=18;
+        price30=32;
+        price50=52;
+      }   
+    else if((cabin.value =="2")&&(tier.value=="3")){
+        price20=15;
+        price30=30;
+        price50=45;
+      }
+    else if((cabin.value =="3")&&(tier.value=="0")){
+        price20=20;
+        price30=40;
+        price50=60;
+      }
+    else if((cabin.value =="3")&&(tier.value=="1")){
+        price20=20;
+        price30=35;
+        price50=50;
+      }
+    else if((cabin.value =="3")&&(tier.value=="2")){
+        price20=18;
+        price30=30;
+        price50=47;
+      }   
+    else if((cabin.value =="3")&&(tier.value=="3")){
+        price20=12;
+        price30=27;
+        price50=40;
+      }
+    else if((cabin.value =="4")&&(tier.value=="0")){
+        price20=15;
+        price30=37;
+        price50=55;
+      }
+    else if((cabin.value =="4")&&(tier.value=="1")){
+        price20=15;
+        price30=35;
+        price50=50;
+      }
+    else if((cabin.value =="4")&&(tier.value=="2")){
+        price20=15;
+        price30=30;
+        price50=45;
+      }   
+    else if((cabin.value =="4")&&(tier.value=="3")){
+        price20=10;
+        price30=20;
+        price50=35;
+      }
+          document.querySelector("span").innerText=price20 +"$";
+          document.getElementById("pr2").innerText=price30 +"$";
+          document.getElementById("pr3").innerText=price50 +"$";
+    }
+
+  </script>
 </head>
 
 
@@ -130,6 +232,11 @@
           </select>
         </div>
 
-        <div class="submit1"><input type="submit" value="Submit"></div>
-  </section>
+        <div class="submit1"><input type="button" id ="subm" value="Submit"></div>
+</section>
+  <div class="p3" id="pp3">
+    The price to pay for packages less than or equal to 20 kilograms is: <span></span><br>
+    The price to pay for packages less than or equal to 30 kilograms is:  <span id="pr2"></span><br>
+    The price to pay for packages less than or equal to 50 kilograms is:  <span id="pr3"></span>
+  </div>
 </body>
