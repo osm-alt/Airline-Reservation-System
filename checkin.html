@@ -11,55 +11,9 @@
   <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
   <script src="script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="main_page.html">Home Page</a></li>
-        <!-- Sub navigation menu -->
-        <div class="subnav">
-          <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-          <div class="subnav-content">
-            <li><a href="book_a_trip.html">Book a trip</a></li>
-            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-            <li><a href="manage_booking.html">Manage Booking</a></li>
-            <li><a href="FlightStatus.html">Flight Status</a></li>
-          </div>
-        </div>
-        <div class="subnav">
-          <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-          <div class="subnav-content">
-            <li><a href="PassengerServices.html">Passenger Services</a></li>
-            <li><a href="cargo.html">Cargo Services</a></li>
-            <li><a href="BaggageInfo.html">Baggage Info</a></li>
-            <li><a class="active" href="checkin.html">Check-in</a></li>
-          </div>
-        </div>
-        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-        <li><a href="Faq.html">FAQ</a>
-        <li><a href="login.html">Login/Register</a>
-      </ul>
-
-      <!-- hamburger menu, only essentiel links -->
-      <div class="topnav">
-        <a href="main_page.html" class="active">
-          <ion-icon name="airplane-outline"></ion-icon>
-        </a>
-        <div id="myLinks">
-          <a href="book_a_trip.html">Book a trip</a>
-          <a href="checkin.html">Check-in</a>
-          <a href="login.html">Login</a>
-        </div>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-          <i class="fa fa-bars"></i>
-        </a>
-    </nav>
-  </header>
-
 
   <style>
+
     h1 {
       text-align: center;
       font-weight: bold;
@@ -77,17 +31,14 @@
     }
 
     body {
-      background: rgb(34, 193, 195);
-      background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+      overflow-y: hidden;
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
     }
 
 
 
     section {
-      padding: 15rem 0 5rem 0;
-      /* background: rgb(34, 193, 195); */
-      /* background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); */
-
+      padding: 12rem 0 5rem 0;
     }
 
 
@@ -148,6 +99,16 @@
       margin-left: 10em;
       margin-right: 10em;
     }
+    
+    fieldset
+    {
+      background: linear-gradient(0deg, rgb(47, 220, 223) 0%, rgba(155, 92, 218, 0.623) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+    }
+
+    label
+    {
+      color: white;
+    }
 
     div.form-elts {
       justify-content: center;
@@ -182,6 +143,54 @@
       }
     }
   </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="main_page.html">Home Page</a></li>
+        <!-- Sub navigation menu -->
+        <div class="subnav">
+          <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+          <div class="subnav-content">
+            <li><a href="book_a_trip.html">Book a trip</a></li>
+            <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+            <li><a href="manage_booking.html">Manage Booking</a></li>
+            <li><a href="FlightStatus.html">Flight Status</a></li>
+          </div>
+        </div>
+        <div class="subnav">
+          <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+          <div class="subnav-content">
+            <li><a href="PassengerServices.html">Passenger Services</a></li>
+            <li><a href="cargo.html">Cargo Services</a></li>
+            <li><a href="BaggageInfo.html">Baggage Info</a></li>
+            <li><a class="active" href="checkin.html">Check-in</a></li>
+          </div>
+        </div>
+        <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+        <li><a href="Faq.html">FAQ</a>
+        <li><a href="login.html">Login/Register</a>
+      </ul>
+
+      <!-- hamburger menu, only essentiel links -->
+      <div class="topnav">
+        <a href="main_page.html" class="active">
+          <ion-icon name="airplane-outline"></ion-icon>
+        </a>
+        <div id="myLinks">
+          <a href="book_a_trip.html">Book a trip</a>
+          <a href="checkin.html">Check-in</a>
+          <a href="login.html">Login</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </nav>
+  </header>
+
+
 
   <figure class="textcenter">
     <img src="checkinpics/checkin.jpg" width="100%" height="400" alt="checkin">

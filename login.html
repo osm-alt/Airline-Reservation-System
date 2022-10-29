@@ -47,44 +47,46 @@
             border-width: 0.05em;
             border-radius: 0.5em;
 
+            
         }
-
+        
         fieldset {
-            filter: hue-rotate(120deg);
-            animation: animate 4s linear infinite;
             background: whitesmoke;
             width: 25rem;
             height: 25rem;
-            animation: name-of-animation 3s infinite;
-
-            /* animation : infinite-spinning 5s infinite; */
+            border: 5px solid white;
+            animation: flash_border 3s infinite;
+            
         }
 
-        @keyframes name-of-animation {
+
+        @keyframes flash_border {
             0% {
-                filter: hue-rotate(0deg);
+                border-color: rgb(0, 115, 255);
+            }
+
+            50% {
+                border-color: black;
             }
 
             100% {
-                filter: hue-rotate(360);
+                border-color: rgb(237, 239, 242);
             }
         }
 
+        
+        
 
-        svg
-        {
-            animation: infinite-spinning 3s infinite;
-        }
-
+        
         label {
             margin-left: 1rem;
         }
-
+        
         div.form-elts {
             display: flex;
             flex-wrap: wrap;
         }
-
+        
         input,
         button,
         select {
@@ -94,7 +96,7 @@
             padding: .5em;
             margin: 1em;
         }
-
+        
         input[type=submit] {
             width: 15rem;
             font-size: .9em;
@@ -102,18 +104,27 @@
             color: white;
             border-radius: .5em;
             margin-left: 1em;
-            /* margin: 1em; */
-            /* position: relative; */
-            /* bottom: .5em; */
+            filter: hue-rotate(120deg);
+            animation: coloredAnimation 3s infinite;
         }
+        
+        @keyframes coloredAnimation {
+            0% {
+                filter: hue-rotate(0deg);
+            }
 
+            100% {
+                filter: hue-rotate(360);
+            }
+        }
+        
         input[type=submit]:hover {
             cursor: pointer;
             color: black;
         }
-
+        
         .forgotPassword {
-
+            
             text-decoration: none;
             margin-left: 1em;
             /* font-size: 15px; */

@@ -51,8 +51,25 @@
         fieldset {
             background: whitesmoke;
             width: 25em;
-            height: 30rem;
+            height: 32rem;
+            animation: flash_border 3s infinite;
         }
+
+        
+        @keyframes flash_border {
+            0% {
+                border-color: rgb(0, 115, 255);
+            }
+
+            50% {
+                border-color: black;
+            }
+
+            100% {
+                border-color: rgb(237, 239, 242);
+            }
+        }
+
 
         label {
             margin-left: 1rem;
@@ -80,14 +97,23 @@
             color: white;
             border-radius: .5em;
             margin-left: 1em;
-            /* margin: 1em; */
-            /* position: relative; */
-            /* bottom: .5em; */
+            filter: hue-rotate(120deg);
+            animation: coloredAnimation 3s infinite;
         }
 
         input[type=submit]:hover {
             cursor: pointer;
             color: black;
+        }
+
+        @keyframes coloredAnimation {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360);
+            }
         }
 
         .forgotPassword {
@@ -109,6 +135,8 @@
             margin-left: 1.1em;
             color: red;
         }
+
+        
     </style>
 
 </head>
@@ -117,67 +145,86 @@
 
     <header>
         <nav>
-          <ul>
-            <li><a href="main_page.html">Home Page</a></li>
-            <!-- Sub navigation menu -->
-            <div class="subnav">
-              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-              <div class="subnav-content">
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="manage_booking.html">Manage Booking</a></li>
-                <li><a href="FlightStatus.html">Flight Status</a></li>
-              </div>
-            </div>
-            <div class="subnav">
-              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-              <div class="subnav-content">
-                <li><a href="PassengerServices.html">Passenger Services</a></li>
-                <li><a href="cargo.html">Cargo Services</a></li>
-                <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-              </div>
-            </div>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="Faq.html">FAQ</a>
-            <li><a class="active" href="login.html">Login/Register</a>
-          </ul>
-  
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="main_page.html" class="active">
-              <ion-icon name="airplane-outline"></ion-icon>
-            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="checkin.html">Check-in</a>
-              <a href="login.html">Login</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+            <ul>
+                <li><a href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="Faq.html">FAQ</a>
+                <li><a class="active" href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
         </nav>
-      </header>
-  
+    </header>
+
 
     <!-- <h1 class="title">Welcome to ROA Airlines!</h1> -->
 
     <fieldset style="margin: 1em; margin-top: 5em;">
         <legend style="margin-left: 2em;">Register</legend>
-        <form method="post" action="">
+        <form method="post" action="#" id="registerForm" onsubmit="return validation();">
 
-            <p><label>First Name<input name="Fname" type="text" placeholder="First Name" required></p>
+            <p><label>First Name<input name="Fname" id="Fname" type="text" placeholder="First Name" required></p>
 
-            <p><label>Last Name<input name="Lname" type="text" placeholder="Last Name" required></p>
+            <p><label>Last Name<input name="Lname" id="Lname" type="text" placeholder="Last Name" required></p>
 
-            <p><label>Email Address<input name="Email" type="text" placeholder="Email Address" required></p>
+            <p><label>Email Address<input name="Email" id="Email" type="text" placeholder="Email Address" required></p>
 
-            <p><label>Password<input name="password" type="password" placeholder="Password" required></p>
+            <p><label>Password<input name="Password" id="Password" type="password" placeholder="Password"
+                        onsubmit="validation()" required></p>
+
+                <span id="spanAlert"></span>
 
             <input type="submit" value="Register">
             <input type="reset" value="Clear">
         </form>
     </fieldset>
+
+    <script>
+
+        function validation() {
+            var input_password = document.getElementById("Password");
+            var alert = document.getElementById("spanAlert");
+
+            if (input_password.value.length < 8) {
+                // alert("Password must have at least 8 characters!");
+                alert.style.color = "red";
+                alert.innerHTML = "Password must be at least 8 characters long!";
+                return false;
+            }
+        }
+
+    </script>
 
 
 </body>

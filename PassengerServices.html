@@ -14,7 +14,8 @@
 
     <style>
         body {
-            background-color: rgb(34, 193, 195);
+            background: rgb(34, 193, 195);
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
         }
 
 
@@ -28,6 +29,13 @@
             font-weight: bold;
             font-size: 1.5rem;
             color: white;
+        }
+
+        .headerText {
+            text-align: center;
+            font-size: larger;
+            padding: 1rem;
+
         }
 
         p {
@@ -60,89 +68,105 @@
 
 
         .services {
-            border: 2px solid white;
+            margin: auto;
+            width: 80%;
+            border: 25px solid white;
+            animation: flash_border 3s infinite;
         }
 
-        .services img {
-            border: 20px solid black;
-            width: 300px;
-            height: 260px;
-            margin-left: 2rem;
-            float: left;
-            margin: 10px 15px 10px 30px;
-        }
-
-
-        .text {
-            /* border: 2px solid white; */
-            /* text-align: center ; */
-            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-            font-weight: 250;
-            font-size: 2rem;
-            margin-top: 1rem;
-
-            display: inline-block;
-        }
-
-        p:hover {
-            animation: shaketxt 1.4s;
-            color: white;
-        }
-
-        @keyframes shaketxt {
+        @keyframes flash_border {
             0% {
-                transform: translateY(0)
-            }
-
-            25% {
-                transform: translateY(10px);
+                border-color: rgb(0, 115, 255);
             }
 
             50% {
-                transform: translateY(10px);
+                border-color: black;
             }
 
             100% {
-                transform: translateY(0px);
+                border-color: rgb(237, 239, 242);
             }
         }
-
-
-
-        @media (max-width: 700px) {
-
-            .textcenter img {
-                height: 300px;
-            }
-
-
-            .textcenter .text-centered {
-                font-size: 2rem;
-            }
-
-            .textcenter {
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: 1rem;
-            }
 
             .services img {
-                width: 40%;
-                height: 40%;
+                border: 20px solid black;
+                width: 300px;
+                height: 260px;
+                margin-left: 2rem;
+                float: left;
+                margin: 10px 15px 10px 30px;
             }
+
 
             .text {
-                font-size: 1rem;
-                /* color: wheat; */
+                /* border: 2px solid white; */
+                /* text-align: center ; */
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                font-weight: 250;
+                font-size: 2rem;
+                margin-top: 1rem;
+
+                display: inline-block;
             }
 
-            p 
-            {
-                font-size: 1rem;
+            p:hover {
+                animation: shaketxt 1.4s;
+                color: white;
             }
-        }
+
+            @keyframes shaketxt {
+                0% {
+                    transform: translateY(0)
+                }
+
+                25% {
+                    transform: translateY(10px);
+                }
+
+                50% {
+                    transform: translateY(10px);
+                }
+
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+
+
+
+            @media (max-width: 700px) {
+
+                .textcenter img {
+                    height: 300px;
+                }
+
+
+                .textcenter .text-centered {
+                    font-size: 2rem;
+                }
+
+                .textcenter {
+                    font-size: 1rem;
+                }
+
+                h2 {
+                    font-size: 1rem;
+                }
+
+                .services img {
+                    width: 40%;
+                    height: 40%;
+                }
+
+                .text {
+                    font-size: 1rem;
+                    /* color: wheat; */
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
     </style>
 
 </head>
@@ -198,16 +222,14 @@
         <h1 class="text-centered">Passenger Services</h1>
     </figure>
 
-    <center>
-        <h2>Are you worried about travelling alone? travelling while pregnant? or even travelling with special needs? No
-            need to worry much! You can find anything you need in here !</h2>
-    </center>
+    <h2 class="headerText">Are you worried about travelling alone? travelling while pregnant? or even travelling with
+        special needs? No
+        need to worry much! You can find anything you need in here !</h2>
 
 
 
     <!-- <div class="container"> -->
     <div class="services">
-        <span class="overlay"></span>
         <div class="text">
             <a href="#"><img src="PassengerServicesPics/Pet_Travel.jpg" /></a>
             <p>
@@ -240,9 +262,9 @@
         <div class="text">
             <img src="PassengerServicesPics/pregnant.jpg" alt=" ">
             <p>
-            Travelling while pregnant? Worry less because at ROA airlines your safety and your baby's safety are our
-            top
-            priority.</p>
+                Travelling while pregnant? Worry less because at ROA airlines your safety and your baby's safety are our
+                top
+                priority.</p>
         </div>
     </div>
 
@@ -255,4 +277,4 @@
 
 </body>
 
-</html> 
+</html>
