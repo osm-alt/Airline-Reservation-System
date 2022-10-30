@@ -7,7 +7,9 @@ h1
 
 body {  
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  
+  overflow-y: hidden;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
   
 }
 .submit1{
@@ -20,8 +22,8 @@ body {
 section {
   padding: 15rem 0 5rem 0;
   /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
-  background: rgb(34, 193, 195);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+  /* background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); */
 
 }
 
@@ -37,6 +39,7 @@ div.super-center {
 }
 
 #baggage-calc {
+  margin-bottom: 10rem;
   --gap: 1em;
   display: grid;
   gap: var(--gap);
@@ -76,12 +79,14 @@ div.super-center {
   font-size: 1.2rem;
 }
 .p3{
+  margin-top: -15rem;
+  margin-bottom: 2rem;
   font-size: 22px;
-  background-color: rgba(13, 191, 158, 1);
+  /* background-color: rgba(13, 191, 158, 1); */
   text-align: center;
   color: white;
  }
  .p3:hover{
    color: white;
-   font-size: 40px;
+   font-size: 30px;
  }
