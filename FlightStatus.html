@@ -18,60 +18,58 @@
         .center {
             text-align: center;
             font-size: larger;
-        font-style: oblique;
+            font-style: oblique;
         }
 
-        .inbox {
-            position: relative;
-            left: 400px;
-            top: 150px;
-        }
-
-        .inbox2 {
-            position: relative;
-            left: 700px;
-            top: 100px;
-            height: 50px;
-            width: auto;
+        div.form-elts {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         input {
-            display: block;
-            border: 1px solid lightblue;
-            background: #fff;
-            padding: 10px 10px 10px 10px;
-            width: 195px;
-            text-indent: 38px;
-            font-size: 20px;
-            font-family: Arial, Helvetica, sans-serif;
-            
+            box-sizing: border-box;
+            padding: .5em;
+            margin: 1em;
         }
 
-        .ROA {
-            position: absolute;
-            display: block;
-            left: 3px;
-            top: 11px;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            font-size: 20px;
-            z-index: 9;
-            
-
-        }
-
-        .subm {
-            border: none;
+        input[type=submit] {
+            font-size: 1.2em;
+            background-color: rgb(84, 201, 247);
             color: white;
-            text-align: center;
-            margin-top: 120px;
-            margin-right:50px;
-            text-decoration:solid;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: larger;
-            font-style: oblique;
+            border-radius: .5em;
+            margin-left: -3em;
+            position: relative;
+            bottom: .5em;
+
+        }
+
+        form p {
+            margin-right: 1em;
+        }
+
+        form {
+            border: 1px solid white;
+            padding-top: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: .3em;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-left: 10em;
+            margin-right: 10em;
+        }
+
+        @media (max-width:1200px) {
+            h1 {
+                padding-left: clamp(2rem, 1.5vw + 3px, rem);
+
+                font-size: clamp(rem, 2.5vw, 1rem);
+            }
+
+            form {
+                width: 50%;
+            }
         }
     </style>
 </head>
@@ -80,7 +78,7 @@
     <header>
         <nav>
             <ul>
-                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <li><a href="main_page.html">Home Page</a></li>
                 <!-- Sub navigation menu -->
                 <div class="subnav">
                     <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
@@ -88,7 +86,7 @@
                         <li><a href="book_a_trip.html">Book a trip</a></li>
                         <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
                         <li><a href="manage_booking.html">Manage Booking</a></li>
-                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                        <li><a class="active" href="FlightStatus.html">Flight Status</a></li>
                     </div>
                 </div>
                 <div class="subnav">
@@ -101,7 +99,7 @@
                     </div>
                 </div>
                 <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-                <li><a href="#FAQ">FAQ</a>
+                <li><a href="Faq.html">FAQ</a>
                 <li><a href="login.html">Login/Register</a>
             </ul>
 
@@ -122,25 +120,29 @@
     </header>
 
     <body>
-        <center>
-            <h1>Flight Status</h1>
+
+        <div style="text-align: center;">
+            <img src="FlightStatusPics/statusf.jpg" width="50%" height="400" alt="flight status">
+        </div>
+
+
+            <h1 style="text-align: center;">Flight Status</h1>
             <br>
             <br>
             <br>
-        </center>
         <div class="center">Check in below the flight schedule of flights operated by ROA Airlines.<br>
-            Fill in below the Departure and arrival country and date of your flight in order to search for it.</div>
-        <div class="inbox">
-            <form>
-                <input value="" autofocus="autofocus"
-                    oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);" />
-                <span class="ROA">ROA</span>
-        </div>
-        <div class="inbox2">
-            <input type="file">
-        </div>
-       <div class="subm"> <input type="submit" value="Submit" ></div>
+            Fill in below the Ticket Number of your flight in order to search for it.</div>
+
+        <form post="method" autocomplete="on">
+            <div class="form-elts">
+                <p><label>Ticket Number<input name="Ticket" id="ticket" type="text" size="21" required></p>
+                <input type="file">
+                <p><input type="submit" value="Check Status">
+                </p>
+            </div>
         </form>
+
+
     </body>
 
 </html>

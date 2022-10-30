@@ -1,29 +1,31 @@
-
-h1
-{
-    font-weight:bold;
-    font-size: 3rem;
+h1 {
+  font-weight: bold;
+  font-size: 3rem;
 }
 
-body {  
+body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  overflow-y: hidden;
   background: rgb(34, 193, 195);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
-  
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 0%);
+  /* background-repeat:no-repeat; */
+
 }
-.submit1{
+
+.submit1 {
   margin-left: 250px;
-  }
-  .anc{
-    font-size: larger;
-    font-style: oblique;
-  }
+}
+
+.anc {
+  font-size: larger;
+  font-style: oblique;
+}
+
 section {
+  /* height: 70vh; */
   padding: 15rem 0 5rem 0;
   /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 43, 121, 1) 44%, rgba(0, 212, 255, 1) 100%); */
-  /* background: rgb(34, 193, 195);
-  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); */
+  /* /* background: rgb(34, 193, 195); */
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%); 
 
 }
 
@@ -43,7 +45,7 @@ div.super-center {
   --gap: 1em;
   display: grid;
   gap: var(--gap);
-  
+
   padding: 2em;
   border: 2px solid black;
   border-radius: 0.5em;
@@ -54,11 +56,11 @@ div.super-center {
   text-align: center;
 }
 
-@media(min-width: 40rem){
+@media(min-width: 40rem) {
   #baggage-calc {
-      grid-template-columns: repeat(2, min(calc(50% - var(--gap)), 20em));
+    grid-template-columns: repeat(2, min(calc(50% - var(--gap)), 20em));
   }
-  
+
   #baggage-calc h1 {
     grid-column: span 2;
   }
@@ -71,22 +73,24 @@ div.super-center {
 }
 
 #baggage-calc label {
-  color:black;
+  color: black;
 }
 
-#baggage-calc :is(input, select){
+#baggage-calc :is(input, select) {
   padding: 0.5em;
   font-size: 1.2rem;
 }
-.p3{
+
+.p3 {
   margin-top: -15rem;
-  margin-bottom: 2rem;
+  margin-bottom: rem;
   font-size: 22px;
   /* background-color: rgba(13, 191, 158, 1); */
   text-align: center;
   color: white;
- }
- .p3:hover{
-   color: white;
-   font-size: 30px;
- }
+}
+
+.p3:hover {
+  color: white;
+  font-size: 30px;
+}
