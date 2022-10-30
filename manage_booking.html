@@ -9,9 +9,23 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+        }
+
+        label {
+            color: white;
+        }
+
         h1 {
+            color: white;
             text-align: center;
             margin: 1em;
+        }
+
+        p {
+            color: white;
         }
 
         form {
@@ -31,6 +45,7 @@
             border-style: solid;
             border-width: 0.05em;
             border-radius: 0.5em;
+            border-color: white;
         }
 
         input[type=submit] {
@@ -67,6 +82,18 @@
             box-sizing: border-box;
             padding: .5em;
             margin: 1em;
+        }
+
+        .price_div {
+            color:white;
+        }
+
+        fieldset {
+            border-color: white;
+        }
+
+        legend {
+            color: white;
         }
     </style>
     <script>
@@ -130,29 +157,29 @@
             initial_special_treatment = special_treatment.value;
 
             initial_adult_meals = [];
-            
+
             for (var x = 0; x < parseInt(adults.innerText); x++) {
                 initial_adult_meals.push(document.getElementById("special_meals_for_adult" + (x + 1)).value);
             }
 
             initial_adult_drinks = [];
-            
+
             for (var x = 0; x < parseInt(adults.innerText); x++) {
                 initial_adult_drinks.push(document.getElementById("drink_for_adult" + (x + 1)).value);
             }
-            
+
             initial_children_meals = [];
-            
+
             for (var x = 0; x < parseInt(children.innerText); x++) {
                 initial_children_meals.push(document.getElementById("special_meals_for_child" + (x + 1)).value);
             }
 
             initial_children_drinks = [];
-            
+
             for (var x = 0; x < parseInt(children.innerText); x++) {
                 initial_children_drinks.push(document.getElementById("drink_for_child" + (x + 1)).value);
             }
-            
+
             computePrice();
         }
 
@@ -441,7 +468,7 @@
 
             for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
                 var child_meal = document.getElementById("special_meals_for_child" + x);
-                if (child_meal.value !=  initial_children_meals[x - 1]) {
+                if (child_meal.value != initial_children_meals[x - 1]) {
                     modification_fees += 5;
                 }
 
@@ -674,7 +701,7 @@
             </div>
 
             <hr style="margin-top: 1em;">
-            <div style="font-size: 1.2em; margin-top: 1em;">
+            <div class="price_div" style="font-size: 1.2em; margin-top: 1em;">
                 <strong>Initial price: <span id="price"></span></strong>
 
                 <select id="currency" name="currency" style="font-size:0.75em; margin-left: .3em; border-color: silver;"
@@ -686,7 +713,7 @@
                     <option>L.L</option>
                 </select>
             </div>
-            <div style="font-size: 1.2em; margin-top: 1em;">
+            <div class="price_div" style="font-size: 1.2em; margin-top: 1em;">
                 <strong>Modification fees: <span id="modification_fees">0.00</span></strong>
 
                 <select id="modification_currency" name="modification_currency"

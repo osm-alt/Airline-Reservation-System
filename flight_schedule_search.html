@@ -13,9 +13,23 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+        }
+
+        label {
+            color: white;
+        }
+
         h1 {
+            color: white;
             text-align: center;
             margin: 1em;
+        }
+
+        p {
+            color:white;
         }
 
         form p {
@@ -30,10 +44,11 @@
             margin-top: 1em;
             margin-bottom: 1em;
             margin-left: 10em;
-            margin-right: 10em; 
+            margin-right: 10em;
             border-style: solid;
-            border-width: 0.05em; 
-            border-radius: 0.5em; 
+            border-width: 0.05em;
+            border-radius: 0.5em;
+            border-color: white;
         }
 
         div.form-elts {
@@ -41,7 +56,7 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         input,
         button,
         select {
@@ -51,85 +66,85 @@
         }
 
         input[type=submit] {
-            font-size:1.2em;
+            font-size: 1.2em;
             background-color: rgb(84, 201, 247);
-            color:white;
+            color: white;
             border-radius: .5em;
             margin-left: 5em;
             position: relative;
             bottom: .5em;
         }
-        
+
         table {
             margin-top: 2em;
             text-align: center;
-            width:80%;
-            margin-left:10%;
+            width: 80%;
+            margin-left: 10%;
             margin-right: 10%;
             border-collapse: collapse;
         }
 
         th {
-            font-size:1.2em;
+            font-size: 1.2em;
             padding: .5em;
             background-color: rgb(84, 201, 247);
-            color:white;
+            color: white;
             border-style: solid;
             border-color: black;
         }
 
         td {
+            background-color: white;
             padding: 1em;
             border-style: solid;
         }
-
     </style>
 </head>
 
 <body>
     <header>
         <nav>
-          <ul>
-            <li><a class="active" href="main_page.html">Home Page</a></li>
-            <!-- Sub navigation menu -->
-            <div class="subnav">
-              <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-              <div class="subnav-content">
-                <li><a href="book_a_trip.html">Book a trip</a></li>
-                <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                <li><a href="manage_booking.html">Manage Booking</a></li>
-                <li><a href="FlightStatus.html">Flight Status</a></li>
-              </div>
-            </div>
-            <div class="subnav">
-              <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-              <div class="subnav-content">
-                <li><a href="PassengerServices.html">Passenger Services</a></li>
-                <li><a href="cargo.html">Cargo Services</a></li>
-                <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                <li><a href="checkin.html">Check-in</a></li>
-              </div>
-            </div>
-            <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-            <li><a href="#FAQ">FAQ</a>
-            <li><a href="login.html">Login/Register</a>
-          </ul>
-  
-          <!-- hamburger menu, only essentiel links -->
-          <div class="topnav">
-            <a href="main_page.html" class="active">
-              <ion-icon name="airplane-outline"></ion-icon>
-            </a>
-            <div id="myLinks">
-              <a href="book_a_trip.html">Book a trip</a>
-              <a href="checkin.html">Check-in</a>
-              <a href="login.html">Login</a>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
-            </a>
+            <ul>
+                <li><a class="active" href="main_page.html">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.html">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="#FAQ">FAQ</a>
+                <li><a href="login.html">Login/Register</a>
+            </ul>
+
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a href="login.html">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
         </nav>
-      </header>
+    </header>
     <h1>ROA Airlines</h1>
     <h1>Search Flight Schedule</h1>
     <p style="text-align:center; margin-bottom: 2em;">Search for specific flights scheduled by our airline</p>
@@ -233,14 +248,14 @@
         </thead>
         <tbody>
             <tr>
-                <td>Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY</td>
-                <td>Disneyland Paris	France	DLP</td>
+                <td>Beirut - Beirut Rafic Hariri International Airport Lebanon BEY</td>
+                <td>Disneyland Paris France DLP</td>
                 <td>12/20/2022</td>
                 <td>11:20 AM</td>
             </tr>
             <tr>
-                <td>Cairo - Cairo International Airport	Egypt	CAI</td>
-                <td>Dubai - Dubai International Airport	United Arab Emirates	DXB</td>
+                <td>Cairo - Cairo International Airport Egypt CAI</td>
+                <td>Dubai - Dubai International Airport United Arab Emirates DXB</td>
                 <td>10/30/2022</td>
                 <td>8:35 PM</td>
             </tr>
