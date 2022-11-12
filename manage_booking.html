@@ -105,7 +105,7 @@
 
         var trip_type;
         var cabin_class;
-        var seat_location;
+        
         var meals;
         var drinks;
         var airport_pickup;
@@ -135,7 +135,7 @@
         function start() {
             trip_type = document.getElementById("trip_type");
             cabin_class = document.getElementById("cabin");
-            seat_location = document.getElementById("seat_selection");
+            
             //meals = document.getElementById("special_meals");
             //drinks = document.getElementById("drinks");
             airport_pickup = document.getElementById("airport_pickup");
@@ -155,7 +155,7 @@
             initial_children = children.innerText;
             initial_infants = infants.innerText;
             initial_class = cabin_class.value;
-            initial_seat = seat_location.value;
+            
             initial_airport_pickup = airport_pickup.checked; //to see if customer booked for airport pickup initially
             initial_pet = pet.value;
             initial_special_treatment = special_treatment.value;
@@ -321,9 +321,9 @@
                 price = Math.round(price * 1.75);
             }
 
-            if (seat_location.value == "Window seat") {
-                price += 5;
-            }
+            // if (seat_location.value == "Window seat") {
+            //     price += 5;
+            // }
 
             if (airport_pickup.checked) {
                 price += 10;
@@ -440,9 +440,9 @@
 
             }
 
-            if (seat_location.value != initial_seat) {
-                modification_fees += 5;
-            }
+            // if (seat_location.value != initial_seat) {
+            //     modification_fees += 5;
+            // }
 
             if (airport_pickup.checked != initial_airport_pickup) {
                 modification_fees += 10;
@@ -626,16 +626,14 @@
                         <option>First class</option>
                     </select>
                 </p>
+                
+            </div>
+            <div class="form-elts" style="margin-top:1em; margin-bottom: 1em;">
                 <p>
-                    <label for="seat_selection">Seat location for person who booked:</label>
-                    <select id="seat_selection" name="seat_selection">
-                        <option selected>Aisle seat</option>
-                        <option>Window seat</option>
-                    </select>
+                    Preferred seat location for person who booked: Aisle seat
                 </p>
             </div>
-
-
+            
             <p>
                 <label>Airport pick-up: </label>
                 <label>Yes</label>

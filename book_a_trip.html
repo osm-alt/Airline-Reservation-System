@@ -586,9 +586,9 @@
                 price = Math.round(price * 1.75);
             }
 
-            if (seat_location.value == "Window seat") {
-                price += 5;
-            }
+            // if (seat_location.value == "Window seat") {
+            //     price += 5;
+            // }
 
             if (airport_pickup.checked) {
                 price += 10;
@@ -1002,7 +1002,7 @@
             </div>
 
             <p>
-                <label for="seat_selection">Seat location for the person booking:</label>
+                <label for="seat_selection">Preferred seat location for the person booking:</label>
                 <select id="seat_selection" name="seat_selection">
                     <option selected>Aisle seat</option>
                     <option>Window seat</option>
