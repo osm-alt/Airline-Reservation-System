@@ -64,80 +64,91 @@
     //     [ '$set' => [ 'cvv' => '123' ]]
     //  );
     
-    //$database -> createCollection('Bookings');
+ //   $database -> createCollection('Bookings');
 
     $booking_collection = $client->Airline_Reservation->Bookings;
 
     $newBookings = [
         [
+            'Flights' => [1],
             'Customer_Username' => 'omarmajzoub01',
             'Cabin_Class' => 'Business',
             'Preferred_Seat_Location' => 'Aisle',
             'Airport_Pick_Up' => True,
-            'Accompanying_Pet' => True,
+            'Accompanying_Pet' => 'None',
+            'Special_Treatment' => 'Disabled person needs help walking',
             'Adults' => 1,
             'Children' => 0,
             'Infants' => 0,
             'Type_Of_Trip' => 'One-way',
             'Check_In' => True,
             'Meals' => ['Adult1' => 'Chicken with rice'],
-            'Drinks' => ['Adult2' => 'Coke']
+            'Drinks' => ['Adult2' => 'Coke'],
+            'Price' => (round(60 * 1.4) + 10 + 10) * 1 + 10 + 3
         ],
         [
+            'Flights' => [3],
             'Customer_Username' => 'johndoe',
             'Cabin_Class' => 'Economy',
             'Preferred_Seat_Location' => 'Window',
             'Airport_Pick_Up' => True,
-            'Accompanying_Pet' => False,
+            'Accompanying_Pet' => 'Cat',
             'Adults' => 2,
             'Children' => 1,
             'Infants' => 0,
             'Type_Of_Trip' => 'One-way',
             'Check_In' => True,
-            'Meals' => 'Chicken with rice',
-            'Drinks' => 'Apple Juice',
+            'Meals' => ['Adult1' => 'Chicken with rice', 'Adult2' => 'Turkey Sandwich', 'Child1' => 'Chicken with rice'],
+            'Drinks' =>  ['Adult1' => 'Orange Juice', 'Adult2' => 'Apple Juice', 'Child1' => 'Coke'],
+            'Price' => (60 + 10 + 5 + 10) * 2 + round((60 + 10 + 5 + 10) * 0.75) + 10 * 3 + 2 + 2 + 3
         ],
         [
+            'Flights' => [1,2],
             'Customer_Username' => 'delilah_johnson',
             'Cabin_Class' => 'Business',
             'Preferred_Seat_Location' => 'Aisle',
             'Airport_Pick_Up' => False,
-            'Accompanying_Pet' => False,
+            'Accompanying_Pet' => 'Dog',
             'Adults' => 1,
             'Children' => 0,
             'Infants' => 1,
             'Type_Of_Trip' => 'Round-Trip',
             'Check_In' => False,
-            'Meals' => 'Turkey Sandwich',
-            'Drinks' => 'Orange Juice',
+            'Meals' => ['Adult1' => 'Chicken with rice', 'Child1' => 'Ceasar Salad'],
+            'Drinks' =>  ['Adult1' => 'Orange Juice', 'Child1' => 'Coke'],
+            'Price' => (round(90 * 1.4) + 5) * 1 + round((round(90 * 1.4) + 5) * 0.75) + round((round(90 * 1.4) + 5) * 0.5) + 10*2 + 2 + 3
         ],
         [
+            'Flights' => [3,4],
             'Customer_Username' => 'maroun_choucair',
             'Cabin_Class' => 'First',
             'Preferred_Seat_Location' => 'Aisle',
             'Airport_Pick_Up' => True,
-            'Accompanying_Pet' => True,
+            'Accompanying_Pet' => 'Bird',
             'Adults' => 1,
-            'Children' => 1,
+            'Children' => 0,
             'Infants' => 1,
             'Type_Of_Trip' => 'Multi-City',
             'Check_In' => True,
-            'Meals' => 'Ceasar Salad',
-            'Drinks' => 'Sprite',
+            'Meals' => ['Adult1' => 'Chicken with rice'],
+            'Drinks' => ['Adult1' => 'Ayran'],
+            'Price' => (round(105 * 1.75) + 10 + 5) * 1 + round((round(105 * 1.75) + 10 + 5) * 0.5) + 10 + 2
         ],
         [
+            'Flights' => [9],
             'Customer_Username' => 'shang_chi',
             'Cabin_Class' => 'Economy',
             'Preferred_Seat_Location' => 'Aisle',
             'Airport_Pick_Up' => True,
-            'Accompanying_Pet' => True,
+            'Accompanying_Pet' => 'None',
             'Adults' => 1,
             'Children' => 0,
             'Infants' => 0,
             'Type_Of_Trip' => 'One-way',
             'Check_In' => True,
-            'Meals' => 'Chicken with rice',
-            'Drinks' => 'Ayran',
+            'Meals' => ['Adult1' => 'Chicken with rice'],
+            'Drinks' => ['Adult1' => 'Ayran'],
+            'Price' => (60 + 10) * 1 + 10 + 2
         ],
     
     ];
@@ -151,8 +162,8 @@
     
     $newFlights = [
         [
+            'Flight_ID' => 1,
             'Admin_Username' => 'Andrew',
-            //'BRN' => ,
             'From' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'To' => 'Disneyland Paris	France	DLP',
             'Departure_Date' => '2022-12-20',
@@ -162,8 +173,8 @@
             'FirstClass_Seats_Left' => 5
         ],
         [
+            'Flight_ID' => 2,
             'Admin_Username' => 'Andrew',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Disneyland Paris	France	DLP',
             'To' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'Departure_Date' => '2022-12-27',
@@ -173,8 +184,8 @@
             'FirstClass_Seats_Left' => 5
         ],
         [
+            'Flight_ID' => 3,
             'Admin_Username' => 'Omar',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Cairo - Cairo International Airport	Egypt	CAI',
             'To' => 'London Metropolitan Area	United Kingdom	LON',
             'Departure_Date' => '2023-01-29',
@@ -184,8 +195,8 @@
             'FirstClass_Seats_Left' => 4
         ],
         [
+            'Flight_ID' => 4,
             'Admin_Username' => 'Omar',
-            'BRN' => $flight_collection->find([]),
             'From' => 'London Metropolitan Area	United Kingdom	LON',
             'To' => 'Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA',
             'Departure_Date' => '2023-02-05',
@@ -195,8 +206,8 @@
             'FirstClass_Seats_Left' => 5
         ],
         [
+            'Flight_ID' => 5,
             'Admin_Username' => 'Robert',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Dubai - Dubai International Airport	United Arab Emirates	DXB',
             'To' => 'Geneva - Geneva-Cointrin International Airport	Switzerland	GVA',
             'Departure_Date' => '2023-03-10',
@@ -206,8 +217,8 @@
             'FirstClass_Seats_Left' => 8
         ],
         [
+            'Flight_ID' => 6,
             'Admin_Username' => 'Robert',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Geneva - Geneva-Cointrin International Airport	Switzerland	GVA',
             'To' => 'Dubai - Dubai International Airport	United Arab Emirates	DXB',
             'Departure_Date' => '2023-03-17',
@@ -217,8 +228,8 @@
             'FirstClass_Seats_Left' => 7
         ],
         [
+            'Flight_ID' => 7,
             'Admin_Username' => 'Andrew',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'To' => 'Istanbul - Istanbul Atatürk Airport	Turkey	IST',
             'Departure_Date' => '2023-03-17',
@@ -228,8 +239,8 @@
             'FirstClass_Seats_Left' => 2
         ],
         [
+            'Flight_ID' => 8,
             'Admin_Username' => 'Omar',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Jeddah - King Abdulaziz International	Saudi Arabia	JED',
             'To' => 'Doha - Doha International Airport	Qatar	DOH',
             'Departure_Date' => '2023-02-07',
@@ -239,8 +250,8 @@
             'FirstClass_Seats_Left' => 10
         ],
         [
+            'Flight_ID' => 9,
             'Admin_Username' => 'Robert',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Lagos - Murtala Muhammed Airport	Nigeria	LOS',
             'To' => 'Accra - Kotoka International Airport	Ghana	ACC',
             'Departure_Date' => '2023-01-10',
@@ -250,8 +261,8 @@
             'FirstClass_Seats_Left' => 7
         ],
         [
+            'Flight_ID' => 10,
             'Admin_Username' => 'Robert',
-            'BRN' => $flight_collection->find([]),
             'From' => 'Accra - Kotoka International Airport	Ghana	ACC',
             'To' => 'Lagos - Murtala Muhammed Airport	Nigeria	LOS',
             'Departure_Date' => '2023-01-15',
@@ -260,9 +271,9 @@
             'Business_Seats_Left' => 16,
             'FirstClass_Seats_Left' => 10
         ]
-
         ];
         
+        $insertManyResult = $flight_collection->insertMany($newFlights);
 
     //$database -> createCollection('Admin');
 
