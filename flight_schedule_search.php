@@ -144,11 +144,11 @@
     <h1>ROA Airlines</h1>
     <h1>Search Flight Schedule</h1>
     <p style="text-align:center; margin-bottom: 2em;">Search for specific flights scheduled by our airline</p>
-    <form method="post" action="">
+    <form method="post" action="flight_schedule_search.php">
         <div class="form-elts">
             <p>
                 <label for="departure_from">From</label>
-                <input type="text" id="departure_from" name="deparure_from" list="iata_list" required>
+                <input type="text" id="departure_from" name="departure_from" list="iata_list" required>
                 <datalist id="iata_list">
                     <option value="Abidjan	Cote d'Ivoire	ABJ">
                     <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
@@ -229,34 +229,40 @@
                 <input type="date" id="return_on" name="return_on" required>
             </p> -->
 
-            <input type="submit" value="Search">
+            <input type="submit" name="submit" value="Search">
         </div>
     </form>
+    
+    <?php
+        require 'vendor/autoload.php';
 
-    <table style="margin-bottom: 9rem;">
-        <thead>
-            <tr>
-                <th>Depart from</th>
-                <th>Arrive to</th>
-                <th>Departure date</th>
-                <th>Departure time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Beirut - Beirut Rafic Hariri International Airport Lebanon BEY</td>
-                <td>Disneyland Paris France DLP</td>
-                <td>12/20/2022</td>
-                <td>11:20 AM</td>
-            </tr>
-            <tr>
-                <td>Cairo - Cairo International Airport Egypt CAI</td>
-                <td>Dubai - Dubai International Airport United Arab Emirates DXB</td>
-                <td>10/30/2022</td>
-                <td>8:35 PM</td>
-            </tr>
-        </tbody>
-    </table>
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $database = $client->Airline_Reservation;
+    
+        $flight_collection = $client->Airline_Reservation->Flights;
+
+        $departure_from = isset($_POST[ "departure_from" ]) ? $_POST[ "departure_from" ] : "";
+        $arrival_to = isset($_POST[ "arrival_to" ]) ? $_POST[ "arrival_to" ] : "";
+        $depart_on = isset($_POST[ "depart_on" ]) ? $_POST[ "depart_on" ] : "";
+
+        if(isset($_POST["submit"]))
+        {
+            print("<table style=\"margin-bottom: 9rem;\">");
+            print("<thead>");
+            print("<tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th></tr>");
+            print("</thead>");
+            print("<tbody>");
+            
+            $result = $flight_collection->find(['From' => $departure_from, 'To' => $arrival_to, 'Departure_Date' => $depart_on]);
+            foreach ($result as $entry) {
+                print("<tr>");
+            	print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                print("</tr>");
+            }
+            print("</tbody>");
+            print("</table>");
+        }
+    ?>
 </body>
 
 </html>
