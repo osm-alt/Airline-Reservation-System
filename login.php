@@ -47,16 +47,16 @@
             border-width: 0.05em;
             border-radius: 0.5em;
 
-            
+
         }
-        
+
         fieldset {
             background: whitesmoke;
             width: 25rem;
             height: 25rem;
             border: 5px solid white;
             animation: flash_border 3s infinite;
-            
+
         }
 
 
@@ -74,19 +74,19 @@
             }
         }
 
-        
-        
 
-        
+
+
+
         label {
             margin-left: 1rem;
         }
-        
+
         div.form-elts {
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         input,
         button,
         select {
@@ -96,7 +96,7 @@
             padding: .5em;
             margin: 1em;
         }
-        
+
         input[type=submit] {
             width: 15rem;
             font-size: .9em;
@@ -107,7 +107,7 @@
             filter: hue-rotate(120deg);
             animation: coloredAnimation 3s infinite;
         }
-        
+
         @keyframes coloredAnimation {
             0% {
                 filter: hue-rotate(0deg);
@@ -117,14 +117,14 @@
                 filter: hue-rotate(360);
             }
         }
-        
+
         input[type=submit]:hover {
             cursor: pointer;
             color: black;
         }
-        
+
         .forgotPassword {
-            
+
             text-decoration: none;
             margin-left: 1em;
             /* font-size: 15px; */
@@ -197,14 +197,14 @@
 
     <fieldset style="margin: 1em; margin-top: 5em;">
         <legend style="margin-left: 2em;">Login</legend>
-        <form method="post" action="">
+        <form method="post" action="login.php">
 
 
-            <p><label>Email Address<input name="email" type="text" placeholder="Enter your Email Address" required></p>
+            <p><label>Username<input name="username" type="text" placeholder="Enter your username" required></p>
 
             <p><label>Password<input name="password" type="password" placeholder="Enter your Password" required></p>
 
-            <input type="submit" value="Login">
+            <input type="submit" name="submit" value="Login">
             <a class="forgotPassword" href="#">Forgot Password</a><br>
             <p class="register"> Dont have an account yet? <a href="register.html">Create your account</a></p>
             <input type="reset" value="Clear">
@@ -213,6 +213,74 @@
     </fieldset>
 
 
+    <?php
+
+    require 'vendor/autoload.php';
+
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $database = $client->Airline_Reservation;
+
+    $admin_collection = $client->Airline_Reservation->Admin;
+
+    $customer_collection = $client->Airline_Reservation->Customers;
+
+
+
+    if (isset($_POST['submit'])) {
+
+        $inputtedUsername = $_POST['username'];
+        $inputtedPassword =  $_POST['password'];
+        $flag = 0;
+        // flag to check if login is successful
+
+
+        // CUSTOMER LOGIN PART
+        $CustomerResultCredentials = $customer_collection->find(['Username' => $inputtedUsername]);
+
+        foreach ($CustomerResultCredentials as $searchFor) {
+
+            $storedUsername = $searchFor['Username'];
+            $storedPassword = $searchFor['Password'];
+
+
+            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
+            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
+                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
+                $flag = 1;
+                print("<script>window.alert('Welcome $inputtedUsername!')</script>");
+                echo "<script> window.location.assign('main_page.html'); </script>";
+            }
+        }
+
+
+        // ADMIN LOGIN PART
+        $adminResultCredentials = $admin_collection->find(['Username' => $inputtedUsername]);
+
+        foreach ($adminResultCredentials as $searchFor) {
+
+            $storedUsername = $searchFor['Username'];
+            $storedPassword = $searchFor['Password'];
+
+
+            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
+            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
+                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
+                $flag = 1;
+                // $_SESSION[''] ???
+                print("<script>window.alert('Welcome Admin $inputtedUsername!')</script>");
+                echo "<script> window.location.assign('admin.html'); </script>";
+
+            }
+        }
+
+        // in case the user or admin inputs wrong credentials, flag is set to 0 this message is displayed
+        if ($flag == 0) {
+            print("<script>window.alert('Wrong username or password!')</script>");
+            // echo "Wrong Credentials!";
+        }
+    }
+
+    ?>
 
 </body>
 
