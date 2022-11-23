@@ -51,11 +51,11 @@
         fieldset {
             background: whitesmoke;
             width: 25em;
-            height: 32rem;
+            height: 41rem;
             animation: flash_border 3s infinite;
         }
 
-        
+
         @keyframes flash_border {
             0% {
                 border-color: rgb(0, 115, 255);
@@ -129,14 +129,12 @@
 
         .register {
             font-size: small;
-            margin-top: .5em;
+            margin-top: .1em;
             white-space: nowrap;
             text-decoration: none;
             margin-left: 1.1em;
             color: red;
         }
-
-        
     </style>
 
 </head>
@@ -190,28 +188,33 @@
 
     <!-- <h1 class="title">Welcome to ROA Airlines!</h1> -->
 
-    <fieldset style="margin: 1em; margin-top: 5em;">
+    <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Register</legend>
-        <form method="post" action="#" id="registerForm" onsubmit="return validation();">
+        <form method="post" action="register.php" id="registerForm" onsubmit="return validation();">
 
-            <p><label>First Name<input name="Fname" id="Fname" type="text" placeholder="First Name" required></p>
+            <p><label>First Name<input name="firstname" id="Fname" type="text" placeholder="First Name" required></p>
 
-            <p><label>Last Name<input name="Lname" id="Lname" type="text" placeholder="Last Name" required></p>
+            <p><label>Last Name<input name="lastname" id="Lname" type="text" placeholder="Last Name" required></p>
 
-            <p><label>Email Address<input name="Email" id="Email" type="text" placeholder="Email Address" required></p>
+            <p><label>Username<input name="username" id="username" type="text" placeholder="Username" required></p>
 
-            <p><label>Password<input name="Password" id="Password" type="password" placeholder="Password"
-                        onsubmit="validation()" required></p>
+            <p><label>Date of Birth<input name="dob" id="dob" type="date" placeholder="Last Name" required></p>
 
-                <span id="spanAlert"></span>
 
-            <input type="submit" value="Register">
+            <p><label>Email Address<input name="email" id="email" type="text" placeholder="Email Address" required></p>
+
+            <p><label>Password<input name="password" id="Password" type="password" placeholder="Password" onsubmit="validation()" required></p>
+
+            <span id="spanAlert"></span>
+
+            <input type="submit" name="submit" value="Register">
             <input type="reset" value="Clear">
+            <p class="register"> Already have an account? <a href="login.php">Login</a></p>
+
         </form>
     </fieldset>
 
     <script>
-
         function validation() {
             var input_password = document.getElementById("Password");
             var alert = document.getElementById("spanAlert");
@@ -223,8 +226,80 @@
                 return false;
             }
         }
-
     </script>
+
+    <?php
+
+    require 'vendor/autoload.php';
+
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $database = $client->Airline_Reservation;
+
+    $customer_collection = $client->Airline_Reservation->Customers;
+
+
+
+    if (isset($_POST['submit'])) {
+
+        echo"here";
+
+        $inputtedFirstName = $_POST['firstname'];
+        $inputtedLastName = $_POST['lastname'];
+        $inputtedUsername = $_POST['username'];
+        $inputtedDOB =  $_POST['dob'];
+        $inputtedEmail = $_POST['email'];
+        $inputtedPassword = $_POST['password'];
+
+        $flag = 0;
+
+
+        // USERNAME IS UNIQUE, WE CANNOT ALLOW 2 USERS TO HAVE THE SAME ONE!
+        // $usernameResult = $customer_collection->find(['Username' => $inputtedUsername]);
+
+        // foreach ($usernameResult as $searchFor) {
+        //     $storedUsername = $searchFor['Username'];
+        //     if ($inputtedUsername == $storedUsername)
+        //     {
+        //         $flag=1;
+        //     }
+        // }
+
+        // if($flag==1)
+        // {
+        //     echo " SIUUUUUUUUUUUUUUUUUUUUUUUU";
+        //     print("<script>window.alert('Username already exists! Please choose another one.');
+        //     window.reload();
+        //     </script>");
+        // }
+
+
+
+
+        $newCustomer = [
+            [
+                'Username' => $inputtedUsername,
+                'First_Name' => $inputtedFirstName,
+                'Last_Name' => $inputtedLastName,
+                'Date_Of_Birth' => $inputtedDOB,
+                'Cookie' => '',
+                'Email' => $inputtedEmail,
+                // 'Password' => password_hash('$inputtedPassword', PASSWORD_DEFAULT),
+                // 'Password1' => password_hash($inputtedPassword, PASSWORD_DEFAULT),
+                'Password' => password_hash('pass_w0rd912', PASSWORD_DEFAULT)
+
+
+                // 'Password' => $inputtedPassword,
+
+            ],
+        ];
+
+        $insertResult = $customer_collection->insertOne($newCustomer);
+
+
+        print("<script>window.alert('Successfuly register $inputtedUsername in the database. You can now Login')</script>");
+    }
+
+    ?>
 
 
 </body>

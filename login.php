@@ -206,7 +206,7 @@
 
             <input type="submit" name="submit" value="Login">
             <a class="forgotPassword" href="#">Forgot Password</a><br>
-            <p class="register"> Dont have an account yet? <a href="register.html">Create your account</a></p>
+            <p class="register"> Don't have an account yet? <a href="register.php">Create your account</a></p>
             <input type="reset" value="Clear">
             </p>
         </form>
@@ -278,6 +278,7 @@
             print("<script>window.alert('Wrong username or password!')</script>");
             // echo "Wrong Credentials!";
         }
+
     }
 
     ?>
