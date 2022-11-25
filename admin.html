@@ -21,7 +21,7 @@
 
         a {
             text-decoration: none;
-            color: white;            
+            color: white;
         }
 
         li {
@@ -45,6 +45,7 @@
             color: white;
             padding: 5px 10px;
             text-align: center;
+
         }
 
         .btn:hover {
@@ -65,7 +66,7 @@
             border-bottom: 2px solid #999;
         }
 
-        
+
         .side-topnav {
             position: fixed;
             background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
@@ -74,7 +75,7 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .side-topnav .menu {
             height: 10vh;
             display: flex;
@@ -92,7 +93,7 @@
             display: flex;
             margin-left: -30px;
         }
-        
+
         .side-topnav li:hover {
             background: white;
             box-shadow: inset 400px 0 0 0 #54b3d6;
@@ -100,14 +101,14 @@
             transition: all 1s ease;
             cursor: pointer;
         }
-        
+
         .container {
             position: absolute;
             right: 0;
             width: 85vw;
             height: 100vh;
         }
-        
+
         .header {
             position: fixed;
             top: 0;
@@ -120,29 +121,39 @@
             justify-content: center;
             /* z-index: 1; */
         }
-        
+
         .topnav {
             width: 100%;
             display: flex;
         }
-        
+
         .search {
             flex: 4;
             display: flex;
             justify-content: center;
         }
-        
+
         .search input[type=text] {
             padding: 10px;
             width: 60%;
             font-size: 1em;
             border-radius: .5em;
         }
-        
+
         .btn {
             background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
         }
-        
+
+        .btn [type=submit] {
+            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(41, 14, 68, 0.6225840678068102) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+            color: white;
+            padding: 10px;
+            /* width: 60%; */
+            font-size: 1em;
+            border-radius: .5em;
+        }
+
+
         button {
             width: 40px;
             height: 40px;
@@ -150,26 +161,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
         }
-        
+
         button img {
             width: 30px;
             height: 30px;
-            
+
         }
-        
+
         .user {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex: 1;
         }
-        
+
         .user a {
             background-color: rgb(84, 201, 247);
         }
-        
+
         .img-case img {
             position: absolute;
             top: 0;
@@ -177,14 +188,14 @@
             width: 100%;
             height: 100%;
         }
-        
+
         .content {
             position: relative;
             margin-top: 10vh;
             min-height: 85vh;
             background: #f1f1f1;
         }
-        
+
         /* statistics */
         .container1 {
             display: flex;
@@ -207,7 +218,8 @@
             margin-right: 10px;
             margin-left: 10px;
         }
-        
+
+        /* 
         table {
             padding: 10px;
         }
@@ -220,20 +232,49 @@
         td {
             text-align: left;
             padding: 8px;
+        } */
+
+        table {
+            margin-top: 2em;
+            text-align: center;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-collapse: collapse;
         }
+
+        th {
+            font-size: 1.2em;
+            padding: .5em;
+            background-color: rgb(84, 201, 247);
+            color: white;
+            border-style: solid;
+            border-color: black;
+        }
+
+        td {
+            background-color: white;
+            padding: 1em;
+            border-style: solid;
+        }
+
 
 
         /* flight control */
         .container2 {
             display: flex;
-            align-items: flex-start;
-            min-height: 59vh;
+            align-items: center;
+            /* align-items: flex-start; */
+            /* min-height: 59vh; */
+            justify-content: center;
+            width: 50%;
         }
-        
+
         .flight-control {
+            /* margin: auto; */
             display: flex;
-            min-height: 51vh;
-            flex: 4;
+            min-height: 25vh;
+            /* flex: 4; */
             background: white;
             margin: 0 25px 25px 25px;
             box-shadow: 2px 5px 10px 2px rgba(17, 16, 16, 0.2);
@@ -316,7 +357,8 @@
         </div>
         <ul>
             <li><a href="#"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Dashboard</span></a></li>
-            <li><a href="main_page.html"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Home</span></a></li>
+            <li><a href="main_page.html"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Home</span></a>
+            </li>
             <li><a href="login.html"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Login</span></a></li>
         </ul>
     </div>
@@ -373,56 +415,67 @@
             </div>
             <div class="container2">
                 <div class="flight-control">
-                    <div class="title">
-                        <h2>Recent Flights</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Flight Number</th>
-                            <th>departure</th>
-                            <th>Price</th>
-                            <th>Option</th>
-                        </tr>
-                        <tr>
-                            <td>110</td>
-                            <td>CVG</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>111</td>
-                            <td>BSR</td>
-                            <td>$220</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>112</td>
-                            <td>BEY</td>
-                            <td>$320</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>113</td>
-                            <td>BRU</td>
-                            <td>$320</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>114</td>
-                            <td>BEY</td>
-                            <td>$120</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>115</td>
-                            <td>BEY</td>
-                            <td>$220</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                    </table>
+                    <!-- <div class="title"> -->
+                    <h2>View All Flights</h2>
+
+                    <form method="post" action="admin.php">
+                        <div class="btn" method="post" action="admin.php">
+                            <input type="submit" name="searchFlights" value="View All Flights">
+                        </div>
+                    </form>
+
+                    <h2>Add new Flight</h2>
+                    <form method="post" action="admin.php">
+                        <p><label>Flight ID<input name="Flight_ID" id="fid" type="text" placeholder="Flight ID"
+                                    required></p>
+                        <p><label>Admin Username<input name="Admin_Username" id="admin" type="text" placeholder="Admin name"
+                                    required></p>
+                        <p><label>From<input name="From" id="From" type="text" placeholder="From" required>
+                        </p>
+                        <p><label>To<input name="To" id="To" type="text" placeholder="To" required>
+                        </p>
+                        <p><label>Departure Date<input name="Departure_Date" id="departuredate" type="text" placeholder="Departure Date"
+                                    required></p>
+                        <p><label>Departure Time<input name="Departure_Time" id="departuretime" type="text" placeholder="Departure Time"
+                                    required></p>
+                        <p><label>Economy Seats Left<input name="Economy_Seats_Left" id="economy" type="text"
+                                    placeholder="Economy" required></p>
+                        <p><label>Business Seats Left<input name="Business_Seats_Left" id="business" type="text"
+                                    placeholder="Business" required></p>
+                        <p><label>First Class Seats Left<input name="FirstClass_Seats_Left" id="firstclass" type="text"
+                                    placeholder="First Class" required></p>
+
+                        <div class="btn" method="post" action="admin.php">
+                            <input type="submit" name="addFlight" value="Add New Flights">
+                        </div>
+                    </form>
+                    <!-- </div> -->
+
                 </div>
-                <div class="container3">
+
+                <div class="container2">
+                    <div class="flight-control">
+                        <!-- <div class="title"> -->
+                        <h2>View All Customers</h2>
+
+                        <form method="post" action="admin.php">
+                            <div class="btn" method="post" action="admin.php">
+                                <input type="submit" name="searchCustomers" value="View All Customers">
+                            </div>
+                        </form>
+
+                        <h2>Delete Flight</h2>
+                        <form method="post" action="admin.php">
+                            <div class="btn" method="post" action="admin.php">
+                                <input type="submit" name="deleteFlight" value="Add New Flights">
+                            </div>
+                        </form>
+                        <!-- </div> -->
+
+                    </div>
+
+
+                    <!-- <div class="container3">
                     <div class="title">
                         <h2>New Customers </h2>
                         <a href="#" class="btn">View All</a>
@@ -454,9 +507,15 @@
                             <td><a href="#" class="btn">View</a></td>
                         </tr>
                     </table>
+                </div> -->
                 </div>
             </div>
         </div>
-    </div>
+
+
+
+
+
 </body>
+
 </html>
