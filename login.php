@@ -225,14 +225,14 @@
     $customer_collection = $client->Airline_Reservation->Customers;
 
 
-
+    
     if (isset($_POST['submit'])) {
-
+        
         $inputtedUsername = $_POST['username'];
         $inputtedPassword =  $_POST['password'];
         $flag = 0;
         // flag to check if login is successful
-
+        
 
         // CUSTOMER LOGIN PART
         $CustomerResultCredentials = $customer_collection->find(['Username' => $inputtedUsername]);
@@ -256,6 +256,7 @@
         // ADMIN LOGIN PART
         $adminResultCredentials = $admin_collection->find(['Username' => $inputtedUsername]);
 
+
         foreach ($adminResultCredentials as $searchFor) {
 
             $storedUsername = $searchFor['Username'];
@@ -275,12 +276,13 @@
 
         // in case the user or admin inputs wrong credentials, flag is set to 0 this message is displayed
         if ($flag == 0) {
+            
             print("<script>window.alert('Wrong username or password!')</script>");
             // echo "Wrong Credentials!";
         }
-
+        
     }
-
+    
     ?>
 
 </body>

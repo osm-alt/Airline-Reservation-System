@@ -241,7 +241,7 @@
 
     if (isset($_POST['submit'])) {
 
-        echo"here";
+        echo "here";
 
         $inputtedFirstName = $_POST['firstname'];
         $inputtedLastName = $_POST['lastname'];
@@ -254,28 +254,28 @@
 
 
         // USERNAME IS UNIQUE, WE CANNOT ALLOW 2 USERS TO HAVE THE SAME ONE!
-        // $usernameResult = $customer_collection->find(['Username' => $inputtedUsername]);
+        $usernameResult = $customer_collection->find(['Username' => $inputtedUsername]);
 
-        // foreach ($usernameResult as $searchFor) {
-        //     $storedUsername = $searchFor['Username'];
-        //     if ($inputtedUsername == $storedUsername)
-        //     {
-        //         $flag=1;
-        //     }
-        // }
+        foreach ($usernameResult as $searchFor) {
+            $storedUsername = $searchFor['Username'];
+            if ($inputtedUsername == $storedUsername)
+            {
+                $flag=1;
+            }
+        }
 
-        // if($flag==1)
-        // {
-        //     echo " SIUUUUUUUUUUUUUUUUUUUUUUUU";
-        //     print("<script>window.alert('Username already exists! Please choose another one.');
-        //     window.reload();
-        //     </script>");
-        // }
+        if($flag==1)
+        {
+            print("<script>window.alert('Username already exists! Please choose another one.');
+            window.reload();
+            </script>");
+            die();
 
+        }
 
+        $customer_collection = $client->Airline_Reservation->Customers;
 
-
-        $newCustomer = [
+        $newCustomers = [
             [
                 'Username' => $inputtedUsername,
                 'First_Name' => $inputtedFirstName,
@@ -283,20 +283,14 @@
                 'Date_Of_Birth' => $inputtedDOB,
                 'Cookie' => '',
                 'Email' => $inputtedEmail,
-                // 'Password' => password_hash('$inputtedPassword', PASSWORD_DEFAULT),
-                // 'Password1' => password_hash($inputtedPassword, PASSWORD_DEFAULT),
-                'Password' => password_hash('pass_w0rd912', PASSWORD_DEFAULT)
-
-
-                // 'Password' => $inputtedPassword,
-
+                'Password' => password_hash($inputtedPassword, PASSWORD_DEFAULT)
             ],
         ];
-
-        $insertResult = $customer_collection->insertOne($newCustomer);
+        $insertManyResult = $customer_collection->insertMany($newCustomers);
 
 
         print("<script>window.alert('Successfuly register $inputtedUsername in the database. You can now Login')</script>");
+        echo "<script> window.location.assign('login.php'); </script>";
     }
 
     ?>
