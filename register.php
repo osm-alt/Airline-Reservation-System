@@ -267,7 +267,7 @@
         if($flag==1)
         {
             print("<script>window.alert('Username already exists! Please choose another one.');
-            window.reload();
+            window.location.assign('register.php');
             </script>");
             die();
 

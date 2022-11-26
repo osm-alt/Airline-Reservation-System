@@ -67,7 +67,7 @@ if (isset($_POST["searchFlights"])) {
 
 
 
-if (isset($_POST["searchCustomers"])){ 
+if (isset($_POST["searchCustomers"])) {
 
     print("<table>");
     print("<thead>");
@@ -91,79 +91,115 @@ if (isset($_POST["searchCustomers"])){
 
 
 
-if (isset($_POST["addFlight"])){ 
+if (isset($_POST["addFlight"])) {
 
-    $flight_id = $_POST['Flight_ID'];
+    $flight_id = (int)$_POST['Flight_ID'];
     $admin_id = $_POST['Admin_Username'];
     $from = $_POST['From'];
     $to = $_POST['To'];
     $departure_date = $_POST['Departure_Date'];
     $departure_time = $_POST['Departure_Time'];
-    $economy_seats = $_POST['Economy_Seats_Left'];
-    $business_seats = $_POST['Business_Seats_Left'];
-    $firstclass_seats = $_POST['FirstClass_Seats_Left'];
+    $economy_seats = (int)$_POST['Economy_Seats_Left'];
+    $business_seats = (int)$_POST['Business_Seats_Left'];
+    $firstclass_seats = (int)$_POST['FirstClass_Seats_Left'];
+
+
+    $flag = 0;
+
+
+    // FLIGHT IS UNIQUE, WE CANNOT ALLOW 2 FLIGHTS TO HAVE THE SAME ONE!
+    $flightResult = $flight_collection->find(['Flight_ID' => $flight_id]);
+
+    foreach ($flightResult as $searchFor) {
+        $storedFlight = $searchFor['Flight_ID'];
+        if ($flight_id == $storedFlight) {
+            $flag = 1;
+        }
+    }
+
+    if ($flag == 1) {
+        print("<script>window.alert('Flight already exists! Please choose another Flight ID!');
+        window.reload();
+        </script>");
+        die();
+    }
+
+
+
 
     $flight_collection = $client->Airline_Reservation->Flights;
 
-    $flight_collection->insertOne([
-        'Flight_ID' => $flight_id,
-        'Admin_Username' => $admin_id,
-        'From' => $from,
-        'To' => $to,
-        'Departure_Date' => $departure_date,
-        'Departure_Time' => $departure_time,
-        'Economy_Seats_Left' => $economy_seats,
-        'Business_Seats_Left' => $business_seats,
-        'FirstClass_Seats_Left' => $firstclass_seats
-    ]);
-    
-    // print("<table>");
-    // print("<thead>");
-    // print("<tr><th>Username</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Email</th></tr>");
-    // print("</thead>");
-    // print("<tbody>");
+    $newFlights = [
+        [
+            'Flight_ID' => $flight_id,
+            'Admin_Username' => $admin_id,
+            'From' => $from,
+            'To' => $to,
+            'Departure_Date' => $departure_date,
+            'Departure_Time' => $departure_time,
+            'Economy_Seats_Left' => $economy_seats,
+            'Business_Seats_Left' => $business_seats,
+            'FirstClass_Seats_Left' => $firstclass_seats
+        ],
+    ];
 
-    // $result = $customer_collection->find();
-    // foreach ($result as $entry) {
+    $insertManyResult = $flight_collection->insertMany($newFlights);
 
 
-
-    //     print("<tr>");
-    //     print("<td>" . $entry['Username'] . "</td><td>" . $entry['First_Name'] . "</td><td>" . $entry['Last_Name'] . "</td>" . "<td>" . $entry['Date_Of_Birth'] . "</td>" . "<td>" . $entry['Email'] . "</td>");
-    //     print("</form></td>");
-    //     print("</tr>");
-    // }
-    // print("</tbody>");
-    // print("</table>");
+    print("<script>window.alert('Successfuly added $flight_id in the database!')</script>");
+    echo "<script> window.location.assign('admin.html'); </script>";
 }
 
 
 
-if (isset($_POST["deleteFlight"])){ 
 
-    print("<table>");
-    print("<thead>");
-    print("<tr><th>Username</th><th>First Name</th><th>Last Name</th><th>DOB</th><th>Email</th></tr>");
-    print("</thead>");
-    print("<tbody>");
+if (isset($_POST["deleteFlight"])) {
+    $flight_id = (int)$_POST['flight_id'];
 
-    $result = $customer_collection->find();
-    foreach ($result as $entry) {
+    $flag = 0;
+    $flightResult = $flight_collection->find(['Flight_ID' => $flight_id]);
 
-        // $storedUsername = $entry['Username'];
-        // $storedFN = $entry['First_Name'];
-        // $storedLN = $entry['Last_Name'];
-        // $storedDOB = $entry['Date_Of_Birth'];
-        // $storedEmail = $entry['Email'];
-
-
-        print("<tr>");
-        print("<td>" . $entry['Username'] . "</td><td>" . $entry['First_Name'] . "</td><td>" . $entry['Last_Name'] . "</td>" . "<td>" . $entry['Date_Of_Birth'] . "</td>" . "<td>" . $entry['Email'] . "</td>");
-        print("</form></td>");
-        print("</tr>");
+    foreach ($flightResult as $searchFor) {
+        $storedFlight = $searchFor['Flight_ID'];
+        if ($flight_id == $storedFlight) {
+            $flag = 1;
+            $deleteFlight = $flight_collection->deleteOne(['Flight_ID' => $flight_id]);
+            print("<script>window.alert('Sucessfully Deleted Flight ID $flight_id from the Database!')</script>");
+            echo "<script> window.location.assign('admin.html'); </script>";
+        }
     }
-    print("</tbody>");
-    print("</table>");
+
+    if ($flag == 0) {
+        print("<script>window.alert('No such Flight ID in database!');
+        window.location.assign('admin.html');
+        </script>");
+        die();
+    }
+}
+
+
+if (isset($_POST["viewBooking"])) {
+    $flight_id = (int)$_POST['brn'];
+
+    $flag = 0;
+    $flightResult = $flight_collection->find(['Flight_ID' => $flight_id]);
+
+    foreach ($flightResult as $searchFor) {
+        $storedFlight = $searchFor['Flight_ID'];
+        if ($flight_id == $storedFlight) {
+            $flag = 1;
+            $deleteFlight = $flight_collection->deleteOne(['Flight_ID' => $flight_id]);
+            print("<script>window.alert('Sucessfully Deleted Flight ID $flight_id from the Database!')</script>");
+            echo "<script> window.location.assign('admin.html'); </script>";
+        }
+    }
+
+    if ($flag == 0) {
+        print("<script>window.alert('No such Flight ID in database!');
+        window.location.assign('admin.html');
+        </script>");
+        die();
+    }
 }
 
 ?>

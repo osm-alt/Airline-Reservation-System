@@ -167,7 +167,7 @@
             'From' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'To' => 'Disneyland Paris	France	DLP',
             'Departure_Date' => '2022-12-20',
-            'Departure_Time' => '11:20 AM',
+            'Departure_Time' => '11:20',
             'Economy_Seats_Left' => 20,
             'Business_Seats_Left' => 10,
             'FirstClass_Seats_Left' => 5
@@ -178,7 +178,7 @@
             'From' => 'Disneyland Paris	France	DLP',
             'To' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'Departure_Date' => '2022-12-27',
-            'Departure_Time' => '11:40 AM',
+            'Departure_Time' => '11:40',
             'Economy_Seats_Left' => 20,
             'Business_Seats_Left' => 10,
             'FirstClass_Seats_Left' => 5
@@ -189,7 +189,7 @@
             'From' => 'Cairo - Cairo International Airport	Egypt	CAI',
             'To' => 'London Metropolitan Area	United Kingdom	LON',
             'Departure_Date' => '2023-01-29',
-            'Departure_Time' => '05:35 PM',
+            'Departure_Time' => '05:35',
             'Economy_Seats_Left' => 12,
             'Business_Seats_Left' => 7,
             'FirstClass_Seats_Left' => 4
@@ -200,7 +200,7 @@
             'From' => 'London Metropolitan Area	United Kingdom	LON',
             'To' => 'Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA',
             'Departure_Date' => '2023-02-05',
-            'Departure_Time' => '09:25 PM',
+            'Departure_Time' => '09:25',
             'Economy_Seats_Left' => 13,
             'Business_Seats_Left' => 8,
             'FirstClass_Seats_Left' => 5
@@ -211,7 +211,7 @@
             'From' => 'Dubai - Dubai International Airport	United Arab Emirates	DXB',
             'To' => 'Geneva - Geneva-Cointrin International Airport	Switzerland	GVA',
             'Departure_Date' => '2023-03-10',
-            'Departure_Time' => '12:55 AM',
+            'Departure_Time' => '12:55',
             'Economy_Seats_Left' => 25,
             'Business_Seats_Left' => 15,
             'FirstClass_Seats_Left' => 8
@@ -222,7 +222,7 @@
             'From' => 'Geneva - Geneva-Cointrin International Airport	Switzerland	GVA',
             'To' => 'Dubai - Dubai International Airport	United Arab Emirates	DXB',
             'Departure_Date' => '2023-03-17',
-            'Departure_Time' => '12:00 AM',
+            'Departure_Time' => '12:00',
             'Economy_Seats_Left' => 20,
             'Business_Seats_Left' => 15,
             'FirstClass_Seats_Left' => 7
@@ -233,7 +233,7 @@
             'From' => 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY',
             'To' => 'Istanbul - Istanbul Atatürk Airport	Turkey	IST',
             'Departure_Date' => '2023-03-17',
-            'Departure_Time' => '10:00 AM',
+            'Departure_Time' => '10:00',
             'Economy_Seats_Left' => 10,
             'Business_Seats_Left' => 3,
             'FirstClass_Seats_Left' => 2
@@ -244,7 +244,7 @@
             'From' => 'Jeddah - King Abdulaziz International	Saudi Arabia	JED',
             'To' => 'Doha - Doha International Airport	Qatar	DOH',
             'Departure_Date' => '2023-02-07',
-            'Departure_Time' => '03:00 AM',
+            'Departure_Time' => '03:00',
             'Economy_Seats_Left' => 28,
             'Business_Seats_Left' => 15,
             'FirstClass_Seats_Left' => 10
@@ -255,7 +255,7 @@
             'From' => 'Lagos - Murtala Muhammed Airport	Nigeria	LOS',
             'To' => 'Accra - Kotoka International Airport	Ghana	ACC',
             'Departure_Date' => '2023-01-10',
-            'Departure_Time' => '12:00 AM',
+            'Departure_Time' => '12:00',
             'Economy_Seats_Left' => 20,
             'Business_Seats_Left' => 15,
             'FirstClass_Seats_Left' => 7
@@ -266,7 +266,7 @@
             'From' => 'Accra - Kotoka International Airport	Ghana	ACC',
             'To' => 'Lagos - Murtala Muhammed Airport	Nigeria	LOS',
             'Departure_Date' => '2023-01-15',
-            'Departure_Time' => '06:00 PM',
+            'Departure_Time' => '06:00',
             'Economy_Seats_Left' => 30,
             'Business_Seats_Left' => 16,
             'FirstClass_Seats_Left' => 10

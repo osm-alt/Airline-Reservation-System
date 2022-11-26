@@ -41,7 +41,8 @@
         }
 
         .btn {
-            background-color: rgb(84, 201, 247);
+            /* background-color: rgb(84, 201, 247); */
+            width: 100%;
             color: white;
             padding: 5px 10px;
             text-align: center;
@@ -49,7 +50,7 @@
         }
 
         .btn:hover {
-            box-shadow: inset 200px 0 0 0 #54b3d6;
+            box-shadow: inset 1000px 0 0 0 #54b3d6;
             color: black;
             padding-top: 4px;
             padding-bottom: 4px;
@@ -114,7 +115,7 @@
             top: 0;
             right: 0;
             width: 85vw;
-            height: 10vh;
+            /* height: 10vh; */
             background: white;
             display: flex;
             align-items: center;
@@ -198,6 +199,7 @@
 
         /* statistics */
         .container1 {
+            margin-top: -6em;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -219,20 +221,28 @@
             margin-left: 10px;
         }
 
-        /* 
-        table {
-            padding: 10px;
+
+        form {
+            width: 30em;
+            padding-top: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: .3em;
+
+            border-style: solid;
+            border-width: 0.05em;
+            border-radius: 0.5em;
+            border-color: white;
         }
 
-        th {
-            text-align: left;
-            padding: 8px;
-        }
 
-        td {
-            text-align: left;
-            padding: 8px;
-        } */
+
+        input {
+            box-sizing: border-box;
+            padding: .5em;
+            display: block;
+            margin: .3em;
+        }
 
         table {
             margin-top: 2em;
@@ -264,8 +274,7 @@
         .container2 {
             display: flex;
             align-items: center;
-            /* align-items: flex-start; */
-            /* min-height: 59vh; */
+            align-items: flex-start;
             justify-content: center;
             width: 50%;
         }
@@ -276,9 +285,22 @@
             min-height: 25vh;
             /* flex: 4; */
             background: white;
-            margin: 0 25px 25px 25px;
+            /* margin: 0 25px 25px 25px; */
             box-shadow: 2px 5px 10px 2px rgba(17, 16, 16, 0.2);
             flex-direction: column;
+        }
+
+        .flight-control div {}
+
+        .elts {
+            border: 3px solid black;
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .container2 .flight-control {
+            margin-left: 11em;
         }
 
 
@@ -364,15 +386,6 @@
     </div>
     <div class="container">
         <div class="header">
-            <div class="topnav">
-                <div class="search">
-                    <input type="text" placeholder="Search...">
-                    <button type="submit"><img src="admin.pics/search.svg" alt="Search Bar"></button>
-                </div>
-                <div class="user">
-                    <a href="#" class="btn">New Flight</a>
-                </div>
-            </div>
         </div>
         <div class="content">
             <div class="container1">
@@ -416,98 +429,168 @@
             <div class="container2">
                 <div class="flight-control">
                     <!-- <div class="title"> -->
-                    <h2>View All Flights</h2>
+                    <div class="elts">
+                        <h2>View All Flights</h2>
 
-                    <form method="post" action="admin.php">
-                        <div class="btn" method="post" action="admin.php">
-                            <input type="submit" name="searchFlights" value="View All Flights">
-                        </div>
-                    </form>
+                        <form method="post" action="admin.php">
+                            <div class="btn" method="post" action="admin.php">
+                                <input type="submit" name="searchFlights" value="View All Flights">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="elts">
+                        <h2 style="text-align: center;">Add new Flight</h2>
+                        <form method="post" action="admin.php">
+                            <div class="elts" style="border:2px solid black;">
+                                <p><label>Flight ID<input name="Flight_ID" id="fid" type="text" placeholder="Flight ID"
+                                            required></p>
+                                <p><label>Admin Username<input name="Admin_Username" id="admin" type="text"
+                                            placeholder="Admin name" list="adminslist" required>
+                                        <datalist id="adminslist">
+                                            <option value="Andrew">
+                                            <option value="Omar">
+                                            <option value="Robert">
+                                        </datalist>
+                                </p>
+                                <p><label>From<input name="From" id="From" type="text" placeholder="From"
+                                            list="iata_list" required>
+                                        <datalist id="iata_list">
+                                            <option value="Abidjan	Cote d'Ivoire	ABJ">
+                                            <option
+                                                value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                                            <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                                            <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                                            <option
+                                                value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                                            <option value="Basra, Basrah	Iraq	BSR">
+                                            <option
+                                                value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                                            <option value="Brussels - Brussels Airport	Belgium	BRU">
+                                            <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                                            <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                                            <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                                            <option value="Disneyland Paris	France	DLP">
+                                            <option value="Doha - Doha International Airport	Qatar	DOH">
+                                            <option
+                                                value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                                            <option value="East London	South Africa	ELS">
+                                            <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                                            <option
+                                                value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                                            <option
+                                                value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                                            <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                                            <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                                            <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                                            <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                                            <option value="Larnaca	Cyprus	LCA">
+                                            <option value="London Metropolitan Area	United Kingdom	LON">
+                                            <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                                            <option value="Madrid - Barajas Airport	Spain	MAD">
+                                            <option value="Milan	Italy	MIL">
+                                            <option value="Nice - Cote D'Azur Airport	France	NCE">
+                                            <option value="Paris	France	PAR">
+                                            <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                                            <option value="Rome	Italy	ROM">
+                                        </datalist>
+                                </p>
+                                <p><label>To<input name="To" id="To" type="text" placeholder="To" list="iata_list_to"
+                                            required>
+                                        <datalist id="iata_list_to">
+                                            <option value="Abidjan	Cote d'Ivoire	ABJ">
+                                            <option
+                                                value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
+                                            <option value="Accra - Kotoka International Airport	Ghana	ACC">
+                                            <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
+                                            <option
+                                                value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
+                                            <option value="Basra, Basrah	Iraq	BSR">
+                                            <option
+                                                value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
+                                            <option value="Brussels - Brussels Airport	Belgium	BRU">
+                                            <option value="Cairo - Cairo International Airport	Egypt	CAI">
+                                            <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
+                                            <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
+                                            <option value="Disneyland Paris	France	DLP">
+                                            <option value="Doha - Doha International Airport	Qatar	DOH">
+                                            <option
+                                                value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
+                                            <option value="East London	South Africa	ELS">
+                                            <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
+                                            <option
+                                                value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
+                                            <option
+                                                value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
+                                            <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
+                                            <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
+                                            <option value="Kuwait - Kuwait International	Kuwait	KWI">
+                                            <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
+                                            <option value="Larnaca	Cyprus	LCA">
+                                            <option value="London Metropolitan Area	United Kingdom	LON">
+                                            <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
+                                            <option value="Madrid - Barajas Airport	Spain	MAD">
+                                            <option value="Milan	Italy	MIL">
+                                            <option value="Nice - Cote D'Azur Airport	France	NCE">
+                                            <option value="Paris	France	PAR">
+                                            <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
+                                            <option value="Rome	Italy	ROM">
+                                        </datalist>
+                                </p>
+                                <p><label>Departure Date<input name="Departure_Date" id="departuredate" type="date"
+                                            placeholder="Departure Date" required></p>
+                                <p><label>Departure Time<input name="Departure_Time" id="departuretime" type="time"
+                                            placeholder="Departure Time" required></p>
+                                <p><label>Economy Seats Left<input name="Economy_Seats_Left" id="economy" type="text"
+                                            placeholder="Economy" required></p>
+                                <p><label>Business Seats Left<input name="Business_Seats_Left" id="business" type="text"
+                                            placeholder="Business" required></p>
+                                <p><label>First Class Seats Left<input name="FirstClass_Seats_Left" id="firstclass"
+                                            type="text" placeholder="First Class" required></p>
 
-                    <h2>Add new Flight</h2>
-                    <form method="post" action="admin.php">
-                        <p><label>Flight ID<input name="Flight_ID" id="fid" type="text" placeholder="Flight ID"
-                                    required></p>
-                        <p><label>Admin Username<input name="Admin_Username" id="admin" type="text" placeholder="Admin name"
-                                    required></p>
-                        <p><label>From<input name="From" id="From" type="text" placeholder="From" required>
-                        </p>
-                        <p><label>To<input name="To" id="To" type="text" placeholder="To" required>
-                        </p>
-                        <p><label>Departure Date<input name="Departure_Date" id="departuredate" type="text" placeholder="Departure Date"
-                                    required></p>
-                        <p><label>Departure Time<input name="Departure_Time" id="departuretime" type="text" placeholder="Departure Time"
-                                    required></p>
-                        <p><label>Economy Seats Left<input name="Economy_Seats_Left" id="economy" type="text"
-                                    placeholder="Economy" required></p>
-                        <p><label>Business Seats Left<input name="Business_Seats_Left" id="business" type="text"
-                                    placeholder="Business" required></p>
-                        <p><label>First Class Seats Left<input name="FirstClass_Seats_Left" id="firstclass" type="text"
-                                    placeholder="First Class" required></p>
-
-                        <div class="btn" method="post" action="admin.php">
-                            <input type="submit" name="addFlight" value="Add New Flights">
-                        </div>
-                    </form>
-                    <!-- </div> -->
+                                <div class="btn" method="post" action="admin.php">
+                                    <input type="submit" name="addFlight" value="Add New Flight">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
 
                 <div class="container2">
-                    <div class="flight-control">
-                        <!-- <div class="title"> -->
-                        <h2>View All Customers</h2>
+                    <div class="flight-control" style="margin-left: 20em;">
+                        <div class="elts">
+                            <h2 style="text-align: center;">View All Customers</h2>
+                            <form method="post" action="admin.php">
+                                <div class="btn" method="post" action="admin.php">
+                                    <input type="submit" name="searchCustomers" value="View All Customers">
+                                </div>
+                            </form>
+                        </div>
 
-                        <form method="post" action="admin.php">
-                            <div class="btn" method="post" action="admin.php">
-                                <input type="submit" name="searchCustomers" value="View All Customers">
-                            </div>
-                        </form>
+                        <div class="elts">
+                            <h2 style="text-align: center;">Delete Flight</h2>
+                            <form method="post" action="admin.php">
+                                <p><label>Enter Flight ID<input name="flight_id" id="flight_id" type="text"
+                                            placeholder="Delete Flight" required></p>
+                                <div class="btn" method="post" action="admin.php">
+                                    <input type="submit" name="deleteFlight" value="Delete Flight">
+                                </div>
+                            </form>
+                        </div>
 
-                        <h2>Delete Flight</h2>
-                        <form method="post" action="admin.php">
-                            <div class="btn" method="post" action="admin.php">
-                                <input type="submit" name="deleteFlight" value="Add New Flights">
-                            </div>
-                        </form>
-                        <!-- </div> -->
+
+                        <div class="elts">
+                            <h2 style="text-align: center;">View Bookings</h2>
+                            <form method="post" action="admin.php">
+                                <p><label>Enter BRN<input name="brn" id="brn" type="text"
+                                            placeholder="BRN" required></p>
+                                <div class="btn" method="post" action="admin.php">
+                                    <input type="submit" name="viewBooking" value="View Booking">
+                                </div>
+                            </form>
+                        </div>
 
                     </div>
-
-
-                    <!-- <div class="container3">
-                    <div class="title">
-                        <h2>New Customers </h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Customer</th>
-                            <th>Name</th>
-                            <th>option</th>
-                        </tr>
-                        <tr>
-                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
-                            <td>Marc Snow</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
-                            <td>Andrew Chemaly</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
-                            <td>Omar Majzoub</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                        <tr>
-                            <td><img src="admin.pics/person-fill.svg" alt="profileicon"></td>
-                            <td>Robert Naame</td>
-                            <td><a href="#" class="btn">View</a></td>
-                        </tr>
-                    </table>
-                </div> -->
                 </div>
             </div>
         </div>
