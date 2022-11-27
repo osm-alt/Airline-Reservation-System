@@ -3,7 +3,7 @@
 
 	$client = new MongoDB\Client("mongodb://localhost:27017");
 	$database = $client->Airline_Reservation;
-    //$database -> createCollection('Customers');
+    $database -> createCollection('Customers');
 
     $customer_collection = $client->Airline_Reservation->Customers;
     
@@ -64,12 +64,13 @@
     //     [ '$set' => [ 'cvv' => '123' ]]
     //  );
     
- //   $database -> createCollection('Bookings');
+   $database -> createCollection('Bookings');
 
     $booking_collection = $client->Airline_Reservation->Bookings;
 
     $newBookings = [
         [
+            'Brn' => 1,
             'Flights' => [1],
             'Customer_Username' => 'omarmajzoub01',
             'Cabin_Class' => 'Business',
@@ -87,6 +88,7 @@
             'Price' => (round(60 * 1.4) + 10 + 10) * 1 + 10 + 3
         ],
         [
+            'Brn' => 2,
             'Flights' => [3],
             'Customer_Username' => 'johndoe',
             'Cabin_Class' => 'Economy',
@@ -103,6 +105,7 @@
             'Price' => (60 + 10 + 5 + 10) * 2 + round((60 + 10 + 5 + 10) * 0.75) + 10 * 3 + 2 + 2 + 3
         ],
         [
+            'Brn' => 3,
             'Flights' => [1,2],
             'Customer_Username' => 'delilah_johnson',
             'Cabin_Class' => 'Business',
@@ -119,6 +122,7 @@
             'Price' => (round(90 * 1.4) + 5) * 1 + round((round(90 * 1.4) + 5) * 0.75) + round((round(90 * 1.4) + 5) * 0.5) + 10*2 + 2 + 3
         ],
         [
+            'Brn' => 4,
             'Flights' => [3,4],
             'Customer_Username' => 'maroun_choucair',
             'Cabin_Class' => 'First',
@@ -135,6 +139,7 @@
             'Price' => (round(105 * 1.75) + 10 + 5) * 1 + round((round(105 * 1.75) + 10 + 5) * 0.5) + 10 + 2
         ],
         [
+            'Brn' => 5,
             'Flights' => [9],
             'Customer_Username' => 'shang_chi',
             'Cabin_Class' => 'Economy',
@@ -156,7 +161,7 @@
     
     $insertManyResult = $booking_collection->insertMany($newBookings);
 
-    //$database -> createCollection('Flights');
+    $database -> createCollection('Flights');
 
     $flight_collection = $client->Airline_Reservation->Flights;
     
@@ -275,7 +280,7 @@
         
         $insertManyResult = $flight_collection->insertMany($newFlights);
 
-    //$database -> createCollection('Admin');
+    $database -> createCollection('Admin');
 
     $admin_collection = $client->Airline_Reservation->Admin;
 

@@ -290,9 +290,9 @@
             flex-direction: column;
         }
 
-        .flight-control div {}
 
         .elts {
+            /* background-color: aqua   ; */
             border: 3px solid black;
             justify-content: center;
             display: flex;
@@ -381,7 +381,7 @@
             <li><a href="#"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Dashboard</span></a></li>
             <li><a href="main_page.html"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Home</span></a>
             </li>
-            <li><a href="login.html"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Login</span></a></li>
+            <li><a href="login.php"><img src="admin.pics/person-fill.svg" alt="admin">&nbsp;<span>Login</span></a></li>
         </ul>
     </div>
     <div class="container">
@@ -580,12 +580,10 @@
 
 
                         <div class="elts">
-                            <h2 style="text-align: center;">View Bookings</h2>
+                            <h2 style="text-align: center;">View All Bookings</h2>
                             <form method="post" action="admin.php">
-                                <p><label>Enter BRN<input name="brn" id="brn" type="text"
-                                            placeholder="BRN" required></p>
                                 <div class="btn" method="post" action="admin.php">
-                                    <input type="submit" name="viewBooking" value="View Booking">
+                                    <input type="submit" name="viewBooking" value="View All Bookings">
                                 </div>
                             </form>
                         </div>

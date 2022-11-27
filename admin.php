@@ -38,11 +38,11 @@ require 'vendor/autoload.php';
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $database = $client->Airline_Reservation;
 
+
+
 $flight_collection = $client->Airline_Reservation->Flights;
 
 $customer_collection = $client->Airline_Reservation->Customers;
-
-
 
 if (isset($_POST["searchFlights"])) {
     print("<table>");
@@ -179,27 +179,31 @@ if (isset($_POST["deleteFlight"])) {
 
 
 if (isset($_POST["viewBooking"])) {
-    $flight_id = (int)$_POST['brn'];
+    // $Brn = (int)$_POST['brn'];
 
-    $flag = 0;
-    $flightResult = $flight_collection->find(['Flight_ID' => $flight_id]);
+    $booking_collection = $client->Airline_Reservation->Bookings;
 
-    foreach ($flightResult as $searchFor) {
-        $storedFlight = $searchFor['Flight_ID'];
-        if ($flight_id == $storedFlight) {
-            $flag = 1;
-            $deleteFlight = $flight_collection->deleteOne(['Flight_ID' => $flight_id]);
-            print("<script>window.alert('Sucessfully Deleted Flight ID $flight_id from the Database!')</script>");
-            echo "<script> window.location.assign('admin.html'); </script>";
-        }
+
+    print("<table>");
+    print("<thead>");
+    print("<tr><th>Brn</th><th>Customer_Username</th>
+    <th>Cabin_Class</th><th>Prefrered_Seat_Location</th>
+    <th>Accompanying_Pet</th><th>Adults</th><th>Children</th><th>Infants</th>
+    <th>Type_Of_Trip</th><th>Check_In</th><th>Price</th> </tr>");
+    print("</thead>");
+    print("<tbody>");
+
+    $result = $booking_collection->find();
+    foreach ($result as $entry) {
+
+
+        print("<tr>");
+        print("<td>" . $entry['Brn'] . "</td><td>" .  $entry['Customer_Username'] . "</td><td>" . $entry['Cabin_Class'] . "</td>" . "<td>" . $entry['Preferred_Seat_Location'] . "</td>" . "<td>" . $entry['Accompanying_Pet'] . "</td>" . "<td>" . $entry['Adults'] . "</td>" . "<td>" . $entry['Children'] . "</td>" . "<td>" . $entry['Infants'] . "</td>" . "<td>" . $entry['Type_Of_Trip'] . "</td>" . "<td>" . $entry['Check_In'] . "</td>" . "<td>" . $entry['Price'] . "</td>");
+        print("</form></td>");
+        print("</tr>");
     }
-
-    if ($flag == 0) {
-        print("<script>window.alert('No such Flight ID in database!');
-        window.location.assign('admin.html');
-        </script>");
-        die();
-    }
+    print("</tbody>");
+    print("</table>");
 }
 
 ?>
