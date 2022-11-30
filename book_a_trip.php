@@ -28,7 +28,7 @@
             color: white;
         }
 
-        form {
+        form.styled {
             padding: 1em;
             margin-top: 1em;
         }
@@ -139,13 +139,6 @@
                 document.getElementById("arrival_to_second").required = false;
                 document.getElementById("depart_on_second").required = false;
 
-                //fill in cities
-                departure_from.innerText = departure_from_search.value;
-                arrival_to.innerText = arrival_to_search.value;
-
-                depart_on.innerText = depart_on_search.value;
-                return_on.innerText = return_on_search.value;
-
             }
             else if (document.getElementById("trip_type").innerText == "One-way") {
                 document.getElementById("return").style.display = "none";
@@ -154,12 +147,6 @@
                 document.getElementById("departure_from_second").required = false;
                 document.getElementById("arrival_to_second").required = false;
                 document.getElementById("depart_on_second").required = false;
-
-                //fill in cities
-                departure_from.innerText = departure_from_search.value;
-                arrival_to.innerText = arrival_to_search.value;
-
-                depart_on.innerText = depart_on_search.value;
             }
             else if (document.getElementById("trip_type").innerText == "Multi-city") {
                 document.getElementById("return").style.display = "none";
@@ -168,16 +155,6 @@
                 document.getElementById("departure_from_second").required = true;
                 document.getElementById("arrival_to_second").required = true;
                 document.getElementById("depart_on_second").required = true;
-
-                //fill in cities
-                departure_from.innerText = departure_from_search.value;
-                arrival_to.innerText = arrival_to_search.value;
-                departure_from_second.innerText = departure_from_second_search.value;
-                arrival_to_second.innerText = arrival_to_second_search.value;
-
-                depart_on.innerText = depart_on_search.value;
-
-                depart_on_second.innerText = depart_on_second_search.value;
             }
         }
 
@@ -257,25 +234,11 @@
 
             // search_button.addEventListener("click", search_for_flights, false);
 
-            search_form.addEventListener("submit", function (e) {
-                e.preventDefault();
-                search_for_flights();
-            })
+            // search_form.addEventListener("submit", function (e) {
+            //     e.preventDefault();
+            //     search_for_flights();
+            // })
 
-            trip_type = document.getElementById("trip_type");
-            cabin_class = document.getElementById("cabin");
-            seat_location = document.getElementById("seat_selection");
-            meals = document.getElementById("special_meals");
-            drinks = document.getElementById("drinks");
-            airport_pickup = document.getElementById("airport_pickup");
-            pet = document.getElementById("pet");
-            special_treatment = document.getElementById("special_treatment");
-            adults = document.getElementById("adults");
-            children = document.getElementById("children");
-            infants = document.getElementById("infants");
-            currency = document.getElementById("currency");
-            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
-            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
 
             trip_type_search = document.getElementById("trip_type_search");
             cabin_class_search = document.getElementById("cabin_search");
@@ -294,155 +257,163 @@
         }
 
 
-        function search_for_flights() {
-            var passengers_count = parseInt(adults_search.value) + parseInt(children_search.value) + parseInt(infants_search.value);
-            var results_div = document.getElementById("flight_results");
-            results_div.innerHTML = "";
+        // function search_for_flights() {
+        //     var passengers_count = parseInt(adults_search.value) + parseInt(children_search.value) + parseInt(infants_search.value);
+        //     var results_div = document.getElementById("flight_results");
+        //     results_div.innerHTML = "";
 
-            var first_flight_results = [];
-            var second_flight_results = [];
+        //     var first_flight_results = [];
+        //     var second_flight_results = [];
 
-            for (var i = 0; i < test_flights.length; i++) {
-                if (trip_type_search.value == "One-way") {
-                    if (cabin_class_search.value == "Economy class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]);
-                        }
-                    }
-                    else if (cabin_class_search.value == "Business class") {
+        //     for (var i = 0; i < test_flights.length; i++) {
+        //         if (trip_type_search.value == "One-way") {
+        //             if (cabin_class_search.value == "Economy class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]);
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "Business class") {
 
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]);
-                        }
-                    }
-                    else if (cabin_class_search.value == "First class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]);
-                        }
-                    }
-                }
-                else if (trip_type_search.value == "Round-trip") {
-                    if (cabin_class_search.value == "Economy class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //departure flight
-                        }
-                        if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][2] && return_on_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //return flight
-                        }
-                    }
-                    else if (cabin_class_search.value == "Business class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //departure
-                        }
-                        if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][3] && return_on_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //return flight
-                        }
-                    }
-                    else if (cabin_class_search.value == "First class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //departure
-                        }
-                        if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][4] && return_on_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //return flight
-                        }
-                    }
-                }
-                else if (trip_type_search.value == "Multi-city") {
-                    if (cabin_class_search.value == "Economy class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //first flight
-                        }
-                        if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][2] && depart_on_second_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //second flight
-                        }
-                    }
-                    else if (cabin_class_search.value == "Business class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //first flight
-                        }
-                        if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][3] && depart_on_second_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //second flight
-                        }
-                    }
-                    else if (cabin_class_search.value == "First class") {
-                        if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-                            first_flight_results.push(test_flights[i]); //first flight
-                        }
-                        if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][4] && depart_on_second_search.value == test_flights[i][5]) {
-                            second_flight_results.push(test_flights[i]); //second flight
-                        }
-                    }
-                }
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]);
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "First class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]);
+        //                 }
+        //             }
+        //         }
+        //         else if (trip_type_search.value == "Round-trip") {
+        //             if (cabin_class_search.value == "Economy class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //departure flight
+        //                 }
+        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][2] && return_on_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //return flight
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "Business class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //departure
+        //                 }
+        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][3] && return_on_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //return flight
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "First class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //departure
+        //                 }
+        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][4] && return_on_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //return flight
+        //                 }
+        //             }
+        //         }
+        //         else if (trip_type_search.value == "Multi-city") {
+        //             if (cabin_class_search.value == "Economy class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //first flight
+        //                 }
+        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][2] && depart_on_second_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //second flight
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "Business class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //first flight
+        //                 }
+        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][3] && depart_on_second_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //second flight
+        //                 }
+        //             }
+        //             else if (cabin_class_search.value == "First class") {
+        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
+        //                     first_flight_results.push(test_flights[i]); //first flight
+        //                 }
+        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][4] && depart_on_second_search.value == test_flights[i][5]) {
+        //                     second_flight_results.push(test_flights[i]); //second flight
+        //                 }
+        //             }
+        //         }
 
-            }
+        //     }
 
-            if (trip_type_search.value == "One-way") {
-                if (first_flight_results.length == 0) {
-                    results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>";
-                }
-                else {
-                    results_table = document.createElement("table");
-                    results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-                    for (var i = 0; i < first_flight_results.length; i++) {
-                        var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
-                        results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-                    }
-                    results_table.innerHTML += "</tbody>"
-                    results_div.appendChild(results_table);
-                    var book_trip_button = document.createElement("input");
-                    book_trip_button.type = "button";
-                    book_trip_button.value = "Book a trip";
-                    book_trip_button.style.margin = "2em";
-                    book_trip_button.style.position = "relative";
-                    book_trip_button.style.left = "6em";
+        //     if (trip_type_search.value == "One-way") {
+        //         if (first_flight_results.length == 0) {
+        //             results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>";
+        //         }
+        //         else {
+        //             results_table = document.createElement("table");
+        //             results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
+        //             for (var i = 0; i < first_flight_results.length; i++) {
+        //                 var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
+        //                 results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
+        //             }
+        //             results_table.innerHTML += "</tbody>"
+        //             results_div.appendChild(results_table);
+        //             var book_trip_button = document.createElement("input");
+        //             book_trip_button.type = "button";
+        //             book_trip_button.value = "Book a trip";
+        //             book_trip_button.style.margin = "2em";
+        //             book_trip_button.style.position = "relative";
+        //             book_trip_button.style.left = "6em";
 
-                    results_div.appendChild(book_trip_button);
-                    book_trip_button.addEventListener("click", startBooking, false);
-                }
-            }
-            else if (trip_type_search.value == "Round-trip" || trip_type_search.value == "Multi-city") {
-                if (first_flight_results.length == 0 || second_flight_results.length == 0) {
-                    results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results for specified round-trip/multi-city flight</p>";
-                }
-                else {
-                    results_table = document.createElement("table");
-                    results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-                    for (var i = 0; i < first_flight_results.length; i++) {
-                        var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
-                        results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-                    }
-                    results_table.innerHTML += "</tbody>"
-                    results_div.appendChild(results_table);
-                    results_table = document.createElement("table");
-                    results_table.innerHTML = "<caption>Pick your second flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-                    for (var i = 0; i < second_flight_results.length; i++) {
-                        var button_cell = "<td><input type=\"radio\" name=\"second_flight_result\" id=\"second_flight_result" + i + "\"></td>";
-                        results_table.innerHTML += "<tr>" + "<td>" + second_flight_results[i][0] + "</td>" + "<td>" + second_flight_results[i][1] + "</td>" + "<td>" + second_flight_results[i][5] + "</td>" + "<td>" + second_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-                    }
-                    results_table.innerHTML += "</tbody>"
-                    results_div.appendChild(results_table);
-                    var book_trip_button = document.createElement("input");
-                    book_trip_button.type = "button";
-                    book_trip_button.value = "Book a trip";
-                    book_trip_button.style.margin = "2em";
-                    book_trip_button.style.position = "relative";
-                    book_trip_button.style.left = "6em";
+        //             results_div.appendChild(book_trip_button);
+        //             book_trip_button.addEventListener("click", startBooking, false);
+        //         }
+        //     }
+        //     else if (trip_type_search.value == "Round-trip" || trip_type_search.value == "Multi-city") {
+        //         if (first_flight_results.length == 0 || second_flight_results.length == 0) {
+        //             results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results for specified round-trip/multi-city flight</p>";
+        //         }
+        //         else {
+        //             results_table = document.createElement("table");
+        //             results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
+        //             for (var i = 0; i < first_flight_results.length; i++) {
+        //                 var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
+        //                 results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
+        //             }
+        //             results_table.innerHTML += "</tbody>"
+        //             results_div.appendChild(results_table);
+        //             results_table = document.createElement("table");
+        //             results_table.innerHTML = "<caption>Pick your second flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
+        //             for (var i = 0; i < second_flight_results.length; i++) {
+        //                 var button_cell = "<td><input type=\"radio\" name=\"second_flight_result\" id=\"second_flight_result" + i + "\"></td>";
+        //                 results_table.innerHTML += "<tr>" + "<td>" + second_flight_results[i][0] + "</td>" + "<td>" + second_flight_results[i][1] + "</td>" + "<td>" + second_flight_results[i][5] + "</td>" + "<td>" + second_flight_results[i][6] + "</td>" + button_cell + "</tr>";
+        //             }
+        //             results_table.innerHTML += "</tbody>"
+        //             results_div.appendChild(results_table);
+        //             var book_trip_button = document.createElement("input");
+        //             book_trip_button.type = "button";
+        //             book_trip_button.value = "Book a trip";
+        //             book_trip_button.style.margin = "2em";
+        //             book_trip_button.style.position = "relative";
+        //             book_trip_button.style.left = "6em";
 
-                    results_div.appendChild(book_trip_button);
-                    book_trip_button.addEventListener("click", startBooking, false);
-                }
-            }
-        }
+        //             results_div.appendChild(book_trip_button);
+        //             book_trip_button.addEventListener("click", startBooking, false);
+        //         }
+        //     }
+        // }
 
         function startBooking() {
-            var booking_form_fieldset = document.getElementById("booking_form_fieldset");
-            booking_form_fieldset.hidden = false;
-            trip_type.innerText = trip_type_search.value;
+            trip_type = document.getElementById("trip_type");
+            cabin_class = document.getElementById("cabin");
+            seat_location = document.getElementById("seat_selection");
+            meals = document.getElementById("special_meals");
+            drinks = document.getElementById("drinks");
+            airport_pickup = document.getElementById("airport_pickup");
+            pet = document.getElementById("pet");
+            special_treatment = document.getElementById("special_treatment");
+            adults = document.getElementById("adults");
+            children = document.getElementById("children");
+            infants = document.getElementById("infants");
+            currency = document.getElementById("currency");
+            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
+            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
+
             check_trip_type();
-            cabin_class.innerText = cabin_class_search.value;
-            adults.innerText = adults_search.value;
-            children.innerText = children_search.value;
-            infants.innerText = infants_search.value;
 
             account_for_adult_passengers();
             account_for_child_passengers();
@@ -671,6 +642,8 @@
             price = price.toFixed(2);
 
             displayed_price.innerText = price;
+            var price_sent = document.getElementByID("price_sent");
+            price_sent.value = price;
         }
     </script>
 </head>
@@ -728,7 +701,7 @@
 
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Search for flights</legend>
-        <form id="search_form">
+        <form class="styled" id="search_form" method="post" action="book_a_trip.php">
             <p>
                 <label for="trip_type_search">Type of trip</label>
                 <select onchange="check_trip_type_search()" id="trip_type_search" name="trip_type_search">
@@ -740,7 +713,7 @@
             <div class="form-elts">
                 <p>
                     <label for="departure_from_search">From</label>
-                    <input type="text" id="departure_from_search" name="deparure_from_search" list="iata_list" required>
+                    <input type="text" id="departure_from_search" name="departure_from_search" list="iata_list" required>
                     <datalist id="iata_list">
                         <option value="Abidjan	Cote d'Ivoire	ABJ">
                         <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
@@ -825,7 +798,7 @@
             <div class="form-elts" id="second-city_search" style="display:none">
                 <p>
                     <label for="departure_from_second_search">From</label>
-                    <input type="text" id="departure_from_second_search" name="deparure_from_second" list="iata_list">
+                    <input type="text" id="departure_from_second_search" name="departure_from_second_search" list="iata_list">
                     <datalist id="iata_list">
                         <option value="Abidjan	Cote d'Ivoire	ABJ">
                         <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
@@ -935,7 +908,7 @@
             </div>
 
             <p>
-                <input type="submit" id="search" value="Search for flights" style="display:none">
+                <input type="submit" id="search" name="submit_search" value="Search for flights" style="display:none">
                 <input type="reset" value="Clear">
             </p>
         </form>
@@ -944,18 +917,395 @@
     <div id="flight_results">
     </div>
 
-    <fieldset id="booking_form_fieldset" hidden style="margin: 1em;">
-        <legend style="margin-left: 2em;">Booking</legend>
-        <form method="post" action="" onchange="computePrice()">
-            <p>
-                <label for="trip_type">Type of trip:</label>
-                <span id="trip_type" name="trip_type">
-                </span>
-            </p>
-            <div class="form-elts-span">
+    <?php
+        require 'vendor/autoload.php';
+
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $database = $client->Airline_Reservation;
+    
+        $flight_collection = $client->Airline_Reservation->Flights;
+
+        $trip_type_search = isset($_POST[ "trip_type_search" ]) ? $_POST[ "trip_type_search" ] : "";
+        $departure_from_search = isset($_POST[ "departure_from_search" ]) ? $_POST[ "departure_from_search" ] : "";
+        $departure_from_second_search = isset($_POST[ "departure_from_second_search" ]) ? $_POST[ "departure_from_second_search" ] : "";
+        $arrival_to_search = isset($_POST[ "arrival_to_search" ]) ? $_POST[ "arrival_to_search" ] : "";
+        $arrival_to_second_search = isset($_POST[ "arrival_to_second_search" ]) ? $_POST[ "arrival_to_second_search" ] : "";
+        $depart_on_search = isset($_POST[ "depart_on_search" ]) ? $_POST[ "depart_on_search" ] : "";
+        $return_on_search = isset($_POST[ "return_on_search" ]) ? $_POST[ "return_on_search" ] : "";
+        $depart_on_second_search = isset($_POST[ "depart_on_second_search" ]) ? $_POST[ "depart_on_second_search" ] : "";
+        $cabin_search = isset($_POST[ "cabin_search" ]) ? $_POST[ "cabin_search" ] : "";
+        $adults_search = isset($_POST[ "adults_search" ]) ? $_POST[ "adults_search" ] : "";
+        $children_search = isset($_POST[ "children_search" ]) ? $_POST[ "children_search" ] : "";
+        $infants_search = isset($_POST[ "infants_search" ]) ? $_POST[ "infants_search" ] : "";
+
+        if(isset($_POST["submit_search"]))
+        {
+            $passengers_count = intval($adults_search) + intval($children_search) + intval($infants_search);
+            
+            if($trip_type_search == "One-way")
+            {
+                if($cabin_search == "Economy class"){
+                    $result = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Economy_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "Business class"){
+                    $result = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Business_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "First class"){
+                    $result = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                if(!$result)
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                }
+                else{
+                    print("<form method=\"post\" action = \"book_a_trip.php\">");
+                    print("<table>");
+                    print("<caption>Pick your flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>");
+                    print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");
+                    print("<input type = \"hidden\" name = \"departure_from_search\" value = \"" . $departure_from_search . "\">");
+                    print("<input type = \"hidden\" name = \"arrival_to_search\" value = \"" . $arrival_to_search . "\">");
+                    print("<input type = \"hidden\" name = \"depart_on_search\" value = \"" . $depart_on_search . "\">");
+                    print("<input type = \"hidden\" name = \"cabin_search\" value = \"" . $cabin_search . "\">");
+                    print("<input type = \"hidden\" name = \"adults_search\" value = \"" . $adults_search . "\">");
+                    print("<input type = \"hidden\" name = \"children_search\" value = \"" . $children_search . "\">");
+                    print("<input type = \"hidden\" name = \"infants_search\" value = \"" . $infants_search . "\">");
+
+                    foreach ($result as $entry) {
+                        print("<tr>");
+                        print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                        print("<td>");
+                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
+                        print("</td>");
+                        print("</tr>");
+                    }
+                    print("</tbody>");
+                    print("</table>");
+                    print("<input type=\"submit\" name=\"choose_flights\" value=\"Book a trip\" style=\"margin:2em; position=relative; left=6em\">");
+                    print("</form>");
+                }
+            }
+            else if($trip_type_search == "Round-trip")
+            {
+                if($cabin_search == "Economy class"){
+                    $result_depart = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Economy_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_return = $flight_collection->find(['From' => $arrival_to_search, 'To' => $departure_from_search, 'Departure_Date' => $return_on_search, 'Economy_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "Business class"){
+                    $result_depart = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Business_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_return = $flight_collection->find(['From' => $arrival_to_search, 'To' => $departure_from_search, 'Departure_Date' => $return_on_search, 'Business_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "First class"){
+                    $result_depart = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_return = $flight_collection->find(['From' => $arrival_to_search, 'To' => $departure_from_search, 'Departure_Date' => $return_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+
+                if(!$result_depart or !$result_return)
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                }
+                else{
+                    print("<form method=\"post\" action = \"book_a_trip.php\">");
+                    print("<table>");
+                    print("<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>");
+                    print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");
+                    print("<input type = \"hidden\" name = \"departure_from_search\" value = \"" . $departure_from_search . "\">");
+                    print("<input type = \"hidden\" name = \"arrival_to_search\" value = \"" . $arrival_to_search . "\">");
+                    print("<input type = \"hidden\" name = \"depart_on_search\" value = \"" . $depart_on_search . "\">");
+                    print("<input type = \"hidden\" name = \"return_on_search\" value = \"" . $return_on_search . "\">");
+                    print("<input type = \"hidden\" name = \"cabin_search\" value = \"" . $cabin_search . "\">");
+                    print("<input type = \"hidden\" name = \"adults_search\" value = \"" . $adults_search . "\">");
+                    print("<input type = \"hidden\" name = \"children_search\" value = \"" . $children_search . "\">");
+                    print("<input type = \"hidden\" name = \"infants_search\" value = \"" . $infants_search . "\">");
+
+                    foreach ($result_depart as $entry) {
+                        print("<tr>");
+                        print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                        print("<td>");
+                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
+                        print("</td>");
+                        print("</tr>");
+                    }
+                    print("</tbody>");
+                    print("</table>");
+
+                    print("<table>");
+                    print("<caption>Pick your second flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>");
+                    foreach ($result_return as $entry) {
+                        print("<tr>");
+                        print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                        print("<td>");
+                        print("<input type = \"radio\" name = \"return_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $entry['Flight_ID'] . "\">");
+                        print("</td>");
+                        print("</tr>");
+                    }
+                    print("</tbody>");
+                    print("</table>");
+                    print("<input type=\"submit\" name=\"choose_flights\" value=\"Book a trip\" style=\"margin:2em; position=relative; left=6em\">");
+                    print("</form>");
+                }
+            }
+            else if($trip_type_search == "Multi-city")
+            {
+                if($cabin_search == "Economy class"){
+                    $result_first = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Economy_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_second = $flight_collection->find(['From' => $departure_from_second_search, 'To' => $arrival_to_second_search, 'Departure_Date' => $depart_on_second_search, 'Economy_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "Business class"){
+                    $result_first = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'Business_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_second = $flight_collection->find(['From' => $depart_on_second_search, 'To' => $arrival_to_second_search, 'Departure_Date' => $depart_on_second_search, 'Business_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+                else if($cabin_search == "First class"){
+                    $result_first = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
+                    $result_second = $flight_collection->find(['From' => $departure_from_second_search, 'To' => $arrival_to_second_search, 'Departure_Date' => $depart_on_second_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
+                }
+
+                if(!$result_first or !$result_second)
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                }
+                else{
+                    print("<form method=\"post\" action = \"book_a_trip.php\">");
+                    print("<table>");
+
+                    print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");
+                    print("<input type = \"hidden\" name = \"departure_from_search\" value = \"" . $departure_from_search . "\">");
+                    print("<input type = \"hidden\" name = \"arrival_to_search\" value = \"" . $arrival_to_search . "\">");
+                    print("<input type = \"hidden\" name = \"depart_on_search\" value = \"" . $depart_on_search . "\">");
+                    print("<input type = \"hidden\" name = \"departure_from_second_search\" value = \"" . $departure_from_second_search . "\">");
+                    print("<input type = \"hidden\" name = \"arrival_to_second_search\" value = \"" . $arrival_to_second_search . "\">");
+                    print("<input type = \"hidden\" name = \"depart_on_second_search\" value = \"" . $depart_on_second_search . "\">");
+                    print("<input type = \"hidden\" name = \"cabin_search\" value = \"" . $cabin_search . "\">");
+                    print("<input type = \"hidden\" name = \"adults_search\" value = \"" . $adults_search . "\">");
+                    print("<input type = \"hidden\" name = \"children_search\" value = \"" . $children_search . "\">");
+                    print("<input type = \"hidden\" name = \"infants_search\" value = \"" . $infants_search . "\">");
+
+                    print("<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>");
+                    foreach ($result_first as $entry) {
+                        print("<tr>");
+                        print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                        print("<td>");
+                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
+                        print("</td>");
+                        print("</tr>");
+                    }
+                    print("</tbody>");
+                    print("</table>");
+
+                    print("<table>");
+                    print("<caption>Pick your second flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>");
+                    foreach ($result_second as $entry) {
+                        print("<tr>");
+                        print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                        print("<td>");
+                        print("<input type = \"radio\" name = \"departure_time_second\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $entry['Flight_ID'] . "\">");
+                        print("</td>");
+                        print("</tr>");
+                    }
+                    print("</tbody>");
+                    print("</table>");
+                    print("<input type=\"submit\" name=\"choose_flights\" value=\"Book a trip\" style=\"margin:2em; position=relative; left=6em\">");
+                    print("</form>");
+                }
+            }
+        }       
+         
+        if(isset($_POST["choose_flights"]))
+        { 
+            $departure_time = isset($_POST[ "departure_time" ]) ? $_POST[ "departure_time" ] : "";
+            $departure_time_second = isset($_POST[ "departure_time_second" ]) ? $_POST[ "departure_time_second" ] : "";
+            $return_time = isset($_POST[ "return_time" ]) ? $_POST[ "return_time" ] : "";
+            $flight_id = isset($_POST[ "flight_id" ]) ? $_POST[ "flight_id" ] : "";
+            $flight_id_second = isset($_POST[ "flight_id_second" ]) ? $_POST[ "flight_id" ] : "";
+
+            print("<fieldset id=\"booking_form_fieldset\" style=\"margin: 1em;\">");
+            print("<legend style=\"margin-left: 2em;\">Booking</legend>");
+            print("<form class=\"styled\" method=\"post\" action=\"\" onchange=\"computePrice()\">");
+            
+            print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $flight_id . "\">");
+            print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");
+            print("<input type = \"hidden\" name = \"departure_from_search\" value = \"" . $departure_from_search . "\">");
+            print("<input type = \"hidden\" name = \"arrival_to_search\" value = \"" . $arrival_to_search . "\">");
+            print("<input type = \"hidden\" name = \"depart_on_search\" value = \"" . $depart_on_search . "\">");
+            print("<input type = \"hidden\" name = \"departure_time\" value = \"" . $departure_time . "\">");
+            if($trip_type_search == "Round-trip")
+            {
+                print("<input type = \"hidden\" name = \"return_on_search\" value = \"" . $return_on_search . "\">");
+                print("<input type = \"hidden\" name = \"departure_time_second\" value = \"" . $departure_time_second . "\">");
+                print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $flight_id_second . "\">");
+            }
+            if($trip_type_search == "Multi-city")
+            {
+                print("<input type = \"hidden\" name = \"departure_from_second_search\" value = \"" . $departure_from_second_search . "\">");
+                print("<input type = \"hidden\" name = \"arrival_to_second_search\" value = \"" . $arrival_to_second_search . "\">");
+                print("<input type = \"hidden\" name = \"depart_on_second_search\" value = \"" . $depart_on_second_search . "\">");
+                print("<input type = \"hidden\" name = \"departure_time_second\" value = \"" . $departure_time_second . "\">");
+                print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $flight_id_second . "\">");
+            }
+            print("<input type = \"hidden\" name = \"cabin_search\" value = \"" . $cabin_search . "\">");
+            print("<input type = \"hidden\" name = \"adults_search\" value = \"" . $adults_search . "\">");
+            print("<input type = \"hidden\" name = \"children_search\" value = \"" . $children_search . "\">");
+            print("<input type = \"hidden\" name = \"infants_search\" value = \"" . $infants_search . "\">");
+
+            print("<p><label for=\"trip_type\">Type of trip: </label><span id=\"trip_type\" name=\"trip_type\">$trip_type_search</span></p>");
+            print("<div class=\"form-elts-span\">");
+            
+            print("<p>");
+            print("<label for=\"departure_from\">From: </label>");
+            print("<span id=\"departure_from\" name=\"departure_from\" required>");
+            print($departure_from_search);
+            print("</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"arrival_to\">To: </label>");
+            print("<span id=\"arrival_to\" name=\"arrival_to\" required>");
+            print($arrival_to_search);
+            print("</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"depart_on\">Depart On: </label>");
+            print("<span id=\"depart_on\" name=\"depart_on\" required>");
+            print($depart_on_search);
+            print("</span>");
+            print("<span>");
+            print(" Time: " . $departure_time);
+            print("</span>");
+            print("</p>");
+
+            print("<p id=\"return\">");
+            print("<label for=\"return_on\">Return On: </label>");
+            print("<span id=\"return_on\" name=\"return_on\" required>");
+            print($return_on_search);
+            print("</span>");
+            print("<span>");
+            print(" Time: " . $return_time);
+            print("</span>");
+            print("</p>");
+            print("</div>");
+            
+            print("<div class=\"form-elts-span\" id=\"second-city\" style=\"display:none\">");
+            print("<p>");
+            print("<label for=\"departure_from_second\">From: </label>");
+            print("<span id=\"departure_from_second\" name=\"departure_from_second\">");
+            print($departure_from_second_search);
+            print("</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"arrival_to_second\">To: </label>");
+            print("<span id=\"arrival_to_second\" name=\"arrival_to_second\">");
+            print($arrival_to_second_search);
+            print("</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"depart_on_second\">Depart On: </label>");
+            print("<span id=\"depart_on_second\" name=\"depart_on_second\">");
+            print($depart_on_second_search);
+            print("</span>");
+            print("<span>");
+            print(" Time: " . $departure_time_second);
+            print("</span>");
+            print("</p>");
+            print("</div>");
+
+            print("<div class=\"form-elts-span\">");
+            print("<p>");
+            print("<label for=\"cabin\">Cabin class: </label>");
+            print("<span id=\"cabin\" name=\"cabin\">");
+            print($cabin_search);
+            print("</span>");
+            print("</p>");
+            print("</div>");
+
+            print("<p>");
+            print("<label for=\"seat_selection\">Preferred seat location for the person booking:</label>");
+            print("<select id=\"seat_selection\" name=\"seat_selection\">");
+            print("<option selected>Aisle seat</option>");
+            print("<option>Window seat</option>");
+            print("</select>");
+            print("</p>");
+
+            print("<p>");
+            print("<label>Airport pick-up: </label>");
+            print("<label>Yes</label>");
+            print("<input type=\"radio\" id=\"airport_pickup\" name=\"airport_pickup\" value=\"yes\">");
+            print("<label>No</label>");
+            print("<input type=\"radio\" name=\"airport_pickup\" value=\"no\">");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"pet\">Accompanying pet</label>");
+            print("<select id=\"pet\" name=\"pet\">");
+            print("<option selected>None</option>");
+            print("<option>Dog</option>");
+            print("<option>Cat</option>");
+            print("<option>Bird</option>");
+            print("</select>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"special_treatment\">Please specify a special treatment if needed:</label>");
+            print("<input type=\"text\" id=\"special_treatment\" name=\"special_treatment\">");
+            print("</p>");
+
+            print("<h3 style=\"margin-top: 1em;\">Passengers</h3>");
+            print("<div class=\"form-elts-span\">");
+            print("<p>");
+            print("<label for=\"adults\">Adults (12+ years): </label>");
+            print("<span id=\"adults\" name=\"adults\" required>$adults_search</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"children\">Children (2-12 years): </label>");
+            print("<span id=\"children\" name=\"children\" required>$children_search</span>");
+            print("</p>");
+            print("<p>");
+            print("<label for=\"infants\">Infants (0-23 months): </label>");
+            print("<span id=\"infants\" name=\"infants\" required>$infants_search</span>");
+            print("</p>");
+            print("</div>");
+
+            print("<h3 style=\"margin-top: 1em;\">Meals and Drinks</h3>");
+            print("<div id=\"meals_and_drinks\">");
+            print("<div id=\"adults_meals_and_drinks\"></div>");
+            print("<div id=\"children_meals_and_drinks\"></div>");
+            print("</div>");
+            print("<hr style=\"margin-top: 1em;\">");
+            print("<div class=\"price_div\" style=\"font-size: 1.2em; margin-top: 1em;\">");
+            print("<strong>Total price: <span id=\"price\"></span></strong>");
+            print("<input type=\"hidden\" id=\"price_sent\">");
+
+            print("<select id=\"currency\" name=\"currency\"");
+            print("style=\"font-size:0.75em; margin-left: .3em; border-color: silver;\">");
+            print("<option selected>$</option>");
+            print("<option>&euro;</option>");
+            print("<option>&#163;</option>");
+            print("<!--pound-->");
+            print("<option>L.L</option>");
+            print("</select>");
+            print("</div>");
+            print("<p>");
+            print("<input type=\"submit\" id=\"submit\" value=\"Submit\">");
+            print("<input type=\"reset\" value=\"Clear\">");
+            print("</p>");
+            print("</form>");
+            print("</fieldset>");
+            print("<script>startBooking();</script>");
+            print("<p style=\"margin: 1em; text-align:center;\">");
+            print("<label for=\"reserve_hotel\">Want to make a hotel reservation?</label>");
+            print("<a href=\"https://www.trivago.com/\" target=\"_blank\"><button id=\"reserve_hotel\"");
+            print("style=\"background-color: rgb(84, 201, 247); color:white; border-radius: .5em;\">Check");
+            print("Trivago</button></a>");
+            print("</p>"); 
+        }
+        
+            
+    ?>
+
+            <!-- <div class="form-elts-span">
                 <p>
                     <label for="departure_from">From:</label>
-                    <span id="departure_from" name="deparure_from" required>
+                    <span id="departure_from" name="departure_from" required>
                     </span>
                 </p>
                 <p>
@@ -979,7 +1329,7 @@
             <div class="form-elts-span" id="second-city" style="display:none">
                 <p>
                     <label for="departure_from_second">From:</label>
-                    <span id="departure_from_second" name="deparure_from_second">
+                    <span id="departure_from_second" name="departure_from_second">
                     </span>
                 </p>
                 <p>
@@ -1060,8 +1410,8 @@
                     <option selected>$</option>
                     <option>&euro;</option>
                     <option>&#163;</option>
-                    <!--pound-->
-                    <option>L.L</option>
+                    <!-- pound -->
+                    <!-- <option>L.L</option>
                 </select>
             </div>
             <p>
@@ -1075,7 +1425,7 @@
         <a href="https://www.trivago.com/" target="_blank"><button id="reserve_hotel"
                 style="background-color: rgb(84, 201, 247); color:white; border-radius: .5em;">Check
                 Trivago</button></a>
-    </p>
+    </p> -->
 </body>
 
 </html>
