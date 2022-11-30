@@ -1,3 +1,92 @@
+
+<?php
+
+    require 'vendor/autoload.php';
+
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $database = $client->Airline_Reservation;
+
+    $admin_collection = $client->Airline_Reservation->Admin;
+
+    $customer_collection = $client->Airline_Reservation->Customers;
+
+
+
+
+    if (isset($_POST['submit'])) {
+
+        $inputtedUsername = $_POST['username'];
+        $inputtedPassword =  $_POST['password'];
+
+        $flag = 0;
+        // flag to check if login is successful
+
+
+        // CUSTOMER LOGIN PART
+        $CustomerResultCredentials = $customer_collection->find(['Username' => $inputtedUsername]);
+
+        foreach ($CustomerResultCredentials as $searchFor) {
+
+            $storedUsername = $searchFor['Username'];
+            $storedPassword = $searchFor['Password'];
+
+
+            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
+            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
+                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
+                $flag = 1;
+
+
+                define("FIVE_DAYS", 60 * 60 * 24 * 5); // define constant
+                setcookie( "username", $inputtedUsername, time() + FIVE_DAYS );
+
+                $customer_collection->updateOne(
+                    ['Username' => $inputtedUsername],
+                    ['$set' => ['Cookie' => $inputtedUsername . rand(0,10000)]]
+                );
+                print("<script>window.alert('Welcome $inputtedUsername!')</script>");
+                echo "<script> window.location.assign('main_page.php'); </script>";
+            }
+        }
+
+
+        // ADMIN LOGIN PART
+        $adminResultCredentials = $admin_collection->find(['Username' => $inputtedUsername]);
+
+
+        foreach ($adminResultCredentials as $searchFor) {
+
+            $storedUsername = $searchFor['Username'];
+            $storedPassword = $searchFor['Password'];
+
+
+            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
+            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
+                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
+                $flag = 1;
+
+                define("FIVE_DAYS", 60 * 60 * 24 * 5); // define constant
+                setcookie( "username", $inputtedUsername, time() + FIVE_DAYS );
+
+                $admin_collection->updateOne(
+                    ['Username' => $inputtedUsername],
+                    ['$set' => ['Cookie' => $inputtedUsername . rand(0,10000)]]
+                );
+
+                print("<script>window.alert('Welcome Admin $inputtedUsername!')</script>");
+                echo "<script> window.location.assign('admin.html'); </script>";
+            }
+        }
+
+        // in case the user or admin inputs wrong credentials, flag is set to 0 this message is displayed
+        if ($flag == 0) {
+
+            print("<script>window.alert('Wrong username or password!')</script>");
+            // echo "Wrong Credentials!";
+        }
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -211,79 +300,6 @@
             </p>
         </form>
     </fieldset>
-
-
-    <?php
-
-    require 'vendor/autoload.php';
-
-    $client = new MongoDB\Client("mongodb://localhost:27017");
-    $database = $client->Airline_Reservation;
-
-    $admin_collection = $client->Airline_Reservation->Admin;
-
-    $customer_collection = $client->Airline_Reservation->Customers;
-
-
-    
-    if (isset($_POST['submit'])) {
-        
-        $inputtedUsername = $_POST['username'];
-        $inputtedPassword =  $_POST['password'];
-        $flag = 0;
-        // flag to check if login is successful
-        
-
-        // CUSTOMER LOGIN PART
-        $CustomerResultCredentials = $customer_collection->find(['Username' => $inputtedUsername]);
-
-        foreach ($CustomerResultCredentials as $searchFor) {
-
-            $storedUsername = $searchFor['Username'];
-            $storedPassword = $searchFor['Password'];
-
-
-            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
-            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
-                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
-                $flag = 1;
-                print("<script>window.alert('Welcome $inputtedUsername!')</script>");
-                echo "<script> window.location.assign('main_page.html'); </script>";
-            }
-        }
-
-
-        // ADMIN LOGIN PART
-        $adminResultCredentials = $admin_collection->find(['Username' => $inputtedUsername]);
-
-
-        foreach ($adminResultCredentials as $searchFor) {
-
-            $storedUsername = $searchFor['Username'];
-            $storedPassword = $searchFor['Password'];
-
-
-            // password_verify checks if the inputted password is = to the hashed password stored inside the database.
-            if ($inputtedUsername == $storedUsername && password_verify($inputtedPassword, $storedPassword)) {
-                // Valid credentials were intered: Admin will get access and be redirected to the Admin page UI
-                $flag = 1;
-                // $_SESSION[''] ???
-                print("<script>window.alert('Welcome Admin $inputtedUsername!')</script>");
-                echo "<script> window.location.assign('admin.html'); </script>";
-
-            }
-        }
-
-        // in case the user or admin inputs wrong credentials, flag is set to 0 this message is displayed
-        if ($flag == 0) {
-            
-            print("<script>window.alert('Wrong username or password!')</script>");
-            // echo "Wrong Credentials!";
-        }
-        
-    }
-    
-    ?>
 
 </body>
 

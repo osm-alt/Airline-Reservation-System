@@ -5,11 +5,12 @@
     <title>Results</title>
     <style>
         table {
+            float: left;
             margin-top: 2em;
             text-align: center;
-            width: 80%;
-            margin-left: 10%;
-            margin-right: 10%;
+            width: 100%;
+            /* margin-left: 10%; */
+            /* margin-right: 10%; */
             border-collapse: collapse;
         }
 
@@ -33,6 +34,9 @@
 
 
 <?php
+
+use MongoDB\Operation\Find;
+
 require 'vendor/autoload.php';
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
@@ -178,12 +182,15 @@ if (isset($_POST["deleteFlight"])) {
 }
 
 
+
+
+
 if (isset($_POST["viewBooking"])) {
     // $Brn = (int)$_POST['brn'];
 
     $booking_collection = $client->Airline_Reservation->Bookings;
 
-
+// Table1
     print("<table>");
     print("<thead>");
     print("<tr><th>Brn</th><th>Customer_Username</th>
@@ -198,12 +205,79 @@ if (isset($_POST["viewBooking"])) {
 
 
         print("<tr>");
-        print("<td>" . $entry['Brn'] . "</td><td>" .  $entry['Customer_Username'] . "</td><td>" . $entry['Cabin_Class'] . "</td>" . "<td>" . $entry['Preferred_Seat_Location'] . "</td>" . "<td>" . $entry['Accompanying_Pet'] . "</td>" . "<td>" . $entry['Adults'] . "</td>" . "<td>" . $entry['Children'] . "</td>" . "<td>" . $entry['Infants'] . "</td>" . "<td>" . $entry['Type_Of_Trip'] . "</td>" . "<td>" . $entry['Check_In'] . "</td>" . "<td>" . $entry['Price'] . "</td>");
+        print("<td>" . $entry['Brn'] . "</td><td>" .  $entry['Customer_Username'] . "</td><td>"
+         . $entry['Cabin_Class'] . "</td>" . "<td>" . $entry['Preferred_Seat_Location'] . "</td>" . "<td>" . $entry['Accompanying_Pet'] . "</td>" . "<td>"
+          . $entry['Adults'] . "</td>" . "<td>" . $entry['Children'] . "</td>" . "<td>" . $entry['Infants'] . "</td>" . "<td>" . $entry['Type_Of_Trip'] . "</td>"
+           . "<td>" . $entry['Check_In'] . "</td>" . "<td>" . $entry['Price']  . "</td>");
         print("</form></td>");
         print("</tr>");
     }
     print("</tbody>");
     print("</table>");
+
+
+    // Table 2 for multivalued attributes such as Flights.    
+    $result2 = $booking_collection->find();
+    print("<table>");
+    print("<thead>");
+    print("<tr><th>Brn</th><th>Flights</th></tr>");
+    print("</thead>");
+    print("<tbody>");
+
+    foreach ($result2 as $entry) {
+        for($i=0; $i<sizeof($entry['Flights']); $i++)
+        {
+            print("<tr>");
+            print("<td>" . $entry['Brn'] . "</td><td>" . $entry['Flights'][$i] . "</td>");
+            print("</tr>");
+        }
+    }
+    print("</tbody>");
+    print("</table>");
+
+
+    // Table 3 for multivalued attributes such as Meals.   
+    $result3 = $booking_collection->find();
+    print("<table>");
+    print("<thead>");
+    print("<tr><th>Brn</th><th>Adult_Meals</th><th>Adult_Drinks</th></tr>");
+    print("</thead>");
+    print("<tbody>");
+
+    foreach ($result3 as $entry) {
+        for($i=0; $i<sizeof($entry['Adult_Meals']); $i++)
+        {
+            print("<tr>");
+            print("<td>" . $entry['Brn'] . "</td><td>" . $entry['Adult_Meals'][$i] . "</td><td>" . $entry['Adult_Drinks'][$i] . "</td>");
+            print("</tr>");
+        }
+
+    }
+
+    print("</tbody>");
+    print("</table>");
+
+
+    // Table 4 for multivalued attributes such as Drinks.    
+    $result4 = $booking_collection->find();
+    print("<table>");
+    print("<thead>");
+    print("<tr><th>Brn</th><th>Children_Meals</th><th>Children_Drinks</th></tr>");
+    print("</thead>");
+    print("<tbody>");
+
+    foreach ($result4 as $entry) {
+        for($i=0; $i<sizeof($entry['Children_Meals']); $i++)
+        {
+            print("<tr>");
+            print("<td>" . $entry['Brn'] . "</td><td>" . $entry['Children_Meals'][$i] . "</td><td>" . $entry['Children_Drinks'][$i] . "</td>");
+            print("</tr>");
+        }
+    }
+    print("</tbody>");
+    print("</table>");
+
+
 }
 
 ?>
