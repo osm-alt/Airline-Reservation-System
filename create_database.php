@@ -71,6 +71,7 @@
     $newBookings = [
         [
             'Brn' => 1,
+            'Purchased' => True,
             'Flights' => [1],
             'Customer_Username' => 'omarmajzoub01',
             'Cabin_Class' => 'Business',
@@ -91,6 +92,7 @@
         ],
         [
             'Brn' => 2,
+            'Purchased' => True,
             'Flights' => [3],
             'Customer_Username' => 'johndoe',
             'Cabin_Class' => 'Economy',
@@ -110,6 +112,7 @@
         ],
         [
             'Brn' => 3,
+            'Purchased' => False,
             'Flights' => [1,2],
             'Customer_Username' => 'delilah_johnson',
             'Cabin_Class' => 'Business',
@@ -129,6 +132,7 @@
         ],
         [
             'Brn' => 4,
+            'Purchased' => True,
             'Flights' => [3,4],
             'Customer_Username' => 'maroun_choucair',
             'Cabin_Class' => 'First',
@@ -148,6 +152,7 @@
         ],
         [
             'Brn' => 5,
+            'Purchased' => True,
             'Flights' => [9],
             'Customer_Username' => 'shang_chi',
             'Cabin_Class' => 'Economy',

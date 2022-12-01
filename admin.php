@@ -46,7 +46,8 @@ $database = $client->Airline_Reservation;
 
 $flight_collection = $client->Airline_Reservation->Flights;
 
-$customer_collection = $client->Airline_Reservation->Customers;
+
+
 
 if (isset($_POST["searchFlights"])) {
     print("<table>");
@@ -193,7 +194,7 @@ if (isset($_POST["viewBooking"])) {
 // Table1
     print("<table>");
     print("<thead>");
-    print("<tr><th>Brn</th><th>Customer_Username</th>
+    print("<tr><th>Brn</th><th>Purchased</th><th>Customer_Username</th>
     <th>Cabin_Class</th><th>Prefrered_Seat_Location</th>
     <th>Accompanying_Pet</th><th>Adults</th><th>Children</th><th>Infants</th>
     <th>Type_Of_Trip</th><th>Check_In</th><th>Price</th> </tr>");
@@ -205,7 +206,7 @@ if (isset($_POST["viewBooking"])) {
 
 
         print("<tr>");
-        print("<td>" . $entry['Brn'] . "</td><td>" .  $entry['Customer_Username'] . "</td><td>"
+        print("<td>" . $entry['Brn'] . "</td><td>" . $entry['Purchased'] . "</td><td>" .  $entry['Customer_Username'] . "</td><td>"
          . $entry['Cabin_Class'] . "</td>" . "<td>" . $entry['Preferred_Seat_Location'] . "</td>" . "<td>" . $entry['Accompanying_Pet'] . "</td>" . "<td>"
           . $entry['Adults'] . "</td>" . "<td>" . $entry['Children'] . "</td>" . "<td>" . $entry['Infants'] . "</td>" . "<td>" . $entry['Type_Of_Trip'] . "</td>"
            . "<td>" . $entry['Check_In'] . "</td>" . "<td>" . $entry['Price']  . "</td>");

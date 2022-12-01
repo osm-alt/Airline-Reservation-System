@@ -38,11 +38,12 @@
 
 
                 define("FIVE_DAYS", 60 * 60 * 24 * 5); // define constant
-                setcookie( "username", $inputtedUsername, time() + FIVE_DAYS );
+                setcookie( "username", $inputtedUsername .rand (1,100) , time() + FIVE_DAYS );
+                //.rand(1,10000)
 
                 $customer_collection->updateOne(
                     ['Username' => $inputtedUsername],
-                    ['$set' => ['Cookie' => $inputtedUsername . rand(0,10000)]]
+                    ['$set' => ['Cookie' => $_COOKIE['username']]]
                 );
                 print("<script>window.alert('Welcome $inputtedUsername!')</script>");
                 echo "<script> window.location.assign('main_page.php'); </script>";
@@ -70,7 +71,7 @@
 
                 $admin_collection->updateOne(
                     ['Username' => $inputtedUsername],
-                    ['$set' => ['Cookie' => $inputtedUsername . rand(0,10000)]]
+                    ['$set' => ['Cookie' => $inputtedUsername]]
                 );
 
                 print("<script>window.alert('Welcome Admin $inputtedUsername!')</script>");
