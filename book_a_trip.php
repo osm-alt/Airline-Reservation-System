@@ -397,7 +397,7 @@
         //     }
         // }
 
-        function startBooking() {
+        function startBooking(adults_number, children_number) {
             trip_type = document.getElementById("trip_type");
             cabin_class = document.getElementById("cabin");
             seat_location = document.getElementById("seat_selection");
@@ -415,122 +415,112 @@
 
             check_trip_type();
 
-            account_for_adult_passengers();
-            account_for_child_passengers();
+            account_for_adult_passengers(adults_number);
+            account_for_child_passengers(children_number);
 
             computePrice();
         }
 
         //change number displayed meals and drinks inputs for adult passengers
-        function account_for_adult_passengers() {
-            if (adults_meals_and_drinks.childElementCount > parseInt(adults.innerText)) {
-                adults_meals_and_drinks.removeChild(adults_meals_and_drinks.children[adults_meals_and_drinks.childElementCount - 1]);
-            }
-            else {
-                var x = adults_meals_and_drinks.childElementCount + 1;
-                if (x == parseInt(adults.innerText)) {
-                    meals_and_drinks_div = document.createElement("div");
-                    meals_and_drinks_div.setAttribute("class", "form-elts");
-                    new_meal = document.createElement("p");
-                    label_for_meal = document.createElement("label");
-                    label_for_meal.for = "special_meals_for_adult" + x;
-                    label_for_meal.innerText = "Special meal for adult " + x;
-                    new_meal.appendChild(label_for_meal);
+        function account_for_adult_passengers(adults_number) {
+            for(var x = 1; x <= parseInt(adults_number); x++)
+            {
+                meals_and_drinks_div = document.createElement("div");
+                meals_and_drinks_div.setAttribute("class", "form-elts");
+                new_meal = document.createElement("p");
+                label_for_meal = document.createElement("label");
+                label_for_meal.for = "special_meals_for_adult" + x;
+                label_for_meal.innerText = "Special meal for adult " + x;
+                new_meal.appendChild(label_for_meal);
 
-                    meal_list = document.createElement("select");
-                    meal_list.id = "special_meals_for_adult" + x;
-                    meal_list.name = "special_meals_for_adult" + x;
+                meal_list = document.createElement("select");
+                meal_list.id = "special_meals_for_adult" + x;
+                meal_list.name = "special_meals_for_adult" + x;
 
-                    meal_list.innerHTML = "<option selected>None</option>" +
-                        "<option>Turkey sandwich</option>" +
-                        "<option>Chicken with rice</option>" +
-                        "<option>Ceasar Salad</option>";
+                meal_list.innerHTML = "<option selected>None</option>" +
+                    "<option>Turkey sandwich</option>" +
+                    "<option>Chicken with rice</option>" +
+                    "<option>Ceasar Salad</option>";
 
-                    new_meal.appendChild(meal_list);
+                new_meal.appendChild(meal_list);
 
-                    meals_and_drinks_div.appendChild(new_meal);
+                meals_and_drinks_div.appendChild(new_meal);
 
-                    new_drink = document.createElement("p");
-                    label_for_drink = document.createElement("label");
-                    label_for_drink.for = "drink_for_adult" + x;
-                    label_for_drink.innerText = "Drink for adult " + x;
-                    new_drink.appendChild(label_for_drink);
+                new_drink = document.createElement("p");
+                label_for_drink = document.createElement("label");
+                label_for_drink.for = "drink_for_adult" + x;
+                label_for_drink.innerText = "Drink for adult " + x;
+                new_drink.appendChild(label_for_drink);
 
-                    drink_list = document.createElement("select");
-                    drink_list.id = "drink_for_adult" + x;
-                    drink_list.name = "drink_for_adult" + x;
+                drink_list = document.createElement("select");
+                drink_list.id = "drink_for_adult" + x;
+                drink_list.name = "drink_for_adult" + x;
 
-                    drink_list.innerHTML = "<option selected>Water</option>" +
-                        "<option>Orange juice</option>" +
-                        "<option>Apple juice</option>" +
-                        "<option>Coke</option>" +
-                        "<option>Sprite</option>" +
-                        "<option>Mirinda</option>" +
-                        "<option>Ayran</option>";
+                drink_list.innerHTML = "<option selected>Water</option>" +
+                    "<option>Orange juice</option>" +
+                    "<option>Apple juice</option>" +
+                    "<option>Coke</option>" +
+                    "<option>Sprite</option>" +
+                    "<option>Mirinda</option>" +
+                    "<option>Ayran</option>";
 
-                    new_drink.appendChild(drink_list);
+                new_drink.appendChild(drink_list);
 
-                    meals_and_drinks_div.appendChild(new_drink);
+                meals_and_drinks_div.appendChild(new_drink);
 
-                    adults_meals_and_drinks.appendChild(meals_and_drinks_div);
-                }
+                adults_meals_and_drinks.appendChild(meals_and_drinks_div);
             }
 
         }
 
         //change number displayed meals and drinks inputs for child passengers
-        function account_for_child_passengers() {
-            if (children_meals_and_drinks.childElementCount > parseInt(children.innerText)) {
-                children_meals_and_drinks.removeChild(children_meals_and_drinks.children[children_meals_and_drinks.childElementCount - 1]);
-            }
-            else {
-                var x = children_meals_and_drinks.childElementCount + 1;
-                if (x == parseInt(children.innerText)) {
-                    meals_and_drinks_div = document.createElement("div");
-                    meals_and_drinks_div.setAttribute("class", "form-elts");
-                    new_meal = document.createElement("p");
-                    label_for_meal = document.createElement("label");
-                    label_for_meal.for = "special_meals_for_child" + x;
-                    label_for_meal.innerText = "Special meal for child " + x;
-                    new_meal.appendChild(label_for_meal);
+        function account_for_child_passengers(children_number) {
+            for(var x = 1; x <= parseInt(children_number); x++)
+            {
+                meals_and_drinks_div = document.createElement("div");
+                meals_and_drinks_div.setAttribute("class", "form-elts");
+                new_meal = document.createElement("p");
+                label_for_meal = document.createElement("label");
+                label_for_meal.for = "special_meals_for_child" + x;
+                label_for_meal.innerText = "Special meal for child " + x;
+                new_meal.appendChild(label_for_meal);
 
-                    meal_list = document.createElement("select");
-                    meal_list.id = "special_meals_for_child" + x;
-                    meal_list.name = "special_meals_for_child" + x;
+                meal_list = document.createElement("select");
+                meal_list.id = "special_meals_for_child" + x;
+                meal_list.name = "special_meals_for_child" + x;
 
-                    meal_list.innerHTML = "<option selected>None</option>" +
-                        "<option>Turkey sandwich</option>" +
-                        "<option>Chicken with rice</option>" +
-                        "<option>Ceasar Salad</option>";
+                meal_list.innerHTML = "<option selected>None</option>" +
+                    "<option>Turkey sandwich</option>" +
+                    "<option>Chicken with rice</option>" +
+                    "<option>Ceasar Salad</option>";
 
-                    new_meal.appendChild(meal_list);
+                new_meal.appendChild(meal_list);
 
-                    meals_and_drinks_div.appendChild(new_meal);
+                meals_and_drinks_div.appendChild(new_meal);
 
-                    new_drink = document.createElement("p");
-                    label_for_drink = document.createElement("label");
-                    label_for_drink.for = "drink_for_child" + x;
-                    label_for_drink.innerText = "Drink for child " + x;
-                    new_drink.appendChild(label_for_drink);
+                new_drink = document.createElement("p");
+                label_for_drink = document.createElement("label");
+                label_for_drink.for = "drink_for_child" + x;
+                label_for_drink.innerText = "Drink for child " + x;
+                new_drink.appendChild(label_for_drink);
 
-                    drink_list = document.createElement("select");
-                    drink_list.id = "drink_for_child" + x;
-                    drink_list.name = "drink_for_child" + x;
+                drink_list = document.createElement("select");
+                drink_list.id = "drink_for_child" + x;
+                drink_list.name = "drink_for_child" + x;
 
-                    drink_list.innerHTML = "<option selected>Water</option>" +
-                        "<option>Orange juice</option>" +
-                        "<option>Apple juice</option>" +
-                        "<option>Coke</option>" +
-                        "<option>Sprite</option>" +
-                        "<option>Mirinda</option>" +
-                        "<option>Ayran</option>";
+                drink_list.innerHTML = "<option selected>Water</option>" +
+                    "<option>Orange juice</option>" +
+                    "<option>Apple juice</option>" +
+                    "<option>Coke</option>" +
+                    "<option>Sprite</option>" +
+                    "<option>Mirinda</option>" +
+                    "<option>Ayran</option>";
 
-                    new_drink.appendChild(drink_list);
+                new_drink.appendChild(drink_list);
 
-                    meals_and_drinks_div.appendChild(new_drink);
+                meals_and_drinks_div.appendChild(new_drink);
 
-                    children_meals_and_drinks.appendChild(meals_and_drinks_div);
-                }
+                children_meals_and_drinks.appendChild(meals_and_drinks_div);
             }
 
         }
@@ -642,7 +632,7 @@
             price = price.toFixed(2);
 
             displayed_price.innerText = price;
-            var price_sent = document.getElementByID("price_sent");
+            var price_sent = document.getElementById("price_sent");
             price_sent.value = price;
         }
     </script>
@@ -1120,11 +1110,11 @@
             $departure_time_second = isset($_POST[ "departure_time_second" ]) ? $_POST[ "departure_time_second" ] : "";
             $return_time = isset($_POST[ "return_time" ]) ? $_POST[ "return_time" ] : "";
             $flight_id = isset($_POST[ "flight_id" ]) ? $_POST[ "flight_id" ] : "";
-            $flight_id_second = isset($_POST[ "flight_id_second" ]) ? $_POST[ "flight_id" ] : "";
+            $flight_id_second = isset($_POST[ "flight_id_second" ]) ? $_POST[ "flight_id_second" ] : "";
 
             print("<fieldset id=\"booking_form_fieldset\" style=\"margin: 1em;\">");
             print("<legend style=\"margin-left: 2em;\">Booking</legend>");
-            print("<form class=\"styled\" method=\"post\" action=\"\" onchange=\"computePrice()\">");
+            print("<form class=\"styled\" method=\"post\" action=\"process_booking.php\" onchange=\"computePrice()\">");
             
             print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $flight_id . "\">");
             print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");
@@ -1273,7 +1263,7 @@
             print("<hr style=\"margin-top: 1em;\">");
             print("<div class=\"price_div\" style=\"font-size: 1.2em; margin-top: 1em;\">");
             print("<strong>Total price: <span id=\"price\"></span></strong>");
-            print("<input type=\"hidden\" id=\"price_sent\">");
+            print("<input type=\"hidden\" id=\"price_sent\" name=\"price_sent\">");
 
             print("<select id=\"currency\" name=\"currency\"");
             print("style=\"font-size:0.75em; margin-left: .3em; border-color: silver;\">");
@@ -1285,12 +1275,13 @@
             print("</select>");
             print("</div>");
             print("<p>");
-            print("<input type=\"submit\" id=\"submit\" value=\"Submit\">");
+            print("<input type=\"submit\" name=\"buy_tickets\" id=\"submit\" value=\"Buy tickets\">");
+            print("<input type=\"submit\" name=\"reserve_booking\" id=\"submit\" value=\"Reserve booking\">");
             print("<input type=\"reset\" value=\"Clear\">");
             print("</p>");
             print("</form>");
             print("</fieldset>");
-            print("<script>startBooking();</script>");
+            print("<script>startBooking($adults_search, $children_search);</script>");
             print("<p style=\"margin: 1em; text-align:center;\">");
             print("<label for=\"reserve_hotel\">Want to make a hotel reservation?</label>");
             print("<a href=\"https://www.trivago.com/\" target=\"_blank\"><button id=\"reserve_hotel\"");
@@ -1302,130 +1293,6 @@
             
     ?>
 
-            <!-- <div class="form-elts-span">
-                <p>
-                    <label for="departure_from">From:</label>
-                    <span id="departure_from" name="departure_from" required>
-                    </span>
-                </p>
-                <p>
-                    <label for="arrival_to">To:</label>
-                    <span id="arrival_to" name="arrival_to" required>
-                    </span>
-                </p>
-                <p>
-                    <label for="depart_on">Depart On:</label>
-                    <span id="depart_on" name="depart_on" required>
-                    </span>
-                </p>
-                <p id="return">
-                    <label for="return_on">Return On:</label>
-                    <span id="return_on" name="return_on" required>
-                    </span>
-
-                </p>
-            </div>
-
-            <div class="form-elts-span" id="second-city" style="display:none">
-                <p>
-                    <label for="departure_from_second">From:</label>
-                    <span id="departure_from_second" name="departure_from_second">
-                    </span>
-                </p>
-                <p>
-                    <label for="arrival_to_second">To:</label>
-                    <span id="arrival_to_second" name="arrival_to_second">
-                    </span>
-                </p>
-                <p>
-                    <label for="depart_on_second">Depart On:</label>
-                    <span id="depart_on_second" name="depart_on_second">
-                </p>
-            </div>
-
-            <div class="form-elts-span">
-                <p>
-                    <label for="cabin">Cabin class:</label>
-                    <span id="cabin" name="cabin">
-                    </span>
-                </p>
-            </div>
-
-            <p>
-                <label for="seat_selection">Preferred seat location for the person booking:</label>
-                <select id="seat_selection" name="seat_selection">
-                    <option selected>Aisle seat</option>
-                    <option>Window seat</option>
-                </select>
-            </p>
-
-            <p>
-                <label>Airport pick-up: </label>
-                <label>Yes</label>
-                <input type="radio" id="airport_pickup" name="airport_pickup" value="yes">
-                <label>No</label>
-                <input type="radio" name="airport_pickup" value="no">
-            </p>
-            <p>
-                <label for="pet">Accompanying pet</label>
-                <select id="pet" name="pet">
-                    <option selected>None</option>
-                    <option>Dog</option>
-                    <option>Cat</option>
-                    <option>Bird</option>
-                </select>
-            </p>
-            <p>
-                <label for="special_treatment">Please specify a special treatment if needed:</label>
-                <input type="text" id="special_treatment" name="special_treatment">
-            </p>
-
-            <h3 style="margin-top: 1em;">Passengers</h3>
-            <div class="form-elts-span">
-                <p>
-                    <label for="adults">Adults (12+ years):</label>
-                    <span id="adults" name="adults" required></span>
-                </p>
-                <p>
-                    <label for="children">Children (2-12 years):</label>
-                    <span id="children" name="children" required></span>
-                </p>
-                <p>
-                    <label for="infants">Infants (0-23 months):</label>
-                    <span id="infants" name="infants" required></span>
-                </p>
-            </div>
-
-            <h3 style="margin-top: 1em;">Meals and Drinks</h3>
-            <div id="meals_and_drinks">
-                <div id="adults_meals_and_drinks"></div>
-                <div id="children_meals_and_drinks"></div>
-            </div>
-            <hr style="margin-top: 1em;">
-            <div class="price_div" style="font-size: 1.2em; margin-top: 1em;">
-                <strong>Total price: <span id="price"></span></strong>
-
-                <select id="currency" name="currency"
-                    style="font-size:0.75em; margin-left: .3em; border-color: silver;">
-                    <option selected>$</option>
-                    <option>&euro;</option>
-                    <option>&#163;</option>
-                    <!-- pound -->
-                    <!-- <option>L.L</option>
-                </select>
-            </div>
-            <p>
-                <input type="submit" id="submit" value="Submit">
-                <input type="reset" value="Clear">
-            </p>
-        </form>
-    </fieldset>
-    <p style="margin: 1em; text-align:center;">
-        <label for="reserve_hotel">Want to make a hotel reservation?</label>
-        <a href="https://www.trivago.com/" target="_blank"><button id="reserve_hotel"
-                style="background-color: rgb(84, 201, 247); color:white; border-radius: .5em;">Check
-                Trivago</button></a>
-    </p> -->
 </body>
 
 </html>
