@@ -1,11 +1,12 @@
 <?php
 	require 'vendor/autoload.php';
-
 	$client = new MongoDB\Client("mongodb://localhost:27017");
 	$database = $client->Airline_Reservation;
-    $database -> createCollection('Customers');
+  //  $database -> createCollection('Customers');
 
     $customer_collection = $client->Airline_Reservation->Customers;
+    define("encryption_method", "AES-128-CBC");
+    define("key", "Thats my Kung Fu");
     
     $newCustomers = [
         		[
@@ -15,7 +16,10 @@
                     'Date_Of_Birth' => '01/02/2000',
                     'Cookie' => '',
                     'Email' => 'omar@hotmail.com',
-                    'Password' => password_hash('password123', PASSWORD_DEFAULT)
+                    'Password' => password_hash('password123', PASSWORD_DEFAULT),
+                  'Credit_Card_Information' =>encrypt('1234 5678 9876 4321'),
+                
+                  
                 ],
                 [
         			'Username' => 'johndoe',
@@ -64,7 +68,7 @@
     //     [ '$set' => [ 'cvv' => '123' ]]
     //  );
     
-   $database -> createCollection('Bookings');
+ //  $database -> createCollection('Bookings');
 
     $booking_collection = $client->Airline_Reservation->Bookings;
 
@@ -176,7 +180,7 @@
     
     $insertManyResult = $booking_collection->insertMany($newBookings);
 
-    $database -> createCollection('Flights');
+   // $database -> createCollection('Flights');
 
     $flight_collection = $client->Airline_Reservation->Flights;
     
@@ -295,7 +299,7 @@
         
         $insertManyResult = $flight_collection->insertMany($newFlights);
 
-    $database -> createCollection('Admin');
+   // $database -> createCollection('Admin');
 
     $admin_collection = $client->Airline_Reservation->Admin;
 
@@ -319,4 +323,29 @@
     
     
     $insertManyResult = $admin_collection->insertMany($newAdmins);
+function encrypt($data) {
+
+    $key = key;
+    $plaintext = $data;
+    $ivlen = openssl_cipher_iv_length($cipher = encryption_method);
+    $iv = openssl_random_pseudo_bytes($ivlen);
+    $ciphertext_raw = openssl_encrypt($plaintext, $cipher, $key, $options = OPENSSL_RAW_DATA, $iv);
+    $hmac = hash_hmac('sha256', $ciphertext_raw, $key, $as_binary = true);
+    $ciphertext = base64_encode($iv . $hmac . $ciphertext_raw);
+    return $ciphertext;
+}
+function decrypt($data) {
+    $key = key;
+    $c = base64_decode($data);
+    $ivlen = openssl_cipher_iv_length($cipher = encryption_method);
+    $iv = substr($c, 0, $ivlen);
+    $hmac = substr($c, $ivlen, $sha2len = 32);
+    $ciphertext_raw = substr($c, $ivlen + $sha2len);
+    $original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $key, $options = OPENSSL_RAW_DATA, $iv);
+    $calcmac = hash_hmac('sha256', $ciphertext_raw, $key, $as_binary = true);
+    if (hash_equals($hmac, $calcmac))
+    {
+        return $original_plaintext;
+    }
+}
 ?>
