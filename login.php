@@ -38,12 +38,13 @@
 
 
                 define("FIVE_DAYS", 60 * 60 * 24 * 5); // define constant
-                setcookie( "username", $inputtedUsername .rand (1,100) , time() + FIVE_DAYS );
+                $h = $inputtedUsername . rand(1,100);
+                setcookie( "username", $h , time() + FIVE_DAYS );
                 //.rand(1,10000)
 
                 $customer_collection->updateOne(
                     ['Username' => $inputtedUsername],
-                    ['$set' => ['Cookie' => $_COOKIE['username']]]
+                    ['$set' => ['Cookie' => $h]]
                 );
                 print("<script>window.alert('Welcome $inputtedUsername!')</script>");
                 echo "<script> window.location.assign('main_page.php'); </script>";
@@ -67,11 +68,13 @@
                 $flag = 1;
 
                 define("FIVE_DAYS", 60 * 60 * 24 * 5); // define constant
-                setcookie( "username", $inputtedUsername, time() + FIVE_DAYS );
+                $h = $inputtedUsername . rand(1,100);
+                setcookie( "username", $h , time() + FIVE_DAYS );
+                //.rand(1,10000)
 
                 $admin_collection->updateOne(
                     ['Username' => $inputtedUsername],
-                    ['$set' => ['Cookie' => $inputtedUsername]]
+                    ['$set' => ['Cookie' => $h]]
                 );
 
                 print("<script>window.alert('Welcome Admin $inputtedUsername!')</script>");
