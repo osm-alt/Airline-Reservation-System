@@ -46,6 +46,9 @@ $database = $client->Airline_Reservation;
 
 $flight_collection = $client->Airline_Reservation->Flights;
 
+$customer_collection = $client->Airline_Reservation->Customers;
+
+
 
 
 
