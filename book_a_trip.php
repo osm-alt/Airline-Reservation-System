@@ -689,6 +689,14 @@
         <img src="bookingPics/Book-Flights-Indigo-759.jpg" alt="Book a flight">
     </div>
 
+    <?php
+        if(!isset($_COOKIE["username"]))
+        {
+            print("<p style=\"text-align:center;color:white;margin-top:1em\">Please <a href=\"login.php\">login</a> before booking.</p>");
+            die();
+        }  
+    ?>
+
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Search for flights</legend>
         <form class="styled" id="search_form" method="post" action="book_a_trip.php">
