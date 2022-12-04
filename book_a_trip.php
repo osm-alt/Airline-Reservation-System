@@ -1221,8 +1221,8 @@
             print("<p>");
             print("<label for=\"seat_selection\">Preferred seat location for the person booking:</label>");
             print("<select id=\"seat_selection\" name=\"seat_selection\">");
-            print("<option selected>Aisle seat</option>");
-            print("<option>Window seat</option>");
+            print("<option selected>Aisle</option>");
+            print("<option>Window</option>");
             print("</select>");
             print("</p>");
 
