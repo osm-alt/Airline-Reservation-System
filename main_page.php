@@ -473,15 +473,15 @@ foreach ($_COOKIE as $key => $value) {
     <header>
       <nav>
         <ul>
-          <li><a class="active" href="main_page.html">Home Page</a></li>
+          <li><a class="active" href="main_page.php">Home Page</a></li>
           <!-- Sub navigation menu -->
           <div class="subnav">
-            <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+            <li><a href="book_a_trip.php">Plan & Book <i class="fa fa-caret-down"></i></a></li>
             <div class="subnav-content">
-              <li><a href="book_a_trip.html">Book a trip</a></li>
-              <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-              <li><a href="manage_booking.html">Manage Booking</a></li>
-              <li><a href="FlightStatus.html">Flight Status</a></li>
+              <li><a href="book_a_trip.php">Book a trip</a></li>
+              <li><a href="flight_schedule_search.php">Flight Schedule Search</a></li>
+              <li><a href="manage_booking.php">Manage Booking</a></li>
+              <li><a href="FlightStatus.php">Flight Status</a></li>
             </div>
           </div>
           <div class="subnav">
@@ -501,11 +501,11 @@ foreach ($_COOKIE as $key => $value) {
 
         <!-- hamburger menu, only essentiel links -->
         <div class="topnav">
-          <a href="main_page.html" class="active">
+          <a href="main_page.php" class="active">
             <ion-icon name="airplane-outline"></ion-icon>
           </a>
           <div id="myLinks">
-            <a href="book_a_trip.html">Book a trip</a>
+            <a href="book_a_trip.php">Book a trip</a>
             <a href="checkin.html">Check-in</a>
             <a href="login.php">Login</a>
           </div>
@@ -536,7 +536,7 @@ foreach ($_COOKIE as $key => $value) {
 
     <div class="container">
       <div class="box1">
-        <a href="book_a_trip.html">
+        <a href="book_a_trip.php">
           <h1>Book a Trip</h1>
           <p>Search Flights & Book</p>
         </a>
@@ -548,7 +548,7 @@ foreach ($_COOKIE as $key => $value) {
         </a>
       </div>
       <div class="box3">
-        <a href="flight_schedule_search.html">
+        <a href="flight_schedule_search.php">
           <h1>Flight Status</h1>
 
           <p>Check Flight Schedule

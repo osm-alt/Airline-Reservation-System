@@ -55,7 +55,7 @@ $customer_collection = $client->Airline_Reservation->Customers;
 if (isset($_POST["searchFlights"])) {
     print("<table>");
     print("<thead>");
-    print("<tr><th>Flight ID</th><th>From</th><th>To</th><th>Departure Date</th><th>Depart Time</th><th>Economy Seats</th><th>Business Seats</th><th>FirstClass Seats</th> </tr>");
+    print("<tr><th>Flight ID</th><th>From</th><th>To</th><th>Departure Date</th><th>Depart Time</th><th>Economy Seats</th><th>Business Seats</th><th>FirstClass Seats</th><th>Delay</th> <th>Captain_Name</th>  </tr>");
     print("</thead>");
     print("<tbody>");
 
@@ -64,7 +64,7 @@ if (isset($_POST["searchFlights"])) {
 
 
         print("<tr>");
-        print("<td>" . $entry['Flight_ID'] . "</td><td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td>" . "<td>" . $entry['Departure_Date'] . "</td>" . "<td>" . $entry['Departure_Time'] . "</td>" . "<td>" . $entry['Economy_Seats_Left'] . "</td>" . "<td>" . $entry['Business_Seats_Left'] . "</td>" . "<td>" . $entry['FirstClass_Seats_Left'] . "</td>");
+        print("<td>" . $entry['Flight_ID'] . "</td><td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td>" . "<td>" . $entry['Departure_Date'] . "</td>" . "<td>" . $entry['Departure_Time'] . "</td>" . "<td>" . $entry['Economy_Seats_Left'] . "</td>" . "<td>" . $entry['Business_Seats_Left'] . "</td>" . "<td>" . $entry['FirstClass_Seats_Left'] . "</td><td>" . $entry['Delay'] . "</td><td>" . $entry['Captain_Name'] . "</td>" );
         print("</form></td>");
         print("</tr>");
     }
