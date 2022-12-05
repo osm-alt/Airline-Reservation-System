@@ -147,6 +147,9 @@
     </header>
     <h1>ROA Airlines</h1>
     <h1>Search Flight Schedule</h1>
+
+    <p style="text-align:center; margin-bottom: 2em;"><a href="save_flights.php">View saved flights</a>
+
     <p style="text-align:center; margin-bottom: 2em;">Search for specific flights scheduled by our airline</p>
     <form class="search" method="post" action="flight_schedule_search.php">
         <div class="form-elts">
