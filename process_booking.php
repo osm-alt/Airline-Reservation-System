@@ -57,14 +57,14 @@
 <header>
         <nav>
             <ul>
-                <li><a href="main_page.html">Home Page</a></li>
+                <li><a href="main_page.php">Home Page</a></li>
                 <!-- Sub navigation menu -->
                 <div class="subnav">
-                    <li><a href="book_a_trip.html">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <li><a href="book_a_trip.php">Plan & Book <i class="fa fa-caret-down"></i></a></li>
                     <div class="subnav-content">
-                        <li><a href="book_a_trip.html">Book a trip</a></li>
-                        <li><a href="flight_schedule_search.html">Flight Schedule Search</a></li>
-                        <li><a href="manage_booking.html">Manage Booking</a></li>
+                        <li><a href="book_a_trip.php">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.php">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.php">Manage Booking</a></li>
                         <li><a href="FlightStatus.html">Flight Status</a></li>
                     </div>
                 </div>
@@ -79,18 +79,18 @@
                 </div>
                 <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
                 <li><a href="Faq.html">FAQ</a>
-                <li><a href="login.html">Login/Register</a>
+                <li><a href="login.php">Login/Register</a>
             </ul>
 
             <!-- hamburger menu, only essentiel links -->
             <div class="topnav">
-                <a href="main_page.html" class="active">
+                <a href="main_page.php" class="active">
                     <ion-icon name="airplane-outline"></ion-icon>
                 </a>
                 <div id="myLinks">
-                    <a href="book_a_trip.html">Book a trip</a>
+                    <a href="book_a_trip.php">Book a trip</a>
                     <a href="checkin.html">Check-in</a>
-                    <a href="login.html">Login</a>
+                    <a href="login.php">Login</a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
@@ -224,41 +224,41 @@
 
         }
 
-        $departure_date = isset($_POST[ "depart_on_search" ]) ? $_POST[ "depart_on_search" ] : "";
-
-        $departure_date = date_create($departure_date);
-        $today = date_create(date("Y-m-d"));
-        $diff= date_diff($today,$departure_date);
-        if(intval($diff->format("%a")) < 7) //can buy or reserve tickets until one week before flight
-        {
-            print("Deadline passed to buy tickets for this flight!");
-            die();
-        }
-        if($trip_type == "Round-trip")
-        {
-            $return_on = isset($_POST[ "return_on_search" ]) ? $_POST[ "return_on_search" ] : "";
-            $return_on = date_create($return_on);
-            $diff=date_diff($today,$return_on);
-            if(intval($diff->format("%a")) < 7)
-            {
-                print("Deadline passed to buy tickets for the second flight!");
-                die();
-            }
-        }        
-        if($trip_type == "Multi-city")
-        {
-            $depart_on_second = isset($_POST[ "depart_on_second_search" ]) ? $_POST[ "depart_on_second_search" ] : "";
-            $depart_on_second = date_create($depart_on_second);
-            $diff=date_diff($today,$depart_on_second);
-            if(intval($diff->format("%a")) < 7)
-            {
-                print("Deadline passed to buy tickets for the second flight!");
-                die();
-            }
-        }
 
         if(isset($_POST["buy_tickets"]))
         {
+            $departure_date = isset($_POST[ "depart_on_search" ]) ? $_POST[ "depart_on_search" ] : "";
+
+            $departure_date = date_create($departure_date);
+            $today = date_create(date("Y-m-d"));
+            $diff= date_diff($today,$departure_date);
+            if(intval($diff->format("%a")) < 7) //can buy or reserve tickets until one week before flight
+            {
+                print("Deadline passed to buy tickets for this flight!");
+                die();
+            }
+            if($trip_type == "Round-trip")
+            {
+                $return_on = isset($_POST[ "return_on_search" ]) ? $_POST[ "return_on_search" ] : "";
+                $return_on = date_create($return_on);
+                $diff=date_diff($today,$return_on);
+                if(intval($diff->format("%a")) < 7)
+                {
+                    print("Deadline passed to buy tickets for the second flight!");
+                    die();
+                }
+            }        
+            if($trip_type == "Multi-city")
+            {
+                $depart_on_second = isset($_POST[ "depart_on_second_search" ]) ? $_POST[ "depart_on_second_search" ] : "";
+                $depart_on_second = date_create($depart_on_second);
+                $diff=date_diff($today,$depart_on_second);
+                if(intval($diff->format("%a")) < 7)
+                {
+                    print("Deadline passed to buy tickets for the second flight!");
+                    die();
+                }
+            }
             $result = $bookings->find([]);
             $brns = [];
             foreach($result as $entry)
@@ -289,6 +289,38 @@
         
         if(isset($_POST["reserve_booking"]))
         {
+            $departure_date = isset($_POST[ "depart_on_search" ]) ? $_POST[ "depart_on_search" ] : "";
+
+            $departure_date = date_create($departure_date);
+            $today = date_create(date("Y-m-d"));
+            $diff= date_diff($today,$departure_date);
+            if(intval($diff->format("%a")) < 7) //can buy or reserve tickets until one week before flight
+            {
+                print("Deadline passed to buy tickets for this flight!");
+                die();
+            }
+            if($trip_type == "Round-trip")
+            {
+                $return_on = isset($_POST[ "return_on_search" ]) ? $_POST[ "return_on_search" ] : "";
+                $return_on = date_create($return_on);
+                $diff=date_diff($today,$return_on);
+                if(intval($diff->format("%a")) < 7)
+                {
+                    print("Deadline passed to buy tickets for the second flight!");
+                    die();
+                }
+            }        
+            if($trip_type == "Multi-city")
+            {
+                $depart_on_second = isset($_POST[ "depart_on_second_search" ]) ? $_POST[ "depart_on_second_search" ] : "";
+                $depart_on_second = date_create($depart_on_second);
+                $diff=date_diff($today,$depart_on_second);
+                if(intval($diff->format("%a")) < 7)
+                {
+                    print("Deadline passed to buy tickets for the second flight!");
+                    die();
+                }
+            }
             $result = $bookings->find([]);
             $brns = [];
             foreach($result as $entry)
