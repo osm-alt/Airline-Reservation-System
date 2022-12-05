@@ -283,7 +283,10 @@
                 $departure_date = isset($_POST[ "departure_date" ]) ? $_POST[ "departure_date"] : "";
                 $departure_time = isset($_POST[ "departure_time" ]) ? $_POST[ "departure_time"] : "";
 
-                array_push($_SESSION["saved_flights"], [$departure_from, $arrival_to, $departure_date, $departure_time]);
+                if(!in_array([$departure_from, $arrival_to, $departure_date, $departure_time], $_SESSION["saved_flights"]))
+                {
+                    array_push($_SESSION["saved_flights"], [$departure_from, $arrival_to, $departure_date, $departure_time]);
+                }
             }
     ?>
 </body>
