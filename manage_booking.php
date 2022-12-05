@@ -513,7 +513,7 @@
                         <li><a href="book_a_trip.php">Book a trip</a></li>
                         <li><a href="flight_schedule_search.php">Flight Schedule Search</a></li>
                         <li><a class="active" href="manage_booking.php">Manage Booking</a></li>
-                        <li><a href="FlightStatus.html">Flight Status</a></li>
+                        <li><a href="FlightStatus.php">Flight Status</a></li>
                     </div>
                 </div>
                 <div class="subnav">
