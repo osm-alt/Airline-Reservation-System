@@ -225,11 +225,27 @@
                 meal_list = document.createElement("select");
                 meal_list.id = "special_meals_for_adult" + x;
                 meal_list.name = "special_meals_for_adult" + x;
+                meal_list.innerHTML = "";
                 
-                meal_list.innerHTML = "<option selected>None</option>" +
-                    "<option>Turkey sandwich</option>" +
-                    "<option>Chicken with rice</option>" +
-                    "<option>Ceasar Salad</option>";
+                meal = adult_meals[x - 1];
+
+                meal_options = ['None', 'Turkey sandwich', 'Chicken with rice', 'Ceasar Salad'];
+
+                for(i = 0; i < meal_options.length; i++)
+                {
+                    if(meal_options[i] == meal)
+                    {
+                        meal_list.innerHTML += "<option selected>" + meal + "</option>";
+                    }
+                    else
+                    {
+                        meal_list.innerHTML += "<option>" + meal_options[i] + "</option>";
+                    }
+                }
+                // meal_list.innerHTML = "<option selected>None</option>" +
+                //     "<option>Turkey sandwich</option>" +
+                //     "<option>Chicken with rice</option>" +
+                //     "<option>Ceasar Salad</option>";
 
                 new_meal.appendChild(meal_list);
 
@@ -244,14 +260,30 @@
                 drink_list = document.createElement("select");
                 drink_list.id = "drink_for_adult" + x;
                 drink_list.name = "drink_for_adult" + x;
+                drink_list.innerHTML = "";
 
-                drink_list.innerHTML = "<option selected>Water</option>" +
-                    "<option>Orange juice</option>" +
-                    "<option>Apple juice</option>" +
-                    "<option>Coke</option>" +
-                    "<option>Sprite</option>" +
-                    "<option>Mirinda</option>" +
-                    "<option>Ayran</option>";
+                drink = adult_drinks[x - 1];
+
+                drink_options = ['Water','Orange juice', 'Apple juice', 'Coke', 'Sprite', 'Mirinda', 'Ayran'];
+
+                for(i = 0; i < drink_options.length; i++)
+                {
+                    if(drink_options[i] == drink)
+                    {
+                        drink_list.innerHTML += "<option selected>" + drink + "</option>";
+                    }
+                    else
+                    {
+                        drink_list.innerHTML += "<option>" + drink_options[i] + "</option>";
+                    }
+                }
+                // drink_list.innerHTML = "<option selected>Water</option>" +
+                //     "<option>Orange juice</option>" +
+                //     "<option>Apple juice</option>" +
+                //     "<option>Coke</option>" +
+                //     "<option>Sprite</option>" +
+                //     "<option>Mirinda</option>" +
+                //     "<option>Ayran</option>";
 
                 new_drink.appendChild(drink_list);
 
@@ -278,10 +310,28 @@
                 meal_list.id = "special_meals_for_child" + x;
                 meal_list.name = "special_meals_for_child" + x;
 
-                meal_list.innerHTML = "<option selected>None</option>" +
-                    "<option>Turkey sandwich</option>" +
-                    "<option>Chicken with rice</option>" +
-                    "<option>Ceasar Salad</option>";
+                meal_list.innerHTML = "";
+
+                meal = children_meals[x - 1];
+
+                meal_options = ['None', 'Turkey sandwich', 'Chicken with rice', 'Ceasar Salad'];
+
+                for(i = 0; i < meal_options.length; i++)
+                {
+                    if(meal_options[i] == meal)
+                    {
+                        meal_list.innerHTML += "<option selected>" + meal + "</option>";
+                    }
+                    else
+                    {
+                        meal_list.innerHTML += "<option>" + meal_options[i] + "</option>";
+                    }
+                }
+
+                // meal_list.innerHTML = "<option selected>None</option>" +
+                //     "<option>Turkey sandwich</option>" +
+                //     "<option>Chicken with rice</option>" +
+                //     "<option>Ceasar Salad</option>";
 
                 new_meal.appendChild(meal_list);
 
@@ -297,13 +347,31 @@
                 drink_list.id = "drink_for_child" + x;
                 drink_list.name = "drink_for_child" + x;
 
-                drink_list.innerHTML = "<option selected>Water</option>" +
-                    "<option>Orange juice</option>" +
-                    "<option>Apple juice</option>" +
-                    "<option>Coke</option>" +
-                    "<option>Sprite</option>" +
-                    "<option>Mirinda</option>" +
-                    "<option>Ayran</option>";
+                drink_list.innerHTML = "";
+
+                drink = children_drinks[x - 1];
+
+                drink_options = ['Water','Orange juice', 'Apple juice', 'Coke', 'Sprite', 'Mirinda', 'Ayran'];
+
+                for(i = 0; i < drink_options.length; i++)
+                {
+                    if(drink_options[i] == drink)
+                    {
+                        drink_list.innerHTML += "<option selected>" + drink + "</option>";
+                    }
+                    else
+                    {
+                        drink_list.innerHTML += "<option>" + drink_options[i] + "</option>";
+                    }
+                }
+
+                // drink_list.innerHTML = "<option selected>Water</option>" +
+                //     "<option>Orange juice</option>" +
+                //     "<option>Apple juice</option>" +
+                //     "<option>Coke</option>" +
+                //     "<option>Sprite</option>" +
+                //     "<option>Mirinda</option>" +
+                //     "<option>Ayran</option>";
 
                 new_drink.appendChild(drink_list);
 
@@ -314,115 +382,6 @@
 
         }
 
-        // var price;
-
-        // function computePrice() {
-        //     displayed_price = document.getElementById("price");
-        //     price = 0;
-        //     if (trip_type.innerText == "Round-trip") {
-        //         price += 90;
-        //     }
-        //     else if (trip_type.innerText == "One-way") {
-        //         price += 60;
-        //     }
-        //     else {
-        //         price += 105;
-        //     }
-
-        //     if (cabin_class.value == "Business class") {
-        //         price = Math.round(price * 1.4);
-        //     }
-        //     else if (cabin_class.value == "First class") {
-        //         price = Math.round(price * 1.75);
-        //     }
-
-        //     // if (seat_location.value == "Window seat") {
-        //     //     price += 5;
-        //     // }
-
-        //     if (airport_pickup.checked) {
-        //         price += 10;
-        //     }
-
-        //     if (pet.value != "None") {
-        //         price += 5;
-        //     }
-
-        //     if (special_treatment.value != "") {
-        //         price += 10;
-        //     }
-
-        //     initial_price = price;
-
-        //     if (adults.innerText != "0") {
-        //         price *= parseInt(adults.innerText);
-        //     }
-
-        //     if (children.innerText != "0") {
-        //         if (adults.innerText != "0") //price changed due to adult passengers
-        //         {
-        //             price += Math.round(initial_price * parseInt(children.innerText) * 0.75);
-        //         }
-        //         else {
-        //             price = Math.round(initial_price * parseInt(children.innerText) * 0.75);
-        //         }
-        //     }
-
-        //     if (infants.innerText != "0") {
-        //         if (adults.innerText != "0" || children.innerText != "0") //price changed due to non-infant passengers
-        //         {
-        //             price += Math.round(initial_price * parseInt(infants.innerText) * 0.5);
-        //         }
-        //         else {
-        //             price = Math.round(initial_price * parseInt(infants.innerText) * 0.5);
-        //         }
-        //     }
-
-        //     for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
-        //         var adult_meal = document.getElementById("special_meals_for_adult" + x);
-        //         if (adult_meal.value != "None") {
-        //             price += 10;
-        //         }
-
-        //         var adult_drink = document.getElementById("drink_for_adult" + x);
-        //         if (adult_drink.value == "Orange juice" || adult_drink.value == "Apple juice" || adult_drink.value == "Ayran") {
-        //             price += 2;
-        //         }
-        //         else if (adult_drink.value == "Coke" || adult_drink.value == "Sprite" || adult_drink.value == "Mirinda") {
-        //             price += 3;
-        //         }
-        //     }
-
-        //     for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
-        //         var child_meal = document.getElementById("special_meals_for_child" + x);
-        //         if (child_meal.value != "None") {
-        //             price += 10;
-        //         }
-
-        //         var child_drink = document.getElementById("drink_for_child" + x);
-        //         if (child_drink.value == "Orange juice" || child_drink.value == "Apple juice" || child_drink.value == "Ayran") {
-        //             price += 2;
-        //         }
-        //         else if (child_drink.value == "Coke" || child_drink.value == "Sprite" || child_drink.value == "Mirinda") {
-        //             price += 3;
-        //         }
-        //     }
-
-        //     if (currency.value == "€") {
-        //         price *= 1.03;
-        //     }
-        //     else if (currency.value == "£") {
-        //         price *= 0.9;
-        //     }
-        //     else if (currency.value == "L.L") {
-        //         price *= 40000;
-        //     }
-
-        //     price = price.toFixed(2);
-
-        //     displayed_price.innerText = price;
-        // }
-
         var modification_fees;
 
         function compute_modification_price() {
@@ -431,11 +390,11 @@
             if (cabin_class.value != initial_class) {
                 if (initial_class == "Economy class") {
                     if (cabin_class.value == "Business class") {
-                        modification_fees = Math.round(price * 1.4) - price;
+                        modification_fees = Math.round(parseInt(initial_price) * 1.4) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
                     else if (cabin_class.value == "First class") {
-                        modification_fees = Math.round(price * 1.75) - price;
+                        modification_fees = Math.round(parseInt(initial_price) * 1.75) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
                 }
@@ -444,7 +403,7 @@
                         modification_fees += 5; //charge for downgrading
                     }
                     else if (cabin_class.value == "First class") {
-                        modification_fees = Math.round(price * (1.75 / 1.4)) - price;
+                        modification_fees = Math.round(parseInt(initial_price) * (1.75 / 1.4)) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
                 }
@@ -497,6 +456,9 @@
                 }
             }
 
+            var modification_fees_sent = document.getElementById("modification_fees_sent");
+            modification_fees_sent.value = parseFloat(modification_fees);
+
             if (modification_currency.value == "€") {
                 modification_fees *= 1.03;
             }
@@ -510,9 +472,7 @@
             modification_fees = modification_fees.toFixed(2);
 
             displayed_price.innerText = modification_fees;
-
-            var modification_fees_sent = document.getElementById("modification_fees_sent");
-            modification_fees_sent.value = parseFloat(modification_fees);
+            
         }
 
         
@@ -664,7 +624,8 @@
             $entry = $bookings_collection->findOne(['Brn' => intval($brn)]);
             print("<fieldset style=\"margin: 1em;\">");
             print("<legend style=\"margin-left: 2em;\">Reservation</legend>");
-            print("<form method=\"post\" action=\"\" onchange=\"compute_modification_price()\">");
+            print("<form method=\"post\" action=\"process_booking.php\" onchange=\"compute_modification_price()\">");
+            print("<input type=\"hidden\" name=\"brn\" value=\"$brn\">");
             print("<p>");
             $trip_type = $entry['Type_Of_Trip'];
             print("Type of Trip: <span id=\"trip_type\">$trip_type</span>");
@@ -685,6 +646,7 @@
             print("<div class=\"form-elts\" style=\"margin-top:1em; margin-bottom: 1em;\">");
             print("<p style=\"margin-right: 2em;\">");
             $depart_on_flight_one = $flight_one['Departure_Date'];
+            print("<input type=\"hidden\" name=\"departure_date\" value=\"$depart_on_flight_one\">");
             print("Depart On: $depart_on_flight_one");
             print("</p>");
             if($trip_type == "Round-trip")
@@ -809,11 +771,13 @@
             print("<div class=\"form-elts\" style=\"margin-top: 1em;\">");
             print("<p>");
             $adults = $entry['Adults'];
+            print("<input type=\"hidden\" name=\"adults_search\" value=\"$adults\">");
             print("<label for=\"adults\">Adults (12+ years): </label>");
             print("<span id=\"adults\">$adults</span>");
             print("</p>");
             print("<p>");
             $children = $entry["Children"];
+            print("<input type=\"hidden\" name=\"children_search\" value=\"$children\">");
             print("<label for=\"children\">Children (2-12 years): </label>");
             print("<span id=\"children\">$children</span>");
             print("</p>");
@@ -846,7 +810,7 @@
             print("</div>");
             print("<div class=\"price_div\" style=\"font-size: 1.2em; margin-top: 1em;\">");
             print("<strong>Modification fees: <span id=\"modification_fees\">0.00</span></strong>");
-            print("<input type=\"hidden\" id=\"modification_fees_sent\">");
+            print("<input type=\"hidden\" id=\"modification_fees_sent\" name=\"modification_fees_sent\">");
             print("<select id=\"modification_currency\" name=\"modification_currency\" style=\"font-size:0.75em; margin-left: .3em; border-color: silver;\">");
             print("<option selected>$</option>");
             print("<option>&euro;</option>");
@@ -857,140 +821,45 @@
             print("</div>");
 
             print("<p>");
-            print("<input type=\"submit\" value=\"Submit Changes\">");
-            print("<input type=\"submit\" value=\"Cancel Booking\" style=\"background-color: red;\">");
+            if($entry['Purchased'] == False)
+            {
+                print("<input type=\"submit\" name=\"buy_reservation\" value=\"Buy Tickets\" style=\"background-color: green;\">");
+            }
+            print("<input type=\"submit\" name=\"modify_booking\" value=\"Submit Changes\">");
+            print("<input type=\"submit\" name=\"cancel_booking\" value=\"Cancel Booking\" style=\"background-color: red;\">");
             print("</p>");
             print("</form>");
             print("</fieldset>");
 
-            $adult_meals = $entry["Adult_Meals"];
-            $adult_drinks = $entry["Adult_Drinks"];
-            $children_meals = $entry["Children_Meals"];
-            $children_drinks = $entry["Children_Drinks"];
+            $adult_meals = [];
+            foreach($entry['Adult_Meals'] as $adult_meal)
+            {
+                array_push($adult_meals, "\"$adult_meal\"");
+            }
+            $adult_meals = implode($adult_meals);
+            $adult_drinks = [];
+            foreach($entry['Adult_Drinks'] as $adult_drink)
+            {
+                array_push($adult_drinks, "\"$adult_drink\"");
+            }
+            $adult_drinks = implode($adult_drinks);
+            $children_meals = [];
+            foreach($entry['Children_Meals'] as $child_meal)
+            {
+                array_push($children_meals, "\"$child_meal\"");
+            }
+            $children_meals = implode($children_meals);
+            $children_drinks = [];
+            foreach($entry['Children_Drinks'] as $child_drink)
+            {
+                array_push($children_drinks, "\"$child_drink\"");
+            }
+            $children_drinks = implode($children_drinks);
             
-            print("<script>start($adults, $children, $adult_meals, $adult_drinks, $children_meals, $children_drinks);</script>");
+            print("<script>start($adults, $children, [$adult_meals], [$adult_drinks], [$children_meals], [$children_drinks]);</script>");
         }
     ?>
-    <!-- <fieldset style="margin: 1em;">
-        <legend style="margin-left: 2em;">Reservation</legend>
-        <form method="post" action="" onchange="compute_modification_price()">
-            <p>
-                Type of Trip: <span id="trip_type">Round-trip</span>
-            </p>
-            <div class="form-elts" style="margin-top:1em;">
-                <p style="margin-right: 2em;">
-                    From: Abidjan Cote d'Ivoire ABJ
-                </p>
-                <p>
-                    To: Beirut - Beirut Rafic Hariri International Airport Lebanon BEY
-                </p>
-            </div>
-            <div class="form-elts" style="margin-top:1em; margin-bottom: 1em;">
-                <p style="margin-right: 2em;">
-                    Depart On: 12/30/2022
-                </p>
-                <p style="margin-right: 2em;">
-                    Return On: 1/10/2023
-                </p>
-                <p>
-                    Departure Time: 11:20 AM
-                </p>
-            </div>
-
-            <div class="form-elts">
-                <p>
-                    <label for="cabin">Cabin class</label>
-                    <select id="cabin" name="cabin">
-                        <option selected>Economy class</option>
-                        <option>Business class</option>
-                        <option>First class</option>
-                    </select>
-                </p>
-                
-            </div>
-            <div class="form-elts" style="margin-top:1em; margin-bottom: 1em;">
-                <p>
-                    Preferred seat location for person who booked: Aisle seat
-                </p>
-            </div>
-            
-            <p>
-                <label>Airport pick-up: </label>
-                <label>Yes</label>
-                <input type="radio" id="airport_pickup" name="airport_pickup" value="yes">
-                <label>No</label>
-                <input type="radio" name="airport_pickup" value="no" checked>
-            </p>
-            <p>
-                <label for="pet">Accompanying pet</label>
-                <select id="pet" name="pet">
-                    <option selected>None</option>
-                    <option>Dog</option>
-                    <option>Cat</option>
-                    <option>Bird</option>
-                </select>
-            </p>
-
-            <p>
-                <label for="special_treatment">Please specify a special treatment if needed:</label>
-                <input type="text" id="special_treatment" name="special_treatment">
-            </p>
-
-            <h3 style="margin-top: 1em;">Passengers</h3>
-            <div class="form-elts" style="margin-top: 1em;">
-                <p>
-                    <label for="adults">Adults (12+ years):</label>
-                    <span id="adults">2</span>
-                </p>
-                <p>
-                    <label for="children">Children (2-12 years):</label>
-                    <span id="children">2</span>
-                </p>
-                <p>
-                    <label for="infants">Infants (0-23 months):</label>
-                    <span id="infants">0</span>
-                </p>
-            </div>
-
-            <h3 style="margin-top: 1em;">Meals and Drinks</h3>
-            <div id="meals_and_drinks">
-                <div id="adults_meals_and_drinks"></div>
-                <div id="children_meals_and_drinks"></div>
-
-            </div>
-
-            <hr style="margin-top: 1em;">
-            <div class="price_div" style="font-size: 1.2em; margin-top: 1em;">
-                <strong>Initial price: <span id="price"></span></strong>
-
-                <select id="currency" name="currency" style="font-size:0.75em; margin-left: .3em; border-color: silver;"
-                    onchange="change_currency_initial_price()">
-                    <option selected>$</option>
-                    <option>&euro;</option>
-                    <option>&#163;</option> -->
-                    <!--pound-->
-                    <!-- <option>L.L</option>
-                </select>
-            </div>
-            <div class="price_div" style="font-size: 1.2em; margin-top: 1em;">
-                <strong>Modification fees: <span id="modification_fees">0.00</span></strong>
-
-                <select id="modification_currency" name="modification_currency"
-                    style="font-size:0.75em; margin-left: .3em; border-color: silver;">
-                    <option selected>$</option>
-                    <option>&euro;</option>
-                    <option>&#163;</option> -->
-                    <!--pound-->
-                    <!-- <option>L.L</option>
-                </select>
-            </div>
-
-            <p>
-                <input type="submit" value="Submit Changes">
-                <input type="submit" value="Cancel Booking" style="background-color: red;">
-            </p>
-        </form>
-    </fieldset> -->
+    
 </body>
 
 </html>

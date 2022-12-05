@@ -23,6 +23,35 @@
             color: white;
         }
     </style>
+    <script>
+        var initial_price;
+        function get_initial_fee() {
+            displayed_price = document.getElementById("price");
+            initial_price = parseInt(displayed_price.innerText);
+        }
+        
+        function change_currency_price() {
+            var currency = document.getElementById("currency");
+            displayed_price = document.getElementById("price");
+            var price = 0;
+            if (currency.value == "€") {
+                price = (initial_price) * 1.03;
+            }
+            else if (currency.value == "£") {
+                price = (initial_price) * 0.9;
+            }
+            else if (currency.value == "L.L") {
+                price = (initial_price) * 40000;
+            }
+            else {
+                price = (initial_price); //in dollars
+            }
+
+            price = price.toFixed(2);
+
+            displayed_price.innerText = price;
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -76,7 +105,7 @@
         $flight_id_2 = isset($_POST[ "flight_id_second" ]) ? intval($_POST[ "flight_id_second" ]) : "";
         $cabin_class = isset($_POST[ "cabin_search" ]) ? $_POST[ "cabin_search" ] : "";
         $preferred_seat_location = isset($_POST[ "seat_selection" ]) ? $_POST[ "seat_selection" ] : "";
-        $airport_pickup = isset($_POST[ "airport_pickup" ]) ? $_POST[ "airport_pickup" ] : "";
+        $airport_pickup = isset($_POST[ "airport_pickup" ]) ? ($_POST[ "airport_pickup" ] == 'yes' ? True : False) : False;
         $accompanying_pet = isset($_POST[ "pet" ]) ? $_POST[ "pet" ] : "";
         $special_treatment = isset($_POST[ "special_treatment" ]) ? $_POST[ "special_treatment" ] : "";
         $adults = isset($_POST[ "adults_search" ]) ? $_POST[ "adults_search" ] : "";
@@ -106,6 +135,94 @@
 
 	    $client = new MongoDB\Client("mongodb://localhost:27017");
         $bookings = $client->Airline_Reservation->Bookings;
+
+        if(isset($_POST['buy_reservation']))
+        {
+            $brn = isset($_POST['brn']) ? $_POST['brn'] : "";
+            $departure_date = isset($_POST[ "departure_date" ]) ? $_POST[ "departure_date" ] : "";
+            $departure_date = date_create($departure_date);
+            $today = date_create(date("Y-m-d"));
+            $diff= date_diff($today,$departure_date);
+            if(intval($diff->format("%a")) < 7) //Deadline one week before flight
+            {
+                print("<p style=\"text-align:center;\">Deadline has passed for buying tickets for the flight/s specified.</p>");
+                die();
+            }
+            else
+            {
+                $bookings->updateOne(
+                    ['Brn' => intval($brn)],
+                    ['$set' => ['Purchased' => True]]
+                );
+                print("<p style=\"text-align:center;\">Tickets purchased.</p>");
+                die();
+            }
+
+        }
+
+
+        if(isset($_POST['modify_booking']))
+        {
+            $brn = isset($_POST['brn']) ? $_POST['brn'] : "";
+            $cabin = isset($_POST['cabin']) ? $_POST['cabin'] : "";
+            $modification_fees = isset($_POST['modification_fees_sent']) ? $_POST['modification_fees_sent'] : "";
+            
+            $booking = $bookings->findOne(['Brn' => intval($brn)]);
+            $initial_price = intval($booking['Price']);
+            $new_price = floatval($modification_fees) + $initial_price;
+
+            $bookings->updateOne(
+                ['Brn' => intval($brn)],
+                ['$set' => ['Cabin_Class' => $cabin, 'Airport_Pick_Up' => $airport_pickup, 'Accompanying_Pet' => $accompanying_pet, 'Special_Treatment' => $special_treatment, 'Adult_Meals' => $adult_meals, 'Adult_Drinks' => $adult_drinks, 'Children_Meals' => $children_meals, 'Children_Drinks' => $children_drinks, 'Price' => $new_price]]
+            );
+
+            print("<p style=\"text-align:center;\">Booking modified.</p>");
+
+            die();
+        }
+
+        if(isset($_POST['cancel_booking']))
+        {
+            $brn = isset($_POST['brn']) ? $_POST['brn'] : "";
+
+            $booking = $bookings->findOne(['Brn' => intval($brn)]);
+            if($booking['Purchased'] == True)
+            {
+                $departure_date = isset($_POST[ "departure_date" ]) ? $_POST[ "departure_date" ] : "";
+                $departure_date = date_create($departure_date);
+                $today = date_create(date("Y-m-d"));
+                $diff= date_diff($today,$departure_date);
+                if(intval($diff->format("%a")) < 7) //Deadline one week before flight
+                {
+                    $bookings->deleteOne(['Brn' => intval($brn)]);
+                    print("<p style=\"text-align:center;\">Booking canceled but no refund can be given as the deadline has passed.</p>");
+                    die();
+                }
+                else
+                {
+                    $refund = round(intval($booking['Price']) / 2);
+                    $bookings->deleteOne(['Brn' => intval($brn)]);
+                    print("<p style=\"text-align:center;\">Booking canceled. A refund of \$$refund has been transferred to your account.</p>");
+                    print("<p style=\"text-align:center; margin-top:1em;\"><strong>Refund: <span id=\"price\">$refund</span></strong>");
+                    print("<script>get_initial_fee();</script>");
+                    print("<select id=\"currency\" name=\"currency\" style=\"font-size:0.75em; margin-left: .3em; border-color: silver;\" onchange=\"change_currency_price()\">");
+                    print("<option selected>$</option>");
+                    print("<option>&euro;</option>");
+                    print("<option>&#163;</option>");
+                    print("<!--pound-->");
+                    print("<option>L.L</option>");
+                    print("</select></p>");
+                    die();
+                }
+            }
+            else 
+            {
+                $bookings->deleteOne(['Brn' => intval($brn)]);
+                print("<p style=\"text-align:center;\">Reservation canceled.</p>");
+                die();   
+            }
+
+        }
 
         $departure_date = isset($_POST[ "depart_on_search" ]) ? $_POST[ "depart_on_search" ] : "";
 
@@ -196,8 +313,18 @@
             }              
 
             $bookings->insertOne( ['Brn' => $new_brn, 'Purchased' => False, 'Flights' => $flights, 'Customer_Username' => $username, 'Cabin_Class' => $cabin_class, 'Preferred_Seat_Location' => $preferred_seat_location, 'Airport_Pick_Up' => $airport_pickup, 'Accompanying_Pet' => $accompanying_pet, 'Special_Treatment' => $special_treatment, 'Adults' => intval($adults), 'Children' => intval($children), 'Infants' => intval($infants), 'Type_Of_Trip' => $trip_type, 'Check_In' => False, 'Adult_Meals' => $adult_meals, 'Adult_Drinks' => $adult_drinks, 'Children_Meals' => $children_meals, 'Children_Drinks' => $children_drinks, 'Price' => intval($price)] );
-            print("<p style=\"text-align:center;\">Booking reserved. Please choose to buy or cancel tickets one week before your flight.</p>");
+            print("<p style=\"text-align:center;\">Booking reserved. $5 were transferred from your account. Please choose to buy or cancel tickets one week before your flight.</p>");
             print("<p style=\"text-align:center;\">Booking reference number: $new_brn</p>");
+
+            print("<p style=\"text-align:center; margin-top:1em;\"><strong>Reservation fee: <span id=\"price\">5</span></strong>");
+            print("<script>get_initial_fee();</script>");
+            print("<select id=\"currency\" name=\"currency\" style=\"font-size:0.75em; margin-left: .3em; border-color: silver;\" onchange=\"change_currency_price()\">");
+            print("<option selected>$</option>");
+            print("<option>&euro;</option>");
+            print("<option>&#163;</option>");
+            print("<!--pound-->");
+            print("<option>L.L</option>");
+            print("</select></p>");
         }
     ?>
 </body>
