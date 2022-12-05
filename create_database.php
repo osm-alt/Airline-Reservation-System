@@ -211,7 +211,9 @@ $newFlights = [
         'Departure_Time' => '11:20',
         'Economy_Seats_Left' => 20,
         'Business_Seats_Left' => 10,
-        'FirstClass_Seats_Left' => 5
+        'FirstClass_Seats_Left' => 5,
+        'Delay'=> '15 minutes',
+        'Captain_Name' => 'Abdul Khalil'
     ],
     [
         'Flight_ID' => 2,
@@ -222,7 +224,9 @@ $newFlights = [
         'Departure_Time' => '11:40',
         'Economy_Seats_Left' => 20,
         'Business_Seats_Left' => 10,
-        'FirstClass_Seats_Left' => 5
+        'FirstClass_Seats_Left' => 5,
+        'Delay'=> 'no delay',
+        'Captain_Name' => 'Mario Chahwan'
     ],
     [
         'Flight_ID' => 3,
@@ -233,7 +237,9 @@ $newFlights = [
         'Departure_Time' => '05:35',
         'Economy_Seats_Left' => 12,
         'Business_Seats_Left' => 7,
-        'FirstClass_Seats_Left' => 4
+        'FirstClass_Seats_Left' => 4,
+        'Delay'=> '1 hour delay',
+        'Captain_Name' => 'Pekin Woof'
     ],
     [
         'Flight_ID' => 4,
@@ -244,7 +250,9 @@ $newFlights = [
         'Departure_Time' => '09:25',
         'Economy_Seats_Left' => 13,
         'Business_Seats_Left' => 8,
-        'FirstClass_Seats_Left' => 5
+        'FirstClass_Seats_Left' => 5,
+        'Delay'=> 'no delay',
+        'Captain_Name' => 'Samira Pentak'
     ],
     [
         'Flight_ID' => 5,
@@ -255,7 +263,9 @@ $newFlights = [
         'Departure_Time' => '12:55',
         'Economy_Seats_Left' => 25,
         'Business_Seats_Left' => 15,
-        'FirstClass_Seats_Left' => 8
+        'FirstClass_Seats_Left' => 8,
+        'Delay'=> '3 hours',
+        'Captain_Name' => 'Charbel Kadi'
     ],
     [
         'Flight_ID' => 6,
@@ -266,7 +276,9 @@ $newFlights = [
         'Departure_Time' => '12:00',
         'Economy_Seats_Left' => 20,
         'Business_Seats_Left' => 15,
-        'FirstClass_Seats_Left' => 7
+        'FirstClass_Seats_Left' => 7,
+        'Delay'=> '10 minutes',
+        'Captain_Name' => 'Mohammad Darwish'
     ],
     [
         'Flight_ID' => 7,
@@ -277,7 +289,9 @@ $newFlights = [
         'Departure_Time' => '10:00',
         'Economy_Seats_Left' => 10,
         'Business_Seats_Left' => 3,
-        'FirstClass_Seats_Left' => 2
+        'FirstClass_Seats_Left' => 2,
+        'Delay'=> 'no delay',
+        'Captain_Name' => 'Jean Moussa'
     ],
     [
         'Flight_ID' => 8,
@@ -288,7 +302,9 @@ $newFlights = [
         'Departure_Time' => '03:00',
         'Economy_Seats_Left' => 28,
         'Business_Seats_Left' => 15,
-        'FirstClass_Seats_Left' => 10
+        'FirstClass_Seats_Left' => 10,
+        'Delay'=> '10 hours',
+        'Captain_Name' => 'Ali Solh'
     ],
     [
         'Flight_ID' => 9,
@@ -299,7 +315,9 @@ $newFlights = [
         'Departure_Time' => '12:00',
         'Economy_Seats_Left' => 20,
         'Business_Seats_Left' => 15,
-        'FirstClass_Seats_Left' => 7
+        'FirstClass_Seats_Left' => 7,
+        'Delay'=> '12 hours',
+        'Captain_Name' => 'Khalil Mershad'
     ],
     [
         'Flight_ID' => 10,
@@ -310,7 +328,9 @@ $newFlights = [
         'Departure_Time' => '06:00',
         'Economy_Seats_Left' => 30,
         'Business_Seats_Left' => 16,
-        'FirstClass_Seats_Left' => 10
+        'FirstClass_Seats_Left' => 10,
+        'Delay'=> 'no delay',
+        'Captain_Name' => 'Carla jeitawi'
     ]
 ];
 

@@ -75,6 +75,35 @@
                 width: 50%;
             }
         }
+        table {
+            margin-top: 2em;
+            text-align: center;
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-size: 1.2em;
+            padding: .5em;
+            background-color: rgb(84, 201, 247);
+            color: white;
+            border-style: solid;
+            border-color: black;
+        }
+
+        table caption {
+            color:white;
+            margin-bottom: 1.5em;
+            font-size: 1.3em;
+        }
+
+        td {
+            background-color: white;
+            padding: 1em;
+            border-style: solid;
+        }
     </style>
 </head>
 
@@ -135,18 +164,46 @@
             <br>
             <br>
         <div class="center">Check in below the flight schedule of flights operated by ROA Airlines.<br>
-            Fill in below the Ticket Number of your flight in order to search for it.</div>
+            Fill in below the Flight ID of your flight in order to search for it.</div>
 
-        <form post="method" autocomplete="on" style="margin-bottom: 3rem;">
+        <form method="post" action="FlightStatus.php" autocomplete="on" style="margin-bottom: 3rem;">
             <div class="form-elts">
-                <p><label>Ticket Number<input name="Ticket" id="ticket" type="text" size="21" required></p>
-                <input type="file">
-                <p><input type="submit" value="Check Status">
+                <p><label>Flight ID<input name="flightID" id="flightID" type="text" size="21" required></p>
+                <p><input type="submit" name="CheckStatus" value="CheckStatus">
                 </p>
             </div>
         </form>
 
 
     </body>
+<?php
+use MongoDB\Operation\Find;
+require 'vendor/autoload.php';
+$client = new MongoDB\Client("mongodb://localhost:27017");
+$database = $client->Airline_Reservation;
+$flight_collection = $client->Airline_Reservation->Flights;
+$customer_collection = $client->Airline_Reservation->Customers;
+if (isset($_POST["CheckStatus"])) {
+    $flightID =(int) $_POST["flightID"];
+    $flightIDResult = $flight_collection->find(['Flight_ID'=>$flightID]);
+    print("<table>");
+    print("<thead>");
+    print("<tr><th>Flight ID</th><th>From</th><th>To</th><th>Departure Date</th><th>Depart Time</th><th>Economy Seats</th><th>Business Seats</th><th>FirstClass Seats</th><th>Delay</th><th>Captain_Name</th> </tr>");
+    print("</thead>");
+    print("<tbody>");
 
+    $result = $flight_collection->find(['Flight_ID'=>$flightID]);
+    foreach ($result as $entry) {
+
+
+        print("<tr>");
+        print("<td>" . $entry['Flight_ID'] . "</td><td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td>" . "<td>" . $entry['Departure_Date'] . "</td>" . "<td>" . $entry['Departure_Time'] . "</td>" . "<td>" . $entry['Economy_Seats_Left'] . "</td>" . "<td>" . $entry['Business_Seats_Left'] . "</td>" . "<td>" . $entry['FirstClass_Seats_Left'] . "</td>". "<td>" . $entry['Delay'] . "</td>". "<td>" . $entry['Captain_Name'] . "</td>");
+        print("</form></td>");
+        print("</tr>");
+    }
+    print("</tbody>");
+    print("</table>");
+}
+
+?>
 </html>
