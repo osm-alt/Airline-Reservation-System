@@ -397,7 +397,39 @@
         //     }
         // }
 
+        function confirmSubmit() 
+        {
+            return confirm( "Are you sure you want to submit?" );   
+        }
+
+        function confirmReset() 
+        {
+            return confirm( "Are you sure you want to clear the form?" );   
+        }
+
         function startBooking(adults_number, children_number) {
+            var booking_form = document.getElementById("booking_form");
+
+            booking_form.addEventListener( "submit", 
+                function() 
+                {
+                    if(confirmSubmit() == false)
+                    {
+                        event.preventDefault();
+                    } 
+                }, // end anonymous function
+                false );
+
+            booking_form.addEventListener( "reset", 
+                function()
+                {                                                         
+                    if(confirmReset() == false)
+                    {
+                        event.preventDefault();
+                    } 
+                }, // end anonymous function
+                false );
+
             trip_type = document.getElementById("trip_type");
             cabin_class = document.getElementById("cabin");
             seat_location = document.getElementById("seat_selection");
@@ -1153,7 +1185,7 @@
 
             print("<fieldset id=\"booking_form_fieldset\" style=\"margin: 1em;\">");
             print("<legend style=\"margin-left: 2em;\">Booking</legend>");
-            print("<form class=\"styled\" method=\"post\" action=\"process_booking.php\" onchange=\"computePrice()\">");
+            print("<form class=\"styled\" id=\"booking_form\" method=\"post\" action=\"process_booking.php\" onchange=\"computePrice()\">");
             
             print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $flight_id . "\">");
             print("<input type = \"hidden\" name = \"trip_type_search\" value = \"" . $trip_type_search . "\">");

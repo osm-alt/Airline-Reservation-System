@@ -210,6 +210,24 @@
             initial_price = document.getElementById("price").innerText; //in dollars
         }
 
+        function ask_for_confirmation() {
+            var modification_form = document.getElementById("modification_form");
+            modification_form.addEventListener( "submit", 
+                function() 
+                {
+                    if(confirmSubmit() == false)
+                    {
+                        event.preventDefault();
+                    } 
+                }, // end anonymous function
+                false );
+        }
+
+        function confirmSubmit() 
+        {
+            return confirm( "Are you sure you want to submit?" );   
+        }
+
         //change number displayed meals and drinks inputs for adult passengers
         function account_for_adult_passengers(adults_number, adult_meals, adult_drinks) {
             for(var x = 1; x <= parseInt(adults_number); x++)
@@ -630,7 +648,7 @@
             }
             print("<fieldset style=\"margin: 1em;\">");
             print("<legend style=\"margin-left: 2em;\">Reservation</legend>");
-            print("<form method=\"post\" action=\"process_booking.php\" onchange=\"compute_modification_price()\">");
+            print("<form method=\"post\" id=\"modification_form\" action=\"process_booking.php\" onchange=\"compute_modification_price()\">");
             print("<input type=\"hidden\" name=\"brn\" value=\"$brn\">");
             print("<p>");
             $trip_type = $entry['Type_Of_Trip'];
@@ -863,6 +881,7 @@
             $children_drinks = implode($children_drinks);
             
             print("<script>start($adults, $children, [$adult_meals], [$adult_drinks], [$children_meals], [$children_drinks]);</script>");
+            print("<script>ask_for_confirmation();</script>");
         }
     ?>
     
