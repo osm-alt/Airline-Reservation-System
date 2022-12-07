@@ -951,9 +951,16 @@
                 else if($cabin_search == "First class"){
                     $result = $flight_collection->find(['From' => $departure_from_search, 'To' => $arrival_to_search, 'Departure_Date' => $depart_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
                 }
-                if(!$result)
+
+                
+                foreach($result as $entry)
                 {
-                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                    $first_entry = $entry;
+                    break;
+                }
+                if(!isset($first_entry))
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em;color:white\">No results</p>");
                 }
                 else{
                     print("<form method=\"post\" action = \"book_a_trip.php\">");
@@ -972,7 +979,7 @@
                         print("<tr>");
                         print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
                         print("<td>");
-                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"radio\" required name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
                         print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
                         print("</td>");
                         print("</tr>");
@@ -998,9 +1005,21 @@
                     $result_return = $flight_collection->find(['From' => $arrival_to_search, 'To' => $departure_from_search, 'Departure_Date' => $return_on_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
                 }
 
-                if(!$result_depart or !$result_return)
+                foreach($result_depart as $entry)
                 {
-                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                    $first_depart_entry = $entry;
+                    break;
+                }
+                
+                foreach($result_return as $entry)
+                {
+                    $first_return_entry = $entry;
+                    break;
+                }
+
+                if(!isset($first_depart_entry) or !isset($first_return_entry))
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em; color:white;\">No results</p>");
                 }
                 else{
                     print("<form method=\"post\" action = \"book_a_trip.php\">");
@@ -1020,7 +1039,7 @@
                         print("<tr>");
                         print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
                         print("<td>");
-                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"radio\" required name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
                         print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
                         print("</td>");
                         print("</tr>");
@@ -1034,7 +1053,7 @@
                         print("<tr>");
                         print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
                         print("<td>");
-                        print("<input type = \"radio\" name = \"return_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"radio\" required name = \"return_time\" value = \"" . $entry['Departure_Time'] . "\">");
                         print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $entry['Flight_ID'] . "\">");
                         print("</td>");
                         print("</tr>");
@@ -1060,9 +1079,21 @@
                     $result_second = $flight_collection->find(['From' => $departure_from_second_search, 'To' => $arrival_to_second_search, 'Departure_Date' => $depart_on_second_search, 'FirstClass_Seats_Left' => ['$gte' => $passengers_count]]);
                 }
 
-                if(!$result_first or !$result_second)
+                foreach($result_first as $entry)
                 {
-                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>");
+                    $first_first_entry = $entry;
+                    break;
+                }
+                
+                foreach($result_second as $entry)
+                {
+                    $first_second_entry = $entry;
+                    break;
+                }
+
+                if(!isset($first_first_entry) or !isset($first_second_entry))
+                {
+                    print("<p style=\"text-align:center;font-size:1.2em;margin:2em; color:white;\">No results</p>");
                 }
                 else{
                     print("<form method=\"post\" action = \"book_a_trip.php\">");
@@ -1085,7 +1116,7 @@
                         print("<tr>");
                         print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
                         print("<td>");
-                        print("<input type = \"radio\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"radio\" required name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
                         print("<input type = \"hidden\" name = \"flight_id\" value = \"" . $entry['Flight_ID'] . "\">");
                         print("</td>");
                         print("</tr>");
@@ -1099,7 +1130,7 @@
                         print("<tr>");
                         print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
                         print("<td>");
-                        print("<input type = \"radio\" name = \"departure_time_second\" value = \"" . $entry['Departure_Time'] . "\">");
+                        print("<input type = \"radio\" required name = \"departure_time_second\" value = \"" . $entry['Departure_Time'] . "\">");
                         print("<input type = \"hidden\" name = \"flight_id_second\" value = \"" . $entry['Flight_ID'] . "\">");
                         print("</td>");
                         print("</tr>");

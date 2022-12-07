@@ -186,6 +186,53 @@
             $brn = isset($_POST['brn']) ? $_POST['brn'] : "";
 
             $booking = $bookings->findOne(['Brn' => intval($brn)]);
+
+            $flights_collection = $client->Airline_Reservation->Flights;
+
+            $flights = $booking['Flights'];
+
+            $flight_id_1 = $flights_collection->findOne(['Flight_ID' => $flights[0]]);
+
+            $cabin_class = $booking['Cabin_Class'];
+
+            $cabin_seats = "";
+            if($cabin_class == "Economy class")
+            {
+                $cabin_seats = "Economy_Seats_Left";
+            }
+            else if($cabin_class == "Business class")
+            {
+                $cabin_seats = "Business_Seats_Left";
+            }
+            else
+            {
+                $cabin_seats = "FirstClass_Seats_Left";
+            }
+
+            $first_flight = $flights_collection->findOne(['Flight_ID' => intval($flights[0])]);
+
+            $first_flight_cabin_seats = intval($first_flight[$cabin_seats]);
+
+            $passengers = intval($booking['Adults']) + intval($booking['Children']) + intval($booking['Infants']);
+            //update seats left in the chosen cabin class of that flight
+            $flights_collection->updateOne(
+                ['Flight_ID' => intval($flights[0])],
+                ['$set' => [$cabin_seats => ($first_flight_cabin_seats + $passengers)]]
+            );
+
+            
+            if($flights[1])
+            {
+                $second_flight = $flights_collection->findOne(['Flight_ID' => intval($flights[1])]);
+
+                $second_flight_cabin_seats = intval($second_flight[$cabin_seats]);
+    
+                $flights_collection->updateOne(
+                    ['Flight_ID' => intval($flights[1])],
+                    ['$set' => [$cabin_seats => ($second_flight_cabin_seats + $passengers)]]
+                );
+            }
+
             if($booking['Purchased'] == True)
             {
                 $departure_date = isset($_POST[ "departure_date" ]) ? $_POST[ "departure_date" ] : "";
@@ -283,6 +330,47 @@
             }            
 
             $bookings->insertOne( ['Brn' => $new_brn, 'Purchased' => True, 'Flights' => $flights, 'Customer_Username' => $username, 'Cabin_Class' => $cabin_class, 'Preferred_Seat_Location' => $preferred_seat_location, 'Airport_Pick_Up' => $airport_pickup, 'Accompanying_Pet' => $accompanying_pet, 'Special_Treatment' => $special_treatment, 'Adults' => intval($adults), 'Children' => intval($children), 'Infants' => intval($infants), 'Type_Of_Trip' => $trip_type, 'Check_In' => False, 'Adult_Meals' => $adult_meals, 'Adult_Drinks' => $adult_drinks, 'Children_Meals' => $children_meals, 'Children_Drinks' => $children_drinks, 'Price' => intval($price)] );
+            
+            $flights_collection = $client->Airline_Reservation->Flights;
+
+            $cabin_seats = "";
+            if($cabin_class == "Economy class")
+            {
+                $cabin_seats = "Economy_Seats_Left";
+            }
+            else if($cabin_class == "Business class")
+            {
+                $cabin_seats = "Business_Seats_Left";
+            }
+            else
+            {
+                $cabin_seats = "FirstClass_Seats_Left";
+            }
+
+            $first_flight = $flights_collection->findOne(['Flight_ID' => intval($flight_id_1)]);
+
+            $first_flight_cabin_seats = intval($first_flight[$cabin_seats]);
+
+            $passengers = intval($adults) + intval($children) + intval($infants);
+            //update seats left in the chosen cabin class of that flight
+            $flights_collection->updateOne(
+                ['Flight_ID' => intval($flight_id_1)],
+                ['$set' => [$cabin_seats => ($first_flight_cabin_seats - $passengers)]]
+            );
+
+            if($flight_id_2 != "")
+            {
+                $second_flight = $flights_collection->findOne(['Flight_ID' => intval($flight_id_2)]);
+
+                $second_flight_cabin_seats = intval($second_flight[$cabin_seats]);
+    
+                $passengers = intval($adults) + intval($children) + intval($infants);
+                $flights_collection->updateOne(
+                    ['Flight_ID' => intval($flight_id_2)],
+                    ['$set' => [$cabin_seats => ($second_flight_cabin_seats - $passengers)]]
+                );
+            }
+            
             print("<p style=\"text-align:center;\">Tickets purchased.</p>");
             print("<p style=\"text-align:center;\">Booking reference number: $new_brn</p>");
         }
@@ -345,6 +433,49 @@
             }              
 
             $bookings->insertOne( ['Brn' => $new_brn, 'Purchased' => False, 'Flights' => $flights, 'Customer_Username' => $username, 'Cabin_Class' => $cabin_class, 'Preferred_Seat_Location' => $preferred_seat_location, 'Airport_Pick_Up' => $airport_pickup, 'Accompanying_Pet' => $accompanying_pet, 'Special_Treatment' => $special_treatment, 'Adults' => intval($adults), 'Children' => intval($children), 'Infants' => intval($infants), 'Type_Of_Trip' => $trip_type, 'Check_In' => False, 'Adult_Meals' => $adult_meals, 'Adult_Drinks' => $adult_drinks, 'Children_Meals' => $children_meals, 'Children_Drinks' => $children_drinks, 'Price' => intval($price)] );
+            
+            
+            $flights_collection = $client->Airline_Reservation->Flights;
+
+            $cabin_seats = "";
+            if($cabin_class == "Economy class")
+            {
+                $cabin_seats = "Economy_Seats_Left";
+            }
+            else if($cabin_class == "Business class")
+            {
+                $cabin_seats = "Business_Seats_Left";
+            }
+            else
+            {
+                $cabin_seats = "FirstClass_Seats_Left";
+            }
+
+            $first_flight = $flights_collection->findOne(['Flight_ID' => intval($flight_id_1)]);
+
+            $first_flight_cabin_seats = intval($first_flight[$cabin_seats]);
+
+            $passengers = intval($adults) + intval($children) + intval($infants);
+            //update seats left in the chosen cabin class of that flight
+            $flights_collection->updateOne(
+                ['Flight_ID' => intval($flight_id_1)],
+                ['$set' => [$cabin_seats => ($first_flight_cabin_seats - $passengers)]]
+            );
+
+            if($flight_id_2 != "")
+            {
+                $second_flight = $flights_collection->findOne(['Flight_ID' => intval($flight_id_2)]);
+
+                $second_flight_cabin_seats = intval($second_flight[$cabin_seats]);
+    
+                $passengers = intval($adults) + intval($children) + intval($infants);
+                $flights_collection->updateOne(
+                    ['Flight_ID' => intval($flight_id_2)],
+                    ['$set' => [$cabin_seats => ($second_flight_cabin_seats - $passengers)]]
+                );
+            }
+            
+            
             print("<p style=\"text-align:center;\">Booking reserved. $5 were transferred from your account. Please choose to buy or cancel tickets one week before your flight.</p>");
             print("<p style=\"text-align:center;\">Booking reference number: $new_brn</p>");
 
