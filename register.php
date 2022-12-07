@@ -42,7 +42,7 @@
             padding-left: 1em;
             padding-right: 1em;
             padding-bottom: .3em;
-            margin: 1em;
+            /* margin: 1em; */
             /* border-style: solid; */
             border-width: 0.05em;
             border-radius: 0.5em;
@@ -51,7 +51,7 @@
         fieldset {
             background: whitesmoke;
             width: 40em;
-            height: 41rem;
+            height: 42rem;
             animation: flash_border 3s infinite;
         }
 
@@ -154,62 +154,68 @@
         }
     </style>
 
+
+
+
+
+
 </head>
 
 <body>
-<header>
-      <nav>
-        <ul>
-          <li><a href="main_page.html">Home Page</a></li>
-          <!-- Sub navigation menu -->
-          <div class="subnav">
-            <li><a href="book_a_trip.php">Plan & Book <i class="fa fa-caret-down"></i></a></li>
-            <div class="subnav-content">
-              <li><a href="book_a_trip.php">Book a trip</a></li>
-              <li><a href="flight_schedule_search.php">Flight Schedule Search</a></li>
-              <li><a href="manage_booking.php">Manage Booking</a></li>
-              <li><a href="FlightStatus.php">Flight Status</a></li>
-            </div>
-          </div>
-          <div class="subnav">
-            <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
-            <div class="subnav-content">
-              <li><a href="PassengerServices.html">Passenger Services</a></li>
-              <li><a href="cargo.html">Cargo Services</a></li>
-              <li><a href="BaggageInfo.html">Baggage Info</a></li>
-              <li><a href="checkin.html">Check-in</a></li>
-              <li><a href="admin.html">Admin</a></li>
-            </div>
-          </div>
-          <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
-          <li><a href="Faq.html">FAQ</a>
-          <li><a href="login.php">Login/Register</a>
-        </ul>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="main_page.php">Home Page</a></li>
+                <!-- Sub navigation menu -->
+                <div class="subnav">
+                    <li><a href="book_a_trip.php">Plan & Book <i class="fa fa-caret-down"></i></a></li>
+                    <div class="subnav-content">
+                        <li><a href="book_a_trip.php">Book a trip</a></li>
+                        <li><a href="flight_schedule_search.php">Flight Schedule Search</a></li>
+                        <li><a href="manage_booking.php">Manage Booking</a></li>
+                        <li><a href="FlightStatus.php">Flight Status</a></li>
+                    </div>
+                </div>
+                <div class="subnav">
+                    <li><a href="PassengerServices.html">Services <i class="fa fa-caret-down"></i></a></li></button>
+                    <div class="subnav-content">
+                        <li><a href="PassengerServices.html">Passenger Services</a></li>
+                        <li><a href="cargo.html">Cargo Services</a></li>
+                        <li><a href="BaggageInfo.html">Baggage Info</a></li>
+                        <li><a href="checkin.html">Check-in</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                    </div>
+                </div>
+                <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
+                <li><a href="Faq.html">FAQ</a>
+                <li><a class="active" href="login.php">Login/Register</a>
+            </ul>
 
-        <!-- hamburger menu, only essentiel links -->
-        <div class="topnav">
-          <a href="main_page.php">
-            <ion-icon name="airplane-outline"></ion-icon>
-          </a>
-          <div id="myLinks">
-            <a href="book_a_trip.php">Book a trip</a>
-            <a href="checkin.html">Check-in</a>
-            <a href="login.php">Login</a>
-          </div>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-      </nav>
+            <!-- hamburger menu, only essentiel links -->
+            <div class="topnav">
+                <a href="main_page.php">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                </a>
+                <div id="myLinks">
+                    <a href="book_a_trip.php">Book a trip</a>
+                    <a href="checkin.html">Check-in</a>
+                    <a class="active" href="login.php">Login</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+        </nav>
     </header>
-
 
     <!-- <h1 class="title">Welcome to ROA Airlines!</h1> -->
 
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Register</legend>
-        <form method="post" action="register.php" id="registerForm" onsubmit="return validation();">
+        <form method="post" action="register.php" id="registerForm" onsubmit="return passwordValidation();">
             <div class="date-field">
-                <p><label>Credit Card Number<input name="card" id="Card" type="type" placeholder="xxxx xxxx xxxx" required></p>
+                <p><label>Credit Card Number<input name="card" id="Card" type="type" placeholder="4xxxxxxxxxxxxxxx (16 digits)" required></p>
+                <div id="cardDiv"></div>
+
                 <p><label>Expiry Month
                         <select name="month" id="month">
                             <option value="January">January</option>
@@ -242,6 +248,7 @@
                     </label></p>
 
                 <p><label>CVV <input type="text" name="cvv" id="Cvv" placeholder="CVV"></label></p>
+                <div id="cvvDiv"></div>
             </div>
 
             <p><label>First Name<input name="firstname" id="Fname" type="text" placeholder="First Name" required></p>
@@ -249,6 +256,8 @@
             <p><label>Last Name<input name="lastname" id="Lname" type="text" placeholder="Last Name" required></p>
 
             <p><label>Username<input name="username" id="username" type="text" placeholder="Username" required></p>
+            <div id="usernameDiv"></div>
+
 
 
 
@@ -256,20 +265,90 @@
 
 
             <p><label>Email Address<input name="email" id="email" type="text" placeholder="Email Address" required></p>
+            <div id="emailDiv"></div>
 
-            <p><label>Password<input name="password" id="Password" type="password" placeholder="Password" onsubmit="validation()" required></p>
+            <p><label>Password<input name="password" id="Password" type="password" placeholder="Password" onkeyup="passwordValidation()" required></p>
 
             <span id="spanAlert"></span>
 
-            <input type="submit" name="submit" value="Register">
+            <input type="submit" name="submit" id="submit" value="Register">
             <input type="reset" value="Clear">
             <p class="register"> Already have an account? <a href="login.php">Login</a></p>
 
         </form>
     </fieldset>
 
+
     <script>
-        function validation() {
+        // Credit Card Visa Validation
+        document.getElementById("Card").addEventListener("blur", function() {
+            validateCard(this.value);
+        }, false);
+
+        function validateCard(Card) {
+            // window.alert("Card number is ");
+
+            CardValid = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/.test(Card);
+            // valid test case: 4111111111111111   4012888888881881  (must start with 4 and 16 digits)
+            if (CardValid)
+            {
+                document.getElementById("cardDiv").innerHTML = "Valid Card number";
+                document.getElementById("cardDiv").style.color = "green";
+            }
+            else
+            {
+                document.getElementById("cardDiv").innerHTML = "Invalid Card number";
+                document.getElementById("cardDiv").style.color = "red";
+            }
+        } // end function validatePhone
+
+
+// CVV Validation
+        document.getElementById("Cvv").addEventListener("blur", function() {
+            validateCvv(this.value);
+        }, false);
+
+        function validateCvv(Cvv) {
+            // window.alert("Card number is ");
+
+            CvvValid = /^[0-9]{3,4}$/.test(Cvv);
+            // valid test case: 1234 4321 (3 or 4 digits)
+            if (CvvValid)
+            {
+                document.getElementById("cvvDiv").innerHTML = "Valid CVV number";
+                document.getElementById("cvvDiv").style.color = "green";
+            }
+            else
+            {
+                document.getElementById("cvvDiv").innerHTML = "Invalid CVV number";
+                document.getElementById("cvvDiv").style.color = "red";
+            }
+        } // end function validatePhone
+
+
+        // Email Validation
+        document.getElementById("email").addEventListener("blur", function() {
+            validateEmail(this.value);
+        }, false);
+
+        function validateEmail(email) {
+
+            emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
+            // valid test case: test@gmail.com test@g.mail.com
+            if (emailValid)
+            {
+                document.getElementById("emailDiv").style.color = "green";
+                document.getElementById("emailDiv").innerHTML = "Valid Email";
+            }
+            else
+            {
+                document.getElementById("emailDiv").innerHTML = "Invalid Email";
+                document.getElementById("emailDiv").style.color = "red";
+            }
+        } // end function validatePhone
+
+
+        function passwordValidation() {
             var input_password = document.getElementById("Password");
             var alert = document.getElementById("spanAlert");
 
@@ -280,7 +359,68 @@
                 return false;
             }
         }
+
+
+        try {
+            var asyncRequest = new XMLHttpRequest(); // create request
+
+            // set up callback function and store it
+            asyncRequest.addEventListener("readystatechange",
+                function() {
+                    if (asyncRequest.readyState === 4 && asyncRequest.status === 200) usernameTable(asyncRequest.responseText);
+                    //alert(asyncRequest.responseText);
+                }, false);
+
+            // send the asynchronous request
+            asyncRequest.open("GET", "get_usernames.php", true);
+            asyncRequest.setRequestHeader("Content-Type", "application/json");
+            asyncRequest.send(); // send request        
+        } // end try
+        catch (exception) {
+            alert("Request Failed");
+        } // end catch 
+
+
+
+
+
+        function usernameTable(response) {
+            // window.alert(response);
+            var flag = 0;
+            var data = JSON.parse(response);
+            var table = document.getElementById("usernameDiv");
+
+            // window.alert(data);
+
+            var x = document.getElementById("username");
+            x.addEventListener("keyup", myFunction1);
+            // myFunction0(data);
+
+            function myFunction1() {
+                var table = document.getElementById("usernameDiv");
+
+                let x = document.getElementById("username");
+                // x.value = x.value.toLowerCase();
+                var bt = document.getElementById("submit");
+
+                for (var i = 0; i < data.length; i++) {
+                    // window.alert(data[i]);
+                    if (data[i] == x.value) {
+                        flag = 1;
+                        table.style.color = "red";
+                        table.innerHTML = 'Username already exists! Please pick another one.';
+                        bt.disabled = true;
+                        return false;
+                    } else {
+                        table.style.color = "green";
+                        table.innerHTML = 'Username Available!';
+                        bt.disabled = false;
+                    }
+                }
+            }
+        }
     </script>
+
 
     <?php
 
@@ -340,22 +480,25 @@
         $flag = 0;
 
 
+
+
+        //this code part below was implemented before ajax, so when the user submits the form, it checks if the username already exists in the database and the user gets the error but
+        //since we need to use ajax and its asynchronous, we will comment this method as its no longer needed as live updates are shown to the user.
+
         // USERNAME IS UNIQUE, WE CANNOT ALLOW 2 USERS TO HAVE THE SAME ONE!
-        $usernameResult = $customer_collection->find(['Username' => $inputtedUsername]);
-
-        foreach ($usernameResult as $searchFor) {
-            $storedUsername = $searchFor['Username'];
-            if ($inputtedUsername == $storedUsername) {
-                $flag = 1;
-            }
-        }
-
-        if ($flag == 1) {
-            print("<script>window.alert('Username already exists! Please choose another one.');
-            window.location.assign('register.php');
-            </script>");
-            die();
-        }
+        // $usernameResult = $customer_collection->find(['Username' => $inputtedUsername]);
+        // foreach ($usernameResult as $searchFor) {
+        //     $storedUsername = $searchFor['Username'];
+        //     if ($inputtedUsername == $storedUsername) {
+        //         $flag = 1;
+        //     }
+        // }
+        // if ($flag == 1) {
+        //     print("<script>window.alert('Username already exists! Please choose another one.');
+        //     window.location.assign('register.php');
+        //     </script>");
+        //     die();
+        // }
 
 
 
