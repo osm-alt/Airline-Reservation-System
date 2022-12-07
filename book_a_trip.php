@@ -1325,7 +1325,7 @@
             print("<label for=\"reserve_hotel\">Want to make a hotel reservation?</label>");
             print("<a href=\"https://www.trivago.com/\" target=\"_blank\"><button id=\"reserve_hotel\"");
             print("style=\"background-color: rgb(84, 201, 247); color:white; border-radius: .5em;\">Check");
-            print("Trivago</button></a>");
+            print(" Trivago</button></a>");
             print("</p>"); 
         }
         

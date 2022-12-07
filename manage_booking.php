@@ -622,6 +622,12 @@
             $brn = isset($_POST[ "booking_reference" ]) ? $_POST[ "booking_reference" ] : "";
                 
             $entry = $bookings_collection->findOne(['Brn' => intval($brn)]);
+
+            if(!$entry)
+            {
+                print("<p style=\"text-align:center; color:white;\">Reservation does not exist</p>");
+                die();
+            }
             print("<fieldset style=\"margin: 1em;\">");
             print("<legend style=\"margin-left: 2em;\">Reservation</legend>");
             print("<form method=\"post\" action=\"process_booking.php\" onchange=\"compute_modification_price()\">");

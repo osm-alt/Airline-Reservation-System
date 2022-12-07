@@ -221,7 +221,7 @@
             );
 
             
-            if($flights[1])
+            if(count($flights) > 1)
             {
                 $second_flight = $flights_collection->findOne(['Flight_ID' => intval($flights[1])]);
 
