@@ -229,16 +229,7 @@
         var search_form;
 
         function start() {
-            //search_button = document.getElementById("search");
             search_form = document.getElementById("search_form");
-
-            // search_button.addEventListener("click", search_for_flights, false);
-
-            // search_form.addEventListener("submit", function (e) {
-            //     e.preventDefault();
-            //     search_for_flights();
-            // })
-
 
             trip_type_search = document.getElementById("trip_type_search");
             cabin_class_search = document.getElementById("cabin_search");
@@ -257,145 +248,178 @@
         }
 
 
-        // function search_for_flights() {
-        //     var passengers_count = parseInt(adults_search.value) + parseInt(children_search.value) + parseInt(infants_search.value);
-        //     var results_div = document.getElementById("flight_results");
-        //     results_div.innerHTML = "";
+        function get_airports_from()
+        {
+            var airport_from = document.getElementById("departure_from_search").value;
 
-        //     var first_flight_results = [];
-        //     var second_flight_results = [];
+            var jsonObj = {
+                "airport" : airport_from,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_from(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
 
-        //     for (var i = 0; i < test_flights.length; i++) {
-        //         if (trip_type_search.value == "One-way") {
-        //             if (cabin_class_search.value == "Economy class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]);
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "Business class") {
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
 
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]);
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "First class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]);
-        //                 }
-        //             }
-        //         }
-        //         else if (trip_type_search.value == "Round-trip") {
-        //             if (cabin_class_search.value == "Economy class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //departure flight
-        //                 }
-        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][2] && return_on_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //return flight
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "Business class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //departure
-        //                 }
-        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][3] && return_on_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //return flight
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "First class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //departure
-        //                 }
-        //                 if (test_flights[i][0] == arrival_to_search.value && test_flights[i][1] == departure_from_search.value && passengers_count <= test_flights[i][4] && return_on_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //return flight
-        //                 }
-        //             }
-        //         }
-        //         else if (trip_type_search.value == "Multi-city") {
-        //             if (cabin_class_search.value == "Economy class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][2] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //first flight
-        //                 }
-        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][2] && depart_on_second_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //second flight
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "Business class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][3] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //first flight
-        //                 }
-        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][3] && depart_on_second_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //second flight
-        //                 }
-        //             }
-        //             else if (cabin_class_search.value == "First class") {
-        //                 if (test_flights[i][0] == departure_from_search.value && test_flights[i][1] == arrival_to_search.value && passengers_count <= test_flights[i][4] && depart_on_search.value == test_flights[i][5]) {
-        //                     first_flight_results.push(test_flights[i]); //first flight
-        //                 }
-        //                 if (test_flights[i][0] == departure_from_second_search.value && test_flights[i][1] == arrival_to_second_search.value && passengers_count <= test_flights[i][4] && depart_on_second_search.value == test_flights[i][5]) {
-        //                     second_flight_results.push(test_flights[i]); //second flight
-        //                 }
-        //             }
-        //         }
+        function update_from(response) {
+            var data = JSON.parse(response);
+            var datalist_from = document.getElementById("iata_list");
+            datalist_from.innerHTML = "";
+            
+            var matching_airports_from = data.matching_airports;
 
-        //     }
+            for(var i = 0; i < matching_airports_from.length; i++)
+            {
+                datalist_from.innerHTML += "<option value=\"" + matching_airports_from[i] + "\">";
+            }
+        }
 
-        //     if (trip_type_search.value == "One-way") {
-        //         if (first_flight_results.length == 0) {
-        //             results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results</p>";
-        //         }
-        //         else {
-        //             results_table = document.createElement("table");
-        //             results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-        //             for (var i = 0; i < first_flight_results.length; i++) {
-        //                 var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
-        //                 results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-        //             }
-        //             results_table.innerHTML += "</tbody>"
-        //             results_div.appendChild(results_table);
-        //             var book_trip_button = document.createElement("input");
-        //             book_trip_button.type = "button";
-        //             book_trip_button.value = "Book a trip";
-        //             book_trip_button.style.margin = "2em";
-        //             book_trip_button.style.position = "relative";
-        //             book_trip_button.style.left = "6em";
+        function get_airports_to()
+        {
+            var airport_to = document.getElementById("arrival_to_search").value;
 
-        //             results_div.appendChild(book_trip_button);
-        //             book_trip_button.addEventListener("click", startBooking, false);
-        //         }
-        //     }
-        //     else if (trip_type_search.value == "Round-trip" || trip_type_search.value == "Multi-city") {
-        //         if (first_flight_results.length == 0 || second_flight_results.length == 0) {
-        //             results_div.innerHTML = "<p style=\"text-align:center;font-size:1.2em;margin:2em\">No results for specified round-trip/multi-city flight</p>";
-        //         }
-        //         else {
-        //             results_table = document.createElement("table");
-        //             results_table.innerHTML = "<caption>Pick your first flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-        //             for (var i = 0; i < first_flight_results.length; i++) {
-        //                 var button_cell = "<td><input type=\"radio\" name=\"first_flight_result\" id=\"first_flight_result" + i + "\"></td>";
-        //                 results_table.innerHTML += "<tr>" + "<td>" + first_flight_results[i][0] + "</td>" + "<td>" + first_flight_results[i][1] + "</td>" + "<td>" + first_flight_results[i][5] + "</td>" + "<td>" + first_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-        //             }
-        //             results_table.innerHTML += "</tbody>"
-        //             results_div.appendChild(results_table);
-        //             results_table = document.createElement("table");
-        //             results_table.innerHTML = "<caption>Pick your second flight:</caption><thead><tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Select flight</th></tr></thead><tbody>";
-        //             for (var i = 0; i < second_flight_results.length; i++) {
-        //                 var button_cell = "<td><input type=\"radio\" name=\"second_flight_result\" id=\"second_flight_result" + i + "\"></td>";
-        //                 results_table.innerHTML += "<tr>" + "<td>" + second_flight_results[i][0] + "</td>" + "<td>" + second_flight_results[i][1] + "</td>" + "<td>" + second_flight_results[i][5] + "</td>" + "<td>" + second_flight_results[i][6] + "</td>" + button_cell + "</tr>";
-        //             }
-        //             results_table.innerHTML += "</tbody>"
-        //             results_div.appendChild(results_table);
-        //             var book_trip_button = document.createElement("input");
-        //             book_trip_button.type = "button";
-        //             book_trip_button.value = "Book a trip";
-        //             book_trip_button.style.margin = "2em";
-        //             book_trip_button.style.position = "relative";
-        //             book_trip_button.style.left = "6em";
+            var jsonObj = {
+                "airport" : airport_to,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_to(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
 
-        //             results_div.appendChild(book_trip_button);
-        //             book_trip_button.addEventListener("click", startBooking, false);
-        //         }
-        //     }
-        // }
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
+
+        function update_to(response) {
+            var data = JSON.parse(response);
+            var datalist_to = document.getElementById("iata_list_to");
+            datalist_to.innerHTML = "";
+            
+            var matching_airports_to = data.matching_airports;
+
+            for(var i = 0; i < matching_airports_to.length; i++)
+            {
+                datalist_to.innerHTML += "<option value=\"" + matching_airports_to[i] + "\">";
+            }
+        }
+
+        function get_second_airports_from()
+        {
+            var airport_from = document.getElementById("departure_from_second_search").value;
+
+            var jsonObj = {
+                "airport" : airport_from,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_second_from(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
+
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
+
+        function update_second_from(response) {
+            var data = JSON.parse(response);
+            var datalist_from = document.getElementById("iata_list_2");
+            datalist_from.innerHTML = "";
+            
+            var matching_airports_from = data.matching_airports;
+
+            for(var i = 0; i < matching_airports_from.length; i++)
+            {
+                datalist_from.innerHTML += "<option value=\"" + matching_airports_from[i] + "\">";
+            }
+        }
+
+        function get_second_airports_to()
+        {
+            var airport_to = document.getElementById("arrival_to_second_search").value;
+
+            var jsonObj = {
+                "airport" : airport_to,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_second_to(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
+
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
+
+        function update_second_to(response) {
+            var data = JSON.parse(response);
+            var datalist_to = document.getElementById("iata_list_to_2");
+            datalist_to.innerHTML = "";
+            
+            var matching_airports_to = data.matching_airports;
+
+            for(var i = 0; i < matching_airports_to.length; i++)
+            {
+                datalist_to.innerHTML += "<option value=\"" + matching_airports_to[i] + "\">";
+            }
+        }
+      
 
         function confirmSubmit() 
         {
@@ -743,76 +767,16 @@
             <div class="form-elts">
                 <p>
                     <label for="departure_from_search">From</label>
-                    <input type="text" id="departure_from_search" name="departure_from_search" list="iata_list" required>
+                    <input type="text" id="departure_from_search" onchange="get_airports_from()" name="departure_from_search" list="iata_list" required>
                     <datalist id="iata_list">
-                        <option value="Abidjan	Cote d'Ivoire	ABJ">
-                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                        <option value="Basra, Basrah	Iraq	BSR">
-                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                        <option value="Brussels - Brussels Airport	Belgium	BRU">
-                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                        <option value="Disneyland Paris	France	DLP">
-                        <option value="Doha - Doha International Airport	Qatar	DOH">
-                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                        <option value="East London	South Africa	ELS">
-                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                        <option value="Larnaca	Cyprus	LCA">
-                        <option value="London Metropolitan Area	United Kingdom	LON">
-                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                        <option value="Madrid - Barajas Airport	Spain	MAD">
-                        <option value="Milan	Italy	MIL">
-                        <option value="Nice - Cote D'Azur Airport	France	NCE">
-                        <option value="Paris	France	PAR">
-                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                        <option value="Rome	Italy	ROM">
+                        
                     </datalist>
                 </p>
                 <p>
                     <label for="arrival_to_search">To</label>
-                    <input type="text" id="arrival_to_search" name="arrival_to_search" list="iata_list_to" required>
+                    <input type="text" id="arrival_to_search" onchange="get_airports_to()" name="arrival_to_search" list="iata_list_to" required>
                     <datalist id="iata_list_to">
-                        <option value="Abidjan	Cote d'Ivoire	ABJ">
-                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                        <option value="Basra, Basrah	Iraq	BSR">
-                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                        <option value="Brussels - Brussels Airport	Belgium	BRU">
-                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                        <option value="Disneyland Paris	France	DLP">
-                        <option value="Doha - Doha International Airport	Qatar	DOH">
-                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                        <option value="East London	South Africa	ELS">
-                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                        <option value="Larnaca	Cyprus	LCA">
-                        <option value="London Metropolitan Area	United Kingdom	LON">
-                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                        <option value="Madrid - Barajas Airport	Spain	MAD">
-                        <option value="Milan	Italy	MIL">
-                        <option value="Nice - Cote D'Azur Airport	France	NCE">
-                        <option value="Paris	France	PAR">
-                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                        <option value="Rome	Italy	ROM">
+                        
                     </datalist>
                 </p>
                 <p>
@@ -828,77 +792,17 @@
             <div class="form-elts" id="second-city_search" style="display:none">
                 <p>
                     <label for="departure_from_second_search">From</label>
-                    <input type="text" id="departure_from_second_search" name="departure_from_second_search" list="iata_list">
-                    <datalist id="iata_list">
-                        <option value="Abidjan	Cote d'Ivoire	ABJ">
-                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                        <option value="Basra, Basrah	Iraq	BSR">
-                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                        <option value="Brussels - Brussels Airport	Belgium	BRU">
-                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                        <option value="Disneyland Paris	France	DLP">
-                        <option value="Doha - Doha International Airport	Qatar	DOH">
-                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                        <option value="East London	South Africa	ELS">
-                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                        <option value="Larnaca	Cyprus	LCA">
-                        <option value="London Metropolitan Area	United Kingdom	LON">
-                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                        <option value="Madrid - Barajas Airport	Spain	MAD">
-                        <option value="Milan	Italy	MIL">
-                        <option value="Nice - Cote D'Azur Airport	France	NCE">
-                        <option value="Paris	France	PAR">
-                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                        <option value="Rome	Italy	ROM">
+                    <input type="text" id="departure_from_second_search" onchange="get_second_airports_from()" name="departure_from_second_search" list="iata_list_2">
+                    <datalist id="iata_list_2">
+                        
                     </datalist>
                 </p>
                 <p>
                     <label for="arrival_to_second_search">To</label>
-                    <input type="text" id="arrival_to_second_search" name="arrival_to_second_search"
-                        list="iata_list_to">
-                    <datalist id="iata_list_to">
-                        <option value="Abidjan	Cote d'Ivoire	ABJ">
-                        <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                        <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                        <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                        <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                        <option value="Basra, Basrah	Iraq	BSR">
-                        <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                        <option value="Brussels - Brussels Airport	Belgium	BRU">
-                        <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                        <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                        <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                        <option value="Disneyland Paris	France	DLP">
-                        <option value="Doha - Doha International Airport	Qatar	DOH">
-                        <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                        <option value="East London	South Africa	ELS">
-                        <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                        <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                        <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                        <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                        <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                        <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                        <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                        <option value="Larnaca	Cyprus	LCA">
-                        <option value="London Metropolitan Area	United Kingdom	LON">
-                        <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                        <option value="Madrid - Barajas Airport	Spain	MAD">
-                        <option value="Milan	Italy	MIL">
-                        <option value="Nice - Cote D'Azur Airport	France	NCE">
-                        <option value="Paris	France	PAR">
-                        <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                        <option value="Rome	Italy	ROM">
+                    <input type="text" id="arrival_to_second_search" onchange="get_second_airports_to()" name="arrival_to_second_search"
+                        list="iata_list_to_2">
+                    <datalist id="iata_list_to_2">
+                        
                     </datalist>
                 </p>
                 <p>

@@ -99,6 +99,94 @@
             border-style: solid;
         }
     </style>
+
+    <script>
+        function get_airports_from()
+        {
+            var airport_from = document.getElementById("departure_from").value;
+
+            var jsonObj = {
+                "airport" : airport_from,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_from(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
+
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
+
+        function update_from(response) {
+            var data = JSON.parse(response);
+            var datalist_from = document.getElementById("iata_list");
+            datalist_from.innerHTML = "";
+            
+            var matching_airports_from = data.matching_airports;
+
+            for(var i = 0; i < matching_airports_from.length; i++)
+            {
+                datalist_from.innerHTML += "<option value=\"" + matching_airports_from[i] + "\">";
+            }
+        }
+
+        function get_airports_to()
+        {
+            var airport_to = document.getElementById("arrival_to").value;
+
+            var jsonObj = {
+                "airport" : airport_to,
+            };
+            var data = JSON.stringify(jsonObj); 
+                
+            try
+            {
+                var asyncRequest = new XMLHttpRequest(); // create request
+            
+                // set up callback function and store it
+                asyncRequest.addEventListener("readystatechange",
+                    function() { 
+                        if (asyncRequest.readyState === 4 && asyncRequest.status === 200)   update_to(asyncRequest.responseText); //alert(asyncRequest.responseText);
+                        }, false);
+
+                // send the asynchronous request
+                asyncRequest.open( "POST", "get_airports.php", true ); 
+                asyncRequest.setRequestHeader("Content-Type", "application/json" ); 
+                asyncRequest.send(data); // send request        
+            } // end try
+            catch ( exception ) 
+            {
+                alert ( "Request Failed" );
+            } // end catch 
+        }
+
+        function update_to(response) {
+            var data = JSON.parse(response);
+            var datalist_to = document.getElementById("iata_list_to");
+            datalist_to.innerHTML = "";
+            
+            var matching_airports_to = data.matching_airports;
+
+            for(var i = 0; i < matching_airports_to.length; i++)
+            {
+                datalist_to.innerHTML += "<option value=\"" + matching_airports_to[i] + "\">";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -155,76 +243,16 @@
         <div class="form-elts">
             <p>
                 <label for="departure_from">From</label>
-                <input type="text" id="departure_from" name="departure_from" list="iata_list" required>
+                <input onchange="get_airports_from()" type="text" id="departure_from" name="departure_from" list="iata_list" required>
                 <datalist id="iata_list">
-                    <option value="Abidjan	Cote d'Ivoire	ABJ">
-                    <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                    <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                    <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                    <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                    <option value="Basra, Basrah	Iraq	BSR">
-                    <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                    <option value="Brussels - Brussels Airport	Belgium	BRU">
-                    <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                    <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                    <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                    <option value="Disneyland Paris	France	DLP">
-                    <option value="Doha - Doha International Airport	Qatar	DOH">
-                    <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                    <option value="East London	South Africa	ELS">
-                    <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                    <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                    <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                    <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                    <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                    <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                    <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                    <option value="Larnaca	Cyprus	LCA">
-                    <option value="London Metropolitan Area	United Kingdom	LON">
-                    <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                    <option value="Madrid - Barajas Airport	Spain	MAD">
-                    <option value="Milan	Italy	MIL">
-                    <option value="Nice - Cote D'Azur Airport	France	NCE">
-                    <option value="Paris	France	PAR">
-                    <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                    <option value="Rome	Italy	ROM">
+                        
                 </datalist>
             </p>
             <p>
                 <label for="arrival_to">To</label>
-                <input type="text" id="arrival_to" name="arrival_to" list="iata_list_to" required>
+                <input onchange="get_airports_to()" type="text" id="arrival_to" name="arrival_to" list="iata_list_to" required>
                 <datalist id="iata_list_to">
-                    <option value="Abidjan	Cote d'Ivoire	ABJ">
-                    <option value="Abu Dhabi - Abu Dhabi International	United Arab Emirates	AUH">
-                    <option value="Accra - Kotoka International Airport	Ghana	ACC">
-                    <option value="Amsterdam - Amsterdam Airport Schiphol	Netherlands	AMS">
-                    <option value="Athens - Elefthérios Venizélos International Airport	Greece	ATH">
-                    <option value="Basra, Basrah	Iraq	BSR">
-                    <option value="Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY">
-                    <option value="Brussels - Brussels Airport	Belgium	BRU">
-                    <option value="Cairo - Cairo International Airport	Egypt	CAI">
-                    <option value="Copenhagen - Copenhagen Airport	Denmark	CPH">
-                    <option value="Dammam, King Fahad International	Saudi Arabien	DMM">
-                    <option value="Disneyland Paris	France	DLP">
-                    <option value="Doha - Doha International Airport	Qatar	DOH">
-                    <option value="Dubai - Dubai International Airport	United Arab Emirates	DXB">
-                    <option value="East London	South Africa	ELS">
-                    <option value="Eriwan (Yerevan, Jerevan)	Armenia	EVN">
-                    <option value="Frankfurt/Main - Frankfurt Airport (Rhein-Main-Flughafen)	Germany	FRA">
-                    <option value="Geneva - Geneva-Cointrin International Airport	Switzerland	GVA">
-                    <option value="Istanbul - Istanbul Atatürk Airport	Turkey	IST">
-                    <option value="Jeddah - King Abdulaziz International	Saudi Arabia	JED">
-                    <option value="Kuwait - Kuwait International	Kuwait	KWI">
-                    <option value="Lagos - Murtala Muhammed Airport	Nigeria	LOS">
-                    <option value="Larnaca	Cyprus	LCA">
-                    <option value="London Metropolitan Area	United Kingdom	LON">
-                    <option value="Madinah (Medina) - Mohammad Bin Abdulaziz	Saudi Arabia	MED">
-                    <option value="Madrid - Barajas Airport	Spain	MAD">
-                    <option value="Milan	Italy	MIL">
-                    <option value="Nice - Cote D'Azur Airport	France	NCE">
-                    <option value="Paris	France	PAR">
-                    <option value="Riyadh - King Khaled International	Saudi Arabia	RUH">
-                    <option value="Rome	Italy	ROM">
+                    
                 </datalist>
             </p>
             <p>
