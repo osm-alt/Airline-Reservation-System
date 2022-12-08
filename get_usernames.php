@@ -4,7 +4,11 @@ require 'vendor/autoload.php';
 $client = new MongoDB\Client("mongodb://localhost:27017");
 
 $customers = $client->Airline_Reservation->Customers;
+$admin = $client->Airline_Reservation->Admin;
+
 $result = $customers->find();
+$result1 = $admin->find();
+
 $flag = 0;
 
 // $username = "";
@@ -17,6 +21,10 @@ $flag = 0;
 
 $us = [];
 foreach ($result as $entry) {
+    array_push($us, $entry['Username']);
+}
+
+foreach ($result1 as $entry) {
     array_push($us, $entry['Username']);
 }
 
