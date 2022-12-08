@@ -110,7 +110,8 @@ if (isset($_POST["addFlight"])) {
     $economy_seats = (int)$_POST['Economy_Seats_Left'];
     $business_seats = (int)$_POST['Business_Seats_Left'];
     $firstclass_seats = (int)$_POST['FirstClass_Seats_Left'];
-
+    $delay = $_POST['delay'];
+    $captain_name = $_POST['Captain_Name'];
 
     $flag = 0;
 
@@ -147,7 +148,9 @@ if (isset($_POST["addFlight"])) {
             'Departure_Time' => $departure_time,
             'Economy_Seats_Left' => $economy_seats,
             'Business_Seats_Left' => $business_seats,
-            'FirstClass_Seats_Left' => $firstclass_seats
+            'FirstClass_Seats_Left' => $firstclass_seats,
+            'Delay' => $delay,
+            'Captain_Name' => $captain_name
         ],
     ];
 

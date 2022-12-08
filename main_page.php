@@ -9,7 +9,7 @@ $admin_collection = $client->Airline_Reservation->Admin;
 
 $customer_collection = $client->Airline_Reservation->Customers;
 
-$flag = 0;
+$flag = 2;
 
 
 foreach ($_COOKIE as $key => $value) {
@@ -17,12 +17,6 @@ foreach ($_COOKIE as $key => $value) {
   $result = $customer_collection->find(['Cookie' => $value]);
   foreach ($result as $entry) {
     $flag = 1;
-    // echo "here1";
-    // echo $entry['Cookie'];
-    // echo $value;
-    // if ($entry['Cookie'] == $value) {
-      //   $h = print("<h1>Welcome " . $entry['First_Name'] . " " . $entry['Last_Name'] . "</h1>");
-      // }
     }
     // print("<p>$key: $value</p>");
 
@@ -36,18 +30,10 @@ $admin_collection = $client->Airline_Reservation->Admin;
 foreach ($_COOKIE as $key => $value) {
   
   $result = $admin_collection->find(['Cookie' => $value]);
-  // echo $value;
 
   foreach ($result as $entry) {
     $flag = 0;
-    // echo "here1";
-    // echo $entry['Cookie'];
-    // echo $value;
-    // if ($entry['Cookie'] == $value) {
-    //     print("<h1>Welcome " . $entry['Username'] . "</h1>");
-    //   }
     }
-    
     // print("<p>$key: $value</p>");
 }
 
@@ -490,8 +476,13 @@ foreach ($_COOKIE as $key => $value) {
               <li><a href="PassengerServices.html">Passenger Services</a></li>
               <li><a href="cargo.html">Cargo Services</a></li>
               <li><a href="BaggageInfo.html">Baggage Info</a></li>
-              <li><a href="checkin.html">Check-in</a></li>
-              <li><a href="admin.html">Admin</a></li>
+              <li><a href="checkin.php">Check-in</a></li>
+              <?php 
+              if($flag == 0){
+                print'<li><a href="admin.html">Admin</a></li>';
+              }
+              ?>
+              <!-- <li><a href="admin.html">Admin</a></li> -->
             </div>
           </div>
           <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
@@ -506,7 +497,7 @@ foreach ($_COOKIE as $key => $value) {
           </a>
           <div id="myLinks">
             <a href="book_a_trip.php">Book a trip</a>
-            <a href="checkin.html">Check-in</a>
+            <a href="checkin.php">Check-in</a>
             <a href="login.php">Login</a>
           </div>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -523,10 +514,17 @@ foreach ($_COOKIE as $key => $value) {
       </svg>Welcome
        <?php if ($flag==1)
       print($entry['First_Name']  . " " . $entry['Last_Name']);
-      else
+      if($flag==0)
       {
         print("Admin " . $entry['Username']);
-      } ?>
+      }
+      if($flag==2)
+      {
+        print("");
+        // just avoiding error msg
+      }
+      
+      ?>
        To ROA Airlines! <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-airplane-engines-fill" viewBox="0 0 16 16"> 
         <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0Z" />
       </svg></h1>

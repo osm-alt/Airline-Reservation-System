@@ -182,8 +182,7 @@
                         <li><a href="PassengerServices.html">Passenger Services</a></li>
                         <li><a href="cargo.html">Cargo Services</a></li>
                         <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                        <li><a href="checkin.html">Check-in</a></li>
-                        <li><a href="admin.html">Admin</a></li>
+                        <li><a href="checkin.php">Check-in</a></li>
                     </div>
                 </div>
                 <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
@@ -198,7 +197,7 @@
                 </a>
                 <div id="myLinks">
                     <a href="book_a_trip.php">Book a trip</a>
-                    <a href="checkin.html">Check-in</a>
+                    <a href="checkin.php">Check-in</a>
                     <a class="active" href="login.php">Login</a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -268,8 +267,8 @@
             <div id="emailDiv"></div>
 
             <p><label>Password<input name="password" id="Password" type="password" placeholder="Password" onkeyup="passwordValidation()" required></p>
+            <div id="passwordDiv"></div>
 
-            <span id="spanAlert"></span>
 
             <input type="submit" name="submit" id="submit" value="Register">
             <input type="reset" value="Clear">
@@ -280,6 +279,7 @@
 
 
     <script>
+        var bt = document.getElementById("submit");
         // Credit Card Visa Validation
         document.getElementById("Card").addEventListener("blur", function() {
             validateCard(this.value);
@@ -290,20 +290,19 @@
 
             CardValid = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/.test(Card);
             // valid test case: 4111111111111111   4012888888881881  (must start with 4 and 16 digits)
-            if (CardValid)
-            {
+            if (CardValid) {
                 document.getElementById("cardDiv").innerHTML = "Valid Card number";
                 document.getElementById("cardDiv").style.color = "green";
-            }
-            else
-            {
+                bt.disabled = false;
+            } else {
                 document.getElementById("cardDiv").innerHTML = "Invalid Card number";
                 document.getElementById("cardDiv").style.color = "red";
+                bt.disabled = true;
             }
         } // end function validatePhone
 
 
-// CVV Validation
+        // CVV Validation
         document.getElementById("Cvv").addEventListener("blur", function() {
             validateCvv(this.value);
         }, false);
@@ -313,15 +312,14 @@
 
             CvvValid = /^[0-9]{3,4}$/.test(Cvv);
             // valid test case: 1234 4321 (3 or 4 digits)
-            if (CvvValid)
-            {
+            if (CvvValid) {
                 document.getElementById("cvvDiv").innerHTML = "Valid CVV number";
                 document.getElementById("cvvDiv").style.color = "green";
-            }
-            else
-            {
+                bt.disabled = false;
+            } else {
                 document.getElementById("cvvDiv").innerHTML = "Invalid CVV number";
                 document.getElementById("cvvDiv").style.color = "red";
+                bt.disabled = true;
             }
         } // end function validatePhone
 
@@ -335,28 +333,35 @@
 
             emailValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
             // valid test case: test@gmail.com test@g.mail.com
-            if (emailValid)
-            {
+            if (emailValid) {
                 document.getElementById("emailDiv").style.color = "green";
                 document.getElementById("emailDiv").innerHTML = "Valid Email";
-            }
-            else
-            {
+                bt.disabled = false;
+            } else {
                 document.getElementById("emailDiv").innerHTML = "Invalid Email";
                 document.getElementById("emailDiv").style.color = "red";
+                bt.disabled = true;
             }
         } // end function validatePhone
 
 
         function passwordValidation() {
             var input_password = document.getElementById("Password");
-            var alert = document.getElementById("spanAlert");
+            var alert = document.getElementById("passwordDiv");
 
             if (input_password.value.length < 8) {
                 // alert("Password must have at least 8 characters!");
+                bt.disabled = true;
                 alert.style.color = "red";
                 alert.innerHTML = "Password must be at least 8 characters long!";
                 return false;
+            }
+            else
+            {
+                bt.disabled = false;
+                alert.style.color = "green";
+                alert.innerHTML = "Password is valid!";
+                return true;
             }
         }
 

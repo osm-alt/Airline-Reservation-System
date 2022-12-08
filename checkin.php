@@ -12,7 +12,6 @@
   <script src="script.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-
     h1 {
       text-align: center;
       font-weight: bold;
@@ -24,7 +23,7 @@
       font-weight: bold;
       font-size: 0.5rem;
     }
-    
+
     p {
       color: white;
       font-weight: 35;
@@ -32,7 +31,7 @@
     }
 
     body {
-            background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
+      background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(13, 191, 158, 1) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
     }
 
 
@@ -53,7 +52,7 @@
 
     .textcenter .text-centered {
       animation: shaketxt 3s infinite;
-      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
       position: absolute;
       top: 20%;
       left: 0;
@@ -67,23 +66,23 @@
     }
 
     @keyframes shaketxt {
-            0% {
-                transform: translateY(0)
-            }
+      0% {
+        transform: translateY(0)
+      }
 
-            25% {
-                transform: translateY(10px);
-            }
+      25% {
+        transform: translateY(10px);
+      }
 
-            50% {
-                transform: translateY(10px);
-            }
+      50% {
+        transform: translateY(10px);
+      }
 
-            100% {
-                transform: translateY(0px);
-            }
-        }
-    
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
 
     form p {
       margin-right: 1em;
@@ -99,14 +98,12 @@
       margin-left: 10em;
       margin-right: 10em;
     }
-    
-    fieldset
-    {
+
+    fieldset {
       background: linear-gradient(0deg, rgb(47, 220, 223) 0%, rgba(155, 92, 218, 0.623) 0%, rgba(4, 98, 152, 1) 100%, rgba(17, 225, 160, 1) 100%);
     }
 
-    label
-    {
+    label {
       color: white;
     }
 
@@ -167,7 +164,6 @@
             <li><a href="cargo.html">Cargo Services</a></li>
             <li><a href="BaggageInfo.html">Baggage Info</a></li>
             <li><a class="active" href="checkin.html">Check-in</a></li>
-            <li><a href="admin.html">Admin</a></li>
           </div>
         </div>
         <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
@@ -199,18 +195,18 @@
   </figure>
 
 
-    <h1 style="text-align: center;">Web Check-In</h1>
-    <p style="text-align: center;">Web Check-in is available 48 hours to 1 hour before the flight departure.
-    </p>
+  <h1 style="text-align: center;">Web Check-In</h1>
+  <p style="text-align: center;">Web Check-in is available 48 hours to 1 hour before the flight departure.
+  </p>
 
   <section>
-    <form post="method" autocomplete="on" style="margin-top: -12em;">
+    <form method="post" action="checkin.php" autocomplete="on" style="margin-top: -12em;">
       <fieldset>
         <legend style="margin-left: 2em;">Check-In</legend>
         <div class="form-elts">
           <p><label>Username<input name="username" type="text" size="21" required></p>
           <p><label>BRN<input name="BRN" type="text" size="21" required></p>
-          <p><input type="submit" id="btn" value="Check In">
+          <p><input type="submit" id="btn" name="submit" value="Check In">
         </div>
         </p>
       </fieldset>
@@ -219,66 +215,53 @@
   </section>
 
 
-  <!-- <script>
-  var pageCounter = 1;
-  var animalContainer = document.getElementById("animal-info");
-  var btn = document.getElementById("btn");
-  
-  btn.addEventListener("click", function() {
-    var ourRequest = new XMLHttpRequest();
-    ourRequest.open('GET', 'https://learnwebcode.github.io/json-example/animals-' + pageCounter + '.json');
-    ourRequest.onload = function() {
-      if (ourRequest.status >= 200 && ourRequest.status < 400) {
-        var ourData = JSON.parse(ourRequest.responseText);
-        renderHTML(ourData);
-      } else {
-        console.log("We connected to the server, but it returned an error.");
-      }
-      
-    };
-  
-    ourRequest.onerror = function() {
-      console.log("Connection error");
-    };
-  
-    ourRequest.send();
-    pageCounter++;
-    if (pageCounter > 3) {
-      btn.classList.add("hide-me");
-    }
-  });
-  
-  function renderHTML(data) {
-    var htmlString = "";
-  
-    for (i = 0; i < data.length; i++) {
-      htmlString += "<p>" + data[i].name + " is a " + data[i].species + " that likes to eat ";
-      
-      for (ii = 0; ii < data[i].foods.likes.length; ii++) {
-        if (ii == 0) {
-          htmlString += data[i].foods.likes[ii];
-        } else {
-          htmlString += " and " + data[i].foods.likes[ii];
-        }
-      }
-  
-      htmlString += ' and dislikes ';
-  
-      for (ii = 0; ii < data[i].foods.dislikes.length; ii++) {
-        if (ii == 0) {
-          htmlString += data[i].foods.dislikes[ii];
-        } else {
-          htmlString += " and " + data[i].foods.dislikes[ii];
+  <?php
+
+  use MongoDB\Operation\Find;
+
+  require 'vendor/autoload.php';
+
+  $client = new MongoDB\Client("mongodb://localhost:27017");
+  $database = $client->Airline_Reservation;
+
+  $booking_collection = $client->Airline_Reservation->Bookings;
+
+  // $username = $_COOKIE["username"];
+  if (!isset($_COOKIE["username"])) {
+    print("<p style=\"text-align:center;color:white;margin-top:1em\">Please <a href=\"login.php\">login</a> before managing bookings.</p>");
+    die();
+  }
+
+  if (isset($_POST['submit'])) {
+
+    $flag = 0;
+    $username = $_POST['username'];
+    $BRN = $_POST['BRN'];
+
+    $result = $booking_collection->find();
+
+
+      foreach ($result as $entry) {
+        if ($entry['Customer_Username'] == $username && $entry['Brn'] == $BRN && $entry['Purchased'] == true) {
+          $booking_collection->updateOne(
+            ['Customer_Username' => $username],
+            ['$set' => ['Check_In' => true]]
+          );
+          print("<script>window.alert('Successfuly Checked in $username to BRN $BRN')</script>");
+          $flag = 1;
         }
       }
 
-      htmlString += '.</p>';
-  
+
+      if ($flag == 0) {
+        print("<script>window.alert('Incorrect username or BRN or not a purchased Booking')</script>");
+      }
     }
-  
-    animalContainer.insertAdjacentHTML('beforeend', htmlString);
-  }
-</script> -->
+
+  ?>
+
+
+
 
 </body>
 
