@@ -6,6 +6,7 @@
     <title>Book a trip</title>
     <link rel="stylesheet" href="main_style.css">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -122,76 +123,76 @@
             ['Disneyland Paris	France	DLP', 'Beirut - Beirut Rafic Hariri International Airport	Lebanon	BEY', 20, 10, 5, "2022-12-27", "11:40 AM"]
         ]
         function check_trip_type() {
-            var departure_from = document.getElementById("departure_from");
-            var arrival_to = document.getElementById("arrival_to");
-            var depart_on = document.getElementById("depart_on");
-            var return_on = document.getElementById("return_on");
+            var departure_from = $('#departure_from');
+            var arrival_to = $('#arrival_to');
+            var depart_on = $('#depart_on');
+            var return_on = $('#return_on');
 
-            var departure_from_second = document.getElementById("departure_from_second");
-            var arrival_to_second = document.getElementById("arrival_to_second");
-            var depart_on_second = document.getElementById("depart_on_second");
+            var departure_from_second = $('#departure_from_second');
+            var arrival_to_second = $('#arrival_to_second');
+            var depart_on_second = $('#depart_on_second');
 
-            if (document.getElementById("trip_type").innerText == "Round-trip") {
-                document.getElementById("return").style.display = "block";
-                document.getElementById("second-city").style.display = "none";
-                document.getElementById("return_on").required = true;
-                document.getElementById("departure_from_second").required = false;
-                document.getElementById("arrival_to_second").required = false;
-                document.getElementById("depart_on_second").required = false;
+            if ($('#trip_type').text() ==  "Round-trip") {
+                $('#return').css("display", "block");
+                $('#second-city').css("display", "none");
+                $('#return_on').attr("required", "true");
+                $('#departure_from_second').attr("required", "false");
+                $('#arrival_to_second').attr("required", "false");
+                $('#depart_on_second').attr("required", "false");
 
             }
-            else if (document.getElementById("trip_type").innerText == "One-way") {
-                document.getElementById("return").style.display = "none";
-                document.getElementById("second-city").style.display = "none";
-                document.getElementById("return_on").required = false;
-                document.getElementById("departure_from_second").required = false;
-                document.getElementById("arrival_to_second").required = false;
-                document.getElementById("depart_on_second").required = false;
+            else if ($('#trip_type').text() ==  "One-way") {
+                $('#return').css("display", "none");
+                $('#second-city').css("display", "none");
+                $('#return_on').attr("required", "false");
+                $('#departure_from_second').attr("required", "false");
+                $('#arrival_to_second').attr("required", "false");
+                $('#depart_on_second').attr("required", "false");
             }
-            else if (document.getElementById("trip_type").innerText == "Multi-city") {
-                document.getElementById("return").style.display = "none";
-                document.getElementById("second-city").style.display = "flex";
-                document.getElementById("return_on").required = false;
-                document.getElementById("departure_from_second").required = true;
-                document.getElementById("arrival_to_second").required = true;
-                document.getElementById("depart_on_second").required = true;
+            else if ($('#trip_type').text() ==  "Multi-city") {
+                $('#return').css("display", "none");
+                $('#second-city').css("display", "flex");
+                $('#return_on').attr("required", "false");
+                $('#departure_from_second').attr("required", "true");
+                $('#arrival_to_second').attr("required", "true");
+                $('#depart_on_second').attr("required", "true");
             }
         }
 
 
         function check_trip_type_search() {
-            if (document.getElementById("trip_type_search").value == "Round-trip") {
-                document.getElementById("return_search").style.display = "block";
-                document.getElementById("second-city_search").style.display = "none";
-                document.getElementById("return_on_search").required = true;
-                document.getElementById("departure_from_second_search").required = false;
-                document.getElementById("arrival_to_second_search").required = false;
-                document.getElementById("depart_on_second_search").required = false;
+            if ($('#trip_type_search').val() == "Round-trip") {
+                $('#return_search').css("display", "block");
+                $('#second-city_search').css("display", "none");
+                $('#return_on_search').attr("required", "true");
+                $('#departure_from_second_search').attr("required", "false");
+                $('#arrival_to_second_search').attr("required", "false");
+                $('#depart_on_second_search').attr("required", "false");
             }
-            else if (document.getElementById("trip_type_search").value == "One-way") {
-                document.getElementById("return_search").style.display = "none";
-                document.getElementById("second-city_search").style.display = "none";
-                document.getElementById("return_on_search").required = false;
-                document.getElementById("departure_from_second_search").required = false;
-                document.getElementById("arrival_to_second_search").required = false;
-                document.getElementById("depart_on_second_search").required = false;
+            else if ($('#trip_type_search').val() == "One-way") {
+                $('#return_search').css("display", "none");
+                $('#second-city_search').css("display", "none");
+                $('#return_on_search').attr("required", "false");
+                $('#departure_from_second_search').attr("required", "false");
+                $('#arrival_to_second_search').attr("required", "false");
+                $('#depart_on_second_search').attr("required", "false");
             }
-            else if (document.getElementById("trip_type_search").value == "Multi-city") {
-                document.getElementById("return_search").style.display = "none";
-                document.getElementById("second-city_search").style.display = "flex";
-                document.getElementById("return_on_search").required = false;
-                document.getElementById("departure_from_second_search").required = true;
-                document.getElementById("arrival_to_second_search").required = true;
-                document.getElementById("depart_on_second_search").required = true;
+            else if ($('#trip_type_search').val() == "Multi-city") {
+                $('#return_search').css("display", "none");
+                $('#second-city_search').css("display", "flex");
+                $('#return_on_search').attr("required", "false");
+                $('#departure_from_second_search').attr("required", "true");
+                $('#arrival_to_second_search').attr("required", "true");
+                $('#depart_on_second_search').attr("required", "true");
             }
         }
 
         function check_passengers_in_search() {
-            if ((document.getElementById("adults_search").value == "0" && document.getElementById("children_search").value == "0") || (parseInt(document.getElementById("infants_search").value) > 0 && document.getElementById("adults_search").value == "0")) {
-                document.getElementById("search").style.display = "none";
+            if (($('#adults_search').val() == "0" && $('#children_search').val() == "0") || (parseInt($('#infants_search').val()) > 0 && $('#adults_search').val() == "0")) {
+                $('#search').css("display", "none");
             }
             else {
-                document.getElementById("search").style.display = "inline";
+                $('#search').css("display", "inline");
             }
         }
 
@@ -229,28 +230,28 @@
         var search_form;
 
         function start() {
-            search_form = document.getElementById("search_form");
+            search_form = $('#search_form');
 
-            trip_type_search = document.getElementById("trip_type_search");
-            cabin_class_search = document.getElementById("cabin_search");
-            adults_search = document.getElementById("adults_search");
-            children_search = document.getElementById("children_search");
-            infants_search = document.getElementById("infants_search");
-            departure_from_search = document.getElementById("departure_from_search");
-            arrival_to_search = document.getElementById("arrival_to_search");
-            depart_on_search = document.getElementById("depart_on_search");
-            return_on_search = document.getElementById("return_on_search");
-            departure_from_second_search = document.getElementById("departure_from_second_search");
-            arrival_to_second_search = document.getElementById("arrival_to_second_search");;
-            depart_on_second_search = document.getElementById("depart_on_second_search");
-            return_on_second_search = document.getElementById("return_on_second_search");
+            trip_type_search = $('#trip_type_search');
+            cabin_class_search = $('#cabin_search');
+            adults_search = $('#adults_search');
+            children_search = $('#children_search');
+            infants_search = $('#infants_search');
+            departure_from_search = $('#departure_from_search');
+            arrival_to_search = $('#arrival_to_search');
+            depart_on_search = $('#depart_on_search');
+            return_on_search = $('#return_on_search');
+            departure_from_second_search = $('#departure_from_second_search');
+            arrival_to_second_search = $('#arrival_to_second_search');;
+            depart_on_second_search = $('#depart_on_second_search');
+            return_on_second_search = $('#return_on_second_search');
 
         }
 
 
         function get_airports_from()
         {
-            var airport_from = document.getElementById("departure_from_search").value;
+            var airport_from = $('#departure_from_search').val();
 
             var jsonObj = {
                 "airport" : airport_from,
@@ -280,20 +281,20 @@
 
         function update_from(response) {
             var data = JSON.parse(response);
-            var datalist_from = document.getElementById("iata_list");
-            datalist_from.innerHTML = "";
+            var datalist_from = $('#iata_list');
+            datalist_from.html("");
             
             var matching_airports_from = data.matching_airports;
 
             for(var i = 0; i < matching_airports_from.length; i++)
             {
-                datalist_from.innerHTML += "<option value=\"" + matching_airports_from[i] + "\">";
+                datalist_from.html(datalist_from.html() + "<option value=\"" + matching_airports_from[i] + "\">");
             }
         }
 
         function get_airports_to()
         {
-            var airport_to = document.getElementById("arrival_to_search").value;
+            var airport_to = $('#arrival_to_search').val();
 
             var jsonObj = {
                 "airport" : airport_to,
@@ -323,20 +324,20 @@
 
         function update_to(response) {
             var data = JSON.parse(response);
-            var datalist_to = document.getElementById("iata_list_to");
-            datalist_to.innerHTML = "";
+            var datalist_to = $('#iata_list_to');
+            datalist_to.html("");
             
             var matching_airports_to = data.matching_airports;
 
             for(var i = 0; i < matching_airports_to.length; i++)
             {
-                datalist_to.innerHTML += "<option value=\"" + matching_airports_to[i] + "\">";
+                datalist_to.html(datalist_to.html() + "<option value=\"" + matching_airports_to[i] + "\">");
             }
         }
 
         function get_second_airports_from()
         {
-            var airport_from = document.getElementById("departure_from_second_search").value;
+            var airport_from = $('#departure_from_second_search').val();
 
             var jsonObj = {
                 "airport" : airport_from,
@@ -366,20 +367,20 @@
 
         function update_second_from(response) {
             var data = JSON.parse(response);
-            var datalist_from = document.getElementById("iata_list_2");
-            datalist_from.innerHTML = "";
+            var datalist_from = $('#iata_list_2');
+            datalist_from.html("");
             
             var matching_airports_from = data.matching_airports;
 
             for(var i = 0; i < matching_airports_from.length; i++)
             {
-                datalist_from.innerHTML += "<option value=\"" + matching_airports_from[i] + "\">";
+                datalist_from.html(datalist_from.html() + "<option value=\"" + matching_airports_from[i] + "\">");
             }
         }
 
         function get_second_airports_to()
         {
-            var airport_to = document.getElementById("arrival_to_second_search").value;
+            var airport_to = $('#arrival_to_second_search').val();
 
             var jsonObj = {
                 "airport" : airport_to,
@@ -409,14 +410,14 @@
 
         function update_second_to(response) {
             var data = JSON.parse(response);
-            var datalist_to = document.getElementById("iata_list_to_2");
-            datalist_to.innerHTML = "";
+            var datalist_to = $('#iata_list_to_2');
+            datalist_to.html("");
             
             var matching_airports_to = data.matching_airports;
 
             for(var i = 0; i < matching_airports_to.length; i++)
             {
-                datalist_to.innerHTML += "<option value=\"" + matching_airports_to[i] + "\">";
+                datalist_to.html(datalist_to.html() + "<option value=\"" + matching_airports_to[i] + "\">");
             }
         }
       
@@ -432,7 +433,7 @@
         }
 
         function startBooking(adults_number, children_number) {
-            var booking_form = document.getElementById("booking_form");
+            var booking_form = document.getElementById('booking_form');
 
             booking_form.addEventListener( "submit", 
                 function() 
@@ -454,20 +455,20 @@
                 }, // end anonymous function
                 false );
 
-            trip_type = document.getElementById("trip_type");
-            cabin_class = document.getElementById("cabin");
-            seat_location = document.getElementById("seat_selection");
-            meals = document.getElementById("special_meals");
-            drinks = document.getElementById("drinks");
-            airport_pickup = document.getElementById("airport_pickup");
-            pet = document.getElementById("pet");
-            special_treatment = document.getElementById("special_treatment");
-            adults = document.getElementById("adults");
-            children = document.getElementById("children");
-            infants = document.getElementById("infants");
-            currency = document.getElementById("currency");
-            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
-            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
+            trip_type = $('#trip_type');
+            cabin_class = $('#cabin');
+            seat_location = $('#seat_selection');
+            meals = $('#special_meals');
+            drinks = $('#drinks');
+            airport_pickup = document.getElementById('airport_pickup');
+            pet = $('#pet');
+            special_treatment = $('#special_treatment');
+            adults = $('#adults');
+            children = $('#children');
+            infants = $('#infants');
+            currency = $('#currency');
+            adults_meals_and_drinks = document.getElementById('adults_meals_and_drinks');
+            children_meals_and_drinks = document.getElementById('children_meals_and_drinks');
 
             check_trip_type();
 
@@ -486,7 +487,7 @@
                 new_meal = document.createElement("p");
                 label_for_meal = document.createElement("label");
                 label_for_meal.for = "special_meals_for_adult" + x;
-                label_for_meal.innerText = "Special meal for adult " + x;
+                label_for_meal.innerText = ( "Special meal for adult " + x);
                 new_meal.appendChild(label_for_meal);
 
                 meal_list = document.createElement("select");
@@ -505,7 +506,7 @@
                 new_drink = document.createElement("p");
                 label_for_drink = document.createElement("label");
                 label_for_drink.for = "drink_for_adult" + x;
-                label_for_drink.innerText = "Drink for adult " + x;
+                label_for_drink.innerText = ( "Drink for adult " + x);
                 new_drink.appendChild(label_for_drink);
 
                 drink_list = document.createElement("select");
@@ -538,7 +539,7 @@
                 new_meal = document.createElement("p");
                 label_for_meal = document.createElement("label");
                 label_for_meal.for = "special_meals_for_child" + x;
-                label_for_meal.innerText = "Special meal for child " + x;
+                label_for_meal.innerText = ( "Special meal for child " + x);
                 new_meal.appendChild(label_for_meal);
 
                 meal_list = document.createElement("select");
@@ -557,7 +558,7 @@
                 new_drink = document.createElement("p");
                 label_for_drink = document.createElement("label");
                 label_for_drink.for = "drink_for_child" + x;
-                label_for_drink.innerText = "Drink for child " + x;
+                label_for_drink.innerText = ( "Drink for child " + x);
                 new_drink.appendChild(label_for_drink);
 
                 drink_list = document.createElement("select");
@@ -584,26 +585,26 @@
         var price;
 
         function computePrice() {
-            displayed_price = document.getElementById("price");
+            displayed_price = $('#price');
             price = 0;
-            if (trip_type.innerText == "Round-trip") {
+            if (trip_type.text() ==  "Round-trip") {
                 price += 90;
             }
-            else if (trip_type.innerText == "One-way") {
+            else if (trip_type.text() ==  "One-way") {
                 price += 60;
             }
             else {
                 price += 105;
             }
 
-            if (cabin_class.innerText == "Business class") {
+            if (cabin_class.text() ==  "Business class") {
                 price = Math.round(price * 1.4);
             }
-            else if (cabin_class.innerText == "First class") {
+            else if (cabin_class.text() ==  "First class") {
                 price = Math.round(price * 1.75);
             }
 
-            // if (seat_location.value == "Window seat") {
+            // if (seat_location.val() == "Window seat") {
             //     price += 5;
             // }
 
@@ -611,85 +612,85 @@
                 price += 10;
             }
 
-            if (pet.value != "None") {
+            if (pet.val() != "None") {
                 price += 5;
             }
 
-            if (special_treatment.value != "") {
+            if (special_treatment.val() != "") {
                 price += 10;
             }
 
             initial_price = price;
 
-            if (adults.innerText != "0") {
-                price *= parseInt(adults.innerText);
+            if (adults.text() != "0") {
+                price *= parseInt(adults.text());
             }
 
-            if (children.innerText != "0") {
-                if (adults.innerText != "0") //price changed due to adult passengers
+            if (children.text() != "0") {
+                if (adults.text() != "0") //price changed due to adult passengers
                 {
-                    price += Math.round(initial_price * parseInt(children.innerText) * 0.75);
+                    price += Math.round(initial_price * parseInt(children.text()) * 0.75);
                 }
                 else {
-                    price = Math.round(initial_price * parseInt(children.innerText) * 0.75);
+                    price = Math.round(initial_price * parseInt(children.text()) * 0.75);
                 }
             }
 
-            if (infants.innerText != "0") {
-                if (adults.innerText != "0" || children.innerText != "0") //price changed due to non-infant passengers
+            if (infants.text() != "0") {
+                if (adults.text() != "0" || children.text() != "0") //price changed due to non-infant passengers
                 {
-                    price += Math.round(initial_price * parseInt(infants.innerText) * 0.5);
+                    price += Math.round(initial_price * parseInt(infants.text()) * 0.5);
                 }
                 else {
-                    price = Math.round(initial_price * parseInt(infants.innerText) * 0.5);
+                    price = Math.round(initial_price * parseInt(infants.text()) * 0.5);
                 }
             }
 
             for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
-                var adult_meal = document.getElementById("special_meals_for_adult" + x);
-                if (adult_meal.value != "None") {
+                var adult_meal = $("#special_meals_for_adult" + x);
+                if (adult_meal.val() != "None") {
                     price += 10;
                 }
 
-                var adult_drink = document.getElementById("drink_for_adult" + x);
-                if (adult_drink.value == "Orange juice" || adult_drink.value == "Apple juice" || adult_drink.value == "Ayran") {
+                var adult_drink = $("#drink_for_adult" + x);
+                if (adult_drink.val() == "Orange juice" || adult_drink.val() == "Apple juice" || adult_drink.val() == "Ayran") {
                     price += 2;
                 }
-                else if (adult_drink.value == "Coke" || adult_drink.value == "Sprite" || adult_drink.value == "Mirinda") {
+                else if (adult_drink.val() == "Coke" || adult_drink.val() == "Sprite" || adult_drink.val() == "Mirinda") {
                     price += 3;
                 }
             }
 
             for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
-                var child_meal = document.getElementById("special_meals_for_child" + x);
-                if (child_meal.value != "None") {
+                var child_meal = $("#special_meals_for_child" + x);
+                if (child_meal.val() != "None") {
                     price += 10;
                 }
 
-                var child_drink = document.getElementById("drink_for_child" + x);
-                if (child_drink.value == "Orange juice" || child_drink.value == "Apple juice" || child_drink.value == "Ayran") {
+                var child_drink = $("#drink_for_child" + x);
+                if (child_drink.val() == "Orange juice" || child_drink.val() == "Apple juice" || child_drink.val() == "Ayran") {
                     price += 2;
                 }
-                else if (child_drink.value == "Coke" || child_drink.value == "Sprite" || child_drink.value == "Mirinda") {
+                else if (child_drink.val() == "Coke" || child_drink.val() == "Sprite" || child_drink.val() == "Mirinda") {
                     price += 3;
                 }
             }
 
-            if (currency.value == "€") {
+            if (currency.val() == "€") {
                 price *= 1.03;
             }
-            else if (currency.value == "£") {
+            else if (currency.val() == "£") {
                 price *= 0.9;
             }
-            else if (currency.value == "L.L") {
+            else if (currency.val() == "L.L") {
                 price *= 40000;
             }
 
             price = price.toFixed(2);
 
-            displayed_price.innerText = price;
-            var price_sent = document.getElementById("price_sent");
-            price_sent.value = price;
+            displayed_price.text( price);
+            var price_sent = $('#price_sent');
+            price_sent.val("price");
         }
     </script>
 </head>
