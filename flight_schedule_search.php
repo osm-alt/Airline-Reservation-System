@@ -210,7 +210,7 @@
                         <li><a href="PassengerServices.html">Passenger Services</a></li>
                         <li><a href="cargo.html">Cargo Services</a></li>
                         <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                        <li><a href="checkin.html">Check-in</a></li>
+                        <li><a href="checkin.php">Check-in</a></li>
                     </div>
                 </div>
                 <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
@@ -225,7 +225,7 @@
                 </a>
                 <div id="myLinks">
                     <a href="book_a_trip.php">Book a trip</a>
-                    <a href="checkin.html">Check-in</a>
+                    <a href="checkin.php">Check-in</a>
                     <a href="login.php">Login</a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
