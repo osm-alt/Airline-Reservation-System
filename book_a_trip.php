@@ -690,7 +690,7 @@
 
             displayed_price.text( price);
             var price_sent = $('#price_sent');
-            price_sent.val("price");
+            price_sent.val(price);
         }
     </script>
 </head>
