@@ -6,6 +6,7 @@
     <title>Manage Booking</title>
     <link rel="stylesheet" href="main_style.css">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -156,71 +157,71 @@
         var initial_price;
 
         function start(adults_number, children_number, adult_meals, adult_drinks, children_meals, children_drinks) {
-            trip_type = document.getElementById("trip_type");
-            cabin_class = document.getElementById("cabin");
+            trip_type = $('#trip_type');
+            cabin_class = $('#cabin');
             
-            //meals = document.getElementById("special_meals");
-            //drinks = document.getElementById("drinks");
-            airport_pickup = document.getElementById("airport_pickup");
-            pet = document.getElementById("pet");
-            special_treatment = document.getElementById("special_treatment");
-            adults = document.getElementById("adults");
-            children = document.getElementById("children");
-            infants = document.getElementById("infants");
-            currency = document.getElementById("currency");
-            modification_currency = document.getElementById("modification_currency");
-            adults_meals_and_drinks = document.getElementById("adults_meals_and_drinks");
-            children_meals_and_drinks = document.getElementById("children_meals_and_drinks");
+            //meals = $('#special_meals');
+            //drinks = $('#drinks');
+            airport_pickup = document.getElementById('airport_pickup');
+            pet = $('#pet');
+            special_treatment = $('#special_treatment');
+            adults = $('#adults');
+            children = $('#children');
+            infants = $('#infants');
+            currency = $('#currency');
+            modification_currency = $('#modification_currency');
+            adults_meals_and_drinks = document.getElementById('adults_meals_and_drinks');
+            children_meals_and_drinks = document.getElementById('children_meals_and_drinks');
             account_for_adult_passengers(adults_number, adult_meals, adult_drinks);
             account_for_child_passengers(children_number, children_meals, children_drinks);
 
-            initial_adults = adults.innerText;
-            initial_children = children.innerText;
-            initial_infants = infants.innerText;
-            initial_class = cabin_class.value;
+            initial_adults = adults.text();
+            initial_children = children.text();
+            initial_infants = infants.text();
+            initial_class = cabin_class.val();
             
             initial_airport_pickup = airport_pickup.checked; //to see if customer booked for airport pickup initially
-            initial_pet = pet.value;
-            initial_special_treatment = special_treatment.value;
+            initial_pet = pet.val();
+            initial_special_treatment = special_treatment.val();
 
             initial_adult_meals = [];
 
-            for (var x = 0; x < parseInt(adults.innerText); x++) {
-                initial_adult_meals.push(document.getElementById("special_meals_for_adult" + (x + 1)).value);
+            for (var x = 0; x < parseInt(adults.text()); x++) {
+                initial_adult_meals.push($("#special_meals_for_adult" + (x + 1)).val());
             }
 
             initial_adult_drinks = [];
 
-            for (var x = 0; x < parseInt(adults.innerText); x++) {
-                initial_adult_drinks.push(document.getElementById("drink_for_adult" + (x + 1)).value);
+            for (var x = 0; x < parseInt(adults.text()); x++) {
+                initial_adult_drinks.push($("#drink_for_adult" + (x + 1)).val());
             }
 
             initial_children_meals = [];
 
-            for (var x = 0; x < parseInt(children.innerText); x++) {
-                initial_children_meals.push(document.getElementById("special_meals_for_child" + (x + 1)).value);
+            for (var x = 0; x < parseInt(children.text()); x++) {
+                initial_children_meals.push($("#special_meals_for_child" + (x + 1)).val());
             }
 
             initial_children_drinks = [];
 
-            for (var x = 0; x < parseInt(children.innerText); x++) {
-                initial_children_drinks.push(document.getElementById("drink_for_child" + (x + 1)).value);
+            for (var x = 0; x < parseInt(children.text()); x++) {
+                initial_children_drinks.push($("#drink_for_child" + (x + 1)).val());
             }
 
-            initial_price = document.getElementById("price").innerText; //in dollars
+            initial_price = $('#price').text(); //in dollars
         }
 
         function ask_for_confirmation() {
-            var modification_form = document.getElementById("modification_form");
-            modification_form.addEventListener( "submit", 
+            var modification_form = $('#modification_form');
+            modification_form.submit( 
                 function() 
                 {
                     if(confirmSubmit() == false)
                     {
                         event.preventDefault();
                     } 
-                }, // end anonymous function
-                false );
+                } // end anonymous function
+                );
         }
 
         function confirmSubmit() 
@@ -403,24 +404,24 @@
         var modification_fees;
 
         function compute_modification_price() {
-            displayed_price = document.getElementById("modification_fees");
+            displayed_price = $('#modification_fees');
             modification_fees = 0;
-            if (cabin_class.value != initial_class) {
+            if (cabin_class.val() != initial_class) {
                 if (initial_class == "Economy class") {
-                    if (cabin_class.value == "Business class") {
+                    if (cabin_class.val() == "Business class") {
                         modification_fees = Math.round(parseInt(initial_price) * 1.4) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
-                    else if (cabin_class.value == "First class") {
+                    else if (cabin_class.val() == "First class") {
                         modification_fees = Math.round(parseInt(initial_price) * 1.75) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
                 }
                 else if (initial_class == "Business class") {
-                    if (cabin_class.value == "Economy class") {
+                    if (cabin_class.val() == "Economy class") {
                         modification_fees += 5; //charge for downgrading
                     }
-                    else if (cabin_class.value == "First class") {
+                    else if (cabin_class.val() == "First class") {
                         modification_fees = Math.round(parseInt(initial_price) * (1.75 / 1.4)) - parseInt(initial_price);
                         modification_fees += 5; //additional modification fee
                     }
@@ -431,8 +432,8 @@
                 }
 
             }
-
-            // if (seat_location.value != initial_seat) {
+            
+            // if (seat_location.val() != initial_seat) {
             //     modification_fees += 5;
             // }
 
@@ -440,71 +441,71 @@
                 modification_fees += 10;
             }
 
-            if (pet.value != initial_pet) {
+            if (pet.val() != initial_pet) {
                 modification_fees += 5;
             }
 
-            if (special_treatment.value != initial_special_treatment) {
+            if (special_treatment.val() != initial_special_treatment) {
                 modification_fees += 7;
             }
 
             initial_fees = modification_fees;
 
             for (var x = 1; x <= adults_meals_and_drinks.childElementCount; x++) {
-                var adult_meal = document.getElementById("special_meals_for_adult" + x);
-                if (adult_meal.value != initial_adult_meals[x - 1]) {
+                var adult_meal = $("#special_meals_for_adult" + x);
+                if (adult_meal.val() != initial_adult_meals[x - 1]) {
                     modification_fees += 5;
                 }
 
-                var adult_drink = document.getElementById("drink_for_adult" + x);
-                if (adult_drink.value != initial_adult_drinks[x - 1]) {
+                var adult_drink = $("#drink_for_adult" + x);
+                if (adult_drink.val() != initial_adult_drinks[x - 1]) {
                     modification_fees += 2;
                 }
             }
 
             for (var x = 1; x <= children_meals_and_drinks.childElementCount; x++) {
-                var child_meal = document.getElementById("special_meals_for_child" + x);
-                if (child_meal.value != initial_children_meals[x - 1]) {
+                var child_meal = $("#special_meals_for_child" + x);
+                if (child_meal.val() != initial_children_meals[x - 1]) {
                     modification_fees += 5;
                 }
 
-                var child_drink = document.getElementById("drink_for_child" + x);
-                if (child_drink.value != initial_children_drinks[x - 1]) {
+                var child_drink = $("#drink_for_child" + x);
+                if (child_drink.val() != initial_children_drinks[x - 1]) {
                     modification_fees += 2;
                 }
             }
 
-            var modification_fees_sent = document.getElementById("modification_fees_sent");
-            modification_fees_sent.value = parseFloat(modification_fees);
+            var modification_fees_sent = $('#modification_fees_sent');
+            modification_fees_sent.val(parseFloat(modification_fees));
 
-            if (modification_currency.value == "€") {
+            if (modification_currency.val() == "€") {
                 modification_fees *= 1.03;
             }
-            else if (modification_currency.value == "£") {
+            else if (modification_currency.val() == "£") {
                 modification_fees *= 0.9;
             }
-            else if (modification_currency.value == "L.L") {
+            else if (modification_currency.val() == "L.L") {
                 modification_fees *= 40000;
             }
 
             modification_fees = modification_fees.toFixed(2);
 
-            displayed_price.innerText = modification_fees;
+            displayed_price.text(modification_fees);
             
         }
 
         
 
         function change_currency_initial_price() {
-            displayed_price = document.getElementById("price");
+            displayed_price = $('#price');
 
-            if (currency.value == "€") {
+            if (currency.val() == "€") {
                 price = parseInt(initial_price) * 1.03;
             }
-            else if (currency.value == "£") {
+            else if (currency.val() == "£") {
                 price = parseInt(initial_price) * 0.9;
             }
-            else if (currency.value == "L.L") {
+            else if (currency.val() == "L.L") {
                 price = parseInt(initial_price) * 40000;
             }
             else {
@@ -513,7 +514,7 @@
 
             price = price.toFixed(2);
 
-            displayed_price.innerText = price;
+            displayed_price.text(price);
         }
 
     </script>
@@ -600,17 +601,17 @@
         
         function create_brn_table(response) {
             var data = JSON.parse(response);
-            var table = document.getElementById("brn-table");
-            table.innerHTML = `<table style=\"margin-bottom: 9rem;\">
+            var table = $('#brn-table');
+            table.html(`<table style=\"margin-bottom: 9rem;\">
             <thead>
             <tr><th>Booking reference numbers of your bookings/reservations</th></tr>
             </thead>
-            <tbody>`;
+            <tbody>`);
             for(var i = 0; i < data.length; i++)
             {
-                table.innerHTML += "<tr><td>" + data[i] + "</td></tr>";
+                table.html(table.html() + "<tr><td>" + data[i] + "</td></tr>");
             }
-            table.innerHTML += "</tbody>";
+            table.html(table.html() + "</tbody>");
         }
     </script>
 
