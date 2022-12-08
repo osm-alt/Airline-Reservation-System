@@ -754,6 +754,8 @@
         }  
     ?>
 
+    <p style="text-align:center;color:white; margin-top:1em; font-size:1.5em;"><em>*Please note that the deadline for booking tickets for a flight is one week before its departure*</em></p>
+
     <fieldset style="margin: 1em;">
         <legend style="margin-left: 2em;">Search for flights</legend>
         <form class="styled" id="search_form" method="post" action="book_a_trip.php">
