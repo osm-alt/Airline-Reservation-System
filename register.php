@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="main_style.css">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Register</title>
 
@@ -278,8 +279,22 @@
     </fieldset>
 
 
+
     <script>
         var bt = document.getElementById("submit");
+
+        $(document).ready(function() {
+
+            $("input").focus(function() {
+                $(this).css("background-color", "darkgray");
+            });
+            $("input").blur(function() {
+                $(this).css("background-color", "#87CEFA");
+            });
+
+        });
+
+
         // Credit Card Visa Validation
         document.getElementById("Card").addEventListener("blur", function() {
             validateCard(this.value);
@@ -355,9 +370,7 @@
                 alert.style.color = "red";
                 alert.innerHTML = "Password must be at least 8 characters long!";
                 return false;
-            }
-            else
-            {
+            } else {
                 bt.disabled = false;
                 alert.style.color = "green";
                 alert.innerHTML = "Password is valid!";
