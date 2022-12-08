@@ -540,7 +540,7 @@
                         <li><a href="PassengerServices.html">Passenger Services</a></li>
                         <li><a href="cargo.html">Cargo Services</a></li>
                         <li><a href="BaggageInfo.html">Baggage Info</a></li>
-                        <li><a href="checkin.html">Check-in</a></li>
+                        <li><a href="checkin.php">Check-in</a></li>
                     </div>
                 </div>
                 <li><a href="CovidRestrictions.html">Covid Restrictions</a></li>
@@ -555,7 +555,7 @@
                 </a>
                 <div id="myLinks">
                     <a href="book_a_trip.php">Book a trip</a>
-                    <a href="checkin.html">Check-in</a>
+                    <a href="checkin.php">Check-in</a>
                     <a href="login.php">Login</a>
                 </div>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -635,15 +635,18 @@
 
             $client = new MongoDB\Client("mongodb://localhost:27017");
         
+            $customers = $client->Airline_Reservation->Customers;
+            $customer = $customers->findOne(['Cookie' => $_COOKIE["username"]]);
+
             $bookings_collection = $client->Airline_Reservation->Bookings;
     
             $brn = isset($_POST[ "booking_reference" ]) ? $_POST[ "booking_reference" ] : "";
                 
-            $entry = $bookings_collection->findOne(['Brn' => intval($brn)]);
+            $entry = $bookings_collection->findOne(['Brn' => intval($brn), 'Customer_Username' => $customer['Username']]);
 
             if(!$entry)
             {
-                print("<p style=\"text-align:center; color:white;\">Reservation does not exist</p>");
+                print("<p style=\"text-align:center; color:white; margin-left:10em;\">You do not have a reservation/booking with that number.</p>");
                 die();
             }
             print("<fieldset style=\"margin: 1em;\">");
