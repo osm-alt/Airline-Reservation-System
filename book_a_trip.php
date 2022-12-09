@@ -135,27 +135,27 @@
             if ($('#trip_type').text() ==  "Round-trip") {
                 $('#return').css("display", "block");
                 $('#second-city').css("display", "none");
-                $('#return_on').attr("required", "true");
-                $('#departure_from_second').attr("required", "false");
-                $('#arrival_to_second').attr("required", "false");
-                $('#depart_on_second').attr("required", "false");
+                $('#return_on').attr("required", true);
+                $('#departure_from_second').attr("required", false);
+                $('#arrival_to_second').attr("required", false);
+                $('#depart_on_second').attr("required", false);
 
             }
             else if ($('#trip_type').text() ==  "One-way") {
                 $('#return').css("display", "none");
                 $('#second-city').css("display", "none");
-                $('#return_on').attr("required", "false");
-                $('#departure_from_second').attr("required", "false");
-                $('#arrival_to_second').attr("required", "false");
-                $('#depart_on_second').attr("required", "false");
+                $('#return_on').attr("required", false);
+                $('#departure_from_second').attr("required", false);
+                $('#arrival_to_second').attr("required", false);
+                $('#depart_on_second').attr("required", false);
             }
             else if ($('#trip_type').text() ==  "Multi-city") {
                 $('#return').css("display", "none");
                 $('#second-city').css("display", "flex");
-                $('#return_on').attr("required", "false");
-                $('#departure_from_second').attr("required", "true");
-                $('#arrival_to_second').attr("required", "true");
-                $('#depart_on_second').attr("required", "true");
+                $('#return_on').attr("required", false);
+                $('#departure_from_second').attr("required", true);
+                $('#arrival_to_second').attr("required", true);
+                $('#depart_on_second').attr("required", true);
             }
         }
 
@@ -164,26 +164,26 @@
             if ($('#trip_type_search').val() == "Round-trip") {
                 $('#return_search').css("display", "block");
                 $('#second-city_search').css("display", "none");
-                $('#return_on_search').attr("required", "true");
-                $('#departure_from_second_search').attr("required", "false");
-                $('#arrival_to_second_search').attr("required", "false");
-                $('#depart_on_second_search').attr("required", "false");
+                $('#return_on_search').attr("required", true);
+                $('#departure_from_second_search').attr("required", false);
+                $('#arrival_to_second_search').attr("required", false);
+                $('#depart_on_second_search').attr("required", false);
             }
             else if ($('#trip_type_search').val() == "One-way") {
                 $('#return_search').css("display", "none");
                 $('#second-city_search').css("display", "none");
-                $('#return_on_search').attr("required", "false");
-                $('#departure_from_second_search').attr("required", "false");
-                $('#arrival_to_second_search').attr("required", "false");
-                $('#depart_on_second_search').attr("required", "false");
+                $('#return_on_search').attr("required", false);
+                $('#departure_from_second_search').attr("required", false);
+                $('#arrival_to_second_search').attr("required", false);
+                $('#depart_on_second_search').attr("required", false);
             }
             else if ($('#trip_type_search').val() == "Multi-city") {
                 $('#return_search').css("display", "none");
                 $('#second-city_search').css("display", "flex");
-                $('#return_on_search').attr("required", "false");
-                $('#departure_from_second_search').attr("required", "true");
-                $('#arrival_to_second_search').attr("required", "true");
-                $('#depart_on_second_search').attr("required", "true");
+                $('#return_on_search').attr("required", false);
+                $('#departure_from_second_search').attr("required", true);
+                $('#arrival_to_second_search').attr("required", true);
+                $('#depart_on_second_search').attr("required", true);
             }
         }
 
