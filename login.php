@@ -12,7 +12,6 @@
 
 
 
-
     if (isset($_POST['submit'])) {
 
         $inputtedUsername = $_POST['username'];

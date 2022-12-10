@@ -52,7 +52,7 @@
         fieldset {
             background: whitesmoke;
             width: 40em;
-            height: 42rem;
+            height: 43rem;
             animation: flash_border 3s infinite;
         }
 
@@ -215,7 +215,6 @@
             <div class="date-field">
                 <p><label>Credit Card Number<input name="card" id="Card" type="type" placeholder="4xxxxxxxxxxxxxxx (16 digits)" required></p>
                 <div id="cardDiv"></div>
-
                 <p><label>Expiry Month
                         <select name="month" id="month">
                             <option value="January">January</option>
@@ -232,7 +231,6 @@
                             <option value="December">December</option>
                         </select>
                     </label></p>
-
                 <p><label>Expiry Year
                         <select name="year" id="Year">
                             <option value="2022">2022</option>
@@ -246,11 +244,9 @@
                             <option value="2030">2030</option>
                         </select>
                     </label></p>
-
                 <p><label>CVV <input type="text" name="cvv" id="Cvv" placeholder="CVV"></label></p>
                 <div id="cvvDiv"></div>
             </div>
-
             <p><label>First Name<input name="firstname" id="Fname" type="text" placeholder="First Name" required></p>
 
             <p><label>Last Name<input name="lastname" id="Lname" type="text" placeholder="Last Name" required></p>
@@ -258,11 +254,7 @@
             <p><label>Username<input name="username" id="username" type="text" placeholder="Username" required></p>
             <div id="usernameDiv"></div>
 
-
-
-
             <p><label>Date of Birth<input name="dob" id="dob" type="date" placeholder="Last Name" required></p>
-
 
             <p><label>Email Address<input name="email" id="email" type="text" placeholder="Email Address" required></p>
             <div id="emailDiv"></div>
@@ -270,17 +262,15 @@
             <p><label>Password<input name="password" id="Password" type="password" placeholder="Password" onkeyup="passwordValidation()" required></p>
             <div id="passwordDiv"></div>
 
-
             <input type="submit" name="submit" id="submit" value="Register">
             <input type="reset" value="Clear">
             <p class="register"> Already have an account? <a href="login.php">Login</a></p>
-
         </form>
     </fieldset>
 
 
 
-    <script>
+    <script>    
         var bt = document.getElementById("submit");
 
         $(document).ready(function() {
