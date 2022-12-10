@@ -283,26 +283,40 @@
 
         if(isset($_POST["submit"]))
         {
-            print("<table style=\"margin-bottom: 9rem;\">");
-            print("<thead>");
-            print("<tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Save Flight?</th></tr>");
-            print("</thead>");
-            print("<tbody>");
-            
             $result = $flight_collection->find(['From' => $departure_from, 'To' => $arrival_to, 'Departure_Date' => $depart_on]);
-            foreach ($result as $entry) {
-                print("<tr>");
-            	print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
-                print("<td><form method=\"post\" action = \"flight_schedule_search.php\"><input style=\"margin-left:0.5em;\" type = \"submit\" name = \"save_flight\" value = \"Save\">");
-                print("<input type = \"hidden\" name = \"departure_from\" value = \"" . $entry['From'] . "\">");
-                print("<input type = \"hidden\" name = \"arrival_to\" value = \"" . $entry['To'] . "\">");
-                print("<input type = \"hidden\" name = \"departure_date\" value = \"" . $entry['Departure_Date'] . "\">");
-                print("<input type = \"hidden\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
-                print("</form></td>");
-                print("</tr>");
+            foreach($result as $entry)
+            {
+                $first_entry = $entry;
+                break;
             }
-            print("</tbody>");
-            print("</table>");
+            if(!isset($first_entry))
+            {
+                print("<p style=\"text-align:center;font-size:1.2em;margin:2em;color:white\">No results</p>");
+            }
+            else
+            {
+                print("<table style=\"margin-bottom: 9rem;\">");
+                print("<thead>");
+                print("<tr><th>Depart from</th><th>Arrive to</th><th>Departure date</th><th>Departure time</th><th>Save Flight?</th></tr>");
+                print("</thead>");
+                print("<tbody>");
+                
+                
+                foreach ($result as $entry) {
+                    print("<tr>");
+                    print("<td>" . $entry['From'] . "</td><td>" . $entry['To'] . "</td><td>" . $entry['Departure_Date'] . "</td><td>" . $entry['Departure_Time'] . "</td>");
+                    print("<td><form method=\"post\" action = \"flight_schedule_search.php\"><input style=\"margin-left:0.5em;\" type = \"submit\" name = \"save_flight\" value = \"Save\">");
+                    print("<input type = \"hidden\" name = \"departure_from\" value = \"" . $entry['From'] . "\">");
+                    print("<input type = \"hidden\" name = \"arrival_to\" value = \"" . $entry['To'] . "\">");
+                    print("<input type = \"hidden\" name = \"departure_date\" value = \"" . $entry['Departure_Date'] . "\">");
+                    print("<input type = \"hidden\" name = \"departure_time\" value = \"" . $entry['Departure_Time'] . "\">");
+                    print("</form></td>");
+                    print("</tr>");
+                }
+                print("</tbody>");
+                print("</table>");
+            }
+            
         }
         if(isset($_POST["save_flight"]))
             {

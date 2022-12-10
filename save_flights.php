@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <title>Flight Schedule Search</title>
+    <title>Saved flights</title>
     <link rel="stylesheet" href="main_style.css">
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
