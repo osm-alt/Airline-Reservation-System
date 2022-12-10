@@ -194,7 +194,6 @@ if (isset($_POST["deleteFlight"])) {
 
 if (isset($_POST["viewBooking"])) {
     // $Brn = (int)$_POST['brn'];
-
     $booking_collection = $client->Airline_Reservation->Bookings;
 
 // Table1
