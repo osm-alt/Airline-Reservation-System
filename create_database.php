@@ -331,6 +331,19 @@ $newFlights = [
         'FirstClass_Seats_Left' => 10,
         'Delay'=> 'no delay',
         'Captain_Name' => 'Carla jeitawi'
+    ],
+    [
+        'Flight_ID' => 11,
+        'Admin_Username' => 'Robert',
+        'From' => 'Accra - Kotoka International Airport	Ghana	ACC',
+        'To' => 'Lagos - Murtala Muhammed Airport	Nigeria	LOS',
+        'Departure_Date' => '2022-12-15',
+        'Departure_Time' => '06:00',
+        'Economy_Seats_Left' => 30,
+        'Business_Seats_Left' => 16,
+        'FirstClass_Seats_Left' => 10,
+        'Delay'=> 'no delay',
+        'Captain_Name' => 'Carla jeitawi'
     ]
 ];
 

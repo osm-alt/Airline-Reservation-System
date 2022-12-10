@@ -281,7 +281,7 @@
             $diff= date_diff($today,$departure_date);
             if(intval($diff->format("%a")) < 7) //can buy or reserve tickets until one week before flight
             {
-                print("Deadline passed to buy tickets for this flight!");
+                print("<p style=\"text-align:center;\">Deadline passed to buy tickets for this flight!</p>");
                 die();
             }
             if($trip_type == "Round-trip")
@@ -291,7 +291,7 @@
                 $diff=date_diff($today,$return_on);
                 if(intval($diff->format("%a")) < 7)
                 {
-                    print("Deadline passed to buy tickets for the second flight!");
+                    print("<p style=\"text-align:center;\">Deadline passed to buy tickets for the second flight!</p>");
                     die();
                 }
             }        
@@ -302,7 +302,7 @@
                 $diff=date_diff($today,$depart_on_second);
                 if(intval($diff->format("%a")) < 7)
                 {
-                    print("Deadline passed to buy tickets for the second flight!");
+                    print("<p style=\"text-align:center;\">Deadline passed to buy tickets for the second flight!</p>");
                     die();
                 }
             }
@@ -384,7 +384,7 @@
             $diff= date_diff($today,$departure_date);
             if(intval($diff->format("%a")) < 7) //can buy or reserve tickets until one week before flight
             {
-                print("Deadline passed to buy tickets for this flight!");
+                print("<p style=\"text-align:center;\">Deadline passed to buy tickets for this flight!</p>");
                 die();
             }
             if($trip_type == "Round-trip")
@@ -394,7 +394,7 @@
                 $diff=date_diff($today,$return_on);
                 if(intval($diff->format("%a")) < 7)
                 {
-                    print("Deadline passed to buy tickets for the second flight!");
+                    print("<p style=\"text-align:center;\">Deadline passed to buy tickets for the second flight!</p>");
                     die();
                 }
             }        
@@ -405,7 +405,7 @@
                 $diff=date_diff($today,$depart_on_second);
                 if(intval($diff->format("%a")) < 7)
                 {
-                    print("Deadline passed to buy tickets for the second flight!");
+                    print("<p style=\"text-align:center;\">Deadline passed to buy tickets for the second flight!</p>");
                     die();
                 }
             }
